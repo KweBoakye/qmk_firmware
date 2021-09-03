@@ -27,8 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT      tractyl_frankenform
 
 /* key matrix size */
-#define MATRIX_ROWS 2
-#define MATRIX_COLS 3
+#define MATRIX_ROWS 12
+#define MATRIX_COLS 7
 
 /*
  * Keyboard Matrix Assignments
@@ -40,8 +40,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { D0, D5 }
-#define MATRIX_COL_PINS { F1, F0, B0 }
+#define MATRIX_ROW_PINS { A1, A2, A3, B0, B1, B10 }
+#define MATRIX_COL_PINS { B5, B4, B3, A10, A8, B15, B14 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
@@ -50,7 +50,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
-#define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
+#define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
+#define SERIAL_USART_TX_PIN B6     // USART TX pin
+#define SERIAL_USART_RX_PIN B7     // USART RX pin
+#define SELECT_SOFT_SERIAL_SPEED 1 // or 0, 2, 3, 4, 5
+                                   //  0: 460800 baud
+                                   //  1: 230400 baud (default)
+                                   //  2: 115200 baud
+                                   //  3: 57600 baud
+                                   //  4: 38400 baud
+                                   //  5: 19200 baud
+#define SERIAL_USART_DRIVER SD1    // USART driver of TX and RX pin. default: SD1
+#define SERIAL_USART_TX_PAL_MODE 7 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 7
+#define SERIAL_USART_RX_PAL_MODE 7 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 7
+#define SERIAL_USART_TIMEOUT 20    // USART driver timeout. default 20
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1
