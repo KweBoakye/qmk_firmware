@@ -16,9 +16,18 @@
 
 #pragma once
 
-#define HAL_USE_SERIAL TRUE
-#define HAL_USE_SPI    TRUE
-// #define HAL_USE_GPT    TRUE
+#define CH_CFG_ST_FREQUENCY 10000
 
+#define CH_CFG_FACTORY_OBJECTS_REGISTRY TRUE
 
-#include_next <halconf.h>
+#define CH_CFG_FACTORY_GENERIC_BUFFERS TRUE
+
+#define CH_CFG_FACTORY_SEMAPHORES TRUE
+
+#define CH_CFG_FACTORY_MAILBOXES TRUE
+
+#define CH_CFG_FACTORY_OBJ_FIFOS TRUE
+
+#define CH_CFG_FACTORY_PIPES TRUE
+
+#include_next <chconf.h>
