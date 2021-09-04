@@ -1,19 +1,18 @@
-/*
-Copyright 2021 KweBoakye
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+/* Copyright 2021 KweBoakye
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #pragma once
 
@@ -63,7 +62,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SERIAL_USART_DRIVER SD1    // USART driver of TX and RX pin. default: SD1
 #define SERIAL_USART_TX_PAL_MODE 7 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 7
 #define SERIAL_USART_RX_PAL_MODE 7 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 7
-#define SERIAL_USART_TIMEOUT 20    // USART driver timeout. default 20
+#define SERIAL_USART_TIMEOUT 100   // USART driver timeout. default 20
+#undef SOFT_SERIAL_PIN
+
+#define SPI_DRIVER                           SPID1
+#define SPI_SCK_PIN                          A5
+#define SPI_SCK_PAL_MODE                     5
+#define SPI_MOSI_PIN                         A7
+#define SPI_MOSI_PAL_MODE                    5
+#define SPI_MISO_PIN                         A6
+#define SPI_MISO_PAL_MODE                    5
+
+#define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN A4
+#define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    8
+#define EXTERNAL_EEPROM_BYTE_COUNT           32000
+#define EXTERNAL_EEPROM_PAGE_SIZE            64
+//#define EXTERNAL_EEPROM_ADDRESS_SIZE
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1
