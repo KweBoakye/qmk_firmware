@@ -73,6 +73,16 @@
 #define SPI_MISO_PIN                         A6
 #define SPI_MISO_PAL_MODE                    5
 
+#define I2C_DRIVER        I2CD1
+#define I2C1_SCL_BANK     GPIOB
+#define I2C1_SDA_BANK     GPIOB
+#define I2C1_SCL          8
+#define I2C1_SDA          9
+#define I2C1_SCL_PAL_MODE 4
+#define I2C1_SDA_PAL_MODE 4
+#define I2C1_CLOCK_SPEED  400000
+
+
 #define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN A4
 #define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    8
 #define EXTERNAL_EEPROM_BYTE_COUNT           32000
