@@ -25,6 +25,8 @@
 #define MANUFACTURER KweBoakye
 #define PRODUCT      tractyl_frankenform
 
+#define EE_HANDS
+
 /* key matrix size */
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 7
@@ -98,6 +100,11 @@
 //#define BACKLIGHT_PIN B7
 //#define BACKLIGHT_LEVELS 3
 //#define BACKLIGHT_BREATHING
+
+#define DRIVER_COUNT 1
+#define DRIVER_ADDR_1  0x74
+#define DRIVER_1_LED_TOTAL 24
+#define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
 
 //#define RGB_DI_PIN E2
 //#ifdef RGB_DI_PIN
