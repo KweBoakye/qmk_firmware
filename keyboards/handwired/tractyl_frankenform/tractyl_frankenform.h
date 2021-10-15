@@ -57,3 +57,16 @@
     { KC_NO, R41, KC_NO, R43, R44, KC_NO, KC_NO }, \
     { KC_NO, R51, R52, R53, KC_NO, KC_NO, KC_NO } \
 }
+
+typedef union {
+  uint32_t raw;
+  struct {
+      bool    disable_layer_led :1;
+      bool    rgb_matrix_enable :1;
+      bool    led_level         :1;
+      uint8_t led_level_res     :2; // DO NOT REMOVE
+      uint8_t dpi_config        :3;
+  };
+} keyboard_config_t;
+
+extern keyboard_config_t keyboard_config;

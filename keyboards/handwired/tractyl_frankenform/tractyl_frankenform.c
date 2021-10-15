@@ -16,7 +16,11 @@
 
 #include "tractyl_frankenform.h"
 #include "drivers/led/issi/is31fl3731.h"
+//#include "cirque_tm040040.h"
 #include <quantum.h>
+#include "pointing_device.h"
+
+keyboard_config_t keyboard_config;
 
 const is31_led __flash g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
@@ -49,6 +53,8 @@ const is31_led __flash g_is31_leds[DRIVER_LED_TOTAL] = {
     {0, C7_6,  C8_6,  C9_6},
     {0, C7_7,  C8_7,  C9_7},
     {0, C7_8,  C8_8,  C9_8},
+
+    {0, C7_14,  C8_14,  C9_14},
 };
 
 
@@ -62,21 +68,20 @@ led_config_t g_led_config  = { {
     {   0,   1, 2,  3, 4, 5, 6 },
     {   8,   9, 10,  11,  12, 13, 7 },
     {   16,   17, 18,  19,  20, 14, 15 },
-    {   NO_LED,   NO_LED, NO_LED,  NO_LED,  21, 22, 23 },
+    {   NO_LED,   24, NO_LED,  NO_LED,  21, 22, 23 },
     {   NO_LED,   NO_LED, NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
     { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED }
 }, {
     { 0,   0 }, { 38,  0 }, { 75,   0  }, { 112,   0  }, {    187,  0 }, { 224,  0 },
     {0,  12 }, { 38,  12 }, { 75,  12 }, { 112,  12 },{150,  25 },{187,  25 }, { 224,  25 },
     {0,  25 }, { 38,  25 }, { 75,  25 }, { 112,  38 },{150,  38 },{187,  38 }, { 224,  38 },
-    /*{0,  38 }, { 38,  38 }, { 75,  51 }, { 112,  51 },*/{150,  51 },{187,  51 }, { 224,  51 }//,
+    /*{0,  38 },*/ { 38,  38 },/* { 75,  51 }, { 112,  51 },*/{150,  51 },{187,  51 }, { 224,  51 }//,
     /*{0,  50 }, { 38,  50 }, { 75,  50 }, { 112,  50 },{150,  50 },{187,  50 }, { 224,  50 },*/
     /*{0,  63 }, { 38,  63 }, { 75,  63 }, { 112,  63 },{150,  63 },{187,  63 }, { 224,  63 }*/
 }, {
     4, 4, 4, 4, 4, 4, 4,
     4, 4, 4, 4, 4, 4, 4,
     4, 4, 4, 4, 4, 4, 4,
-                4, 4, 4
+        4,        4, 4, 4
 } };
-
 

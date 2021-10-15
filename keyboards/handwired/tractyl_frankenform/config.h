@@ -17,6 +17,7 @@
 #pragma once
 
 #include "config_common.h"
+//#include "audio.c"
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID    0xFEED
@@ -41,8 +42,8 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { A1, A2, A3, B0, B1, B10 }
-#define MATRIX_COL_PINS { B5, B4, B3, A10, A8, B15, B14 }
+#define MATRIX_ROW_PINS { A1, A2, A3, B0, A8, B10 } //B0, B1,
+#define MATRIX_COL_PINS { B5, B4, B3, A10, B15, B14, B13 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
@@ -83,6 +84,8 @@
 #define I2C1_SCL_PAL_MODE 4
 #define I2C1_SDA_PAL_MODE 4
 #define I2C1_CLOCK_SPEED  400000
+#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+#define I2C1_OPMODE OPMODE_I2C
 
 
 #define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN A4
@@ -101,10 +104,21 @@
 //#define BACKLIGHT_LEVELS 3
 //#define BACKLIGHT_BREATHING
 
+//#define OLED_DRIVER = SSD1306
+#define OLED_DISPLAY_128X64
+#define SPLIT_OLED_ENABLE
+#define OLED_DISPLAY_ADDRESS 0x3C
+
+
 #define DRIVER_COUNT 1
 #define DRIVER_ADDR_1  0x74
-#define DRIVER_1_LED_TOTAL 24
+#define DRIVER_1_LED_TOTAL 25
 #define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
+
+//#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
+//#define RGB_MATRIX_STARTUP_HUE 0
+//#define RGB_MATRIX_STARTUP_SAT 255 // Sets the default saturation value, if none has been set
+//#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
 
 //#define RGB_DI_PIN E2
 //#ifdef RGB_DI_PIN
@@ -133,6 +147,29 @@
 //#    define RGBLIGHT_EFFECT_BREATHE_CENTER 1.85  // 1 to 2.7
 //#    define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 //#endif
+
+#define FB_ERM_LRA 1
+#define FB_BRAKEFACTOR 3 /* For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 */
+#define FB_LOOPGAIN 1 /* For  Low:0, Medium:1, High:2, Very High:3 */
+
+/* Please refer to your datasheet for the optimal setting for your specific motor. */
+#define RATED_VOLTAGE 2
+#define V_PEAK 2.8
+#define V_RMS 2.0
+#define F_LRA 150 /* resonance freq */
+#define DRV_GREETING transition_rampup_long_smooth1
+
+/* Audio config */
+#define AUDIO_PIN          B1
+#define AUDIO_PWM_DRIVER   PWMD3
+#define AUDIO_PWM_CHANNEL  4
+#define AUDIO_PWM_PAL_MODE 2
+#define AUDIO_STATE_TIMER  GPTD4
+#define AUDIO_CLICKY
+#define AUDIO_CLICKY_ON
+
+
+
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
