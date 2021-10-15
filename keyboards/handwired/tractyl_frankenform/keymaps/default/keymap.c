@@ -14,14 +14,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-
+#include <rgb_matrix.h>
+#include "color.h"
+#include "cirque_tm040040.h"
 
 
 // Defines the keycodes used by our macros in process_record_user
-enum custom_keycodes {
-    QMKBEST = SAFE_RANGE,
-    QMKURL
-};
+
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -30,6 +29,8 @@ enum custom_keycodes {
 #define _QWERTY 0
 #define _FN     1
 #define _NUMPAD 2
+
+float my_song[][2] = SONG(QWERTY_SOUND);
 
 // Some basic macros
 #define TASK   LCTL(LSFT(KC_ESC))
@@ -45,9 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,   KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   TAB_RO,
         OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,
                                   TAB_L,   TAB_R,
-                                    KC_SPC,
-                                     KC_HOME,
-                                    KC_PSCR, TASK,
+                                                 KC_SPC,
+                                                  KC_HOME,
+                                                 KC_PSCR, TASK,
         // right hand
                           KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_GRV,
                           KC_RBRC, KC_Y,    KC_U,    KC_I,     KC_O,     KC_P,     KC_BSLS,
@@ -102,24 +103,75 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+enum {
+    TEST_NEXT_LED = SAFE_RANGE,
+};
+
+//static uint8_t test_led_index, test_color;
+
+/* void rgb_matrix_indicators_user(void) {
+    rgb_matrix_set_color(test_led_index, (test_color == 0) * 255, (test_color == 1) * 255, (test_color == 2) * 255);
+} */
+
+void keyboard_post_init_user(void){
+    //rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv_noeeprom(HSV_CYAN);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QMKBEST:
-            if (record->event.pressed) {
-                // when keycode QMKBEST is pressed
-                SEND_STRING("QMK is the best thing ever!");
-            } else {
-                // when keycode QMKBEST is released
-            }
-            break;
-        case QMKURL:
-            if (record->event.pressed) {
-                // when keycode QMKURL is pressed
-                SEND_STRING("https://qmk.fm/\n");
-            } else {
-                // when keycode QMKURL is released
-            }
-            break;
+    if (record->event.pressed) {
+    PLAY_SONG(my_song);
     }
+   /*  switch (keycode) {
+        case TEST_NEXT_LED:
+            if (++test_color > 2) {
+                test_color = 0;
+                if (++test_led_index >= DRIVER_LED_TOTAL) {
+                    test_led_index = 0;
+                }
+            }
+            break;
+    } */
+
+
     return true;
 }
+
+#ifdef OLED_ENABLE
+/* oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_master()) {
+        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    }
+
+    return rotation;
+} */
+
+void oled_task_user(void) {
+
+    // Host Keyboard Layer Status
+    oled_write_P(PSTR("Layer: "), false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY:
+            oled_write_P(PSTR("Default\n"), false);
+            break;
+        case _FN:
+            oled_write_P(PSTR("FN\n"), false);
+            break;
+        case _NUMPAD:
+            oled_write_P(PSTR("NUMPAD\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
+    }
+
+    // Host Keyboard LED Status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+
+}
+#endif
+
