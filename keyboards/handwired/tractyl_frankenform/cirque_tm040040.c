@@ -1,7 +1,7 @@
 // Copyright (c) 2018 Cirque Corp. Restrictions apply. See: www.cirque.com/sw-license
 #include "tractyl_frankenform.h"
 #include "i2c_master.h"
-#include "i2c1_master.h"
+#include "i2c2_master.h"
 #include "cirque_tm040040.h"
 #include "pointing_device.h"
 
@@ -52,12 +52,12 @@ void pointing_device_task(void) {
     } else {
         mouse_report.buttons &= ~MOUSE_BTN1;
     }
-    print_byte(touchData.xValue);
-    print_byte(touchData.yValue);
-    print_byte(touchData.zValue);
-    print_byte(touchData.buttonFlags);
-    print_byte(touchData.touchDown);
-    xprintf("\n");
+    //print_byte(touchData.xValue);
+    //print_byte(touchData.yValue);
+    //print_byte(touchData.zValue);
+    //print_byte(touchData.buttonFlags);
+    //print_byte(touchData.touchDown);
+    //xprintf("\n");
 
 #else
     Pinnacle_GetRelative(&rTouchData);
@@ -80,7 +80,7 @@ void pointing_device_task(void) {
 void pointing_device_init(void) {
     i2c_init();
     touchpad_init[0] = true;
-    i2c1_init();
+    i2c2_init();
     touchpad_init[1] = false;
     // Host clears SW_CC flag
     Pinnacle_ClearFlags();
@@ -205,12 +205,12 @@ void RAP_ReadBytes(uint8_t address, uint8_t* data, uint8_t count) {
     }
 
     if (touchpad_init[1]) {
-        i2c1_writeReg(SLAVE_ADDR << 1, cmdByte, NULL, 0, I2C_TIMEOUT);
-        if (i2c1_readReg(SLAVE_ADDR << 1, cmdByte, data, count, I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
+        i2c2_writeReg(SLAVE_ADDR << 1, cmdByte, NULL, 0, I2C_TIMEOUT);
+        if (i2c2_readReg(SLAVE_ADDR << 1, cmdByte, data, count, I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
             dprintf("error left touchpad\n");
             touchpad_init[1] = false;
         }
-        i2c1_stop();
+        i2c2_stop();
     }
 }
 
@@ -229,11 +229,11 @@ void RAP_Write(uint8_t address, uint8_t data) {
             data = 0xC3;
     }
     if (touchpad_init[1]) {
-        if (i2c1_writeReg(SLAVE_ADDR << 1, cmdByte, &data, sizeof(data), I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
+        if (i2c2_writeReg(SLAVE_ADDR << 1, cmdByte, &data, sizeof(data), I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
             dprintf("error left touchpad\n");
             touchpad_init[1] = false;
         }
-        i2c1_stop();
+        i2c2_stop();
     }
 }
 

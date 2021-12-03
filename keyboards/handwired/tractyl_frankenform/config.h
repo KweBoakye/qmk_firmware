@@ -42,8 +42,8 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { A1, A2, A3, B0, A8, B10 } //B0, B1,
-#define MATRIX_COL_PINS { B5, B4, B3, A10, B15, B14, B13 }
+#define MATRIX_ROW_PINS { A1, A2, A3, B10, B13, B12 } //B0, B1,
+#define MATRIX_COL_PINS { B4, B3, A15, B1, A8, B15, B14}
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
@@ -108,7 +108,14 @@
 #define OLED_DISPLAY_128X64
 #define SPLIT_OLED_ENABLE
 #define OLED_DISPLAY_ADDRESS 0x3C
+#define OLED_FONT_H "keyboards/handwired/tractyl_frankenform/glcdfont.c"
+#define OLED_FONT_END 255
 
+//#ifdef JOYSTICK_ENABLE
+#define JOYSTICK_AXES_COUNT 2
+#define JOYSTICK_BUTTON_COUNT 1
+//#define JOYSTICK_AXES_RESOLUTION 10
+//#endif
 
 #define DRIVER_COUNT 1
 #define DRIVER_ADDR_1  0x74
@@ -159,14 +166,16 @@
 #define F_LRA 150 /* resonance freq */
 #define DRV_GREETING transition_rampup_long_smooth1
 
+#ifdef AUDIO_ENABLE
 /* Audio config */
-#define AUDIO_PIN          B1
+#define AUDIO_PIN       B5
 #define AUDIO_PWM_DRIVER   PWMD3
-#define AUDIO_PWM_CHANNEL  4
+#define AUDIO_PWM_CHANNEL  2
 #define AUDIO_PWM_PAL_MODE 2
 #define AUDIO_STATE_TIMER  GPTD4
-#define AUDIO_CLICKY
-#define AUDIO_CLICKY_ON
+#define STARTUP_SONG SONG(STARTUP_SOUND)
+//#define AUDIO_INIT_DELAY 2000
+#endif
 
 
 
@@ -229,5 +238,5 @@
 #define NO_ACTION_FUNCTION
 
 /* Bootmagic Lite key configuration */
-//#define BOOTMAGIC_LITE_ROW 0
-//#define BOOTMAGIC_LITE_COLUMN 0
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 0
