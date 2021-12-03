@@ -8,8 +8,8 @@ BOOTLOADER = stm32-dfu
 #   change yes to no to disable
 #
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
-MOUSEKEY_ENABLE = yes       # Mouse keys
-EXTRAKEY_ENABLE = no       # Audio control and System control
+MOUSEKEY_ENABLE = no       # Mouse keys
+EXTRAKEY_ENABLE = no          # Audio control and System control
 CONSOLE_ENABLE  = yes        # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
@@ -31,12 +31,15 @@ MIDI_ENABLE = no
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = usart
 EEPROM_DRIVER = spi
-#SRC = cirque_tm040040.c
-QUANTUM_LIB_SRC += spi_master.c i2c_master.c #i2c1_master.c
+SRC += oled.c analog.c #cirque_tm040040.c
+QUANTUM_LIB_SRC += spi_master.c #i2c_master.c i2c2_master.c
 
 MOUSE_SHARED_EP = no
+KEYBOARD_SHARED_EP = no
 STENO_ENABLE = no
 VIRTSER_ENABLE = no
 
 POINTING_DEVICE_ENABLE = no
 HAPTIC_ENABLE += DRV2605L
+JOYSTICK_ENABLE = no
+JOYSTICK_DRIVER = analog

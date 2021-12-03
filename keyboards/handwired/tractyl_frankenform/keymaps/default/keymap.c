@@ -16,11 +16,42 @@
 #include QMK_KEYBOARD_H
 #include <rgb_matrix.h>
 #include "color.h"
-#include "cirque_tm040040.h"
+#ifdef POINTING_DEVICE_ENABLE
+#     include "cirque_tm040040.h"
+#     include "pointing_device.h"
+#endif
+//#ifdef JOYSTICK_ENABLE
+#include "joystick.h"
+//#endif
+#include "analog.h"
+#include "print.h"
+#include "audio.h"
+#include "song_list.h"
+float my_song[][2] = SONG(QWERTY_SOUND);
 
+void matrix_scan_user() {
+    /* int16_t val = (((uint32_t)timer_read() % 5000 - 2500) * 255) / 5000;
+
+    if (val != joystick_status.axes[1]) {
+        joystick_status.axes[1] = val;
+        joystick_status.status |= JS_UPDATED;
+    } */
+}
+
+#ifdef JOYSTICK_ENABLE
+//joystick config
+joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
+   [0] = JOYSTICK_AXIS_IN(B0, 141, 490, 810),
+    [1] = JOYSTICK_AXIS_IN(B1, 224, 534, 811)
+};
+#endif
 
 // Defines the keycodes used by our macros in process_record_user
 
+
+enum custom_keycodes {
+    KC_AUDIO = SAFE_RANGE,
+};
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -30,7 +61,6 @@
 #define _FN     1
 #define _NUMPAD 2
 
-float my_song[][2] = SONG(QWERTY_SOUND);
 
 // Some basic macros
 #define TASK   LCTL(LSFT(KC_ESC))
@@ -103,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-enum {
-    TEST_NEXT_LED = SAFE_RANGE,
-};
+
+
+
 
 //static uint8_t test_led_index, test_color;
 
@@ -115,36 +145,36 @@ enum {
 
 void keyboard_post_init_user(void){
     //rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-    rgb_matrix_sethsv_noeeprom(HSV_CYAN);
+    if (is_keyboard_master()) {
+		rgb_matrix_sethsv_noeeprom(HSV_GOLD);
+	} else {
+		rgb_matrix_sethsv_noeeprom(HSV_ORANGE);
+	}
+
+    // Customise these values to desired behaviour
+#ifdef CONSOLE_ENABLE
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+  //debug_mouse=true;
+#endif
 }
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-    PLAY_SONG(my_song);
-    }
-   /*  switch (keycode) {
-        case TEST_NEXT_LED:
-            if (++test_color > 2) {
-                test_color = 0;
-                if (++test_led_index >= DRIVER_LED_TOTAL) {
-                    test_led_index = 0;
-                }
+    switch (keycode) {
+        case KC_7:
+            if (record->event.pressed) {
+               PLAY_SONG(my_song);
             }
-            break;
-    } */
-
-
+            return true;
+    }
     return true;
 }
 
-#ifdef OLED_ENABLE
-/* oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-    }
 
-    return rotation;
-} */
+
+/* #ifdef OLED_ENABLE
 
 void oled_task_user(void) {
 
@@ -173,5 +203,96 @@ void oled_task_user(void) {
     oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
 
 }
-#endif
+#endif */
+
+/* #ifdef POINTING_DEVICE_ENABLE
+uint16_t minAxisValue = 0;
+uint16_t maxAxisValue = 1023;
+
+uint8_t maxCursorSpeed = 2;
+uint8_t precisionSpeed = 1;
+uint8_t speedRegulator = 20;  // Lower Values Create Faster Movement
+
+int8_t xPolarity = 1;
+int8_t yPolarity = 1;
+
+uint8_t cursorTimeout = 10;
+
+int16_t xOrigin, yOrigin;
+
+uint16_t lastCursor = 0;
+
+int16_t axisCoordinate(uint32_t pin, uint16_t origin) {
+    int8_t  direction;
+    int16_t distanceFromOrigin;
+    int16_t range;
+
+    int16_t position = analogReadPin(pin);
+
+    if (origin == position) {
+        return 0;
+    } else if (origin > position) {
+        distanceFromOrigin = origin - position;
+        range              = origin - minAxisValue;
+        direction          = -1;
+    } else {
+        distanceFromOrigin = position - origin;
+        range              = maxAxisValue - origin;
+        direction          = 1;
+    }
+
+    float   percent    = (float)distanceFromOrigin / range;
+    int16_t coordinate = (int16_t)(percent * 100);
+    if (coordinate < 0) {
+        return 0;
+    } else if (coordinate > 100) {
+        return 100 * direction;
+    } else {
+        return coordinate * direction;
+    }
+}
+
+int8_t axisToMouseComponent(uint32_t pin, int16_t origin, uint8_t maxSpeed, int8_t polarity) {
+    int coordinate = axisCoordinate(pin, origin);
+    if (coordinate != 0) {
+        float percent = (float)coordinate / 100;
+        if (get_mods() & MOD_BIT(KC_LSFT)) {
+            return percent * precisionSpeed * polarity * (abs(coordinate) / speedRegulator);
+        } else {
+            return percent * maxCursorSpeed * polarity * (abs(coordinate) / speedRegulator);
+        }
+    } else {
+        return 0;
+    }
+}
+
+void pointing_device_task(void) {
+    report_mouse_t report = pointing_device_get_report();
+
+    // todo read as one vector
+    if (timer_elapsed(lastCursor) > cursorTimeout) {
+        lastCursor = timer_read();
+        report.x   = axisToMouseComponent(B1, xOrigin, maxCursorSpeed, xPolarity);
+        report.y   = axisToMouseComponent(B2, yOrigin, maxCursorSpeed, yPolarity);
+    }
+    //
+    if (!readPin(B12)) {
+        report.buttons |= MOUSE_BTN1;
+    } else {
+        report.buttons &= ~MOUSE_BTN1;
+    }
+
+    pointing_device_set_report(report);
+    pointing_device_send();
+}
+#endif */
+void matrix_init_user(void) {
+    // init pin? Is needed?
+ /* #ifdef POINTING_DEVICE_ENABLE
+    setPinInputHigh(B12);
+    // Account for drift
+    xOrigin = analogReadPin(B0);
+    yOrigin = analogReadPin(B1);
+#endif */
+}
 

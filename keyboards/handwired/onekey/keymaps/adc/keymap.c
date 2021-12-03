@@ -16,13 +16,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 int16_t val = analogReadPin(ADC_PIN);
 
-                char buffer[50];
-                sprintf(buffer, "ADC:%u\n", val);
-#ifdef CONSOLE_ENABLE
-                    printf(buffer);
-#else
-                    send_string(buffer);
-#endif
+               //char buffer[50];
+                xprintf("%6d", val);
+                xprintf("\n");
+               // sprintf(buffer, "ADC:%u\n", val);
+//#ifdef CONSOLE_ENABLE
+ //                   printf(buffer);
+//#else
+ //                   send_string(buffer);
+//#endif
             }
             break;
     }

@@ -16,9 +16,15 @@
 
 #include "tractyl_frankenform.h"
 #include "drivers/led/issi/is31fl3731.h"
-//#include "cirque_tm040040.h"
+
 #include <quantum.h>
-#include "pointing_device.h"
+#include "analog.h"
+#ifdef POINTING_DEVICE_ENABLE
+#    include "pointing_device.h"
+#    include "cirque_tm040040.h"
+#endif
+
+
 
 keyboard_config_t keyboard_config;
 
@@ -85,3 +91,44 @@ led_config_t g_led_config  = { {
         4,        4, 4, 4
 } };
 
+void matrix_init_kb(void) {
+#if BOOTMAGIC_ENABLE
+     setPinInputHigh(A0);
+#endif
+    // setPinInputHigh(B12);
+    keyboard_config.raw = eeconfig_read_kb();
+
+    if (!keyboard_config.dpi_config) {
+        keyboard_config.dpi_config = 2;
+        eeconfig_update_kb(keyboard_config.raw);
+    }
+    matrix_init_user();
+}
+
+
+
+void matrix_scan_kb(void) {
+#if BOOTMAGIC_ENABLE
+    if (!readPin(A0)) {
+        reset_keyboard();
+   }
+#endif
+
+    /* uint16_t x_val = analogReadPin(B1);
+    uint16_t y_val = analogReadPin(B2);
+    xprintf("%6d, %6d", x_val, y_val);
+    xprintf("\n"); */
+    matrix_scan_user();
+
+}
+
+
+void eeconfig_init_kb(void) {  // EEPROM is getting reset!
+    keyboard_config.raw = 0;
+    keyboard_config.rgb_matrix_enable = true;
+    keyboard_config.led_level = true;
+    keyboard_config.led_level_res = 0b11;
+    keyboard_config.dpi_config = 2;
+    eeconfig_update_kb(keyboard_config.raw);
+    eeconfig_init_user();
+}
