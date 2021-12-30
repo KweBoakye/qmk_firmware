@@ -10,7 +10,10 @@ BOOTLOADER = atmel-dfu
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
+<<<<<<< HEAD
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 AUDIO_ENABLE = no           # Audio output
 
 LAYOUTS = 60_ansi 60_ansi_split_bs_rshift 60_iso 60_hhkb

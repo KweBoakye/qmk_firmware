@@ -143,7 +143,7 @@ void pmw3360_set_cpi(uint16_t cpi) {
 
 uint16_t pmw3360_get_cpi(void) {
     uint8_t cpival = spi_read_adv(REG_Config1);
-    return (uint16_t)(cpival & 0xFF) * 100;
+    return (uint16_t)((cpival + 1) & 0xFF) * 100;
 }
 
 bool pmw3360_init(void) {
@@ -186,6 +186,11 @@ bool pmw3360_init(void) {
 
     spi_write_adv(REG_Angle_Tune, constrain(ROTATIONAL_TRANSFORM_ANGLE, -30, 30));
 
+<<<<<<< HEAD
+=======
+    spi_write_adv(REG_Lift_Config, PMW3360_LIFTOFF_DISTANCE);
+
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
     bool init_success = pmw3360_check_signature();
 
     writePinLow(PMW3360_CS_PIN);

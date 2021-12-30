@@ -18,10 +18,17 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0x5845 // "XE"
+<<<<<<< HEAD
 #define PRODUCT_ID      0x5052 // "PR"
 #define DEVICE_VER      0x0002
 #define MANUFACTURER    Xelus
 #define PRODUCT         Xelus Pachi RGB
+=======
+#define PRODUCT_ID      0x5053 // "PR" + 1
+#define DEVICE_VER      0x0002
+#define MANUFACTURER    Xelus
+#define PRODUCT         Xelus Pachi RGB Rev 2
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 
 /* key matrix size */
 #define MATRIX_ROWS 12

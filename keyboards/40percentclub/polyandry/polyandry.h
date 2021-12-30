@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /* Copyright 2021
+=======
+<<<<<<< HEAD:keyboards/handwired/onekey/sipeed_longan_nano/chconf.h
+/* Copyright 2021 QMK
+=======
+/* Copyright 2021
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/40percentclub/polyandry/polyandry.h
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +23,16 @@
  */
 #pragma once
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:keyboards/handwired/onekey/sipeed_longan_nano/chconf.h
+#define CH_CFG_ST_RESOLUTION 16
+
+#define CH_CFG_ST_FREQUENCY 10000
+
+#include_next <chconf.h>
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 #include "quantum.h"
 
 #ifdef KEYBOARD_40percentclub_polyandry_promicro
@@ -22,3 +40,7 @@
 #elif KEYBOARD_40percentclub_polyandry_teensy2
     #include "teensy2.h"
 #endif
+<<<<<<< HEAD
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/40percentclub/polyandry/polyandry.h
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea

@@ -1,18 +1,5 @@
-/* Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "drashna.h"
 
@@ -49,6 +36,7 @@ bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this
     return false;
 }
 
+<<<<<<< HEAD
 __attribute__((weak)) void keyboard_pre_init_keymap(void) {}
 void                       keyboard_pre_init_user(void) {
     userspace_config.raw = eeconfig_read_user();
@@ -217,6 +205,8 @@ void                       eeconfig_init_user(void) {
     keyboard_init();
 }
 
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 bool hasAllBitsInMask(uint8_t value, uint8_t mask) {
     value &= 0xF;
     mask &= 0xF;
@@ -224,40 +214,14 @@ bool hasAllBitsInMask(uint8_t value, uint8_t mask) {
     return (value & mask) == mask;
 }
 
-#ifdef SPLIT_KEYBOARD
-__attribute__((weak)) void matrix_slave_scan_keymap(void) {}
-void                       matrix_slave_scan_user(void) {
-#    if defined(AUDIO_ENABLE)
-#        if !defined(NO_MUSIC_MODE)
-    music_task();
-#        endif
-#        ifdef AUDIO_INIT_DELAY
-    if (!is_keyboard_master()) {
-        static bool delayed_tasks_run = false;
-        static uint16_t delayed_task_timer = 0;
-        if (!delayed_tasks_run) {
-            if (!delayed_task_timer) {
-                delayed_task_timer = timer_read();
-            } else if (timer_elapsed(delayed_task_timer) > 300) {
-                audio_startup();
-                delayed_tasks_run = true;
-            }
-        }
-    }
-#        endif
-#    endif
-#    ifdef SEQUENCER_ENABLE
-    sequencer_task();
-#    endif
-#    ifdef LED_MATRIX_ENABLE
-    led_matrix_task();
-#    endif
-#    ifdef HAPTIC_ENABLE
-    haptic_task();
-#    endif
-
-    matrix_slave_scan_keymap();
+void tap_code16_nomods(uint8_t kc) {
+    uint8_t temp_mod = get_mods();
+    clear_mods();
+    clear_oneshot_mods();
+    tap_code16(kc);
+    set_mods(temp_mod);
 }
+<<<<<<< HEAD
 #endif
 
 __attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -317,3 +281,5 @@ __attribute__((weak)) bool get_retro_tapping(uint16_t keycode, keyrecord_t *reco
             return false;
     }
 }
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea

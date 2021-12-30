@@ -21,6 +21,7 @@ static void render_status(void) {
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
         case _VIM:
+<<<<<<< HEAD
             oled_write_P(PSTR("VIM\n\nBUFFER       SCROLL"), false);
             break;
         case _FIGMA:
@@ -31,6 +32,18 @@ static void render_status(void) {
             break;
         case _TERMINAL:
             oled_write_P(PSTR("TERMINAL\n\nVOLUME       SCROLL"), false);
+=======
+            oled_write_P(PSTR("VIM      \n\nBUFFER         SCROLL"), false);
+            break;
+        case _FIGMA:
+            oled_write_P(PSTR("FIGMA    \n\nTABS             ZOOM"), false);
+            break;
+        case _BROWSER:
+            oled_write_P(PSTR("BROWSER  \n\nTABS           SCROLL"), false);
+            break;
+        case _BASE:
+            oled_write_P(PSTR("BASE     \n\nVOLUME         SCROLL"), false);
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
             break;
         default:
             oled_write_P(PSTR("Undef\n"), false);

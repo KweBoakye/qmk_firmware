@@ -3,7 +3,11 @@
     "url": "",
     "maintainer": "qmk",
     "layouts": {
+<<<<<<< HEAD
         "LAYOUT": {
+=======
+        "LAYOUT_tkl_nofrow_ansi": {
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
             "layout": [
                 {"x":0, "y":0},
                 {"x":1, "y":0},
@@ -87,4 +91,8 @@
             ]
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea

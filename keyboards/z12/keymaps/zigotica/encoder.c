@@ -48,12 +48,17 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 // Cycle through Tabs
                 if (clockwise) {
                     tap_code16(C(KC_TAB));
+<<<<<<< HEAD
                     /* register_code16(G(KC_RCBR)); */
                     /* unregister_code16(G(KC_RCBR)); */
                 } else {
                     tap_code16(S(C(KC_TAB)));
                     /* register_code16(G(KC_LCBR)); */
                     /* unregister_code16(G(KC_LCBR)); */
+=======
+                } else {
+                    tap_code16(S(C(KC_TAB)));
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
                 }
             } else { // RIGHT
                 // Scroll up/down
@@ -68,11 +73,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         break;
         case _FIGMA:
             if (index == 0) { // LEFT
+<<<<<<< HEAD
                 // Volume control.
                 if (clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
+=======
+                // Cycle through Tabs
+                if (clockwise) {
+                    tap_code16(C(KC_TAB));
+                } else {
+                    tap_code16(S(C(KC_TAB)));
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
                 }
             } else { // RIGHT
                 // Zoom in/out
@@ -89,7 +102,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             }
         break;
+<<<<<<< HEAD
         case _TERMINAL:
+=======
+        case _BASE:
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
         default:
             if (index == 0) { // LEFT
                 // Volume control.

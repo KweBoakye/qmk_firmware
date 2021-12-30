@@ -1,5 +1,6 @@
 /* Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
- *
+ * Copyright 2021 Dasky (@daskygit)
+
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -21,11 +22,19 @@
 #ifdef MOUSEKEY_ENABLE
 #    include "mousekey.h"
 #endif
+<<<<<<< HEAD
 
 // typedef struct {
 //     uint16_t device_cpi;
 // } kb_config_data_t;
 
+=======
+
+// typedef struct {
+//     uint16_t device_cpi;
+// } kb_config_data_t;
+
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 kb_config_data_t                      kb_config;
 static report_mouse_t                 shared_mouse_report;
 extern const pointing_device_driver_t pointing_device_driver;
@@ -95,7 +104,90 @@ void trackball_set_cpi(uint16_t cpi) {
     kb_config.device_cpi = cpi;
     if (!is_keyboard_left()) {
         pointing_device_set_cpi(cpi);
+<<<<<<< HEAD
     }
+}
+
+void pointing_device_task(void) {
+    if (!is_keyboard_master()) {
+        return;
+    }
+
+#if defined(POINTING_DEVICE_TASK_THROTTLE)
+    static uint32_t last_exec = 0;
+    if (timer_elapsed32(last_exec) < 1) {
+        return;
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+    }
+    last_exec = timer_read32();
+#endif
+
+    report_mouse_t local_report = pointing_device_get_report();
+
+    // Gather report info
+#ifdef POINTING_DEVICE_MOTION_PIN
+    if (!readPin(POINTING_DEVICE_MOTION_PIN))
+#endif
+#if defined(POINTING_DEVICE_COMBINED)
+        local_report = pointing_device_driver.get_report(local_report);
+    transaction_rpc_recv(RPC_ID_POINTER_STATE_SYNC, sizeof(report_mouse_t), &shared_mouse_report);
+    local_report.x = local_report.x | shared_mouse_report.x;
+    local_report.y = local_report.y | shared_mouse_report.y;
+    local_report.h = local_report.h | shared_mouse_report.h;
+    local_report.v = local_report.v | shared_mouse_report.v;
+#elif defined(POINTING_DEVICE_LEFT)
+    if (is_keyboard_left()) {
+        local_report = pointing_device_driver.get_report(local_report);
+    } else {
+        transaction_rpc_recv(RPC_ID_POINTER_STATE_SYNC, sizeof(report_mouse_t), &local_report);
+    }
+#elif defined(POINTING_DEVICE_RIGHT)
+    if (!is_keyboard_left()) {
+        local_report = pointing_device_driver.get_report(local_report);
+    } else {
+        transaction_rpc_recv(RPC_ID_POINTER_STATE_SYNC, sizeof(report_mouse_t), &local_report);
+    }
+#else
+#    error "You need to define the side(s) the pointing device is on. POINTING_DEVICE_COMBINED / POINTING_DEVICE_LEFT / POINTING_DEVICE_RIGHT"
+#endif
+
+    // Support rotation of the sensor data
+#if defined(POINTING_DEVICE_ROTATION_90) || defined(POINTING_DEVICE_ROTATION_180) || defined(POINTING_DEVICE_ROTATION_270)
+    int8_t x = local_report.x, y = local_report.y;
+#    if defined(POINTING_DEVICE_ROTATION_90)
+    local_report.x = y;
+    local_report.y = -x;
+#    elif defined(POINTING_DEVICE_ROTATION_180)
+    local_report.x = -x;
+    local_report.y = -y;
+#    elif defined(POINTING_DEVICE_ROTATION_270)
+    local_report.x = -y;
+    local_report.y = x;
+#    else
+#        error "How the heck did you get here?!"
+#    endif
+#endif
+    // Support Inverting the X and Y Axises
+#if defined(POINTING_DEVICE_INVERT_X)
+    local_report.x = -local_report.x;
+#endif
+#if defined(POINTING_DEVICE_INVERT_Y)
+    local_report.y = -local_report.y;
+#endif
+
+    // allow kb to intercept and modify report
+    local_report = pointing_device_task_kb(local_report);
+    // combine with mouse report to ensure that the combined is sent correctly
+#ifdef MOUSEKEY_ENABLE
+    report_mouse_t mousekey_report = mousekey_get_report();
+    local_report.buttons           = local_report.buttons | mousekey_report.buttons;
+#endif
+#if defined(POINTING_DEVICE_COMBINED)
+    local_report.buttons = local_report.buttons | shared_mouse_report.buttons;
+#endif
+    pointing_device_set_report(local_report);
+    pointing_device_send();
 }
 
 void pointing_device_task(void) {

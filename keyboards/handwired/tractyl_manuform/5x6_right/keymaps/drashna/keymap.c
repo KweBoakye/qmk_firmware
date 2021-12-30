@@ -16,11 +16,6 @@
 
 #include "drashna.h"
 
-enum tractyl_keycodes {
-    KC_ACCEL = NEW_SAFE_RANGE,
-};
-
-bool enable_acceleration = false;
 // clang-format off
 #define LAYOUT_5x6_right_wrapper(...) LAYOUT_5x6_right(__VA_ARGS__)
 #define LAYOUT_5x6_right_base( \
@@ -129,8 +124,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         VRSN,    _________________ADJUST_L1_________________,                      _________________ADJUST_R1_________________, EEP_RST,
         KEYLOCK, _________________ADJUST_L2_________________,                      _________________ADJUST_R2_________________, TG_MODS,
         UC_MOD,  _________________ADJUST_L3_________________,                      _________________ADJUST_R3_________________, KC_MPLY,
-                          HPT_DWLI, HPT_DWLD,                                                        TG_GAME, TG_DBLO,
-                                            HPT_TOG, HPT_BUZ,                               KC_NUKE,
+                   TG(_DIABLOII), AUTO_CTN,                                                          TG_GAME, TG_DBLO,
+                                            _______, _______,                               KC_NUKE,
                                                      _______, _______,             _______,
                                                      _______, TG(_DIABLOII),KC_NUKE, _______
     ),
@@ -169,6 +164,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 #endif
 
+<<<<<<< HEAD
 #ifdef POINTING_DEVICE_ENABLE
 static uint16_t mouse_timer           = 0;
 static uint16_t mouse_debounce_timer  = 0;
@@ -279,6 +275,8 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
 }
 #endif
 
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 #ifdef OLED_ENABLE
 // WPM-responsive animation stuff here
 #    define SLEEP_FRAMES 2

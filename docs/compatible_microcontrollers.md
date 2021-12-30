@@ -42,6 +42,10 @@ You can also use any ARM chip with USB that [ChibiOS](https://www.chibios.org) s
 
  * [WB32F3G71xx](http://www.westberrytech.com)
 
+### WestBerryTech (WB32)
+
+ * [WB32F3G71xx](http://www.westberrytech.com)
+
 ### NXP (Kinetis)
 
  * [MKL26Z64](https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/kl-series-cortex-m0-plus/kinetis-kl2x-72-96-mhz-usb-ultra-low-power-microcontrollers-mcus-based-on-arm-cortex-m0-plus-core:KL2x)
@@ -57,4 +61,8 @@ There is limited support for one of Atmel's ATSAM microcontrollers, that being t
 
 ### GigaDevice
 
+<<<<<<< HEAD
 [ChibiOS-Contrib](https://github.com/ChibiOS/ChibiOS-Contrib) has support for the GigaDevice [GD32VF103 series](https://www.gigadevice.com/products/microcontrollers/gd32/risc-v/mainstream-line/gd32vf103-series/) microcontrollers and provides configurations for the [SiPeed Longan Nano](https://longan.sipeed.com/en/) development board that uses this microcontroller. It is largely pin and feature compatible with STM32F103 and STM32F303 microcontrollers.
+=======
+[ChibiOS-Contrib](https://github.com/ChibiOS/ChibiOS-Contrib) has support for the GigaDevice [GD32VF103 series](https://www.gigadevice.com/products/microcontrollers/gd32/risc-v/mainstream-line/gd32vf103-series/) microcontrollers and provides configurations for the [SiPeed Longan Nano](https://longan.sipeed.com/en/) development board that uses this microcontroller. It is largely pin and feature compatible with STM32F103 and STM32F303 microcontrollers.
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea

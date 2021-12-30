@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Copyright 2013 Jun Wako <wakojun@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,12 +19,14 @@
 #   change to "no" to disable the options, or define them in the Makefile in
 #   the appropriate keymap folder that will get included automatically
 #
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
-NKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight. Do not enable this with audio at the same time.
