@@ -42,16 +42,31 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { A1, A2, A3, B10, B13, B12 } //B0, B1,
-#define MATRIX_COL_PINS { B4, B3, A15, B1, A8, B15, B14}
+
+#define MATRIX_COL_PINS {A15, B3, B4, A3, A2, A1, C15}
+#define MATRIX_ROW_PINS \
+    { B12, B13, B14, B15, A8, A10 }
+
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+#define  DIP_SWITCH_MATRIX_GRID { {4,6}, {5,6},{4,0}, {5,0}}
+
+
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
+
+#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+#define SPLIT_MODS_ENABLE
+#define SPLIT_WPM_ENABLE
+#define SPLIT_OLED_ENABLE
+
+
 #define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
 #define SERIAL_USART_TX_PIN B6     // USART TX pin
 #define SERIAL_USART_RX_PIN B7     // USART RX pin
@@ -77,13 +92,11 @@
 #define SPI_MISO_PAL_MODE                    5
 
 #define I2C_DRIVER        I2CD1
-#define I2C1_SCL_BANK     GPIOB
-#define I2C1_SDA_BANK     GPIOB
-#define I2C1_SCL          8
-#define I2C1_SDA          9
+#define I2C1_SCL_PIN      B8
 #define I2C1_SCL_PAL_MODE 4
+#define  I2C1_SDA_PIN     B9
 #define I2C1_SDA_PAL_MODE 4
-#define I2C1_CLOCK_SPEED  400000
+//#define I2C1_CLOCK_SPEED  400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 #define I2C1_OPMODE OPMODE_I2C
 
@@ -106,21 +119,24 @@
 
 //#define OLED_DRIVER = SSD1306
 #define OLED_DISPLAY_128X64
-#define SPLIT_OLED_ENABLE
 #define OLED_DISPLAY_ADDRESS 0x3C
 #define OLED_FONT_H "keyboards/handwired/tractyl_frankenform/glcdfont.c"
 #define OLED_FONT_END 255
 
-//#ifdef JOYSTICK_ENABLE
+#define CIRQUE_PINNACLE_ADDR 0x2A
+
+#ifdef JOYSTICK_ENABLE
 #define JOYSTICK_AXES_COUNT 2
 #define JOYSTICK_BUTTON_COUNT 1
 //#define JOYSTICK_AXES_RESOLUTION 10
-//#endif
+#endif
 
 #define DRIVER_COUNT 1
 #define DRIVER_ADDR_1  0x74
 #define DRIVER_1_LED_TOTAL 25
 #define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL
+#define RGB_MATRIX_SPLIT { DRIVER_1_LED_TOTAL, DRIVER_1_LED_TOTAL }
+
 
 //#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
 //#define RGB_MATRIX_STARTUP_HUE 0
@@ -177,6 +193,11 @@
 //#define AUDIO_INIT_DELAY 2000
 #endif
 
+/* encoder config */
+#define ENCODERS_PAD_A \
+    { A13 }
+#define ENCODERS_PAD_B \
+    { A14 }
 
 
 
@@ -238,5 +259,10 @@
 #define NO_ACTION_FUNCTION
 
 /* Bootmagic Lite key configuration */
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0
+//#define BOOTMAGIC_LITE_ROW 0
+//#define BOOTMAGIC_LITE_COLUMN 0
+
+/* pmw3360 config  */
+#define PMW3360_CS_PIN   B10
+#define POINTING_DEVICE_INVERT_X
+#define ROTATIONAL_TRANSFORM_ANGLE  -25
