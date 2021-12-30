@@ -17,7 +17,6 @@
 #include <rgb_matrix.h>
 #include "color.h"
 #ifdef POINTING_DEVICE_ENABLE
-#     include "cirque_tm040040.h"
 #     include "pointing_device.h"
 #endif
 //#ifdef JOYSTICK_ENABLE
@@ -38,13 +37,13 @@ void matrix_scan_user() {
     } */
 }
 
-#ifdef JOYSTICK_ENABLE
+/* #ifdef JOYSTICK_ENABLE
 //joystick config
 joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
    [0] = JOYSTICK_AXIS_IN(B0, 141, 490, 810),
     [1] = JOYSTICK_AXIS_IN(B1, 224, 534, 811)
 };
-#endif
+#endif */
 
 // Defines the keycodes used by our macros in process_record_user
 
@@ -75,14 +74,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,    KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_LBRC,
         KC_LCTL,   KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   TAB_RO,
         OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,
-                                  TAB_L,   TAB_R,
+                                  KC_LALT,   TAB_R,
                                                  KC_SPC,
                                                   KC_HOME,
                                                  KC_PSCR, TASK,
         // right hand
                           KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_GRV,
                           KC_RBRC, KC_Y,    KC_U,    KC_I,     KC_O,     KC_P,     KC_BSLS,
-                      TG(_NUMPAD), KC_H,    KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+                      KC_LEFT, KC_H,    KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
                                    KC_N,    KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  OSM(MOD_RSFT),
                                             KC_LEFT, KC_UP,
                       KC_ENT,
@@ -93,8 +92,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT(
         // left hand
         _______,   KC_F1,     KC_F2,      KC_F3,    KC_F4,     KC_F5,    KC_F6,
-        _______,   _______,   _______,    KC_UP,    _______,   _______,  _______,
-        _______,   _______,   KC_LEFT,    KC_DOWN,  KC_RGHT,   _______,  RESET,
+        _______,   _______,   _______,    _______,    _______,   _______,  _______,
+        _______,   KC_LEFT,   KC_DOWN,    KC_UP,  KC_RGHT,   _______,  RESET,
         _______,   _______,   _______,   _______,   _______,   _______,
                                 KC_MPRV,   KC_MNXT,
                                     _______,
@@ -152,16 +151,19 @@ void keyboard_post_init_user(void){
 	}
 
     // Customise these values to desired behaviour
-#ifdef CONSOLE_ENABLE
+
   debug_enable=true;
   debug_matrix=true;
   debug_keyboard=true;
   //debug_mouse=true;
-#endif
+
 }
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+#endif
     switch (keycode) {
         case KC_7:
             if (record->event.pressed) {

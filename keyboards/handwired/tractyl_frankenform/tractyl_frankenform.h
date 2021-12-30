@@ -18,6 +18,8 @@
 
 #include "quantum.h"
 
+#define ___ KC_NO
+
 /* This is a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
@@ -26,6 +28,8 @@
  * The second converts the arguments into a two-dimensional array which
  * represents the switch matrix.
  */
+
+// clang-format off
 #define LAYOUT( \
     L00, L01, L02, L03, L04, L05, L06, \
     L10, L11, L12, L13, L14, L15, L16, \
@@ -57,8 +61,9 @@
     { KC_NO, R41, KC_NO, R43, R44, KC_NO, KC_NO }, \
     { KC_NO, R51, R52, R53, KC_NO, KC_NO, KC_NO } \
 }
+// clang-format on
 
-typedef union {
+/* typedef union {
   uint32_t raw;
   struct {
       bool    disable_layer_led :1;
@@ -67,6 +72,6 @@ typedef union {
       uint8_t led_level_res     :2; // DO NOT REMOVE
       uint8_t dpi_config        :3;
   };
-} keyboard_config_t;
+} keyboard_config_t; */
 
-extern keyboard_config_t keyboard_config;
+//extern keyboard_config_t keyboard_config;

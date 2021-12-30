@@ -21,14 +21,13 @@
 #include "analog.h"
 #ifdef POINTING_DEVICE_ENABLE
 #    include "pointing_device.h"
-#    include "cirque_tm040040.h"
 #endif
 
 
 
-keyboard_config_t keyboard_config;
+//keyboard_config_t keyboard_config;
 
-const is31_led __flash g_is31_leds[DRIVER_LED_TOTAL] = {
+const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
  *   driver
  *   |  R location
@@ -96,12 +95,12 @@ void matrix_init_kb(void) {
      setPinInputHigh(A0);
 #endif
     // setPinInputHigh(B12);
-    keyboard_config.raw = eeconfig_read_kb();
+   /*  keyboard_config.raw = eeconfig_read_kb();
 
     if (!keyboard_config.dpi_config) {
         keyboard_config.dpi_config = 2;
         eeconfig_update_kb(keyboard_config.raw);
-    }
+    } */
     matrix_init_user();
 }
 
@@ -123,7 +122,7 @@ void matrix_scan_kb(void) {
 }
 
 
-void eeconfig_init_kb(void) {  // EEPROM is getting reset!
+/* void eeconfig_init_kb(void) {  // EEPROM is getting reset!
     keyboard_config.raw = 0;
     keyboard_config.rgb_matrix_enable = true;
     keyboard_config.led_level = true;
@@ -132,3 +131,4 @@ void eeconfig_init_kb(void) {  // EEPROM is getting reset!
     eeconfig_update_kb(keyboard_config.raw);
     eeconfig_init_user();
 }
+ */
