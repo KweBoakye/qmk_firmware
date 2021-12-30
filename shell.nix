@@ -2,6 +2,7 @@ let
   # We specify sources via Niv: use "niv update nixpkgs" to update nixpkgs, for example.
   sources = import ./util/nix/sources.nix { };
 
+<<<<<<< HEAD
   # `tomlkit` >= 0.8.0 is required to build `jsonschema` >= 4.11.0 (older
   # version do not support some valid TOML syntax: sdispater/tomlkit#148).  The
   # updated `tomlkit` must be used by `makeRemoveSpecialDependenciesHook`
@@ -20,6 +21,23 @@ let
         });
       };
     };
+=======
+  poetry2nix = pkgs.callPackage (import sources.poetry2nix) { };
+
+  # Builds the python env based on nix/pyproject.toml and
+  # nix/poetry.lock Use the "poetry update --lock", "poetry add
+  # --lock" etc. in the nix folder to adjust the contents of those
+  # files if the requirements*.txt files change
+  pythonEnv = poetry2nix.mkPoetryEnv {
+    projectDir = ./util/nix;
+    overrides = poetry2nix.overrides.withDefaults (self: super: {
+      qmk = super.qmk.overridePythonAttrs(old: {
+        # Allow QMK CLI to run "qmk" as a subprocess (the wrapper changes
+        # $PATH and breaks these invocations).
+        dontWrapPythonPrograms = true;
+      });
+    });
+>>>>>>> c0de397925 (merge bedore pointerwork)
   };
 in
 # However, if you want to override Niv's inputs, this will let you do that.

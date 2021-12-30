@@ -18,6 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+#define DEVICE_VER      0x0002
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix pins */
 #define MATRIX_ROW_PINS { F4, F6, D7, B4, D6 }
 #define MATRIX_COL_PINS { F7, F5, D3, B7 }

@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Lime",
+<<<<<<< HEAD
     "manufacturer": "HellSingCoder",
     "url": "https://github.com/HellSingCoder/LimeKeyboard",
     "maintainer": "HellSingCoder",
@@ -8,6 +9,10 @@
         "pid": "0x2784",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://github.com/HellSingCoder/LimeKeyboard",
+    "maintainer": "HellSingCoder",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

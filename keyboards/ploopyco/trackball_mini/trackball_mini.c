@@ -37,6 +37,7 @@
 #    define OPT_SCALE 1  // Multiplier for wheel
 #endif
 
+<<<<<<< HEAD
 #ifndef PLOOPY_DPI_OPTIONS
 #    define PLOOPY_DPI_OPTIONS \
         { 375, 750, 1375 }
@@ -47,6 +48,11 @@
 #ifndef PLOOPY_DPI_DEFAULT
 #    define PLOOPY_DPI_DEFAULT 0
 #endif
+=======
+#define PLOOPY_DPI_OPTIONS \
+    { 375, 750, 1375 }
+#define PLOOPY_DPI_DEFAULT 2
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #ifndef PLOOPY_DRAGSCROLL_DPI
 #    define PLOOPY_DRAGSCROLL_DPI 375  // Fixed-DPI Drag Scroll
@@ -111,10 +117,17 @@ void process_wheel(void) {
 
     if (debug_encoder) dprintf("OPT1: %d, OPT2: %d\n", p1, p2);
 
+<<<<<<< HEAD
     int8_t dir = opt_encoder_handler(p1, p2);
 
     if (dir == 0) return;
     encoder_update_kb(0, dir > 0);
+=======
+    uint8_t dir = opt_encoder_handler(p1, p2);
+
+    if (dir == 0) return;
+    encoder_update_kb(0, dir == 1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 void pointing_device_init_kb(void) {

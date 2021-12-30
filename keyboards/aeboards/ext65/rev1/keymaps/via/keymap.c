@@ -61,3 +61,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                   KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS
   )
 };
+<<<<<<< HEAD:keyboards/aeboards/ext65/rev1/keymaps/via/keymap.c
+=======
+
+#ifdef OLED_ENABLE
+
+void render_layer_state(void) {
+    oled_write_ln(PSTR("LAYER"), false);
+    oled_write_ln(PSTR("L1"), layer_state_is(1));
+    oled_write_ln(PSTR("L2"), layer_state_is(2));
+    oled_write_ln(PSTR("L3"), layer_state_is(3));
+    oled_write_ln(PSTR(" "), false);
+}
+
+void render_keylock_status(led_t led_state) {
+    oled_write_ln(PSTR("Lock:"), false);
+    oled_write(PSTR("N"), led_state.num_lock);
+    oled_write(PSTR("C"), led_state.caps_lock);
+    oled_write_ln(PSTR("S"), led_state.scroll_lock);
+    oled_write_ln(PSTR(" "), false);
+}
+
+void render_mod_status(uint8_t modifiers) {
+    oled_write_ln(PSTR("Mods:"), false);
+    oled_write(PSTR("S"), (modifiers & MOD_MASK_SHIFT));
+    oled_write(PSTR("C"), (modifiers & MOD_MASK_CTRL));
+    oled_write(PSTR("A"), (modifiers & MOD_MASK_ALT));
+    oled_write_ln(PSTR("G"), (modifiers & MOD_MASK_GUI));
+    oled_write_ln(PSTR(" "), false);
+}
+
+bool oled_task_user(void) {
+    render_layer_state();
+    render_keylock_status(host_keyboard_led_state());
+    render_mod_status(get_mods()|get_oneshot_mods());
+    return false;
+}
+
+#endif
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/aeboards/ext65/keymaps/via/keymap.c

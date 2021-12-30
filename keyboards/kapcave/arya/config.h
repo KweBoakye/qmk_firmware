@@ -17,6 +17,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x4B43
+#define PRODUCT_ID      0x4152
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    KapCave
+#define PRODUCT         Arya
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 9
 #define MATRIX_COLS 8
@@ -57,3 +67,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+<<<<<<< HEAD
+=======
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+>>>>>>> c0de397925 (merge bedore pointerwork)

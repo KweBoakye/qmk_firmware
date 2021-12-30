@@ -111,7 +111,11 @@ void process_wheel(void) {
     int dir = opt_encoder_handler(p1, p2);
 
     if (dir == 0) return;
+<<<<<<< HEAD
     encoder_update_kb(0, dir > 0);
+=======
+    encoder_update_kb(0, dir == 1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {

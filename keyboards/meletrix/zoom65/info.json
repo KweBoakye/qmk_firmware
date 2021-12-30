@@ -1,5 +1,6 @@
 {
     "keyboard_name": "zoom65",
+<<<<<<< HEAD
     "manufacturer": "meletrix",
     "url": "https://zoom65.com/",
     "maintainer": "spbgzh",
@@ -8,6 +9,10 @@
         "pid": "0x0004",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://zoom65.com/",
+    "maintainer": "spbgzh",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [

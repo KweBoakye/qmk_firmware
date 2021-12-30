@@ -16,5 +16,10 @@ NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+<<<<<<< HEAD
+=======
+RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight. 
+USE_I2C = no
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 SPLIT_KEYBOARD = yes

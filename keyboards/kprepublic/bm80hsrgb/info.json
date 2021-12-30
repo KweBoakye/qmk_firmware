@@ -1,6 +1,9 @@
 {
     "keyboard_name": "BM80HSRGB",
+<<<<<<< HEAD:keyboards/kprepublic/bm80hsrgb/info.json
     "manufacturer": "KPRepublic",
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm80/info.json
     "url": "",
     "maintainer": "peepeetee",
     "usb": {

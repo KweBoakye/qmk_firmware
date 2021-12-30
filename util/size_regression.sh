@@ -11,8 +11,11 @@ dest_ref="develop"
 ignore_ref="master"
 unset skip_zero
 
+<<<<<<< HEAD
 export SIZE_REGRESSION_EXECUTING=1
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 function usage() {
     echo "Usage: $(basename "$0") [-h] [-j <jobs>] [-s <source>] [-d <dest>] [-n] planck/rev6:default"
     echo "    -h           : Shows this usage page."
@@ -25,6 +28,7 @@ function usage() {
 }
 
 if [[ ${#} -eq 0 ]]; then
+<<<<<<< HEAD
     usage
     exit 0
 fi
@@ -43,6 +47,11 @@ _internal_cleanup() {
 }
 trap _internal_cleanup EXIT HUP INT
 
+=======
+   usage
+fi
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 while getopts "hj:s:d:i:n" opt "$@" ; do
     case "$opt" in
         h) usage; exit 0;;
@@ -59,6 +68,7 @@ done
 shift $((OPTIND-1))
 keyboard_target=$1
 
+<<<<<<< HEAD
 # Helper for resetting submodule existence
 fixup_submodules() {
     [ -e lib/ugfx ] && rm -rf lib/ugfx
@@ -67,6 +77,8 @@ fixup_submodules() {
     make git-submodule
 }
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 last_size=0
 last_line=""
 function build_executor() {
@@ -74,9 +86,13 @@ function build_executor() {
         revision=$(echo $line | cut -d' ' -f1)
 
         make distclean >/dev/null 2>&1
+<<<<<<< HEAD
 
         git checkout -f $revision >/dev/null 2>&1 || { echo "Failed to check out revision ${revision}" >&2 ; exit 1 ; }
         fixup_submodules >/dev/null 2>&1
+=======
+        git checkout $revision >/dev/null 2>&1 || { echo "Failed to check out revision ${revision}" >&2 ; exit 1 ; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
         make -j${job_count} $keyboard_target >/dev/null 2>&1 || true
         file_size=$(arm-none-eabi-size .build/*.elf 2>/dev/null | awk '/elf/ {print $1}' 2>/dev/null || true)
 
@@ -85,7 +101,11 @@ function build_executor() {
 
         if [[ -n "$last_line" ]] ; then
             size_delta=$(( $last_size - $file_size ))
+<<<<<<< HEAD
             if { [[ -n "${skip_zero:-}" ]] && [[ $size_delta -ne 0 ]] ; } || [[ -z "${skip_zero:-}" ]] || [[ $file_size -eq 0 ]] ; then
+=======
+            if { [[ -n "${skip_zero:-}" ]] && [[ $size_delta -ne 0 ]] ; } || [[ $file_size -eq 0 ]] ; then
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 printf "Size: %8d, delta: %+6d -- %s\n" "$last_size" "$size_delta" "$last_line"
             fi
         fi

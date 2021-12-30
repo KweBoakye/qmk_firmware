@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Undead 60-M",
     "manufacturer": "MechanicKeys",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x3C4D",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "Undead-60M",
+    "url": "",
+    "maintainer": "jfescobar18",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

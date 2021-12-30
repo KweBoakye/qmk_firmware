@@ -11,5 +11,9 @@ BOOTLOADER = caterina
 #   change yes to no to disable
 #
 BLUETOOTH_ENABLE = yes
+<<<<<<< HEAD
 BLUETOOTH_DRIVER = BluefruitLE
+=======
+BLUETOOTH_DRIVER = AdafruitBLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 CONSOLE_ENABLE = no

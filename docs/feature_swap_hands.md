@@ -31,6 +31,7 @@ Note that the array indices are reversed same as the matrix and the values are o
 |`SH_OS`    |One shot swap hands: toggles while pressed or until next key press.      |
 
 `SH_TT` swap-hands tap-toggle key is similar to [layer tap-toggle](feature_layers.md?id=switching-and-toggling-layers). Tapping repeatedly (5 taps by default) will toggle swap-hands on or off, like `SH_TG`. Tap-toggle count can be changed by defining a value for `TAPPING_TOGGLE`.
+<<<<<<< HEAD
 
 ## Encoder Mapping
 
@@ -44,3 +45,5 @@ As an example, if a split keyboard has a single encoder per side, you can swap t
 const uint8_t PROGMEM encoder_hand_swap_config[NUM_ENCODERS] = { 1, 0 };
 #endif
 ```
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

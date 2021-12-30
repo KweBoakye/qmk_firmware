@@ -44,8 +44,13 @@ QMK has a couple of features which allow you to change the behavior of your keyb
 
 Refer to the EEPROM clearing methods above, which should return those keys to normal operation. If that doesn't work, look here:
 
+<<<<<<< HEAD
 * [Magic Keycodes](keycodes_magic.md)
 * [Command](feature_command.md)
+=======
+## `KC_SYSTEM_REQUEST` Isn't Working
+Use keycode for Print Screen (`KC_PRINT_SCREEN`/`KC_PSCR`) instead of `KC_SYSTEM_REQUEST`. Key combination of 'Alt + Print Screen' is recognized as 'System request'.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ## The Menu Key Isn't Working
 

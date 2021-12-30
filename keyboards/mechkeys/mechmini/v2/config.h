@@ -12,6 +12,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+<<<<<<< HEAD:keyboards/mechkeys/mechmini/v2/config.h
+=======
+
+#pragma once
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/mechmini/v2/config.h
 
 #pragma once
 

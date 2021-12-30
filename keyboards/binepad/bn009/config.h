@@ -18,12 +18,26 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x4249 // Binepad
+#define PRODUCT_ID      0x4295
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Binepad
+#define PRODUCT         BN009
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Key matrix size */
 #define MATRIX_ROWS 3
 #define MATRIX_COLS 3
 
 #define MATRIX_ROW_PINS { D2, D1, D0 }
 #define MATRIX_COL_PINS { B6, B5, B4 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW

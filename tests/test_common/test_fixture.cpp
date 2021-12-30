@@ -55,14 +55,23 @@ void TestFixture::SetUpTestCase() {
 
 void TestFixture::TearDownTestCase() {}
 
+<<<<<<< HEAD
 TestFixture::TestFixture() {
     m_this = this;
 }
+=======
+TestFixture::TestFixture() { m_this = this; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 TestFixture::~TestFixture() {
     test_logger.info() << "TestFixture clean-up start." << std::endl;
     TestDriver driver;
 
+<<<<<<< HEAD
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(2);
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
     /* Reset keyboard state. */
     clear_all_keys();
 
@@ -82,7 +91,11 @@ TestFixture::~TestFixture() {
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Verify that the matrix really is cleared */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     idle_for(TAPPING_TERM * 10);
     testing::Mock::VerifyAndClearExpectations(&driver);
 
@@ -101,6 +114,7 @@ void TestFixture::add_key(KeymapKey key) {
     this->keymap.push_back(key);
 }
 
+<<<<<<< HEAD
 void TestFixture::tap_key(KeymapKey key, unsigned delay_ms) {
     key.press();
     idle_for(delay_ms);
@@ -124,6 +138,8 @@ void TestFixture::tap_combo(const std::vector<KeymapKey>& chord_keys, unsigned d
     }
 }
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 void TestFixture::set_keymap(std::initializer_list<KeymapKey> keys) {
     this->keymap.clear();
     for (auto& key : keys) {

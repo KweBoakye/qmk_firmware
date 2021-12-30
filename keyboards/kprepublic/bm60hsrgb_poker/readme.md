@@ -2,11 +2,21 @@
 
 A 60% hotswap inswitch RGB (north facing) keyboard from KP Republic. 
 
+<<<<<<< HEAD
 * Hardware Supported: BM60HSRGB_Poker/rev2
+=======
+* Keyboard Maintainer: [ipetepete](https://github.com/ipetepete)
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_poker/rev1/readme.md
+* Hardware Supported: BM60HSRGB_Poker/rev1
+=======
+* Hardware Supported: BM60HSRGB_Poker
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60hsrgb_poker/readme.md
+>>>>>>> c0de397925 (merge bedore pointerwork)
 * Hardware Availability: [KP Republic](https://kprepublic.com/products/bm60-rgb-poker-60-gh60-hot-swap-custom-mechanical-keyboard-pcb-program-qmk-underglow-type-c)
 
 Make example for this keyboard (after setting up your build environment):
 
+<<<<<<< HEAD
     for rev1: make kprepublic/bm60hsrgb_poker/rev1:default
     for rev2: make kprepublic/bm60hsrgb_poker/rev2:default
 
@@ -14,3 +24,8 @@ To determine your board revision, check the PCB. For boards with bm60v2_poker pr
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
+=======
+    make kprepublic/bm60hsrgb_poker/rev1:default
+
+See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
+>>>>>>> c0de397925 (merge bedore pointerwork)

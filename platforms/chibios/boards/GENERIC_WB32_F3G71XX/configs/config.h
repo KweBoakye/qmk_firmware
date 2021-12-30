@@ -16,7 +16,12 @@
 #pragma once
 
 #ifndef EARLY_INIT_PERFORM_BOOTLOADER_JUMP
+<<<<<<< HEAD
 #    define EARLY_INIT_PERFORM_BOOTLOADER_JUMP TRUE
 #endif
 
 #define USB_ENDPOINTS_ARE_REORDERABLE
+=======
+#    define EARLY_INIT_PERFORM_BOOTLOADER_JUMP FALSE
+#endif
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -15,10 +15,13 @@ enum layer_names {
 
 typedef enum onoff_t {OFF, ON} onoff;
 
+<<<<<<< HEAD
 #define caps_led_on  ergodox_right_led_2_on
 #define caps_led_off ergodox_right_led_2_off
 
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -146,6 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS, KC_TRNS
     ),
 };
+<<<<<<< HEAD
 #ifndef NO_FAKE_CAPS
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static onoff caps_state = OFF;
@@ -185,6 +189,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {

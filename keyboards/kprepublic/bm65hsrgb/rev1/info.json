@@ -1,5 +1,6 @@
 {
     "keyboard_name": "BM65HSRGB",
+<<<<<<< HEAD
     "manufacturer": "KPrepublic",
     "url": "",
     "maintainer": "bytesapart",
@@ -8,6 +9,10 @@
         "pid": "0xEF6E",
         "device_version": "0.0.1"
     },
+=======
+    "url": "",
+    "maintainer": "bytesapart",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_65_ansi_blocker": {
             "layout": [

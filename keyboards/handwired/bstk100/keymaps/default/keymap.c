@@ -1,3 +1,4 @@
+<<<<<<< HEAD:keyboards/handwired/bstk100/keymaps/default/keymap.c
 /* Copyright 2021 FREE WING,Y.Sakamoto
  * http://www.neko.ne.jp/~freewing/
  *
@@ -14,6 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+=======
+// Copyright %(YEAR)s %(YOUR_NAME)s (@%(USER_NAME)s)
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/base/keymaps/default/keymap.c
 #include QMK_KEYBOARD_H
 
 // Defines names for use in layer keycodes and the keymap
@@ -21,6 +27,7 @@ enum layer_names {
     _BASE
 };
 
+<<<<<<< HEAD:keyboards/handwired/bstk100/keymaps/default/keymap.c
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
     QMK00 = SAFE_RANGE
@@ -51,3 +58,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+=======
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /* Base */
+    [_BASE] = LAYOUT(
+        KC_A,    KC_1,    MO(_FN),
+            KC_TAB,   KC_SPC
+    ),
+    [_FN] = LAYOUT(
+        _______, _______,  _______,
+            RESET,    XXXXXXX
+    )
+};
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/base/keymaps/default/keymap.c

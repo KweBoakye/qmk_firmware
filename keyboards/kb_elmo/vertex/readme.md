@@ -22,4 +22,8 @@ See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_to
 
 * **Bootmagic reset**: Hold down the top left key and plug in the keyboard
 * **Physical reset button**: Briefly press the button labeled "Reset" on the back of the PCB
+<<<<<<< HEAD
 * **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
+=======
+* **Keycode in layout**: Press the key mapped to `RESET` if it is available
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -14,6 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD:keyboards/takashicompany/compacx/compacx.c
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #include "compacx.h"
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -22,6 +26,19 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
         tap_code(KC_MS_WH_UP);
     } else {
         tap_code(KC_MS_WH_DOWN);
+<<<<<<< HEAD
+=======
+#include "dogtag.h"
+
+bool encoder_update_kb(uint8_t index, bool clockwise) {
+    if (!encoder_update_user(index, clockwise)) { return false; }
+    if (clockwise) {
+        tap_code(KC_MS_WH_DOWN);
+    } else {
+        tap_code(KC_MS_WH_UP);
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/takashicompany/dogtag/dogtag.c
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     }
 
     return true;

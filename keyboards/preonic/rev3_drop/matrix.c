@@ -19,6 +19,8 @@
 
 typedef uint16_t matrix_col_t;
 
+typedef uint16_t matrix_col_t;
+
 /*
  *     col: { B11, B10, B2, B1, A7, B0 }
  *     row: { A10, A9, A8, B15, C13, C14, C15, A2 }

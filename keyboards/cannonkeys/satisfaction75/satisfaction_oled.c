@@ -145,7 +145,11 @@ static char* get_time(void) {
         hour = 12;
     }
 
+<<<<<<< HEAD
     static char time_str[11] = "";
+=======
+    static char time_str[8] = "";
+>>>>>>> c0de397925 (merge bedore pointerwork)
     sprintf(time_str, "%02d:%02d%s", hour, minute, is_pm ? "pm" : "am");
 
     return time_str;
@@ -162,7 +166,11 @@ static char* get_date(void) {
         day   = day_config;
     }
 
+<<<<<<< HEAD
     static char date_str[15] = "";
+=======
+    static char date_str[11] = "";
+>>>>>>> c0de397925 (merge bedore pointerwork)
     sprintf(date_str, "%04d-%02d-%02d", year, month, day);
 
     return date_str;

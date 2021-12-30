@@ -39,4 +39,8 @@
 #define ADNS5050_SDIO_PIN         C6
 #define ADNS5050_CS_PIN           B4
 
+<<<<<<< HEAD
 #define POINTING_DEVICE_ROTATION_270
+=======
+#define POINTING_DEVICE_ROTATION_90
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -176,6 +176,25 @@ Checking file size of clueboard_66_rev3_default.hex                             
  * The firmware size is fine - 26356/28672 (2316 bytes free)
 ```
 
+<<<<<<< HEAD
+=======
+## 5. Configure Your Build Environment (Optional)
+
+You can configure your build environment to set the defaults and make working with QMK less tedious. Let's do that now!
+
+Most people new to QMK only have 1 keyboard. You can set this keyboard as your default with the `qmk config` command. For example, to set your default keyboard to `clueboard/66/rev4`:
+
+    qmk config user.keyboard=clueboard/66/rev4
+
+You can also set your default keymap name. Most people use their GitHub username here, and we recommend that you do too.
+
+    qmk config user.keymap=<github_username>
+
+The keyboard can now be compiled without arguments using the following command after creating your keymap in the next section:
+
+    qmk compile
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 # Creating Your Keymap
 
 You are now ready to create your own personal keymap! Move on to [Building Your First Firmware](newbs_building_firmware.md) for that.

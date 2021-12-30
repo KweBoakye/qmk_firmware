@@ -577,6 +577,7 @@ const PROGMEM uchar shared_hid_report[] = {
     0x81, 0x03, //     Input (Constant)
 
     // X/Y Position (4 bytes)
+<<<<<<< HEAD
     0x05, 0x01,       //     Usage Page (Generic Desktop)
     0x26, 0xFF, 0x7F, //     Logical Maximum (32767)
     0x95, 0x01,       //     Report Count (1)
@@ -589,10 +590,25 @@ const PROGMEM uchar shared_hid_report[] = {
     0x81, 0x02,       //     Input (Data, Variable, Absolute)
     0xC0,             //   End Collection
     0xC0,             // End Collection
+=======
+    0x05, 0x01,        //     Usage Page (Generic Desktop)
+    0x26, 0xFF, 0x7F,  //     Logical Maximum (32767)
+    0x95, 0x01,        //     Report Count (1)
+    0x75, 0x10,        //     Report Size (16)
+    0x65, 0x33,        //     Unit (Inch, English Linear)
+    0x55, 0x0E,        //     Unit Exponent (-2)
+    0x09, 0x30,        //     Usage (X)
+    0x81, 0x02,        //     Input (Data, Variable, Absolute)
+    0x09, 0x31,        //     Usage (Y)
+    0x81, 0x02,        //     Input (Data, Variable, Absolute)
+    0xC0,              //   End Collection
+    0xC0,              // End Collection
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #ifdef PROGRAMMABLE_BUTTON_ENABLE
     // Programmable buttons report descriptor
+<<<<<<< HEAD
     0x05, 0x0C,                          // Usage Page (Consumer)
     0x09, 0x01,                          // Usage (Consumer Control)
     0xA1, 0x01,                          // Collection (Application)
@@ -609,6 +625,24 @@ const PROGMEM uchar shared_hid_report[] = {
     0x81, 0x02,                          //     Input (Data, Variable, Absolute)
     0xC0,                                //   End Collection
     0xC0,                                // End Collection
+=======
+    0x05, 0x0C,                           // Usage Page (Consumer)
+    0x09, 0x01,                           // Usage (Consumer Control)
+    0xA1, 0x01,                           // Collection (Application)
+    0x85, REPORT_ID_PROGRAMMABLE_BUTTON,  //   Report ID
+    0x09, 0x03,                           //   Usage (Programmable Buttons)
+    0xA1, 0x04,                           //   Collection (Named Array)
+    0x05, 0x09,                           //     Usage Page (Button)
+    0x19, 0x01,                           //     Usage Minimum (Button 1)
+    0x29, 0x20,                           //     Usage Maximum (Button 32)
+    0x15, 0x00,                           //     Logical Minimum (0)
+    0x25, 0x01,                           //     Logical Maximum (1)
+    0x95, 0x20,                           //     Report Count (32)
+    0x75, 0x01,                           //     Report Size (1)
+    0x81, 0x02,                           //     Input (Data, Variable, Absolute)
+    0xC0,                                 //   End Collection
+    0xC0,                                 // End Collection
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #ifdef SHARED_EP_ENABLE

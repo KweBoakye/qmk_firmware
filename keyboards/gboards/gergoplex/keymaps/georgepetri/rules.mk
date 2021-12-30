@@ -10,7 +10,10 @@ DEBUG_MATRIX           = no
 CONSOLE_ENABLE         = no
 
 #Combos!
+<<<<<<< HEAD
 COMBO_ENABLE = yes
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 VPATH                  +=  keyboards/gboards/
 
 ifeq ($(strip $(DEBUG_MATRIX)), yes)

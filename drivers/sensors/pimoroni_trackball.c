@@ -33,6 +33,7 @@
 
 static uint16_t precision = 128;
 
+<<<<<<< HEAD
 uint16_t pimoroni_trackball_get_cpi(void) {
     return (precision * 125);
 }
@@ -53,6 +54,10 @@ void pimoroni_trackball_set_cpi(uint16_t cpi) {
         precision = (cpi - (cpi % 125)) / 125;
     }
 }
+=======
+float pimoroni_trackball_get_precision(void) { return ((float)precision / 128); }
+void  pimoroni_trackball_set_precision(float floatprecision) { precision = (floatprecision * 128); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void pimoroni_trackball_set_rgbw(uint8_t r, uint8_t g, uint8_t b, uint8_t w) {
     uint8_t                              data[4] = {r, g, b, w};
@@ -78,7 +83,11 @@ i2c_status_t read_pimoroni_trackball(pimoroni_data_t* data) {
     return status;
 }
 
+<<<<<<< HEAD
 __attribute__((weak)) void pimoroni_trackball_device_init(void) {
+=======
+__attribute__((weak)) void pimironi_trackball_device_init(void) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
     i2c_init();
     pimoroni_trackball_set_rgbw(0x00, 0x00, 0x00, 0x00);
 }
@@ -95,3 +104,19 @@ int16_t pimoroni_trackball_get_offsets(uint8_t negative_dir, uint8_t positive_di
     uint16_t magnitude = (scale * offset * offset * precision) >> 7;
     return isnegative ? -(int16_t)(magnitude) : (int16_t)(magnitude);
 }
+<<<<<<< HEAD
+=======
+
+void pimoroni_trackball_adapt_values(int8_t* mouse, int16_t* offset) {
+    if (*offset > 127) {
+        *mouse = 127;
+        *offset -= 127;
+    } else if (*offset < -127) {
+        *mouse = -127;
+        *offset += 127;
+    } else {
+        *mouse  = *offset;
+        *offset = 0;
+    }
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)

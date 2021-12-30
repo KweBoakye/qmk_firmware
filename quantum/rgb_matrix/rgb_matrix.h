@@ -32,8 +32,11 @@
 #    include "is31fl3737.h"
 #elif defined(IS31FL3741)
 #    include "is31fl3741.h"
+<<<<<<< HEAD
 #elif defined(IS31FLCOMMON)
 #    include "is31flcommon.h"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #elif defined(CKLED2001)
 #    include "ckled2001.h"
 #elif defined(AW20216)

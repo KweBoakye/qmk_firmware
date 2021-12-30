@@ -25,6 +25,7 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
+<<<<<<< HEAD
 ifeq ($(strip $(MAKE_BOOTLOADER)), yes)
     OPT_DEFS += -DMAKE_BOOTLOADER
 endif
@@ -48,6 +49,16 @@ ifeq ($(strip $(CUSTOM_UNICODE_ENABLE)), yes)
     UNICODE_COMMON        := yes
     OPT_DEFS += -DCUSTOM_UNICODE_ENABLE
     SRC += $(USER_PATH)/keyrecords/unicode.c
+=======
+CUSTOM_UNICODE_ENABLE ?= yes
+ifeq ($(strip $(CUSTOM_UNICODE_ENABLE)), yes)
+    UNICODE_ENABLE        = no
+    UNICODEMAP_ENABLE     = no
+    UCIS_ENABLE           = no
+    UNICODE_COMMON        = yes
+    OPT_DEFS += -DCUSTOM_UNICODE_ENABLE
+    SRC += unicoooode.c
+>>>>>>> c0de397925 (merge bedore pointerwork)
 endif
 
 CUSTOM_TAP_DANCE ?= yes

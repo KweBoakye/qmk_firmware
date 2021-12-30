@@ -11,5 +11,10 @@ bool BAND_PINWHEEL_SAT(effect_params_t* params) {
     return effect_runner_dx_dy(params, &BAND_PINWHEEL_SAT_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
+>>>>>>> c0de397925 (merge bedore pointerwork)

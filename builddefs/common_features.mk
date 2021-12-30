@@ -126,6 +126,7 @@ ifeq ($(strip $(MOUSEKEY_ENABLE)), yes)
     SRC += $(QUANTUM_DIR)/mousekey.c
 endif
 
+<<<<<<< HEAD:builddefs/common_features.mk
 VALID_POINTING_DEVICE_DRIVER_TYPES := adns5050 adns9800 analog_joystick cirque_pinnacle_i2c cirque_pinnacle_spi paw3204 pmw3360 pmw3389 pimoroni_trackball custom
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
     ifeq ($(filter $(POINTING_DEVICE_DRIVER),$(VALID_POINTING_DEVICE_DRIVER_TYPES)),)
@@ -136,6 +137,18 @@ ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
         VPATH += $(QUANTUM_DIR)/pointing_device
         SRC += $(QUANTUM_DIR)/pointing_device/pointing_device.c
         SRC += $(QUANTUM_DIR)/pointing_device/pointing_device_drivers.c
+=======
+VALID_POINTING_DEVICE_DRIVER_TYPES := adns5050 adns9800 analog_joystick cirque_pinnacle_i2c cirque_pinnacle_spi pmw3360 pimoroni_trackball custom
+POINTING_DEVICE_DRIVER ?= custom
+ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
+    ifeq ($(filter $(POINTING_DEVICE_DRIVER),$(VALID_POINTING_DEVICE_DRIVER_TYPES)),)
+        $(error POINTING_DEVICE_DRIVER="$(POINTING_DEVICE_DRIVER)" is not a valid pointing device type)
+    else
+        OPT_DEFS += -DPOINTING_DEVICE_ENABLE
+        MOUSE_ENABLE := yes
+        SRC += $(QUANTUM_DIR)/pointing_device.c
+        SRC += $(QUANTUM_DIR)/pointing_device_drivers.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
         ifneq ($(strip $(POINTING_DEVICE_DRIVER)), custom)
             SRC += drivers/sensors/$(strip $(POINTING_DEVICE_DRIVER)).c
             OPT_DEFS += -DPOINTING_DEVICE_DRIVER_$(strip $(shell echo $(POINTING_DEVICE_DRIVER) | tr '[:lower:]' '[:upper:]'))
@@ -150,21 +163,32 @@ ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
         else ifeq ($(strip $(POINTING_DEVICE_DRIVER)), cirque_pinnacle_i2c)
             OPT_DEFS += -DSTM32_I2C -DHAL_USE_I2C=TRUE
             SRC += drivers/sensors/cirque_pinnacle.c
+<<<<<<< HEAD:builddefs/common_features.mk
             SRC += drivers/sensors/cirque_pinnacle_gestures.c
             SRC += $(QUANTUM_DIR)/pointing_device/pointing_device_gestures.c
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
             QUANTUM_LIB_SRC += i2c_master.c
         else ifeq ($(strip $(POINTING_DEVICE_DRIVER)), cirque_pinnacle_spi)
             OPT_DEFS += -DSTM32_SPI -DHAL_USE_SPI=TRUE
             SRC += drivers/sensors/cirque_pinnacle.c
+<<<<<<< HEAD:builddefs/common_features.mk
             SRC += drivers/sensors/cirque_pinnacle_gestures.c
             SRC += $(QUANTUM_DIR)/pointing_device/pointing_device_gestures.c
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
             QUANTUM_LIB_SRC += spi_master.c
         else ifeq ($(strip $(POINTING_DEVICE_DRIVER)), pimoroni_trackball)
             OPT_DEFS += -DSTM32_SPI -DHAL_USE_I2C=TRUE
             QUANTUM_LIB_SRC += i2c_master.c
+<<<<<<< HEAD:builddefs/common_features.mk
         else ifneq ($(filter $(strip $(POINTING_DEVICE_DRIVER)),pmw3360 pmw3389),)
             OPT_DEFS += -DSTM32_SPI -DHAL_USE_SPI=TRUE
             SRC += drivers/sensors/pmw33xx_common.c
+=======
+        else ifeq ($(strip $(POINTING_DEVICE_DRIVER)), pmw3360)
+            OPT_DEFS += -DSTM32_SPI -DHAL_USE_SPI=TRUE
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
             QUANTUM_LIB_SRC += spi_master.c
         endif
     endif
@@ -213,6 +237,7 @@ else
       # Automatically provided by avr-libc, nothing required
     else ifeq ($(PLATFORM),CHIBIOS)
       ifneq ($(filter STM32F3xx_% STM32F1xx_% %_STM32F401xC %_STM32F401xE %_STM32F405xG %_STM32F411xE %_STM32F072xB %_STM32F042x6 %_GD32VF103xB %_GD32VF103x8, $(MCU_SERIES)_$(MCU_LDSCRIPT)),)
+<<<<<<< HEAD:builddefs/common_features.mk
         # Emulated EEPROM
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_STM32_FLASH_EMULATED
         COMMON_VPATH += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/flash
@@ -231,6 +256,19 @@ else
         # Teensy EEPROM implementations
         OPT_DEFS += -DEEPROM_TEENSY
         SRC += eeprom_teensy.c
+=======
+        OPT_DEFS += -DEEPROM_DRIVER
+        COMMON_VPATH += $(DRIVER_PATH)/eeprom
+        SRC += eeprom_driver.c
+        SRC += $(PLATFORM_COMMON_DIR)/eeprom_stm32.c
+        SRC += $(PLATFORM_COMMON_DIR)/flash_stm32.c
+      else ifneq ($(filter $(MCU_SERIES),STM32L0xx STM32L1xx),)
+        OPT_DEFS += -DEEPROM_DRIVER
+        COMMON_VPATH += $(DRIVER_PATH)/eeprom
+        COMMON_VPATH += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/eeprom
+        SRC += eeprom_driver.c
+        SRC += eeprom_stm32_L0_L1.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
       else
         # Fall back to transient, i.e. non-persistent
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_TRANSIENT
@@ -398,6 +436,10 @@ endif
 endif
 
 RGB_MATRIX_ENABLE ?= no
+<<<<<<< HEAD:builddefs/common_features.mk
+=======
+VALID_RGB_MATRIX_TYPES := AW20216 IS31FL3731 IS31FL3733 IS31FL3737 IS31FL3741 CKLED2001 WS2812 custom
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
 
 VALID_RGB_MATRIX_TYPES := AW20216 IS31FL3731 IS31FL3733 IS31FL3737 IS31FL3741 IS31FL3742A IS31FL3743A IS31FL3745 IS31FL3746A CKLED2001 WS2812 custom
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
@@ -454,6 +496,7 @@ endif
         QUANTUM_LIB_SRC += i2c_master.c
     endif
 
+<<<<<<< HEAD:builddefs/common_features.mk
 	ifeq ($(strip $(RGB_MATRIX_DRIVER)), IS31FL3742A)
         OPT_DEFS += -DIS31FLCOMMON -DIS31FL3742A -DSTM32_I2C -DHAL_USE_I2C=TRUE
         COMMON_VPATH += $(DRIVER_PATH)/led/issi
@@ -482,6 +525,8 @@ endif
         QUANTUM_LIB_SRC += i2c_master.c
     endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
     ifeq ($(strip $(RGB_MATRIX_DRIVER)), CKLED2001)
         OPT_DEFS += -DCKLED2001 -DSTM32_I2C -DHAL_USE_I2C=TRUE
         COMMON_VPATH += $(DRIVER_PATH)/led
@@ -515,7 +560,11 @@ endif
 ifeq ($(strip $(PRINTING_ENABLE)), yes)
     OPT_DEFS += -DPRINTING_ENABLE
     SRC += $(QUANTUM_DIR)/process_keycode/process_printer.c
+<<<<<<< HEAD:builddefs/common_features.mk
     QUANTUM_LIB_SRC += uart.c
+=======
+    SRC += $(TMK_DIR)/protocol/serial_uart.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
 endif
 
 VARIABLE_TRACE ?= no
@@ -606,6 +655,15 @@ ifeq ($(strip $(LED_TABLES)), yes)
     SRC += $(QUANTUM_DIR)/led_tables.c
 endif
 
+<<<<<<< HEAD:builddefs/common_features.mk
+=======
+ifeq ($(strip $(TERMINAL_ENABLE)), yes)
+    SRC += $(QUANTUM_DIR)/process_keycode/process_terminal.c
+    OPT_DEFS += -DTERMINAL_ENABLE
+    OPT_DEFS += -DUSER_PRINT
+endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
 ifeq ($(strip $(VIA_ENABLE)), yes)
     DYNAMIC_KEYMAP_ENABLE := yes
     RAW_ENABLE := yes
@@ -701,6 +759,7 @@ ifeq ($(strip $(CRC_ENABLE)), yes)
     SRC += crc.c
 endif
 
+<<<<<<< HEAD:builddefs/common_features.mk
 ifeq ($(strip $(FNV_ENABLE)), yes)
     OPT_DEFS += -DFNV_ENABLE
     VPATH += $(LIB_PATH)/fnv
@@ -716,6 +775,17 @@ ifeq ($(strip $(HAPTIC_ENABLE)),yes)
         OPT_DEFS += -DDRV2605L
     endif
 
+=======
+ifeq ($(strip $(HAPTIC_ENABLE)),yes)
+    COMMON_VPATH += $(DRIVER_PATH)/haptic
+
+    ifneq ($(filter DRV2605L, $(HAPTIC_DRIVER)), )
+        SRC += DRV2605L.c
+        QUANTUM_LIB_SRC += i2c_master.c
+        OPT_DEFS += -DDRV2605L
+    endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
     ifneq ($(filter SOLENOID, $(HAPTIC_DRIVER)), )
         SRC += solenoid.c
         OPT_DEFS += -DSOLENOID_ENABLE
@@ -772,9 +842,13 @@ ifeq ($(strip $(UNICODE_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(UNICODE_COMMON)), yes)
+<<<<<<< HEAD:builddefs/common_features.mk
     OPT_DEFS += -DUNICODE_COMMON_ENABLE
     SRC += $(QUANTUM_DIR)/process_keycode/process_unicode_common.c \
            $(QUANTUM_DIR)/utf8.c
+=======
+    SRC += $(QUANTUM_DIR)/process_keycode/process_unicode_common.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
 endif
 
 MAGIC_ENABLE ?= yes
@@ -783,6 +857,7 @@ ifeq ($(strip $(MAGIC_ENABLE)), yes)
     OPT_DEFS += -DMAGIC_KEYCODE_ENABLE
 endif
 
+<<<<<<< HEAD:builddefs/common_features.mk
 SEND_STRING_ENABLE ?= yes
 ifeq ($(strip $(SEND_STRING_ENABLE)), yes)
     OPT_DEFS += -DSEND_STRING_ENABLE
@@ -790,6 +865,8 @@ ifeq ($(strip $(SEND_STRING_ENABLE)), yes)
     SRC += $(QUANTUM_DIR)/send_string/send_string.c
 endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
 ifeq ($(strip $(AUTO_SHIFT_ENABLE)), yes)
     SRC += $(QUANTUM_DIR)/process_keycode/process_auto_shift.c
     OPT_DEFS += -DAUTO_SHIFT_ENABLE
@@ -808,7 +885,11 @@ endif
 ifeq ($(strip $(PS2_USE_BUSYWAIT)), yes)
     PS2_ENABLE := yes
     SRC += ps2_busywait.c
+<<<<<<< HEAD:builddefs/common_features.mk
     SRC += ps2_io.c
+=======
+    SRC += ps2_io_avr.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
     OPT_DEFS += -DPS2_USE_BUSYWAIT
 endif
 
@@ -877,24 +958,39 @@ ifeq ($(strip $(USBPD_ENABLE)), yes)
 endif
 
 BLUETOOTH_ENABLE ?= no
+<<<<<<< HEAD:builddefs/common_features.mk
 VALID_BLUETOOTH_DRIVER_TYPES := BluefruitLE RN42 custom
 ifeq ($(strip $(BLUETOOTH_ENABLE)), yes)
     ifeq ($(filter $(strip $(BLUETOOTH_DRIVER)),$(VALID_BLUETOOTH_DRIVER_TYPES)),)
         $(call CATASTROPHIC_ERROR,Invalid BLUETOOTH_DRIVER,BLUETOOTH_DRIVER="$(BLUETOOTH_DRIVER)" is not a valid Bluetooth driver type)
+=======
+VALID_BLUETOOTH_DRIVER_TYPES := AdafruitBLE RN42 custom
+ifeq ($(strip $(BLUETOOTH_ENABLE)), yes)
+    ifeq ($(filter $(strip $(BLUETOOTH_DRIVER)),$(VALID_BLUETOOTH_DRIVER_TYPES)),)
+        $(error "$(BLUETOOTH_DRIVER)" is not a valid Bluetooth driver type)
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
     endif
     OPT_DEFS += -DBLUETOOTH_ENABLE
     NO_USB_STARTUP_CHECK := yes
     COMMON_VPATH += $(DRIVER_PATH)/bluetooth
     SRC += outputselect.c
 
+<<<<<<< HEAD:builddefs/common_features.mk
     ifeq ($(strip $(BLUETOOTH_DRIVER)), BluefruitLE)
         OPT_DEFS += -DBLUETOOTH_BLUEFRUIT_LE
         SRC += analog.c
         SRC += $(DRIVER_PATH)/bluetooth/bluefruit_le.cpp
+=======
+    ifeq ($(strip $(BLUETOOTH_DRIVER)), AdafruitBLE)
+        OPT_DEFS += -DMODULE_ADAFRUIT_BLE
+        SRC += analog.c
+        SRC += $(DRIVER_PATH)/bluetooth/adafruit_ble.cpp
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
         QUANTUM_LIB_SRC += spi_master.c
     endif
 
     ifeq ($(strip $(BLUETOOTH_DRIVER)), RN42)
+<<<<<<< HEAD:builddefs/common_features.mk
         OPT_DEFS += -DBLUETOOTH_RN42
         SRC += $(DRIVER_PATH)/bluetooth/rn42.c
         QUANTUM_LIB_SRC += uart.c
@@ -906,5 +1002,9 @@ ifeq ($(strip $(ENCODER_ENABLE)), yes)
     OPT_DEFS += -DENCODER_ENABLE
     ifeq ($(strip $(ENCODER_MAP_ENABLE)), yes)
         OPT_DEFS += -DENCODER_MAP_ENABLE
+=======
+        OPT_DEFS += -DMODULE_RN42
+        SRC += $(TMK_DIR)/protocol/serial_uart.c
+>>>>>>> c0de397925 (merge bedore pointerwork):common_features.mk
     endif
 endif

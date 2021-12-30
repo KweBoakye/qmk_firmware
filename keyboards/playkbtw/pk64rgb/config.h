@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x706B // Play Keyboard
+#define PRODUCT_ID      0x3634
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Play Keyboard
+#define PRODUCT         Play Keyboard 64 RGB
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 14

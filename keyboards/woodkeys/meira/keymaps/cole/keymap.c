@@ -111,7 +111,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          * `-----------------------------------------------------------------------------------'
          */
         [_ADJUST] =  LAYOUT( \
+<<<<<<< HEAD:keyboards/woodkeys/meira/keymaps/cole/keymap.c
                 QK_BOOT, _______,   _______, KC_MRWD, KC_MPLY, KC_MFFD, KC_PSCR, _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_DEL, \
+=======
+                RESET, _______,   _______, KC_MRWD, KC_MPLY, KC_MFFD, KC_PSCR, _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_DEL, \
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/meira/keymaps/cole/keymap.c
                 BL_STEP, RGB_MOD, _______, AU_ON,   AU_OFF,  _______, _______, _______,  _______, _______,  _______, _______, \
                 BL_TOGG, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
                 _______, KC_PSCR, _______, _______, _______, _______, _______, _______, _______, OUT_AUTO, OUT_USB, OUT_BT \

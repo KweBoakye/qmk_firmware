@@ -18,6 +18,12 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define PRODUCT Splitography
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 12

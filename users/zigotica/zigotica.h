@@ -26,7 +26,11 @@ enum userspace_layers {
 };
 #else
 enum userspace_layers {
+<<<<<<< HEAD
     _BASE = 0,
+=======
+    _TERMINAL = 0,
+>>>>>>> c0de397925 (merge bedore pointerwork)
     _FIGMA,
     _BROWSER,
     _VIM,

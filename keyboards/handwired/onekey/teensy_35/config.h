@@ -20,7 +20,12 @@
 //#include "config_common.h"
 
 // i2c_master defines
+<<<<<<< HEAD:keyboards/handwired/onekey/teensy_35/config.h
 #define I2C1_SCL_PIN B0 // 16/A2 on pinout
 #define I2C1_SDA_PIN B1 // 17/A3 on pinout
+=======
+#define I2C1_SCL_PIN B0 // A2 on pinout = B0
+#define I2C1_SDA_PIN B1 // A3 on pinout = B1
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ez_maker/directpins/teensy_32/config.h
 #define I2C1_SCL_PAL_MODE PAL_MODE_ALTERNATIVE_2
 #define I2C1_SDA_PAL_MODE PAL_MODE_ALTERNATIVE_2

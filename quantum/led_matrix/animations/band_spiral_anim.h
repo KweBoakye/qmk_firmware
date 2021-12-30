@@ -10,5 +10,10 @@ bool BAND_SPIRAL(effect_params_t* params) {
     return effect_runner_dx_dy_dist(params, &BAND_SPIRAL_math);
 }
 
+<<<<<<< HEAD
 #    endif // LED_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_LED_MATRIX_BAND_SPIRAL
+=======
+#    endif  // LED_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_LED_MATRIX_BAND_SPIRAL
+>>>>>>> c0de397925 (merge bedore pointerwork)

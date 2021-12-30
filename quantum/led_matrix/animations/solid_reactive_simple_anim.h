@@ -11,6 +11,12 @@ bool SOLID_REACTIVE_SIMPLE(effect_params_t* params) {
     return effect_runner_reactive(params, &SOLID_REACTIVE_SIMPLE_math);
 }
 
+<<<<<<< HEAD
 #        endif // LED_MATRIX_CUSTOM_EFFECT_IMPLS
 #    endif     // ENABLE_LED_MATRIX_SOLID_REACTIVE_SIMPLE
 #endif         // LED_MATRIX_KEYREACTIVE_ENABLED
+=======
+#        endif  // LED_MATRIX_CUSTOM_EFFECT_IMPLS
+#    endif      // ENABLE_LED_MATRIX_SOLID_REACTIVE_SIMPLE
+#endif          // LED_MATRIX_KEYREACTIVE_ENABLED
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_iso/rev1/info.json
     "keyboard_name": "BM60HSRGB_ISO Rev1",
     "manufacturer": "KPRepublic",
+=======
+    "keyboard_name": "BM60HSRGB_ISO",
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60rgb_iso/info.json
     "url": "",
     "maintainer": "qmk",
     "usb": {

@@ -36,6 +36,7 @@ class TestFixture : public testing::Test {
     void add_key(const KeymapKey key);
 
     const KeymapKey* find_key(const layer_t layer_t, const keypos_t position) const;
+<<<<<<< HEAD
     void             get_keycode(const layer_t layer, const keypos_t position, uint16_t* result) const;
 
     /**
@@ -59,6 +60,9 @@ class TestFixture : public testing::Test {
      * Example: `tap_combo({key_a, key_b})` to tap the chord A + B.
      */
     void tap_combo(const std::vector<KeymapKey>& chord_keys, unsigned delay_ms = 1);
+=======
+    void                     get_keycode(const layer_t layer, const keypos_t position, uint16_t* result) const;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     void run_one_scan_loop();
     void idle_for(unsigned ms);

@@ -71,6 +71,7 @@ bool                  pbuf_has_data(void);
 
 #if defined(PROTOCOL_CHIBIOS)
 void ps2_interrupt_service_routine(void);
+<<<<<<< HEAD:drivers/ps2/ps2_interrupt.c
 void palCallback(void *arg) {
     ps2_interrupt_service_routine();
 }
@@ -89,6 +90,23 @@ void palCallback(void *arg) {
             palDisableLineEvent(PS2_CLOCK_PIN); \
         } while (0)
 #endif // PROTOCOL_CHIBIOS
+=======
+void palCallback(void *arg) { ps2_interrupt_service_routine(); }
+
+#    define PS2_INT_INIT()                                 \
+        { palSetLineMode(PS2_CLOCK_PIN, PAL_MODE_INPUT); } \
+        while (0)
+#    define PS2_INT_ON()                                                    \
+        {                                                                   \
+            palEnableLineEvent(PS2_CLOCK_PIN, PAL_EVENT_MODE_FALLING_EDGE); \
+            palSetLineCallback(PS2_CLOCK_PIN, palCallback, NULL);           \
+        }                                                                   \
+        while (0)
+#    define PS2_INT_OFF()                       \
+        { palDisableLineEvent(PS2_CLOCK_PIN); } \
+        while (0)
+#endif  // PROTOCOL_CHIBIOS
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/protocol/ps2_interrupt.c
 
 void ps2_host_init(void) {
     idle();

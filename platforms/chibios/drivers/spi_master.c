@@ -42,9 +42,15 @@ __attribute__((weak)) void spi_init(void) {
         palSetPadMode(PAL_PORT(SPI_MOSI_PIN), PAL_PAD(SPI_MOSI_PIN), SPI_MOSI_PAL_MODE);
         palSetPadMode(PAL_PORT(SPI_MISO_PIN), PAL_PAD(SPI_MISO_PIN), SPI_MISO_PAL_MODE);
 #else
+<<<<<<< HEAD
         palSetPadMode(PAL_PORT(SPI_SCK_PIN), PAL_PAD(SPI_SCK_PIN), SPI_SCK_FLAGS);
         palSetPadMode(PAL_PORT(SPI_MOSI_PIN), PAL_PAD(SPI_MOSI_PIN), SPI_MOSI_FLAGS);
         palSetPadMode(PAL_PORT(SPI_MISO_PIN), PAL_PAD(SPI_MISO_PIN), SPI_MISO_FLAGS);
+=======
+        palSetPadMode(PAL_PORT(SPI_SCK_PIN), PAL_PAD(SPI_SCK_PIN), PAL_MODE_ALTERNATE(SPI_SCK_PAL_MODE) | PAL_OUTPUT_TYPE_PUSHPULL | PAL_OUTPUT_SPEED_HIGHEST);
+        palSetPadMode(PAL_PORT(SPI_MOSI_PIN), PAL_PAD(SPI_MOSI_PIN), PAL_MODE_ALTERNATE(SPI_MOSI_PAL_MODE) | PAL_OUTPUT_TYPE_PUSHPULL | PAL_OUTPUT_SPEED_HIGHEST);
+        palSetPadMode(PAL_PORT(SPI_MISO_PIN), PAL_PAD(SPI_MISO_PIN), PAL_MODE_ALTERNATE(SPI_MISO_PAL_MODE) | PAL_OUTPUT_TYPE_PUSHPULL | PAL_OUTPUT_SPEED_HIGHEST);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
         spiStop(&SPI_DRIVER);
         currentSlavePin = NO_PIN;
@@ -56,7 +62,11 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
         return false;
     }
 
+<<<<<<< HEAD
 #if !(defined(WB32F3G71xx) || defined(WB32FQ95xx))
+=======
+#ifndef WB32F3G71xx
+>>>>>>> c0de397925 (merge bedore pointerwork)
     uint16_t roundedDivisor = 2;
     while (roundedDivisor < divisor) {
         roundedDivisor <<= 1;
@@ -117,7 +127,11 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
 
 #elif defined(HT32)
     spiConfig.cr0 = SPI_CR0_SELOEN;
+<<<<<<< HEAD
     spiConfig.cr1 = SPI_CR1_MODE | 8; // 8 bits and in master mode
+=======
+    spiConfig.cr1 = SPI_CR1_MODE | 8;  // 8 bits and in master mode
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     if (lsbFirst) {
         spiConfig.cr1 |= SPI_CR1_FIRSTBIT;
@@ -140,7 +154,11 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
 
     spiConfig.cpr = (roundedDivisor - 1) >> 1;
 
+<<<<<<< HEAD
 #elif defined(WB32F3G71xx) || defined(WB32FQ95xx)
+=======
+#elif defined(WB32F3G71xx)
+>>>>>>> c0de397925 (merge bedore pointerwork)
     if (!lsbFirst) {
         osalDbgAssert(lsbFirst != FALSE, "unsupported lsbFirst");
     }
@@ -169,6 +187,7 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
             spiConfig.SPI_CPOL = SPI_CPOL_High;
             break;
     }
+<<<<<<< HEAD
 #elif defined(MCU_RP)
     if (lsbFirst) {
         osalDbgAssert(lsbFirst == false, "RP2040s PrimeCell SPI implementation does not support sending LSB first.");
@@ -199,6 +218,9 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
             spiConfig.SSPCR0 |= SPI_SSPCR0_SPH; // Clock phase: sample on second edge transition
             break;
     }
+=======
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #else
     spiConfig.cr1 = 0;
 

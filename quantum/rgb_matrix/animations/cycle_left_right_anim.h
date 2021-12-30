@@ -11,5 +11,10 @@ bool CYCLE_LEFT_RIGHT(effect_params_t* params) {
     return effect_runner_i(params, &CYCLE_LEFT_RIGHT_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+>>>>>>> c0de397925 (merge bedore pointerwork)

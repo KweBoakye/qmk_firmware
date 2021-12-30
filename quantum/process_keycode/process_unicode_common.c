@@ -175,9 +175,12 @@ __attribute__((weak)) void unicode_input_cancel(void) {
             if (!unicode_saved_num_lock) {
                 tap_code(KC_NUM_LOCK);
             }
+<<<<<<< HEAD
             break;
         case UC_EMACS:
             tap_code16(LCTL(KC_G)); // C-g cancels
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
             break;
     }
 

@@ -10,8 +10,13 @@ Hardware Availability: [splitkb.com](https://splitkb.com) and partners.
 
 Make example for this keyboard (after setting up your build environment):
 
+<<<<<<< HEAD
     make splitkb/kyria/rev2:default
     make splitkb/kyria/rev2/proton_c:default
+=======
+    make splitkb/kyria/rev1:default
+    make splitkb/kyria/rev1/proton_c:default
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 Example of flashing this keyboard:
 

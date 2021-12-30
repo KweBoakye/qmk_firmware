@@ -123,6 +123,7 @@ extern void *        led_setups[];
 #    define LED_FLAG_USE_ROTATE_PATTERN 0x40 // Use pattern the user has cycled to manually
 
 typedef struct led_instruction_s {
+<<<<<<< HEAD
     uint16_t flags; // Bitfield for LED instructions
     uint32_t id0;   // Bitwise id, IDs 0-31
     uint32_t id1;   // Bitwise id, IDs 32-63
@@ -130,6 +131,15 @@ typedef struct led_instruction_s {
     uint32_t id3;   // Bitwise id, IDs 96-127
     uint32_t id4;   // Bitwise id, IDs 128-159
     uint32_t id5;   // Bitwise id, IDs 160-191
+=======
+    uint16_t flags;  // Bitfield for LED instructions
+    uint32_t id0;    // Bitwise id, IDs 0-31
+    uint32_t id1;    // Bitwise id, IDs 32-63
+    uint32_t id2;    // Bitwise id, IDs 64-95
+    uint32_t id3;    // Bitwise id, IDs 96-127
+    uint32_t id4;    // Bitwise id, IDs 128-159
+    uint32_t id5;    // Bitwise id, IDs 160-191
+>>>>>>> c0de397925 (merge bedore pointerwork)
     uint8_t  layer;
     uint8_t  r;
     uint8_t  g;
@@ -141,7 +151,11 @@ typedef struct led_instruction_s {
 extern led_instruction_t led_instructions[];
 
 typedef struct led_config_s {
+<<<<<<< HEAD
     uint8_t ver; // assumed to be zero on eeprom reset
+=======
+    uint8_t ver;  // assumed to be zero on eeprom reset
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     uint8_t desired_gcr;
     uint8_t animation_breathing;
@@ -178,6 +192,7 @@ void md_led_changed(void);
 #    define led_ratio_brightness md_led_config.ratio_brightness
 #    define led_edge_mode md_led_config.edge_mode
 
+<<<<<<< HEAD
 #    define LED_MODE_NORMAL 0 // Must be 0
 #    define LED_MODE_KEYS_ONLY 1
 #    define LED_MODE_NON_KEYS_ONLY 2
@@ -200,5 +215,29 @@ void md_led_changed(void);
 #else
 extern uint8_t gcr_desired;
 #endif // USE_MASSDROP_CONFIGURATOR
+=======
+#    define LED_MODE_NORMAL 0  // Must be 0
+#    define LED_MODE_KEYS_ONLY 1
+#    define LED_MODE_NON_KEYS_ONLY 2
+#    define LED_MODE_INDICATORS_ONLY 3
+#    define LED_MODE_MAX_INDEX LED_MODE_INDICATORS_ONLY  // Must be highest value
+
+#    define LED_EDGE_MODE_ALL 0                        // All edge LEDs are active (Must be 0)
+#    define LED_EDGE_MODE_ALTERNATE 1                  // Alternate mode of edge LEDs are active (Intention is for 'only every other edge LED' to be active)
+#    define LED_EDGE_MODE_MAX LED_EDGE_MODE_ALTERNATE  // Must be the highest valued LED edge mode
+
+#    define LED_EDGE_FULL_MODE 255  // LEDs configured with this scan code will always be on for edge lighting modes
+#    define LED_EDGE_ALT_MODE 254   // LEDs configured with this scan code will turn off in edge alternating mode
+#    define LED_EDGE_MIN_SCAN 254   // LEDs configured with scan code >= to this are assigned as edge LEDs
+#    define LED_INDICATOR_SCAN 253  // LEDs configured as dedicated indicators
+
+#    define LED_IS_KEY(scan) (scan < LED_INDICATOR_SCAN)         // Return true if an LED's scan value indicates it is a key LED
+#    define LED_IS_EDGE(scan) (scan >= LED_EDGE_MIN_SCAN)        // Return true if an LED's scan value indicates an edge LED
+#    define LED_IS_EDGE_ALT(scan) (scan == LED_EDGE_ALT_MODE)    // Return true if an LED's scan value indicates an alternate edge mode LED
+#    define LED_IS_INDICATOR(scan) (scan == LED_INDICATOR_SCAN)  // Return true if an LED's scan value indicates it is a dedicated Indicator
+#else
+extern uint8_t gcr_desired;
+#endif  // USE_MASSDROP_CONFIGURATOR
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #endif //_LED_MATRIX_H_

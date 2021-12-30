@@ -17,4 +17,8 @@ BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 
+<<<<<<< HEAD:keyboards/maple_computing/ivy/rules.mk
 DEFAULT_FOLDER = maple_computing/ivy/rev1
+=======
+DEFAULT_FOLDER = ivy/rev1
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ivy/rules.mk

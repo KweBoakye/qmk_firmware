@@ -120,9 +120,13 @@ const uint8_t k_led_matrix_split[2] = LED_MATRIX_SPLIT;
 
 EECONFIG_DEBOUNCE_HELPER(led_matrix, EECONFIG_LED_MATRIX, led_matrix_eeconfig);
 
+<<<<<<< HEAD
 void eeconfig_update_led_matrix(void) {
     eeconfig_flush_led_matrix(true);
 }
+=======
+void eeconfig_update_led_matrix(void) { eeconfig_flush_led_matrix(true); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void eeconfig_update_led_matrix_default(void) {
     dprintf("eeconfig_update_led_matrix_default\n");
@@ -224,7 +228,11 @@ void process_led_matrix(uint8_t row, uint8_t col, bool pressed) {
     if (led_matrix_eeconfig.mode == LED_MATRIX_TYPING_HEATMAP) {
         process_led_matrix_typing_heatmap(row, col);
     }
+<<<<<<< HEAD
 #endif // defined(LED_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_LED_MATRIX_TYPING_HEATMAP)
+=======
+#endif  // defined(LED_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_LED_MATRIX_TYPING_HEATMAP)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 static bool led_matrix_none(effect_params_t *params) {

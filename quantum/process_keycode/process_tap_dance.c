@@ -15,8 +15,17 @@
  */
 #include "quantum.h"
 
+<<<<<<< HEAD
 static uint16_t active_td;
 static uint16_t last_tap_time;
+=======
+#ifndef NO_ACTION_ONESHOT
+uint8_t get_oneshot_mods(void);
+#endif
+
+static uint16_t last_td;
+static int16_t  highest_td = -1;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void qk_tap_dance_pair_on_each_tap(qk_tap_dance_state_t *state, void *user_data) {
     qk_tap_dance_pair_t *pair = (qk_tap_dance_pair_t *)user_data;

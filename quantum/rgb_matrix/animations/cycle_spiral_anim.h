@@ -11,5 +11,10 @@ bool CYCLE_SPIRAL(effect_params_t* params) {
     return effect_runner_dx_dy_dist(params, &CYCLE_SPIRAL_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_CYCLE_SPIRAL
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_CYCLE_SPIRAL
+>>>>>>> c0de397925 (merge bedore pointerwork)

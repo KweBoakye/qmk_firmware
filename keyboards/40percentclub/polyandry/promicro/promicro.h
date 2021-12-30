@@ -17,7 +17,11 @@
 
 #include "polyandry.h"
 
+<<<<<<< HEAD
 #define LAYOUT_ortho_4x3( \
+=======
+#define LAYOUT( \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 	K000, K001, K002, \
  	K003, K004, K005, \
 	K006, K007, K008, \

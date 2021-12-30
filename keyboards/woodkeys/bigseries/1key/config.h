@@ -14,6 +14,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+<<<<<<< HEAD:keyboards/woodkeys/bigseries/1key/config.h
+=======
+
+#pragma once
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/bigseries/1key/config.h
 
 #pragma once
 

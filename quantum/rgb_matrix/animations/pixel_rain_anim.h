@@ -20,6 +20,7 @@ RGB_MATRIX_EFFECT(PIXEL_RAIN)
 
 static bool PIXEL_RAIN(effect_params_t* params) {
     static uint32_t wait_timer = 0;
+<<<<<<< HEAD
 
     inline uint32_t interval(void) {
         return 500 / scale16by8(qadd8(rgb_matrix_config.speed, 16), 16);
@@ -28,6 +29,17 @@ static bool PIXEL_RAIN(effect_params_t* params) {
     void rain_pixel(uint8_t i, effect_params_t * params, bool off) {
         if (!HAS_ANY_FLAGS(g_led_config.flags[i], params->flags)) {
             return;
+=======
+    if (wait_timer > g_rgb_timer) {
+        return false;
+    }
+
+    inline uint32_t interval(void) { return 500 / scale16by8(qadd8(rgb_matrix_config.speed, 16), 16); }
+
+    bool rain_pixel(uint8_t i, effect_params_t * params, bool off) {
+        if (!HAS_ANY_FLAGS(g_led_config.flags[i], params->flags)) {
+            return true;
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
         if (off) {
             rgb_matrix_set_color(i, 0, 0, 0);
@@ -37,6 +49,7 @@ static bool PIXEL_RAIN(effect_params_t* params) {
             rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
         }
         wait_timer = g_rgb_timer + interval();
+<<<<<<< HEAD
     }
 
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
@@ -48,3 +61,13 @@ static bool PIXEL_RAIN(effect_params_t* params) {
 
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_PIXEL_RAIN
+=======
+        return false;
+    }
+
+    return rain_pixel(mod8(random8(), DRIVER_LED_TOTAL), params, random8() & 2);
+}
+
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_PIXEL_RAIN
+>>>>>>> c0de397925 (merge bedore pointerwork)

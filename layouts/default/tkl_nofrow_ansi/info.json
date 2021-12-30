@@ -3,7 +3,11 @@
     "url": "",
     "maintainer": "qmk",
     "layouts": {
+<<<<<<< HEAD
         "LAYOUT_tkl_nofrow_ansi": {
+=======
+        "LAYOUT": {
+>>>>>>> c0de397925 (merge bedore pointerwork)
             "layout": [
                 {"x":0, "y":0},
                 {"x":1, "y":0},
@@ -87,4 +91,8 @@
             ]
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)

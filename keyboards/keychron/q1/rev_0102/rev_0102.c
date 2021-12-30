@@ -16,7 +16,11 @@
 
 #include "quantum.h"
 
+<<<<<<< HEAD
 #ifdef RGB_MATRIX_ENABLE
+=======
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
  *   driver

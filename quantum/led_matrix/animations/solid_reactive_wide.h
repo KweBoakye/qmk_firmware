@@ -1,5 +1,9 @@
 #ifdef LED_MATRIX_KEYREACTIVE_ENABLED
+<<<<<<< HEAD
 #    if defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_WIDE) || defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTIWIDE)
+=======
+#    if !defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_WIDE) || defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTIWIDE)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #        ifdef ENABLE_LED_MATRIX_SOLID_REACTIVE_WIDE
 LED_MATRIX_EFFECT(SOLID_REACTIVE_WIDE)
@@ -29,6 +33,12 @@ bool SOLID_REACTIVE_MULTIWIDE(effect_params_t* params) {
 }
 #            endif
 
+<<<<<<< HEAD
 #        endif // LED_MATRIX_CUSTOM_EFFECT_IMPLS
 #    endif     // defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_WIDE) || defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTIWIDE)
 #endif         // LED_MATRIX_KEYREACTIVE_ENABLED
+=======
+#        endif  // LED_MATRIX_CUSTOM_EFFECT_IMPLS
+#    endif      // !defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_WIDE) || !defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTIWIDE)
+#endif          // LED_MATRIX_KEYREACTIVE_ENABLED
+>>>>>>> c0de397925 (merge bedore pointerwork)

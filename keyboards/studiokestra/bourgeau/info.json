@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Bourgeau",
+<<<<<<< HEAD
     "manufacturer": "Studio Kestra",
     "url": "https://studiokestra.ca/bourgeau/",
     "maintainer": "studiokestra",
@@ -13,6 +14,12 @@
     },
     "layouts": {
         "LAYOUT_75_ansi_rwkl": {
+=======
+    "url": "https://studiokestra.ca/bourgeau/",
+    "maintainer": "Studio Kestra",
+    "layouts": {
+        "LAYOUT_all": {
+>>>>>>> c0de397925 (merge bedore pointerwork)
             "layout": [
                 {"label":"Esc", "x":0, "y":0}, 
                 {"label":"F1", "x":1, "y":0}, 

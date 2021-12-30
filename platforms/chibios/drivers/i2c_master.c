@@ -97,7 +97,11 @@ static const I2CConfig i2cconfig = {
     I2C1_OPMODE,
     I2C1_CLOCK_SPEED,
     I2C1_DUTY_CYCLE,
+<<<<<<< HEAD
 #elif defined(WB32F3G71xx) || defined(WB32FQ95xx)
+=======
+#elif defined(WB32F3G71xx)
+>>>>>>> c0de397925 (merge bedore pointerwork)
     I2C1_OPMODE,
     I2C1_CLOCK_SPEED,
 #else
@@ -197,6 +201,21 @@ i2c_status_t i2c_writeReg16(uint8_t devaddr, uint16_t regaddr, const uint8_t* da
     return i2c_epilogue(status);
 }
 
+i2c_status_t i2c_writeReg16(uint8_t devaddr, uint16_t regaddr, const uint8_t* data, uint16_t length, uint16_t timeout) {
+    i2c_address = devaddr;
+    i2cStart(&I2C_DRIVER, &i2cconfig);
+
+    uint8_t complete_packet[length + 2];
+    for (uint16_t i = 0; i < length; i++) {
+        complete_packet[i + 2] = data[i];
+    }
+    complete_packet[0] = regaddr >> 8;
+    complete_packet[1] = regaddr & 0xFF;
+
+    msg_t status = i2cMasterTransmitTimeout(&I2C_DRIVER, (i2c_address >> 1), complete_packet, length + 2, 0, 0, TIME_MS2I(timeout));
+    return chibios_to_qmk(&status);
+}
+
 i2c_status_t i2c_readReg(uint8_t devaddr, uint8_t regaddr, uint8_t* data, uint16_t length, uint16_t timeout) {
     i2c_address = devaddr;
     i2cStart(&I2C_DRIVER, &i2cconfig);
@@ -209,9 +228,16 @@ i2c_status_t i2c_readReg16(uint8_t devaddr, uint16_t regaddr, uint8_t* data, uin
     i2cStart(&I2C_DRIVER, &i2cconfig);
     uint8_t register_packet[2] = {regaddr >> 8, regaddr & 0xFF};
     msg_t   status             = i2cMasterTransmitTimeout(&I2C_DRIVER, (i2c_address >> 1), register_packet, 2, data, length, TIME_MS2I(timeout));
+<<<<<<< HEAD
     return i2c_epilogue(status);
 }
 
 void i2c_stop(void) {
     i2cStop(&I2C_DRIVER);
 }
+=======
+    return chibios_to_qmk(&status);
+}
+
+void i2c_stop(void) { i2cStop(&I2C_DRIVER); }
+>>>>>>> c0de397925 (merge bedore pointerwork)

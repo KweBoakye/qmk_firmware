@@ -1,5 +1,6 @@
 {
   "keyboard_name": "PaladinPad", 
+<<<<<<< HEAD
   "manufacturer": "KapCave",
   "url": "https://kapcave.com/products/paladinpad-pcb", 
   "maintainer": "nachie", 
@@ -7,6 +8,10 @@
     "vid": "0x4B43",
     "pid": "0x5050"
   },
+=======
+  "url": "https://kapcave.com/products/paladinpad-pcb", 
+  "maintainer": "nachie", 
+>>>>>>> c0de397925 (merge bedore pointerwork)
   "layouts": {
       "LAYOUT_ortho_5x4": {
           "layout": [

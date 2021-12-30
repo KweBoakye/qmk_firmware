@@ -133,6 +133,9 @@ static void set_led_color_rgb(LED_TYPE color, int pos) {
     for (int j = 0; j < 4; j++)
         tx_start[BYTES_FOR_LED * pos + BYTES_FOR_LED_BYTE * 4 + j] = get_protocol_eq(color.w, j);
 #endif
+#ifdef RGBW
+    for (int j = 0; j < 4; j++) tx_start[BYTES_FOR_LED * pos + BYTES_FOR_LED_BYTE * 4 + j] = get_protocol_eq(color.w, j);
+#endif
 }
 
 void ws2812_init(void) {

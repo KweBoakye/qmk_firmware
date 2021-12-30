@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Redox Media",
+<<<<<<< HEAD
     "manufacturer": "shiftux",
     "url": "",
     "maintainer": "shiftux",
@@ -8,6 +9,10 @@
         "pid": "0x0000",
         "device_version": "1.0.0"
     },
+=======
+    "url": "",
+    "maintainer": "shiftux",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

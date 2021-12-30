@@ -87,7 +87,11 @@ ifneq ($(findstring MK20DX256, $(MCU)),)
   BOARD ?= PJRC_TEENSY_3_1
 endif
 
+<<<<<<< HEAD:builddefs/mcu_selection.mk
 ifneq ($(findstring MK64FX512, $(MCU)),)
+=======
+ifneq ($(findstring MK66FX1M0, $(MCU)),)
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/mcu_selection.mk
   # Cortex version
   MCU = cortex-m4
 
@@ -215,9 +219,12 @@ ifneq ($(findstring STM32F042, $(MCU)),)
   # This ensures that the EEPROM page buffer fits into RAM
   USE_PROCESS_STACKSIZE = 0x600
   USE_EXCEPTIONS_STACKSIZE = 0x300
+<<<<<<< HEAD:builddefs/mcu_selection.mk
 
   # Bootloader address for STM32 DFU
   STM32_BOOTLOADER_ADDRESS ?= 0x1FFFC400
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/mcu_selection.mk
 endif
 
 ifneq ($(findstring STM32F072, $(MCU)),)
@@ -403,9 +410,12 @@ ifneq ($(findstring STM32F405, $(MCU)),)
 
   # UF2 settings
   UF2_FAMILY ?= STM32F4
+<<<<<<< HEAD:builddefs/mcu_selection.mk
 
   # Bootloader address for STM32 DFU
   STM32_BOOTLOADER_ADDRESS ?= 0x1FFF0000
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/mcu_selection.mk
 endif
 
 ifneq ($(findstring STM32F407, $(MCU)),)
@@ -417,9 +427,13 @@ ifneq ($(findstring STM32F407, $(MCU)),)
 
   ## chip/board settings
   # - the next two should match the directories in
+<<<<<<< HEAD:builddefs/mcu_selection.mk
   #   <chibios[-contrib]>/os/hal/ports/$(MCU_PORT_NAME)/$(MCU_SERIES)
   #   OR
   #   <chibios[-contrib]>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
+=======
+  #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/mcu_selection.mk
   MCU_FAMILY = STM32
   MCU_SERIES = STM32F4xx
 
@@ -796,6 +810,66 @@ ifneq ($(findstring GD32VF103, $(MCU)),)
   #   OR
   #   <chibios[-contrib]>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
   MCU_PORT_NAME = GD
+  MCU_FAMILY = GD32V
+  MCU_SERIES = GD32VF103
+
+  # Linker script to use
+  # - it should exist either in <chibios>/os/common/startup/RISCV-ECLIC/compilers/GCC/ld/
+  #   or <keyboard_dir>/ld/
+  MCU_LDSCRIPT ?= GD32VF103xB
+
+  # Startup code to use
+  #  - it should exist in <chibios>/os/common/startup/RISCV-ECLIC/compilers/GCC/mk/
+  MCU_STARTUP ?= gd32vf103
+
+  # Board: it should exist either in <chibios>/os/hal/boards/,
+  # <keyboard_dir>/boards/, or drivers/boards/
+  BOARD ?= SIPEED_LONGAN_NANO
+
+  USE_FPU ?= no
+endif
+
+ifneq ($(findstring WB32F3G71, $(MCU)),)
+  # Cortex version
+  MCU = cortex-m3
+
+  # ARM version, CORTEX-M0/M1 are 6, CORTEX-M3/M4/M7 are 7
+  ARMV = 7
+
+  ## chip/board settings
+  # - the next two should match the directories in
+  #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
+  MCU_FAMILY = WB32
+  MCU_SERIES = WB32F3G71xx
+
+  # Linker script to use
+  # - it should exist either in <chibios>/os/common/ports/ARMCMx/compilers/GCC/ld/
+  #   or <keyboard_dir>/ld/
+  MCU_LDSCRIPT ?= WB32F3G71x9
+
+  # Startup code to use
+  #  - it should exist in <chibios>/os/common/startup/ARMCMx/compilers/GCC/mk/
+  MCU_STARTUP ?= wb32f3g71xx
+
+  # Board: it should exist either in <chibios>/os/hal/boards/,
+  # <keyboard_dir>/boards/, or drivers/boards/
+  BOARD ?= GENERIC_WB32_F3G71XX
+
+  USE_FPU ?= no
+endif
+
+ifneq ($(findstring GD32VF103, $(MCU)),)
+  # RISC-V
+  MCU = risc-v
+
+  # RISC-V extensions and abi configuration
+  MCU_ARCH = rv32imac
+  MCU_ABI = ilp32
+  MCU_CMODEL = medlow
+
+  ## chip/board settings
+  # - the next two should match the directories in
+  #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
   MCU_FAMILY = GD32V
   MCU_SERIES = GD32VF103
 

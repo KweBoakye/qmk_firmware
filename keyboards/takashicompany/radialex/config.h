@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD:keyboards/takashicompany/radialex/config.h
 Copyright 2021 takashicompany
+=======
+Copyright 2021 bytesapart
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm65hsrgb/rev1/config.h
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,6 +23,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD:keyboards/takashicompany/radialex/config.h
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0x4B50 //KP
+#define PRODUCT_ID   0xEF6E
+#define DEVICE_VER   0x0001
+#define MANUFACTURER KPRepublic
+#define PRODUCT      BM65HSRGB
+
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm65hsrgb/rev1/config.h
 /* key matrix size */
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 7
@@ -39,6 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+<<<<<<< HEAD:keyboards/takashicompany/radialex/config.h
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1
 //#define LED_SCROLL_LOCK_PIN B2
@@ -67,6 +82,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
+=======
+// The pin connected to the data pin of the LEDs
+#define RGB_DI_PIN E2
+// The number of LEDs connected
+#define DRIVER_LED_TOTAL 73
+#ifdef RGB_DI_PIN
+    #define RGBLED_NUM 73
+    #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm65hsrgb/rev1/config.h
 #endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */

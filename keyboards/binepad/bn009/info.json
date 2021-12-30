@@ -1,5 +1,6 @@
 {
   "keyboard_name": "BN009",
+<<<<<<< HEAD
   "manufacturer": "Binepad",
   "url": "https://binepad.com",
   "maintainer": "binepad",
@@ -8,6 +9,10 @@
     "pid": "0x4295",
     "device_version": "0.0.1"
   },
+=======
+  "url": "https://binepad.com",
+  "maintainer": "binepad",
+>>>>>>> c0de397925 (merge bedore pointerwork)
   "layouts": {
     "LAYOUT": {
       "layout": [{"label":"k00", "x":0, "y":0}, {"label":"k01", "x":1, "y":0}, {"label":"k02", "x":2, "y":0}, {"label":"k10", "x":0, "y":1}, {"label":"k11", "x":1, "y":1}, {"label":"k12", "x":2, "y":1}, {"label":"k20", "x":0, "y":2}, {"label":"k21", "x":1, "y":2}, {"label":"k22", "x":2, "y":2}]

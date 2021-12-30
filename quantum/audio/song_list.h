@@ -22,7 +22,11 @@
 
 #if __has_include("user_song_list.h")
 #    include "user_song_list.h"
+<<<<<<< HEAD
 #endif // if file exists
+=======
+#endif  // if file exists
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #define NO_SOUND
 

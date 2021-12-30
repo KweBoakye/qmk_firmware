@@ -139,6 +139,7 @@ __attribute__((weak)) void send_digitizer(report_digitizer_t *report) {}
 void host_programmable_button_send(uint32_t report) {
     if (report == last_programmable_button_report) return;
     last_programmable_button_report = report;
+<<<<<<< HEAD:tmk_core/protocol/host.c
 
     if (!driver) return;
     (*driver->send_programmable_button)(report);
@@ -155,3 +156,15 @@ uint16_t host_last_consumer_report(void) {
 uint32_t host_last_programmable_button_report(void) {
     return last_programmable_button_report;
 }
+=======
+
+    if (!driver) return;
+    (*driver->send_programmable_button)(report);
+}
+
+uint16_t host_last_system_report(void) { return last_system_report; }
+
+uint16_t host_last_consumer_report(void) { return last_consumer_report; }
+
+uint32_t host_last_programmable_button_report(void) { return last_programmable_button_report; }
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/common/host.c

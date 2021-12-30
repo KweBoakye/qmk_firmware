@@ -281,5 +281,28 @@ void iota_gfx_task_user(void) {
     }
     matrix_update(&display, &matrix);
 }
+<<<<<<< HEAD
 
 #endif // end of SSD1306OLED
+=======
+#    else
+bool oled_task_user(void) {
+
+#        if DEBUG_TO_SCREEN
+    if (debug_enable) {
+        return;
+    }
+#        endif
+
+    if (is_keyboard_master()) {
+        render_status();
+    } else {
+        render_logo();
+        render_rgbled_status(false);
+        render_layer_status();
+    }
+    return false;
+}
+#    endif
+#endif
+>>>>>>> c0de397925 (merge bedore pointerwork)

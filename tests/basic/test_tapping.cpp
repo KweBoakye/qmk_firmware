@@ -34,12 +34,20 @@ TEST_F(Tapping, TapA_SHFT_T_KeyReportsKey) {
 
     // Tapping keys does nothing on press
     key_shift_hold_p_tap.press();
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     run_one_scan_loop();
 
     // First we get the key press
     key_shift_hold_p_tap.release();
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_P));
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     // Then the release
     EXPECT_EMPTY_REPORT(driver);
@@ -59,10 +67,18 @@ TEST_F(Tapping, HoldA_SHFT_T_KeyReportsShift) {
     EXPECT_NO_REPORT(driver);
     idle_for(TAPPING_TERM);
 
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LSFT));
     run_one_scan_loop();
 
     EXPECT_EMPTY_REPORT(driver);
+    mod_tap_hold_key.release();
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSFT)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
+    run_one_scan_loop();
+
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
     mod_tap_hold_key.release();
     run_one_scan_loop();
 }
@@ -77,7 +93,11 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
 
     // Tapping keys does nothing on press
     key_shift_hold_p_tap.press();
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     run_one_scan_loop();
     key_shift_hold_p_tap.release();
 
@@ -94,12 +114,20 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
     run_one_scan_loop();
 
     key_shift_hold_p_tap.release();
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     idle_for(TAPPING_TERM + 1);
 
     // On the other hand, nothing is sent if we are outside the tapping term
     key_shift_hold_p_tap.press();
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     run_one_scan_loop();
     key_shift_hold_p_tap.release();
 
@@ -114,6 +142,7 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
     // If TAPPING_TERM + 1 above is changed to TAPPING_TERM or TAPPING_TERM + 2 it doesn't
     key_shift_hold_p_tap.press();
     // Shouldn't be called here really
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT)).Times(1);
     idle_for(TAPPING_TERM);
 
@@ -121,3 +150,12 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
     key_shift_hold_p_tap.release();
     run_one_scan_loop();
 }
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LEFT_SHIFT))).Times(1);
+    idle_for(TAPPING_TERM);
+
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    key_shift_hold_p_tap.release();
+    run_one_scan_loop();
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)

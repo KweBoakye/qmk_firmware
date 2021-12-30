@@ -8,11 +8,17 @@
 #pragma once
 
 #include <stdint.h>
+<<<<<<< HEAD
+=======
+#include "report.h"
+#include "spi_master.h"
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #if !defined(PMW33XX_CPI)
 #    define PMW33XX_CPI 1600U
 #endif
 
+<<<<<<< HEAD
 #define PMW33XX_CPI_STEP 100
 #define PMW33XX_CPI_MIN 100
 #define PMW33XX_CPI_MAX 12000
@@ -71,3 +77,71 @@
 #define REG_Raw_Data_Burst               0x64
 #define REG_LiftCutoff_Tune2             0x65
 // clang-format on
+=======
+#ifndef PMW3360_CLOCK_SPEED
+#    define PMW3360_CLOCK_SPEED 2000000
+#endif
+
+#ifndef PMW3360_SPI_LSBFIRST
+#    define PMW3360_SPI_LSBFIRST false
+#endif
+
+#ifndef PMW3360_SPI_MODE
+#    define PMW3360_SPI_MODE 3
+#endif
+
+#ifndef PMW3360_SPI_DIVISOR
+#    ifdef __AVR__
+#        define PMW3360_SPI_DIVISOR (F_CPU / PMW3360_CLOCK_SPEED)
+#    else
+#        define PMW3360_SPI_DIVISOR 64
+#    endif
+#endif
+
+#ifndef ROTATIONAL_TRANSFORM_ANGLE
+#    define ROTATIONAL_TRANSFORM_ANGLE 0x00
+#endif
+
+#ifndef PMW3360_CS_PIN
+#    error "No chip select pin defined -- missing PMW3360_CS_PIN"
+#endif
+
+/*
+The pmw33660 and pmw3389 use the same registers and timing and such.
+The only differences between the two is the firmware used, and the
+range for the DPI. So add a semi-secret hack to allow use of the
+pmw3389's firmware blob.  Also, can set the max cpi range too.
+This should work for the 3390 and 3391 too, in theory.
+*/
+#ifndef PMW3360_FIRMWARE_H
+#    define PMW3360_FIRMWARE_H "pmw3360_firmware.h"
+#endif
+
+#ifdef CONSOLE_ENABLE
+void print_byte(uint8_t byte);
+#endif
+
+typedef struct {
+    int8_t  motion;
+    bool    isMotion;     // True if a motion is detected.
+    bool    isOnSurface;  // True when a chip is on a surface
+    int16_t dx;           // displacement on x directions. Unit: Count. (CPI * Count = Inch value)
+    int8_t  mdx;
+    int16_t dy;  // displacement on y directions.
+    int8_t  mdy;
+} report_pmw3360_t;
+
+bool             spi_start_adv(void);
+void             spi_stop_adv(void);
+spi_status_t     spi_write_adv(uint8_t reg_addr, uint8_t data);
+uint8_t          spi_read_adv(uint8_t reg_addr);
+bool             pmw3360_init(void);
+void             pmw3360_set_cpi(uint16_t cpi);
+uint16_t         pmw3360_get_cpi(void);
+void             pmw3360_upload_firmware(void);
+bool             pmw3360_check_signature(void);
+report_pmw3360_t pmw3360_read_burst(void);
+
+#define degToRad(angleInDegrees) ((angleInDegrees)*M_PI / 180.0)
+#define radToDeg(angleInRadians) ((angleInRadians)*180.0 / M_PI)
+>>>>>>> c0de397925 (merge bedore pointerwork)

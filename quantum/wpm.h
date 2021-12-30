@@ -26,7 +26,11 @@
 #    define WPM_SAMPLE_SECONDS 5
 #endif
 #ifndef WPM_SAMPLE_PERIODS
+<<<<<<< HEAD
 #    define WPM_SAMPLE_PERIODS 25
+=======
+#    define WPM_SAMPLE_PERIODS 50
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 bool wpm_keycode(uint16_t keycode);

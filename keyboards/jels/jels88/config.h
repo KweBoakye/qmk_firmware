@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor paramater */
+#define VENDOR_ID       0x006a   // Jels (J)
+#define PRODUCT_ID      0x0088  // Jels 88
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Jels
+#define PRODUCT         Jels88
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Define Matrix size */
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 9

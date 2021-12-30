@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x7BA1
+#define PRODUCT_ID      0x6500
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    MWStudio
+#define PRODUCT         MW65
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15

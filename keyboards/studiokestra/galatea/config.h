@@ -19,6 +19,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x7C10
+#define MANUFACTURER    Studio Kestra
+#define PRODUCT         Galatea
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 9
 
@@ -63,6 +71,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
+<<<<<<< HEAD
+=======
+/* disable these deprecated features by default */
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0

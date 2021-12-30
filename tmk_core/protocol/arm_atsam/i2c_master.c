@@ -590,4 +590,8 @@ i2c_status_t i2c_transmit(uint8_t address, const uint8_t *data, uint16_t length,
     return ret ? I2C_STATUS_SUCCESS : I2C_STATUS_ERROR;
 }
 
+<<<<<<< HEAD
 #endif // !defined(MD_BOOTLOADER) && defined(RGB_MATRIX_ENABLE)
+=======
+#endif  // !defined(MD_BOOTLOADER) && defined(RGB_MATRIX_ENABLE)
+>>>>>>> c0de397925 (merge bedore pointerwork)

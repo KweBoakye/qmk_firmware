@@ -34,27 +34,45 @@ TEST_F(PermissiveHold, tap_regular_key_while_mod_tap_key_is_held) {
     set_keymap({mod_tap_hold_key, regular_key});
 
     /* Press mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     mod_tap_hold_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT));
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT, regular_key.report_code));
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT));
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT, regular_key.report_code)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     mod_tap_hold_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -69,27 +87,45 @@ TEST_F(PermissiveHold, tap_mod_tap_key_while_mod_tap_key_is_held) {
     set_keymap({first_mod_tap_hold_key, second_mod_tap_hold_key});
 
     /* Press first mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     first_mod_tap_hold_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press second mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     second_mod_tap_hold_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release second mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT));
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT, second_mod_tap_hold_key.report_code));
     EXPECT_REPORT(driver, (KC_LEFT_SHIFT));
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT, second_mod_tap_hold_key.report_code)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSHIFT)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     second_mod_tap_hold_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release first mod-tap-hold key */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     first_mod_tap_hold_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -105,27 +141,49 @@ TEST_F(PermissiveHold, tap_regular_key_while_layer_tap_key_is_held) {
     set_keymap({layer_tap_hold_key, regular_key, layer_key});
 
     /* Press layer-tap-hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_tap_hold_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (layer_key.report_code));
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(layer_key.report_code)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release layer-tap-hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
     layer_tap_hold_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 }
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    layer_tap_hold_key.release();
+    run_one_scan_loop();
+    testing::Mock::VerifyAndClearExpectations(&driver);
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)

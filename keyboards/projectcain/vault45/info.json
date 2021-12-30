@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Vault45",
     "manufacturer": "projectcain",
     "url": "",
@@ -8,6 +9,11 @@
       "pid": "0x6060",
       "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "Vault 45",
+    "url": "",
+    "maintainer": "projectcain",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT": "LAYOUT_all"
     },

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:keyboards/dailycraft/stickey4/config.h
 /*
 Copyright 2021 yfuku
 
@@ -14,11 +15,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+=======
+// Copyright %(YEAR)s %(YOUR_NAME)s (@%(USER_NAME)s)
+// SPDX-License-Identifier: GPL-2.0-or-later
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/avr/config.h
 
 #pragma once
 
 #include "config_common.h"
 
+<<<<<<< HEAD:keyboards/dailycraft/stickey4/config.h
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0xFEED
+#define PRODUCT_ID   0x0000
+#define DEVICE_VER   0x0001
+#define MANUFACTURER %(USER_NAME)s
+#define PRODUCT      %(KEYBOARD)s
+
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/avr/config.h
 /* key matrix size */
 #define MATRIX_ROWS 1
 #define MATRIX_COLS 8

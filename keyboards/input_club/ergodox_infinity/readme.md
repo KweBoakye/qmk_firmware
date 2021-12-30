@@ -11,13 +11,21 @@ for the left and right halves seperately.  To flash them:
 
   - Press the program button (back of keyboard, above thumb pad).
 
+<<<<<<< HEAD:keyboards/input_club/ergodox_infinity/readme.md
   - Install the firmware with `sudo make input_club/ergodox_infinity:keymapname:dfu-util`
+=======
+  - Install the firmware with `sudo make ergodox_infinity:keymapname:dfu-util`
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ergodox_infinity/readme.md
 
   - Plug in the right hand keyboard only.
 
   - Press the program button (back of keyboard, above thumb pad).
 
+<<<<<<< HEAD:keyboards/input_club/ergodox_infinity/readme.md
   - Install the firmware with `sudo make input_club/ergodox_infinity:keymapname:dfu-util`
+=======
+  - Install the firmware with `sudo make ergodox_infinity:keymapname:dfu-util`
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ergodox_infinity/readme.md
 
 More information on the Infinity firmware is available in the [TMK/chibios for
 Input Club Infinity Ergodox](https://github.com/fredizzimo/infinity_ergodox/blob/master/README.md)

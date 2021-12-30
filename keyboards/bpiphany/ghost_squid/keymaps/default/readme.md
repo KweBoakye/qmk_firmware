@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ghost Squid Default Keymap
 
 ## Base Layer
@@ -31,3 +32,6 @@
 * `Fn` + `F11` =  Volume Down
 * `Fn` + `F12` =  Volume Up
 * `Fn` + `Pause` = Reset to Bootloader
+=======
+# Default layout desc TODO
+>>>>>>> c0de397925 (merge bedore pointerwork)

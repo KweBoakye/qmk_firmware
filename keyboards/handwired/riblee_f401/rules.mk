@@ -14,7 +14,12 @@ EXTRAKEY_ENABLE = yes       # Audio control and System control
 KEYBOARD_SHARED_EP = yes
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
+<<<<<<< HEAD
 NKRO_ENABLE = yes           # Enable N-Key Rollover
+=======
+# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes           # USB Nkey Rollover
+>>>>>>> c0de397925 (merge bedore pointerwork)
 BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 BACKLIGHT_DRIVER = software
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow

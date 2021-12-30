@@ -28,6 +28,10 @@
 #define ENCODERS_PAD_A { F7 }
 #define ENCODERS_PAD_B { F6 }
 #define ENCODER_RESOLUTION 4
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* RGB Light Configuration */
 

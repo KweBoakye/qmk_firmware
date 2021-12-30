@@ -7,8 +7,12 @@
 
 本页包含人们经常遇到的关于键映射的问题，如果你还没阅读过[键映射概览](zh-cn/keymap.md)，请先阅读一下。
 
+<<<<<<< HEAD
 ## 我能使用的键码有哪些?
 所有可用键码收录在[键码](zh-cn/keycodes.md)页，在有更详尽的文档时，我们会更新这个链接。
+=======
+键码实际上定义在[common/keycode.h](https://github.com/qmk/qmk_firmware/blob/master/quantum/keycode.h).
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 所有键码实际定义在[quantum/keycode.h](https://github.com/qmk/qmk_firmware/blob/master/quantum/keycode.h).
 

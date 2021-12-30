@@ -23,7 +23,11 @@ PS2_MOUSE_ENABLE = yes
 PS2_USE_INT = yes
 CUSTOM_MATRIX = yes
 BLUETOOTH_ENABLE = yes
+<<<<<<< HEAD
 BLUETOOTH_DRIVER = BluefruitLE
+=======
+BLUETOOTH_DRIVER = AdafruitBLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 SRC += ws2812.c
 SRC += rgbsps.c

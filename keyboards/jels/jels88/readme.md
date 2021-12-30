@@ -2,7 +2,11 @@
 
 ![jels88](https://i.imgur.com/7kuYR4G.png)
 
+<<<<<<< HEAD
 * Keyboard Maintainer: [jels](https://github.com/Jels02)
+=======
+* Keyboard Maintainer: [jels](https://github.com/Jels-kb)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 * Hardware Supported: jels88b/jels88c PCB
 * Hardware Availabililty: Group buys, Various dates.
 
@@ -22,4 +26,8 @@ Enter the bootloader in 3 ways:
 
 * **Bootmagic reset**: Hold down the top right key (ESC) and plug in the keyboard
 * **Physical reset button**: Briefly press the button on the back of the PCB
+<<<<<<< HEAD
 * **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
+=======
+* **Keycode in layout**: Press the key mapped to `RESET` if it is available
+>>>>>>> c0de397925 (merge bedore pointerwork)

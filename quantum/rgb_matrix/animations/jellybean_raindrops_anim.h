@@ -25,5 +25,10 @@ bool JELLYBEAN_RAINDROPS(effect_params_t* params) {
     return rgb_matrix_check_finished_leds(led_max);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+>>>>>>> c0de397925 (merge bedore pointerwork)

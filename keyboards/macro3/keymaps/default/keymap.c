@@ -6,6 +6,7 @@
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+<<<<<<< HEAD
     [0] = LAYOUT_ortho_2x4(
         KC_MUTE, KC_MPLY, KC_MRWD, LT(1,KC_MFFD),
         C(KC_Z), C(KC_X), C(KC_C), C(KC_V)
@@ -23,3 +24,15 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif
 
+=======
+    [0] = LAYOUT(
+        KC_MUTE, KC_MPLY, KC_MRWD, LT(1,KC_MFFD),
+        C(KC_Z), C(KC_X), C(KC_C), C(KC_V)
+    ),
+    [1] = LAYOUT(
+        _______, _______, _______, _______,
+        RESET,   _______, _______, _______
+    )
+};
+
+>>>>>>> c0de397925 (merge bedore pointerwork)

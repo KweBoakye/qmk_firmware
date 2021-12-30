@@ -20,6 +20,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+<<<<<<< HEAD
     container: qmkfm/qmk_cli
 
     steps:
@@ -28,5 +29,13 @@ jobs:
         submodules: recursive
     - name: Install dependencies
       run: pip3 install -r requirements-dev.txt
+=======
+    container: qmkfm/base_container
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+>>>>>>> c0de397925 (merge bedore pointerwork)
     - name: Run tests
       run: make test:all

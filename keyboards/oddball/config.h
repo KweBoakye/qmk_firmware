@@ -49,4 +49,8 @@
 // #define BOOTMAGIC_LITE_COLUMN 0
 
 #define ADNS9800_CS_PIN SPI_SS_PIN
+<<<<<<< HEAD
 #define PMW33XX_CS_PIN SPI_SS_PIN
+=======
+#define PMW3360_CS_PIN SPI_SS_PIN
+>>>>>>> c0de397925 (merge bedore pointerwork)

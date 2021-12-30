@@ -9,6 +9,10 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
+<<<<<<< HEAD
+=======
+RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 SPLIT_KEYBOARD = yes
 

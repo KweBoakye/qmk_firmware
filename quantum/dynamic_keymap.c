@@ -14,10 +14,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 #include "keymap.h" // to get keymaps[][][]
 #include "eeprom.h"
 #include "progmem.h" // to read default from flash
 #include "quantum.h" // for send_string()
+=======
+#include "config.h"
+#include "keymap.h"  // to get keymaps[][][]
+#include "eeprom.h"
+#include "progmem.h"  // to read default from flash
+#include "quantum.h"  // for send_string()
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #include "dynamic_keymap.h"
 
 #ifdef VIA_ENABLE

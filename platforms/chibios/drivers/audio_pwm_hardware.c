@@ -112,9 +112,15 @@ void audio_driver_initialize(void) {
     pwmStart(&AUDIO_PWM_DRIVER, &pwmCFG);
 
     // connect the AUDIO_PIN to the PWM hardware
+<<<<<<< HEAD:platforms/chibios/drivers/audio_pwm_hardware.c
 #if defined(USE_GPIOV1) // STM32F103C8
     palSetLineMode(AUDIO_PIN, PAL_MODE_ALTERNATE_PUSHPULL);
 #else // GPIOv2 (or GPIOv3 for f4xx, which is the same/compatible at this command)
+=======
+#if defined(USE_GPIOV1)  // STM32F103C8
+    palSetLineMode(AUDIO_PIN, PAL_MODE_ALTERNATE_PUSHPULL);
+#else  // GPIOv2 (or GPIOv3 for f4xx, which is the same/compatible at this command)
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/audio/driver_chibios_pwm_hardware.c
     palSetLineMode(AUDIO_PIN, PAL_MODE_ALTERNATE(AUDIO_PWM_PAL_MODE));
 #endif
 

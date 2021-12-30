@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
     ChibiOS - Copyright (C) 2006..2020 Giovanni Di Sirio
+=======
+    ChibiOS - Copyright (C) 2006..2018 Giovanni Di Sirio
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -169,6 +173,10 @@
 /*
  * PWM driver system settings.
  */
+<<<<<<< HEAD
+=======
+#define STM32_PWM_USE_ADVANCED              FALSE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define STM32_PWM_USE_TIM1                  FALSE
 #define STM32_PWM_USE_TIM2                  FALSE
 #define STM32_PWM_USE_TIM3                  FALSE

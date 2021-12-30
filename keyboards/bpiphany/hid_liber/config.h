@@ -81,3 +81,8 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+<<<<<<< HEAD:keyboards/bpiphany/hid_liber/config.h
+=======
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/hid_liber/config.h

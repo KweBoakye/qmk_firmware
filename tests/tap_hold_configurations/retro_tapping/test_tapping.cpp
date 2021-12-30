@@ -32,11 +32,16 @@ TEST_F(Tapping, HoldA_SHFT_T_KeyReportsShift) {
 
     set_keymap({mod_tap_hold_key});
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     mod_tap_hold_key.press();
     idle_for(TAPPING_TERM);
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LSFT));
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -44,6 +49,15 @@ TEST_F(Tapping, HoldA_SHFT_T_KeyReportsShift) {
     EXPECT_EMPTY_REPORT(driver);
     EXPECT_REPORT(driver, (KC_P));
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSFT)));
+    run_one_scan_loop();
+    testing::Mock::VerifyAndClearExpectations(&driver);
+
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     mod_tap_hold_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -57,51 +71,82 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
     set_keymap({key_shift_hold_p_tap});
 
     /* Press mod_tap_hold key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release mod_tap_hold key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_P));
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press mod_tap_hold key again */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_P));
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release mod_tap_hold key again */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.release();
     idle_for(TAPPING_TERM + 1);
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press mod_tap_hold key again */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release mod_tap_hold key again */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_P));
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.release();
     idle_for(TAPPING_TERM + 1);
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press mod_tap_hold key again */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     key_shift_hold_p_tap.press();
     idle_for(TAPPING_TERM);
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release mod_tap_hold key again */
     /* TODO: Why is KC_LSFT send? */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_LSFT));
     EXPECT_EMPTY_REPORT(driver);
     EXPECT_REPORT(driver, (KC_P));
@@ -110,3 +155,13 @@ TEST_F(Tapping, ANewTapWithinTappingTermIsBuggy) {
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 }
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_LSFT)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_P)));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    key_shift_hold_p_tap.release();
+    run_one_scan_loop();
+    testing::Mock::VerifyAndClearExpectations(&driver);
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)

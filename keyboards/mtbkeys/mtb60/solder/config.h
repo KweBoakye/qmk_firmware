@@ -19,6 +19,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0xFEED
+#define PRODUCT_ID   0x0000
+#define DEVICE_VER   0x0001
+#define MANUFACTURER MTBKeys
+#define PRODUCT      MTB60
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
@@ -26,6 +36,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* key matrix pinout */
 #define MATRIX_ROW_PINS { D0, D1, F4, F1, D2 }
 #define MATRIX_COL_PINS { E6, F0, F5, F6, F7, D5, D3, C7, C6, B6, B5, B4, D7, D6, D4 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* diode direction: COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
@@ -62,6 +76,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
+<<<<<<< HEAD
+=======
+/* disable these deprecated features by default */
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0

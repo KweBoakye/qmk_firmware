@@ -18,8 +18,14 @@
 
 #include "quantum.h"
 
+<<<<<<< HEAD:keyboards/mechkeys/mechmini/mechmini.h
 #if defined(KEYBOARD_mechkeys_mechmini_v1)
 #    include "v1.h"
 #elif defined(KEYBOARD_mechkeys_mechmini_v2)
+=======
+#if defined(KEYBOARD_mechmini_v1)
+#    include "v1.h"
+#elif defined(KEYBOARD_mechmini_v2)
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/mechmini/mechmini.h
 #    include "v2.h"
 #endif

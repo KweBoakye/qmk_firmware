@@ -62,9 +62,13 @@ static struct {
 // clang-format on
 
 /** \brief Called on physical press, returns whether key should be added to Auto Shift */
+<<<<<<< HEAD
 __attribute__((weak)) bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
+=======
+__attribute__((weak)) bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) { return false; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /** \brief Called on physical press, returns whether is Auto Shift key */
 __attribute__((weak)) bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
@@ -84,12 +88,17 @@ __attribute__((weak)) bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *r
 }
 
 /** \brief Called to check whether defines should apply if PER_KEY is set for it */
+<<<<<<< HEAD
 __attribute__((weak)) bool get_auto_shift_repeat(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 __attribute__((weak)) bool get_auto_shift_no_auto_repeat(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
+=======
+__attribute__((weak)) bool get_auto_shift_repeat(uint16_t keycode, keyrecord_t *record) { return true; }
+__attribute__((weak)) bool get_auto_shift_no_auto_repeat(uint16_t keycode, keyrecord_t *record) { return true; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /** \brief Called when an Auto Shift key needs to be pressed */
 __attribute__((weak)) void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
@@ -100,9 +109,13 @@ __attribute__((weak)) void autoshift_press_user(uint16_t keycode, bool shifted, 
 }
 
 /** \brief Called when an Auto Shift key needs to be released */
+<<<<<<< HEAD
 __attribute__((weak)) void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
 }
+=======
+__attribute__((weak)) void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) { unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /** \brief Sets the shift state to use when keyrepeating, required by custom shifts */
 void set_autoshift_shift_state(uint16_t keycode, bool shifted) {
@@ -123,12 +136,16 @@ bool get_autoshift_shift_state(uint16_t keycode) {
 /** \brief Restores the shift key if it was cancelled by Auto Shift */
 static void autoshift_flush_shift(void) {
     autoshift_flags.holding_shift = false;
+<<<<<<< HEAD
 #    ifdef CAPS_WORD_ENABLE
     if (!is_caps_word_on())
 #    endif // CAPS_WORD_ENABLE
     {
         del_weak_mods(MOD_BIT(KC_LSFT));
     }
+=======
+    del_weak_mods(MOD_BIT(KC_LSFT));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     if (autoshift_flags.cancelling_lshift) {
         autoshift_flags.cancelling_lshift = false;
         add_mods(MOD_BIT(KC_LSFT));
@@ -187,7 +204,16 @@ static bool autoshift_press(uint16_t keycode, uint16_t now, keyrecord_t *record)
 #            endif
         ) &&
 #        endif
+<<<<<<< HEAD
         TIMER_DIFF_16(now, autoshift_time) < GET_TAPPING_TERM(autoshift_lastkey, record)
+=======
+        TIMER_DIFF_16(now, autoshift_time) <
+#        ifdef TAPPING_TERM_PER_KEY
+        get_tapping_term(autoshift_lastkey, record)
+#        else
+        TAPPING_TERM
+#        endif
+>>>>>>> c0de397925 (merge bedore pointerwork)
     ) {
         // clang-format on
         // Allow a tap-then-hold for keyrepeat.
@@ -251,11 +277,19 @@ static void autoshift_end(uint16_t keycode, uint16_t now, bool matrix_trigger, k
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             autoshift_flags.cancelling_lshift = true;
             del_mods(MOD_BIT(KC_LSFT));
+<<<<<<< HEAD
         }
         if (get_mods() & MOD_BIT(KC_RSFT)) {
             autoshift_flags.cancelling_rshift = true;
             del_mods(MOD_BIT(KC_RSFT));
         }
+=======
+        }
+        if (get_mods() & MOD_BIT(KC_RSFT)) {
+            autoshift_flags.cancelling_rshift = true;
+            del_mods(MOD_BIT(KC_RSFT));
+        }
+>>>>>>> c0de397925 (merge bedore pointerwork)
         autoshift_press_user(autoshift_lastkey, autoshift_flags.lastshifted, record);
 
         // clang-format off
@@ -344,12 +378,17 @@ bool get_autoshift_state(void) {
     return autoshift_flags.enabled;
 }
 
+<<<<<<< HEAD
 uint16_t get_generic_autoshift_timeout() {
     return autoshift_timeout;
 }
 __attribute__((weak)) uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) {
     return autoshift_timeout;
 }
+=======
+uint16_t                       get_generic_autoshift_timeout() { return autoshift_timeout; }
+__attribute__((weak)) uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) { return autoshift_timeout; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void set_autoshift_timeout(uint16_t timeout) {
     autoshift_timeout = timeout;

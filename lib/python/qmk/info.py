@@ -26,6 +26,13 @@ def _valid_community_layout(layout):
     return (Path('layouts/default') / layout).exists()
 
 
+def _remove_newlines_from_labels(layouts):
+    for layout_name, layout_json in layouts.items():
+        for key in layout_json['layout']:
+            if '\n' in key['label']:
+                key['label'] = key['label'].split('\n')[0]
+
+
 def info_json(keyboard):
     """Generate the info.json data for a specific keyboard.
     """
@@ -104,13 +111,27 @@ def info_json(keyboard):
     # Check that the reported matrix size is consistent with the actual matrix size
     _check_matrix(info_data)
 
+    # Remove newline characters from layout labels
+    _remove_newlines_from_labels(layouts)
+
     return info_data
 
 
 def _extract_features(info_data, rules):
     """Find all the features enabled in rules.mk.
     """
+<<<<<<< HEAD
     # Process booleans rules
+=======
+    # Special handling for bootmagic which also supports a "lite" mode.
+    if rules.get('BOOTMAGIC_ENABLE') == 'lite':
+        rules['BOOTMAGIC_LITE_ENABLE'] = 'on'
+        del rules['BOOTMAGIC_ENABLE']
+    if rules.get('BOOTMAGIC_ENABLE') == 'full':
+        rules['BOOTMAGIC_ENABLE'] = 'on'
+
+    # Process the rest of the rules as booleans
+>>>>>>> c0de397925 (merge bedore pointerwork)
     for key, value in rules.items():
         if key.endswith('_ENABLE'):
             key = '_'.join(key.split('_')[:-1]).lower()
@@ -756,7 +777,16 @@ def arm_processor_rules(info_data, rules):
     info_data['protocol'] = 'ChibiOS'
 
     if 'bootloader' not in info_data:
+<<<<<<< HEAD
         info_data['bootloader'] = 'unknown'
+=======
+        if 'STM32' in info_data['processor']:
+            info_data['bootloader'] = 'stm32-dfu'
+        elif 'WB32' in info_data['processor']:
+            info_data['bootloader'] = 'wb32-dfu'
+        else:
+            info_data['bootloader'] = 'unknown'
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     if 'STM32' in info_data['processor']:
         info_data['platform'] = 'STM32'

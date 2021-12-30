@@ -62,6 +62,10 @@ static void send_msg(uint16_t keycode, bool pressed) {
   msg[IDX_KCMSB] = (keycode >> 8) & 0xFF;
   msg[IDX_PRESSED] = pressed;
   msg[IDX_CHECKSUM] = chksum8(msg, UART_MSG_LEN-1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
   uart_transmit(msg, UART_MSG_LEN);
 }
 
@@ -101,7 +105,11 @@ static void process_uart(void) {
 static void get_msg(void) {
   while (uart_available()) {
     msg[msg_idx] = uart_read();
+<<<<<<< HEAD
     dprintf("idx: %u, recv: 0x%002X\n", msg_idx, msg[msg_idx]);
+=======
+    dprintf("idx: %u, recv: %u\n", msg_idx, msg[msg_idx]);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     if (msg_idx == 0 && (msg[msg_idx] != UART_PREAMBLE)) {
       dprintf("Byte sync error!\n");
       msg_idx = 0;

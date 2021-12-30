@@ -62,12 +62,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CUSTOM_UNICODE_ENABLE
           && process_record_unicode(keycode, record)
 #endif
+<<<<<<< HEAD:users/drashna/keyrecords/process_records.c
 #if defined(CUSTOM_POINTING_DEVICE)
           && process_record_pointing(keycode, record)
 #endif
 #ifdef AUTOCORRECTION_ENABLE
           && process_autocorrection(keycode, record)
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/process_records.c
           && true)) {
         return false;
     }
@@ -118,8 +121,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+<<<<<<< HEAD:users/drashna/keyrecords/process_records.c
         case KC_RGB_T: // This allows me to use underglow as layer indication, or as normal
 #if defined(CUSTOM_RGBLIGHT) || defined(CUSTOM_RGB_MATRIX)
+=======
+        case KC_RGB_T:  // This allows me to use underglow as layer indication, or as normal
+#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/process_records.c
             if (record->event.pressed) {
                 userspace_config.rgb_layer_change ^= 1;
                 dprintf("rgblight layer change [EEPROM]: %u\n", userspace_config.rgb_layer_change);
@@ -200,7 +208,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+<<<<<<< HEAD:users/drashna/keyrecords/process_records.c
         }
+=======
+            }
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/process_records.c
     }
     return true;
 }

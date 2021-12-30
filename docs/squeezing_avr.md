@@ -1,5 +1,6 @@
 # Squeezing the most out of AVR
 
+<<<<<<< HEAD
 AVR is severely resource-constrained, and as QMK continues to grow, it is approaching a point where support for AVR may need to be moved to legacy status as newer development is unable to fit into those constraints.
 
 However, if you need to reduce the compiled size of your firmware, there are a number of options to do so.
@@ -11,6 +12,19 @@ LTO_ENABLE = yes
 ```
 This will cause the final step to take longer, but should get you a smaller compiled size. This also disables Action Functions, and Action Macros, both of which are deprecated.
 This will get you the most savings, in most situations.
+=======
+AVR is severely resource-constrained, and as QMK continues to grow, it is approaching a point where support for AVR may need to be moved to legacy status as newer development is unable to fit into those constraints.  
+
+However, if you need to reduce the compiled size of your firmware, there are a number of options to do so. 
+
+## `rules.mk` Settings
+First and foremost is enabling link time optimization.  To do so, add this to your rules.mk: 
+```make
+LTO_ENABLE = yes
+```
+This will cause the final step to take longer, but should get you a smaller compiled size.  This also disables Action Functions, and Action Macros, both of which are deprecated.
+This will get you the most savings, in most situations. 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 From there, disabling extraneous systems will help -- e.g.: 
 ```make
@@ -19,7 +33,11 @@ COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
 EXTRAKEY_ENABLE = no
 ```
+<<<<<<< HEAD
 This disables some of the functionality that you may not need. But note that extrakeys disables stuff like the media keys and system volume control.
+=======
+This disables some of the functionality that you may not need.  But note that extrakeys disables stuff like the media keys and system volume control.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 If that isn't enough to get your firmware down to size, then there are some additional features that you can disable: 
 ```make
@@ -27,6 +45,7 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no 
 MAGIC_ENABLE = no
 ```
+<<<<<<< HEAD
 These features are enabled by default, but may not be needed. Double check to make sure, though. 
 Largest in size is "magic" -- the QMK magic keycodes -- which control things like NKRO toggling, GUI and ALT/CTRL swapping, etc. Disabling it will disable those functions.
 
@@ -48,11 +67,25 @@ you will still need the standard implementation.
 If you've done all of that, and you don't want to disable features like RGB, Audio, OLEDs, etc, there are some additional options that you can add to your config.h that can help.
 
 Starting with Lock Key support. If you have a Cherry MX Lock switch (lucky you!), you don't want to do this. But chances are, you don't. In that case, add this to your `config.h`:
+=======
+These features are enabled by default, but may not be needed.  Double check to make sure, though.  
+Largest in size is "magic" -- the QMK magic keycodes -- which control things like NKRO toggling, GUI and ALT/CTRL swapping, etc.  Disabling it will disable those functions. 
+
+## `config.h` Settings
+
+If you've done all of that, and you don't want to disable features like RGB, Audio, OLEDs, etc, there are some additional options that you can add to your config.h that can help. 
+
+Starting with Lock Key support.  If you have an Cherry MX Lock switch (lucky you!), you don't want to do this.  But chances are, you don't.  In that case, add this to your `config.h`:
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 ```
+<<<<<<< HEAD
 Oneshots. If you're not using these, you can disable the feature by adding this to your `config.h`: 
+=======
+Oneshots.  If you're not using these, you can disable the feature by adding this to your `config.h`: 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
 #define NO_ACTION_ONESHOT
 ```
@@ -62,7 +95,11 @@ The same with tapping keys (mod tap, layer tap, etc)
 ```
 ## Audio Settings
 
+<<<<<<< HEAD
 If you're using the Audio feature, by default that includes the music mode feature. This tranlates matrix positions into notes. It's neat for sure, but most likely, you're not using it. You can disable it by adding this to your `config.h`:
+=======
+If you're using the Audio feature, by default that includes the music mode feature.  This tranlates matrix positions into notes.  It's neat for sure, but most likely, you're not using it.  You can disable it by adding this to your `config.h`:
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
 #define NO_MUSIC_MODE
 ```
@@ -73,7 +110,11 @@ MUSIC_ENABLE = no
 
 ## Layers
 
+<<<<<<< HEAD
 There are also some options for layers, that can reduce the firmware size. All of these settings are for your `config.h`.
+=======
+There are also some options for layers, that can reduce the firmware size.  All of these settngs are for your `config.h`. 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 You can limit the number of layers that the firmware uses -- if you're using less than 8 layers in total:
 ```c
@@ -106,7 +147,11 @@ into this:
     oled_write_P(PSTR("WPM: "), false);
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
 ```
+<<<<<<< HEAD
 which outputs `WPM:   5`. Or this: 
+=======
+which outputs `WPM:   5`.  Or this: 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
     // NEW CODE
     oled_write_P(PSTR("WPM: "), false);
@@ -116,7 +161,11 @@ which outputs `WPM: 005`.
 
 ## RGB Settings
 
+<<<<<<< HEAD
 If you're using RGB on your board, both RGB Light (Underglow) and RGB Matrix (per key RGB) now require defines to enable different animations -- some keyboards enable a lot of animations by default, so you can generally gain back some space by disabling specific animations if you don't use them. For RGB Light you can disable these in your keymap's `config.h`:
+=======
+If you're using RGB on your board, both RGB Light (Underglow) and RGB Matrix (per key RGB) now require defines to enable different animations -- some keyboards enable a lot of animations by default, so you can generally gain back some space by disabling specific animations if you don't use them..  For RGB Light you can disable these in your keymap's `config.h`: 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
 #undef RGBLIGHT_ANIMATIONS
 #undef RGBLIGHT_EFFECT_BREATHING
@@ -131,7 +180,11 @@ If you're using RGB on your board, both RGB Light (Underglow) and RGB Matrix (pe
 #undef RGBLIGHT_EFFECT_TWINKLE
 ```
 
+<<<<<<< HEAD
 For RGB Matrix, these need to be explicitly enabled as well. To disable any that were enabled by the keyboard, add one or more of these to your keymap's `config.h`:
+=======
+For RGB Matrix, these need to be explicitly enabled as well. To disable any that were enabled by the keyboard, add one or more of these to your keymap's `config.h`: 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```c
 #undef ENABLE_RGB_MATRIX_ALPHAS_MODS
 #undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
@@ -160,7 +213,10 @@ For RGB Matrix, these need to be explicitly enabled as well. To disable any that
 #undef ENABLE_RGB_MATRIX_HUE_PENDULUM
 #undef ENABLE_RGB_MATRIX_HUE_WAVE
 #undef ENABLE_RGB_MATRIX_PIXEL_FRACTAL
+<<<<<<< HEAD
 #undef ENABLE_RGB_MATRIX_PIXEL_FLOW
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #undef ENABLE_RGB_MATRIX_PIXEL_RAIN
 
 #undef ENABLE_RGB_MATRIX_TYPING_HEATMAP
@@ -182,16 +238,26 @@ For RGB Matrix, these need to be explicitly enabled as well. To disable any that
 
 # Final Thoughts
 
+<<<<<<< HEAD
 If you've done all of this, and your firmware is still too large, then it's time. It's time to consider making the switch to ARM. Unfortunately, right now is the worst possible time for that, due to the silicon shortage, and supply chain issues. Getting an ARM chip is difficult, at best, and significantly overpriced, at worst.
+=======
+If you've done all of this, and your firmware is still too large, then it's time.  It's time to consider making the switch to ARM.  Unfortunately, right now is the worst possible time for that, due to the silicon shortage, and supply chain issues. Getting an ARM chip is difficult, at best, and significantly overpriced, at worst. 
+>>>>>>> c0de397925 (merge bedore pointerwork)
  -- Drashna
 
 That said, there are a number of Pro Micro replacements with ARM controllers: 
 * [Proton C](https://qmk.fm/proton-c/) (out of stock)
 * [Bonsai C](https://github.com/customMK/Bonsai-C) (Open Source, DIY/PCBA)
+<<<<<<< HEAD
 * [STeMCell](https://github.com/megamind4089/STeMCell) (Open Source, DIY/PCBA)
 * [Adafruit KB2040](https://learn.adafruit.com/adafruit-kb2040)
 * [SparkFun Pro Micro - RP2040](https://www.sparkfun.com/products/18288)
 * [Blok](https://boardsource.xyz/store/628b95b494dfa308a6581622)
 
 There are other, non-Pro Micro compatible boards out there. The most popular being:
+=======
+* [Raspberry Pi 2040](https://www.sparkfun.com/products/18288) (not currently supported, no ETA)
+
+There are other, non-Pro Micro compatible boards out there. The most popular being: 
+>>>>>>> c0de397925 (merge bedore pointerwork)
 * [WeAct Blackpill F411](https://www.aliexpress.com/item/1005001456186625.html) (~$6 USD)

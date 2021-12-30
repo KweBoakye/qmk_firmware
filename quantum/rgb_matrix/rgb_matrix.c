@@ -31,9 +31,13 @@ const led_point_t k_rgb_matrix_center = {112, 32};
 const led_point_t k_rgb_matrix_center = RGB_MATRIX_CENTER;
 #endif
 
+<<<<<<< HEAD
 __attribute__((weak)) RGB rgb_matrix_hsv_to_rgb(HSV hsv) {
     return hsv_to_rgb(hsv);
 }
+=======
+__attribute__((weak)) RGB rgb_matrix_hsv_to_rgb(HSV hsv) { return hsv_to_rgb(hsv); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 // Generic effect runners
 #include "rgb_matrix_runners.inc"
@@ -143,9 +147,13 @@ const uint8_t k_rgb_matrix_split[2] = RGB_MATRIX_SPLIT;
 
 EECONFIG_DEBOUNCE_HELPER(rgb_matrix, EECONFIG_RGB_MATRIX, rgb_matrix_config);
 
+<<<<<<< HEAD
 void eeconfig_update_rgb_matrix(void) {
     eeconfig_flush_rgb_matrix(true);
 }
+=======
+void eeconfig_update_rgb_matrix(void) { eeconfig_flush_rgb_matrix(true); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void eeconfig_update_rgb_matrix_default(void) {
     dprintf("eeconfig_update_rgb_matrix_default\n");
@@ -196,9 +204,13 @@ void rgb_matrix_update_pwm_buffers(void) {
     rgb_matrix_driver.flush();
 }
 
+<<<<<<< HEAD
 void rgb_matrix_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
     rgb_matrix_driver.set_color(index, red, green, blue);
 }
+=======
+void rgb_matrix_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) { rgb_matrix_driver.set_color(index, red, green, blue); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void rgb_matrix_set_color_all(uint8_t red, uint8_t green, uint8_t blue) {
 #if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)

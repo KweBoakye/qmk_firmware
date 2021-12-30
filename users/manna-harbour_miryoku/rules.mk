@@ -1,5 +1,9 @@
 # Copyright 2019 Manna Harbour
 # https://github.com/manna-harbour/miryoku
+<<<<<<< HEAD
+=======
+# generated -*- buffer-read-only: t -*-
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control

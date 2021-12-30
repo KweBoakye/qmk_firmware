@@ -92,7 +92,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENABLE_RGB_MATRIX_HUE_BREATHING
 #define ENABLE_RGB_MATRIX_HUE_PENDULUM
 #define ENABLE_RGB_MATRIX_HUE_WAVE
+<<<<<<< HEAD:keyboards/kprepublic/bm80hsrgb/config.h
 #define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
+=======
+#define ENABLE_RGB_MATRIX_FRACTAL
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm80/config.h
 #define ENABLE_RGB_MATRIX_PIXEL_RAIN
 
 #define ENABLE_RGB_MATRIX_TYPING_HEATMAP

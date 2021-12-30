@@ -93,5 +93,10 @@ bool TYPING_HEATMAP(effect_params_t* params) {
     return rgb_matrix_check_finished_leds(led_max);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
+>>>>>>> c0de397925 (merge bedore pointerwork)

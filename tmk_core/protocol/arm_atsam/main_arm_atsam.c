@@ -42,7 +42,11 @@ void    send_consumer(uint16_t data);
 
 #ifdef DEFERRED_EXEC_ENABLE
 void deferred_exec_task(void);
+<<<<<<< HEAD
 #endif // DEFERRED_EXEC_ENABLE
+=======
+#endif  // DEFERRED_EXEC_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 host_driver_t arm_atsam_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer};
 
@@ -300,6 +304,11 @@ int main(void) {
     i2c1_init();
 #endif // RGB_MATRIX_ENABLE
 
+<<<<<<< HEAD
+=======
+    matrix_init();
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
     USB_Hub_init();
 
     DBGC(DC_MAIN_UDC_START_BEGIN);
@@ -369,6 +378,11 @@ int main(void) {
         // Run deferred executions
         deferred_exec_task();
 #endif // DEFERRED_EXEC_ENABLE
+
+#ifdef DEFERRED_EXEC_ENABLE
+        // Run deferred executions
+        deferred_exec_task();
+#endif  // DEFERRED_EXEC_ENABLE
 
         // Run housekeeping
         housekeeping_task();

@@ -87,6 +87,34 @@ def create_make_command(keyboard, keymap, target=None, dry_run=False, parallel=1
         make_args.append(target)
 
     return create_make_target(':'.join(make_args), dry_run=dry_run, parallel=parallel, **env_vars)
+<<<<<<< HEAD
+=======
+
+
+def get_git_version(current_time, repo_dir='.', check_dir='.'):
+    """Returns the current git version for a repo, or the current time.
+    """
+    git_describe_cmd = ['git', 'describe', '--abbrev=6', '--dirty', '--always', '--tags']
+
+    if repo_dir != '.':
+        repo_dir = Path('lib') / repo_dir
+
+    if check_dir != '.':
+        check_dir = repo_dir / check_dir
+
+    if Path(check_dir).exists():
+        git_describe = cli.run(git_describe_cmd, stdin=DEVNULL, cwd=repo_dir)
+
+        if git_describe.returncode == 0:
+            return git_describe.stdout.strip()
+
+        else:
+            cli.log.warn(f'"{" ".join(git_describe_cmd)}" returned error code {git_describe.returncode}')
+            print(git_describe.stderr)
+            return current_time
+
+    return current_time
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 
 def get_make_parallel_args(parallel=1):

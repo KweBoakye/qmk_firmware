@@ -240,7 +240,11 @@ void read_host_led_state(void) {
 
 layer_state_t layer_state_set_kb(layer_state_t state) {
   state = layer_state_set_user(state);
+<<<<<<< HEAD
   layer = get_highest_layer(state);
+=======
+  layer = biton32(state);
+>>>>>>> c0de397925 (merge bedore pointerwork)
   oled_request_wakeup();
   return state;
 }

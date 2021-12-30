@@ -1,14 +1,21 @@
 {
     "keyboard_name": "Index Tab",
+<<<<<<< HEAD
+=======
+    "maintainer": "kyrremann",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "url": "https://github.com/Kyrremann/index-tab",
     "layout_aliases": {
         "LAYOUT": "LAYOUT_ortho_6x13"
     },
+<<<<<<< HEAD
     "usb": {
         "vid": "0x4B49",
         "pid": "0x1306",
         "device_version": "0.0.1"
     },
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_ortho_6x13": {
             "layout": [

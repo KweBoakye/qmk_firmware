@@ -34,10 +34,14 @@
 /*
  * Board identifier.
  */
+<<<<<<< HEAD
 #if !(defined(WB32F3G71x9) || defined(WB32F3G71xB) || defined(WB32F3G71xC))
   #define WB32F3G71x9
 #endif
 
+=======
+#define WB32F3G71x9
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #if !defined(WB32F3G71xx)
   #define WB32F3G71xx
 #endif

@@ -230,11 +230,14 @@ extern layer_state_t layer_state;
 #    include "pointing_device.h"
 #endif
 
+<<<<<<< HEAD
 #ifdef CAPS_WORD_ENABLE
 #    include "caps_word.h"
 #    include "process_caps_word.h"
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // For tri-layer
 void          update_tri_layer(uint8_t layer1, uint8_t layer2, uint8_t layer3);
 layer_state_t update_tri_layer_state(layer_state_t state, uint8_t layer1, uint8_t layer2, uint8_t layer3);
@@ -266,6 +269,14 @@ void unregister_code16(uint16_t code);
 void tap_code16(uint16_t code);
 void tap_code16_delay(uint16_t code, uint16_t delay);
 
+<<<<<<< HEAD
+=======
+void led_set_user(uint8_t usb_led);
+void led_set_kb(uint8_t usb_led);
+bool led_update_user(led_t led_state);
+bool led_update_kb(led_t led_state);
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 const char *get_numeric_str(char *buf, size_t buf_len, uint32_t curr_num, char curr_pad);
 const char *get_u8_str(uint8_t curr_num, char curr_pad);
 const char *get_u16_str(uint16_t curr_num, char curr_pad);

@@ -17,6 +17,7 @@
 #pragma once
 
 #include "quantum.h"
+<<<<<<< HEAD
 
 #define XXX KC_NO
 
@@ -55,6 +56,16 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,           K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K75, K66, K77, \
     K80, K90, K81,           K82, K92, K84,           K94, K85, K86, K95, K97  \
+=======
+#define XXX KC_NO
+//x
+#define LAYOUT_all( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K75, K66, K77, \
+    K80, K90, K81, K82, K92, K84, K94, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -68,12 +79,23 @@
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
 
+<<<<<<< HEAD
 #define LAYOUT_60_ansi( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
     K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,                K92,                K94, K85, K95, K97  \
+=======
+//LAYOUT_60_ansi
+//x
+#define LAYOUT_60_ansi( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K92, K94, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -86,6 +108,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_isoenter_split_bs(\
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -93,6 +116,16 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K46, K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,                K92,                K94, K85, K95, K97  \
+=======
+//LAYOUT_60_iso
+//x
+#define LAYOUT_60_iso(\
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K92, K94, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -105,6 +138,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_split_bs( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -112,6 +146,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,                K92,                K94, K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_split_bs
+#define LAYOUT_60_ansi_split_bs( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K92, K94, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -124,6 +167,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_split_spc( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -131,6 +175,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,           K82, K92, K84,           K94, K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_split_spc
+#define LAYOUT_60_ansi_split_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K82, K92, K84, K94, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -143,6 +196,7 @@
     { K80, K81, K82, XXX, K84, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_split_bs_spc( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -150,6 +204,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,           K82, K92, K84,           K94, K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_split_bs_spc
+#define LAYOUT_60_ansi_split_bs_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K82, K92, K84, K94, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -162,6 +225,7 @@
     { K80, K81, K82, XXX, K84, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_tsangan( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -169,6 +233,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,                K92,                     K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_7u_spc
+#define LAYOUT_60_ansi_7u_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K92, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -181,6 +254,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_tsangan_split_bs( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -188,6 +262,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65,      K66, \
     K80, K90, K81,                K92,                     K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_split_7u_spc
+#define LAYOUT_60_ansi_split_bs_7u_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, \
+    K80, K90, K81, K92, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -200,6 +283,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow_split_bs( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -207,6 +291,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,                K92,           K94, K85, K86, K95, K97  \
+=======
+//LAYOUT_60_ansi_arrow_split_bs
+#define LAYOUT_60_ansi_arrow_split_bs( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K92, K94, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -219,6 +312,7 @@
     { K80, K81, XXX, XXX, XXX, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow_split_spc( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -226,6 +320,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,           K82, K92, K84,      K94, K85, K86, K95, K97  \
+=======
+//LAYOUT_60_ansi_arrow_split_spc
+#define LAYOUT_60_ansi_arrow_split_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K82, K92, K84, K94, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -238,6 +341,7 @@
     { K80, K81, K82, XXX, K84, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow_split_bs_spc( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -245,6 +349,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,           K82, K92, K84,      K94, K85, K86, K95, K97  \
+=======
+//LAYOUT_60_ansi_arrow_split_bs_spc
+#define LAYOUT_60_ansi_arrow_split_bs_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K82, K92, K84, K94, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -257,6 +370,7 @@
     { K80, K81, K82, XXX, K84, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow_tsangan( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -264,6 +378,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,                K92,                K85, K86, K95, K97  \
+=======
+//LAYOUT_60_ansi_arrow_7u_spc
+#define LAYOUT_60_ansi_arrow_7u_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K92, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -276,6 +399,7 @@
     { K80, K81, XXX, XXX, XXX, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -283,6 +407,16 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,                K92,           K94, K85, K86, K95, K97  \
+=======
+//LAYOUT_60_ansi_arrow
+//x
+#define LAYOUT_60_ansi_arrow( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K92, K94, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -295,6 +429,7 @@
     { K80, K81, XXX, XXX, XXX, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, K94, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_arrow_tsangan_split_bs( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -302,6 +437,16 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
     K80, K90, K81,                K92,                K85, K86, K95, K97  \
+=======
+//x
+//LAYOUT_60_ansi_arrow_split_bs_7u_spc
+#define LAYOUT_60_ansi_arrow_split_bs_7u_spc( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K75, K66, K77, \
+    K80, K90, K81, K92, K85, K86, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -314,6 +459,7 @@
     { K80, K81, XXX, XXX, XXX, K85, K86, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_ansi_tsangan_split_rshift( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
@@ -321,6 +467,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, K77, \
     K80, K90, K81,                K92,                     K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_tsangan
+#define LAYOUT_60_ansi_tsangan( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, K77, \
+    K80, K90, K81, K92, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, XXX }, \
@@ -333,6 +488,7 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
 
 #define LAYOUT_60_tsangan_hhkb( \
     K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
@@ -340,6 +496,15 @@
     K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55,      K47, \
     K60,      K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, K77, \
     K80, K90, K81,                K92,                     K85, K95, K97  \
+=======
+//LAYOUT_60_ansi_tsangan_split_bs
+#define LAYOUT_60_ansi_tsangan_split_bs( \
+    K00, K10, K01, K11, K02, K12, K03, K13, K04, K14, K05, K15, K06, K26, K17, \
+    K20, K30, K21, K31, K22, K32, K23, K33, K24, K34, K25, K35, K36, K46, \
+    K40, K50, K41, K51, K42, K52, K43, K53, K44, K54, K45, K55, K47, \
+    K60, K70, K61, K71, K62, K72, K63, K73, K64, K74, K65, K66, K77, \
+    K80, K90, K81, K92, K85, K95, K97  \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ) { \
     { K00, K01, K02, K03, K04, K05, K06, XXX }, \
     { K10, K11, K12, K13, K14, K15, XXX, K17 }, \
@@ -352,3 +517,10 @@
     { K80, K81, XXX, XXX, XXX, K85, XXX, XXX }, \
     { K90, XXX, K92, XXX, XXX, K95, XXX, K97 }, \
 }
+<<<<<<< HEAD
+=======
+//LAYOUT_60_iso_tsangan
+#define LAYOUT_60_iso_tsangan  LAYOUT_60_ansi_tsangan
+//LAYOUT_60_iso_tsangan_split_bs
+#define LAYOUT_60_iso_tsangan_split_bs  LAYOUT_60_ansi_tsangan_split_bs
+>>>>>>> c0de397925 (merge bedore pointerwork)

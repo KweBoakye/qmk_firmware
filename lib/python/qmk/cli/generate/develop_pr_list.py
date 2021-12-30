@@ -12,6 +12,7 @@ fix_expr = re.compile(r'fix', flags=re.IGNORECASE)
 clean1_expr = re.compile(r'\[(develop|keyboard|keymap|core|cli|bug|docs|feature)\]', flags=re.IGNORECASE)
 clean2_expr = re.compile(r'^(develop|keyboard|keymap|core|cli|bug|docs|feature):', flags=re.IGNORECASE)
 
+<<<<<<< HEAD
 ignored_titles = ["Format code according to conventions"]
 
 
@@ -21,6 +22,8 @@ def _is_ignored(title):
             return True
     return False
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 def _get_pr_info(cache, gh, pr_num):
     pull = cache.get(f'pull:{pr_num}')
@@ -90,9 +93,13 @@ def generate_develop_pr_list(cli):
             else:
                 normal_collection.append(info)
 
+<<<<<<< HEAD
         if _is_ignored(commit_info['title']):
             return
         elif "dependencies" in commit_info['pr_labels']:
+=======
+        if "dependencies" in commit_info['pr_labels']:
+>>>>>>> c0de397925 (merge bedore pointerwork)
             fix_or_normal(commit_info, pr_list_bugs, pr_list_dependencies)
         elif "core" in commit_info['pr_labels']:
             fix_or_normal(commit_info, pr_list_bugs, pr_list_core)
@@ -108,7 +115,11 @@ def generate_develop_pr_list(cli):
         match = git_expr.search(line)
         if match:
             pr_info = _get_pr_info(cache, gh, match.group("pr"))
+<<<<<<< HEAD
             commit_info = {'hash': match.group("hash"), 'title': pr_info['title'], 'pr_num': int(match.group("pr")), 'pr_labels': [label.name for label in pr_info.labels.items]}
+=======
+            commit_info = {'hash': match.group("hash"), 'title': match.group("title"), 'pr_num': int(match.group("pr")), 'pr_labels': [label.name for label in pr_info.labels.items]}
+>>>>>>> c0de397925 (merge bedore pointerwork)
             _categorise_commit(commit_info)
 
     def _dump_commit_list(name, collection):

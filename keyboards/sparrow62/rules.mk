@@ -12,7 +12,11 @@ MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
+<<<<<<< HEAD
 NKRO_ENABLE = no            # Enable N-Key Rollover
+=======
+NKRO_ENABLE = no            # USB Nkey Rollover
+>>>>>>> c0de397925 (merge bedore pointerwork)
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output

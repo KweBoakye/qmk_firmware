@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /* Copyright 2021 takashicompany
+=======
+<<<<<<< HEAD:keyboards/dailycraft/stickey4/stickey4.h
+/* Copyright 2021 yfuku
+=======
+/* Copyright 2021 takashicompany
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/takashicompany/dogtag/dogtag.h
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +34,7 @@
  * The second converts the arguments into a two-dimensional array which
  * represents the switch matrix.
  */
+<<<<<<< HEAD
 #define LAYOUT( \
     l01, l02, l03, l04,           r01, r02, r03, r04,   \
     l05, l06, l07, l08, l09, r05, r06, r07, r08, r09,   \
@@ -37,4 +46,23 @@
     { KC_NO, r01, r02, r03, r04},      \
     { r05, r06, r07, r08, r09 },        \
     { r10, r11, KC_NO, KC_NO, KC_NO }    \
+=======
+
+#define LAYOUT( \
+<<<<<<< HEAD:keyboards/dailycraft/stickey4/stickey4.h
+    k00, k01, k02, k03, \
+    k04, k05, k06, k07 \
+) \
+{ \
+    {k00, k01, k02, k03, k04, k05, k06, k07 } \
+=======
+    l01, l02, l03, l04,           r01, r02, r03, r04,\
+    l05, l06, l07, l08, l09, r05, r06, r07, r08, r09 \
+) { \
+    { l01, l02, l03, l04, KC_NO }, \
+    { l05, l06, l07, l08, l09 },   \
+    { KC_NO, r01, r02, r03, r04,}, \
+    { r05, r06, r07, r08, r09 }    \
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/takashicompany/dogtag/dogtag.h
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }

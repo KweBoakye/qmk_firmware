@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Vertex",
     "manufacturer": "kb_elmo",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x6B47",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "vertex",
+    "url": "",
+    "maintainer": "kb-elmo",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_8keys": {
             "layout": [

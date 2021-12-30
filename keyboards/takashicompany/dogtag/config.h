@@ -19,8 +19,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
 /* key matrix size */
 #define MATRIX_ROWS 6
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0x7463 // tc = takashicompany
+#define PRODUCT_ID   0x0018
+#define DEVICE_VER   0x0001
+#define MANUFACTURER takashicompany
+#define PRODUCT      DogTag
+
+/* key matrix size */
+#define MATRIX_ROWS 2 * 2
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define MATRIX_COLS 5
 
 /*
@@ -33,16 +45,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
+<<<<<<< HEAD
 #define MATRIX_ROW_PINS { B2, B6, B3 }
 #define MATRIX_COL_PINS { F4, F5, F6, F7, B1 }
 #define MATRIX_ROW_PINS_RIGHT { B2, B6, B3 }
 #define MATRIX_COL_PINS_RIGHT { B1, F7, F6, F5, F4 }
 
+=======
+#define MATRIX_ROW_PINS { B2, B6 }
+#define MATRIX_COL_PINS { F4, F5, F6, F7, B1 }
+#define MATRIX_ROW_PINS_RIGHT { B2, B6 }
+#define MATRIX_COL_PINS_RIGHT { B1, F7, F6, F5, F4 }
+
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+<<<<<<< HEAD
 #define ENCODER_RESOLUTION 4
+=======
+#define ENCODER_RESOLUTION 1
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define ENCODERS_PAD_A { D4 }
 #define ENCODERS_PAD_B { C6 }
 
@@ -63,8 +88,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
+<<<<<<< HEAD
 #    define RGBLED_NUM 4 * 2
 #    define RGBLED_SPLIT { 4, 4 }
+=======
+#    define RGBLED_NUM 3 * 2
+#    define RGBLED_SPLIT {3, 3}
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    define RGBLIGHT_HUE_STEP 8
 #    define RGBLIGHT_SAT_STEP 8
 #    define RGBLIGHT_VAL_STEP 8
@@ -135,6 +165,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
 
+<<<<<<< HEAD
+=======
+/* disable these deprecated features by default */
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* Bootmagic Lite key configuration */
 //#define BOOTMAGIC_LITE_ROW 0
 //#define BOOTMAGIC_LITE_COLUMN 0

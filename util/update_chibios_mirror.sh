@@ -7,10 +7,17 @@
 chibios_branches="trunk stable_20.3.x stable_21.11.x"
 
 # The ChibiOS tags to mirror
+<<<<<<< HEAD
 chibios_tags="ver20.3.1 ver20.3.2 ver20.3.3 ver20.3.4 ver21.11.1 ver21.11.2"
 
 # The ChibiOS-Contrib branches to mirror
 contrib_branches="chibios-20.3.x chibios-21.11.x"
+=======
+chibios_tags="ver20.3.1 ver20.3.2 ver20.3.3 ver20.3.4 ver21.6.0"
+
+# The ChibiOS-Contrib branches to mirror
+contrib_branches="chibios-20.3.x chibios-21.6.x"
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ################################
 # Actions

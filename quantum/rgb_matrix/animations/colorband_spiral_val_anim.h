@@ -11,5 +11,10 @@ bool BAND_SPIRAL_VAL(effect_params_t* params) {
     return effect_runner_dx_dy_dist(params, &BAND_SPIRAL_VAL_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
+>>>>>>> c0de397925 (merge bedore pointerwork)

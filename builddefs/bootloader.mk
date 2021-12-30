@@ -37,11 +37,14 @@
 #     apm32-dfu    APM32 USB DFU in ROM
 # RISC-V:
 #     gd32v-dfu    GD32V USB DFU in ROM
+<<<<<<< HEAD:builddefs/bootloader.mk
 #
 # If you need to provide your own implementation, you can set inside `rules.mk`
 # `BOOTLOADER = custom` -- you'll need to provide your own implementations. See
 # the respective file under `platforms/<PLATFORM>/bootloaders/custom.c` to see
 # which functions may be overridden.
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):bootloader.mk
 #
 # BOOTLOADER_SIZE can still be defined manually, but it's recommended
 # you add any possible configuration to this list
@@ -165,7 +168,10 @@ ifeq ($(strip $(BOOTLOADER)), apm32-dfu)
 endif
 ifeq ($(strip $(BOOTLOADER)), gd32v-dfu)
     OPT_DEFS += -DBOOTLOADER_GD32V_DFU
+<<<<<<< HEAD:builddefs/bootloader.mk
     BOOTLOADER_TYPE = gd32v_dfu
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):bootloader.mk
 
     # Options to pass to dfu-util when flashing
     DFU_ARGS ?= -d 28E9:0189 -a 0 -s 0x08000000:leave

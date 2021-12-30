@@ -67,7 +67,11 @@ const char* get_layer_name(uint8_t layer) {
 }
 
 bool oled_task_user(void) {
+<<<<<<< HEAD
     oled_write_ln_P(get_layer_name(get_highest_layer(layer_state)), false);
+=======
+    oled_write_ln_P(get_layer_name(biton32(layer_state)), false);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     return false;
 }
 #endif

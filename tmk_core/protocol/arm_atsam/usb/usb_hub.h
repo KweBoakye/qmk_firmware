@@ -48,4 +48,8 @@ uint16_t adc_get(uint8_t muxpos);
 void     USB_HandleExtraDevice(void);
 void     USB_ExtraSetState(uint8_t state);
 
+<<<<<<< HEAD
 #endif //_USB2422_H_
+=======
+#endif  //_USB2422_H_
+>>>>>>> c0de397925 (merge bedore pointerwork)

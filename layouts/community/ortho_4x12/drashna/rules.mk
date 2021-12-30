@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 BOOTMAGIC_ENABLE   = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE    = no       # Mouse keys
 EXTRAKEY_ENABLE    = yes      # Audio control and System control
+=======
+BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
+MOUSEKEY_ENABLE    = no       # Mouse keys(+4700)
+EXTRAKEY_ENABLE    = yes       # Audio control and System control(+450)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 TAP_DANCE_ENABLE   = no
 NKRO_ENABLE        = yes
 CAPS_WORD_ENABLE   = no
@@ -27,7 +33,11 @@ ifeq ($(strip $(KEYBOARD)), planck/light)
     RGB_MATRIX_ENABLE           = yes
     RGBLIGHT_ENABLE             = yes
     RGBLIGHT_STARTUP_ANIMATION  = yes
+<<<<<<< HEAD
     AUDIO_ENABLE                = yes
+=======
+    AUDIO_ENABLE       			= yes
+>>>>>>> c0de397925 (merge bedore pointerwork)
 endif
 ifeq ($(strip $(KEYBOARD)), planck/ez)
     RGBLIGHT_ENABLE             = no

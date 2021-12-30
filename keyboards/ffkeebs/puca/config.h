@@ -19,6 +19,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0x4646 // FF
+#define PRODUCT_ID   0x0002
+#define DEVICE_VER   0x0001
+#define MANUFACTURER FootFingers
+#define PRODUCT      Puca
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 5
                     //    0 , 1 , 2 , 3 , 4 , 5
@@ -55,3 +65,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
+<<<<<<< HEAD
+=======
+
+/* disable these deprecated features by default */
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+>>>>>>> c0de397925 (merge bedore pointerwork)

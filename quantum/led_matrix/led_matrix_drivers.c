@@ -25,7 +25,11 @@
  * in their own files.
  */
 
+<<<<<<< HEAD
 #if defined(IS31FL3731) || defined(IS31FL3733) || defined(IS31FLCOMMON) || defined(CKLED2001)
+=======
+#if defined(IS31FL3731) || defined(IS31FL3733)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    include "i2c_master.h"
 
 static void init(void) {
@@ -65,6 +69,7 @@ static void init(void) {
     IS31FL3733_init(LED_DRIVER_ADDR_4, LED_DRIVER_SYNC_4);
 #                endif
 #            endif
+<<<<<<< HEAD
 #        endif
 
 #    elif defined(IS31FLCOMMON)
@@ -93,6 +98,8 @@ static void init(void) {
     CKLED2001_init(DRIVER_ADDR_4);
 #                endif
 #            endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #        endif
 #    endif
 
@@ -131,6 +138,7 @@ static void init(void) {
     IS31FL3733_update_led_control_registers(LED_DRIVER_ADDR_4, 3);
 #                endif
 #            endif
+<<<<<<< HEAD
 #        endif
 
 #    elif defined(IS31FLCOMMON)
@@ -157,6 +165,8 @@ static void init(void) {
     CKLED2001_update_led_control_registers(DRIVER_ADDR_4, 3);
 #                endif
 #            endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #        endif
 #    endif
 }
@@ -202,6 +212,7 @@ const led_matrix_driver_t led_matrix_driver = {
     .set_value = IS31FL3733_set_value,
     .set_value_all = IS31FL3733_set_value_all,
 };
+<<<<<<< HEAD
 
 #    elif defined(IS31FLCOMMON)
 static void flush(void) {
@@ -243,5 +254,7 @@ const led_matrix_driver_t led_matrix_driver = {
     .set_value = CKLED2001_set_value,
     .set_value_all = CKLED2001_set_value_all,
 };
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    endif
 #endif

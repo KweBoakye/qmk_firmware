@@ -112,13 +112,18 @@ void process_wheel(void) {
     int dir = opt_encoder_handler(p1, p2);
 
     if (dir == 0) return;
+<<<<<<< HEAD
     encoder_update_kb(0, dir > 0);
+=======
+    encoder_update_kb(0, dir == 1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     process_wheel();
 
     if (is_drag_scroll) {
+<<<<<<< HEAD
 #ifdef PLOOPY_DRAGSCROLL_H_INVERT
         // Invert horizontal scroll direction
         mouse_report.h = -mouse_report.x;
@@ -131,6 +136,15 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 #else
         mouse_report.v = mouse_report.y;
 #endif
+=======
+        mouse_report.h = mouse_report.x;
+#ifdef PLOOPY_DRAGSCROLL_INVERT
+        // Invert vertical scroll direction
+        mouse_report.v = -mouse_report.y;
+#else
+        mouse_report.v = mouse_report.y;
+#endif
+>>>>>>> c0de397925 (merge bedore pointerwork)
         mouse_report.x = 0;
         mouse_report.y = 0;
     }
@@ -223,7 +237,11 @@ void keyboard_pre_init_kb(void) {
 }
 
 void pointing_device_init_kb(void) {
+<<<<<<< HEAD
     pointing_device_set_cpi(dpi_array[keyboard_config.dpi_config]);
+=======
+    pmw3360_set_cpi(dpi_array[keyboard_config.dpi_config]);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     // initialize the scroll wheel's optical encoder
     opt_encoder_init();
 }

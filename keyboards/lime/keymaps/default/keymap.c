@@ -17,6 +17,10 @@
 #include QMK_KEYBOARD_H
 
 #ifdef JOYSTICK_ENABLE
+<<<<<<< HEAD
+=======
+#   include "joystick.h"
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #   include "analog.h"
 #endif
 
@@ -142,7 +146,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
+<<<<<<< HEAD
  * | QK_BOOT|      |      |      |      |      |                    |      |      |      |      |      |      |
+=======
+ * | RESET|      |      |      |      |      |                    |      |      |      |      |      |      |
+>>>>>>> c0de397925 (merge bedore pointerwork)
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |QWERTY|      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -155,7 +163,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      `----------------------------------------'            '------''----------------------------------'
  */
   [_ADJUST] = LAYOUT(
+<<<<<<< HEAD
   QK_BOOT,   XXXXXXX,    XXXXXXX,   XXXXXXX,          XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+=======
+  RESET,   XXXXXXX,    XXXXXXX,   XXXXXXX,          XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+>>>>>>> c0de397925 (merge bedore pointerwork)
   XXXXXXX, KC_QWERTY,  XXXXXXX,   XXXXXXX,          CG_TOGG, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,    XXXXXXX,   KC_JOYSTICK_DEBUG,XXXXXXX, XXXXXXX,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,    XXXXXXX,   KC_COLEMAK,       XXXXXXX, XXXXXXX, XXXXXXX,     _______, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,

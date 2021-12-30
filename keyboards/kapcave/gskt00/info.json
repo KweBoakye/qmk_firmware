@@ -1,6 +1,9 @@
 {
   "keyboard_name": "GSKT-00",
+<<<<<<< HEAD:keyboards/kapcave/gskt00/info.json
   "manufacturer": "KapCave",
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/gskt00/info.json
   "url": "https://kapcave.com/products/gskt-00-pcb-usb-c",
   "maintainer": "nachie",
   "usb": {

@@ -15,7 +15,11 @@
  */
 
 #include QMK_KEYBOARD_H
+<<<<<<< HEAD
 #include "sendstring_japanese.h" // macro sendstring for jis keyboard マクロ文字列送信時に日本語キーボード設定での文字化け回避
+=======
+#include "sendstring_jis.h"  // macro sendstring for jis keyboard マクロ文字列送信時に日本語キーボード設定での文字化け回避
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_all(

@@ -80,7 +80,12 @@ def filter_files(files, core_only=False):
             # The following statement checks each file to see if the file path is
             # - in the core directories
             # - not in the ignored directories
+<<<<<<< HEAD
             if not any(is_relative_to(file, i) for i in core_dirs) or any(is_relative_to(file, i) for i in ignored):
+=======
+            if not any(str(file).startswith(i) for i in core_dirs) or any(str(file).startswith(i) for i in ignored):
+                files[index] = None
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 cli.log.debug("Skipping non-core file %s, as '--core-only' is used.", file)
                 continue
 

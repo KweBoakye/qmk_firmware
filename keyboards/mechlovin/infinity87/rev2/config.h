@@ -16,6 +16,13 @@
 
 #pragma once
 
+<<<<<<< HEAD
+=======
+#define PRODUCT_ID  0x8702
+#define DEVICE_VER  0x0001
+#define PRODUCT     Infinity87 rev.2
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /*
  * Keyboard Matrix Assignments
  *
@@ -27,10 +34,20 @@
  *
 */
 #define MATRIX_ROW_PINS { D5, D2, D4, D3, D0, D1 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION ROW2COL
 
+<<<<<<< HEAD
+=======
+#define USB_POLLING_INTERVAL_MS 1
+
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define LED_NUM_LOCK_PIN D7
 #define LED_CAPS_LOCK_PIN D6
 #define LED_SCROLL_LOCK_PIN B4

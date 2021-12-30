@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "keyboard_name": "SixtyFive HA",
   "manufacturer": "Mode",
   "url": "",
@@ -8,6 +9,11 @@
     "pid": "0x6566",
     "device_version": "0.6.5"
   },
+=======
+  "keyboard_name": "Mode SixtyFive HA",
+  "url": "",
+  "maintainer": "Gondolindrim",
+>>>>>>> c0de397925 (merge bedore pointerwork)
   "layouts": {
       "LAYOUT_all": {
           "layout": [

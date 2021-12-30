@@ -55,5 +55,20 @@ static void render_logo(void) {
 bool oled_task_user(void) {
     render_logo();
     return false;
+<<<<<<< HEAD:keyboards/latincompass/latinpadble/keymaps/via/keymap.c
+=======
+}
+#endif
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            tap_code(KC_PGDN);
+        } else {
+            tap_code(KC_PGUP);
+        }
+    }
+    return true;
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/latinpadble/keymaps/via/keymap.c
 }
 #endif

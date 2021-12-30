@@ -16,6 +16,13 @@
  */
 
 #pragma once
+<<<<<<< HEAD
+=======
+
+/* USB Device descriptor parameter */
+#define PRODUCT_ID 0xA4F9
+#define DEVICE_VER 0x0006
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #undef MATRIX_ROWS
 #undef MATRIX_COLS

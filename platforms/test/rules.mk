@@ -11,8 +11,12 @@ eeprom_stm32_large_DEFS := $(eeprom_stm32_DEFS) \
 	-DFEE_PAGE_COUNT=16
 
 eeprom_stm32_INC := \
+<<<<<<< HEAD:platforms/test/rules.mk
 	$(PLATFORM_PATH)/chibios/drivers/eeprom/ \
 	$(PLATFORM_PATH)/chibios/drivers/flash/
+=======
+	$(PLATFORM_PATH)/chibios/
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/common/test/rules.mk
 eeprom_stm32_tiny_INC := $(eeprom_stm32_INC)
 eeprom_stm32_large_INC := $(eeprom_stm32_INC)
 
@@ -20,6 +24,10 @@ eeprom_stm32_SRC := \
 	$(TOP_DIR)/drivers/eeprom/eeprom_driver.c \
 	$(PLATFORM_PATH)/$(PLATFORM_KEY)/eeprom_stm32_tests.cpp \
 	$(PLATFORM_PATH)/$(PLATFORM_KEY)/flash_stm32_mock.c \
+<<<<<<< HEAD:platforms/test/rules.mk
 	$(PLATFORM_PATH)/chibios/drivers/eeprom/eeprom_stm32.c
+=======
+	$(PLATFORM_PATH)/chibios/eeprom_stm32.c
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/common/test/rules.mk
 eeprom_stm32_tiny_SRC := $(eeprom_stm32_SRC)
 eeprom_stm32_large_SRC := $(eeprom_stm32_SRC)

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "MW65 RGB",
     "manufacturer": "MWStudio",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x6502",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "MW65_RGB",
+    "url": "",
+    "maintainer": "TW59420",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

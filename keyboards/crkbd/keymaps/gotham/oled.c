@@ -246,6 +246,19 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
+<<<<<<< HEAD
+=======
+    if (timer_elapsed(oled_timer) > 10000) {
+        oled_off();
+        return;
+    }
+    #ifndef SPLIT_KEYBOARD
+    else {
+        oled_on();
+    }
+    #endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
     if (is_keyboard_master()) {
         if (is_key_processed && (timer_elapsed(oled_timer) < OLED_KEY_TIMEOUT)) {
             render_status_main();

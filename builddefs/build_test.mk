@@ -4,8 +4,11 @@ endif
 
 .DEFAULT_GOAL := all
 
+<<<<<<< HEAD:builddefs/build_test.mk
 OPT = g
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):build_test.mk
 include paths.mk
 include $(BUILDDEFS_PATH)/message.mk
 
@@ -38,8 +41,12 @@ CREATE_MAP := no
 VPATH += \
 	$(LIB_PATH)/googletest \
 	$(LIB_PATH)/googlemock \
+<<<<<<< HEAD:builddefs/build_test.mk
 	$(COMMON_VPATH) \
 	$(TEST_PATH)
+=======
+	$(LIB_PATH)/printf
+>>>>>>> c0de397925 (merge bedore pointerwork):build_test.mk
 
 all: elf
 
@@ -56,15 +63,22 @@ include tests/test_common/build.mk
 include $(TEST_PATH)/test.mk
 endif
 
+<<<<<<< HEAD:builddefs/build_test.mk
 include $(BUILDDEFS_PATH)/common_features.mk
+=======
+include common_features.mk
+>>>>>>> c0de397925 (merge bedore pointerwork):build_test.mk
 include $(BUILDDEFS_PATH)/generic_features.mk
 include $(PLATFORM_PATH)/common.mk
 include $(TMK_PATH)/protocol.mk
 include $(QUANTUM_PATH)/debounce/tests/rules.mk
 include $(QUANTUM_PATH)/encoder/tests/rules.mk
 include $(QUANTUM_PATH)/sequencer/tests/rules.mk
+<<<<<<< HEAD:builddefs/build_test.mk
 include $(QUANTUM_PATH)/wear_leveling/tests/rules.mk
 include $(QUANTUM_PATH)/logging/print.mk
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):build_test.mk
 include $(PLATFORM_PATH)/test/rules.mk
 ifneq ($(filter $(FULL_TESTS),$(TEST)),)
 include $(BUILDDEFS_PATH)/build_full_test.mk
@@ -80,7 +94,11 @@ $(TEST_OBJ)/$(TEST)_DEFS := $($(TEST)_DEFS)
 $(TEST_OBJ)/$(TEST)_CONFIG := $($(TEST)_CONFIG)
 
 include $(PLATFORM_PATH)/$(PLATFORM_KEY)/platform.mk
+<<<<<<< HEAD:builddefs/build_test.mk
 include $(BUILDDEFS_PATH)/common_rules.mk
+=======
+include $(TMK_PATH)/rules.mk
+>>>>>>> c0de397925 (merge bedore pointerwork):build_test.mk
 
 
 $(shell mkdir -p $(BUILD_DIR)/test 2>/dev/null)

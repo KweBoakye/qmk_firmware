@@ -40,6 +40,7 @@
 
 // Definitions for the ADNS serial line.
 #ifndef ADNS5050_SCLK_PIN
+<<<<<<< HEAD
 #    ifdef POINTING_DEVICE_SCLK_PIN
 #        define ADNS5050_SCLK_PIN POINTING_DEVICE_SCLK_PIN
 #    else
@@ -61,6 +62,17 @@
 #    else
 #        error "No chip select pin defined -- missing POINTING_DEVICE_CS_PIN or ADNS5050_CS_PIN define"
 #    endif
+=======
+#    error "No clock pin defined -- missing ADNS5050_SCLK_PIN"
+#endif
+
+#ifndef ADNS5050_SDIO_PIN
+#    error "No data pin defined -- missing ADNS5050_SDIO_PIN"
+#endif
+
+#ifndef ADNS5050_CS_PIN
+#    error "No chip select pin defined -- missing ADNS5050_CS_PIN"
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 typedef struct {

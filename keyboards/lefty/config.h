@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x5363 // Sc for Smollchungus
+#define PRODUCT_ID      0x0001
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    SmollChungus
+#define PRODUCT         Lefty
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 8

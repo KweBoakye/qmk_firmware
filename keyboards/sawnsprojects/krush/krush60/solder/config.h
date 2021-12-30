@@ -17,6 +17,16 @@
 #pragma once
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x5350
+#define PRODUCT_ID      0x6B32
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    SawnsProjects
+#define PRODUCT         Krush60 - Solder
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 10
 #define MATRIX_COLS 8
@@ -24,6 +34,10 @@
 /* key matrix pins */
 #define MATRIX_ROW_PINS { B1, B2, D1, D2, D4, D6, F6, F7, F5, F4 }
 #define MATRIX_COL_PINS { C7, C6, B6, B5, B4, D7, D5, D3 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

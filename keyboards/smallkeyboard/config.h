@@ -42,6 +42,13 @@
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 3
 
+<<<<<<< HEAD
+=======
+/* disable these deprecated features by default */
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
@@ -73,7 +80,11 @@
 #define ENABLE_RGB_MATRIX_HUE_BREATHING
 #define ENABLE_RGB_MATRIX_HUE_PENDULUM
 #define ENABLE_RGB_MATRIX_HUE_WAVE
+<<<<<<< HEAD
 // #define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
+=======
+// #define ENABLE_RGB_MATRIX_FRACTAL
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define ENABLE_RGB_MATRIX_PIXEL_RAIN
 
 #define ENABLE_RGB_MATRIX_TYPING_HEATMAP

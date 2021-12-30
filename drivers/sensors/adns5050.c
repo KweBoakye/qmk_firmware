@@ -74,6 +74,7 @@ void adns5050_sync(void) {
     writePinHigh(ADNS5050_CS_PIN);
 }
 
+<<<<<<< HEAD
 void adns5050_cs_select(void) {
     writePinLow(ADNS5050_CS_PIN);
 }
@@ -81,6 +82,11 @@ void adns5050_cs_select(void) {
 void adns5050_cs_deselect(void) {
     writePinHigh(ADNS5050_CS_PIN);
 }
+=======
+void adns5050_cs_select(void) { writePinLow(ADNS5050_CS_PIN); }
+
+void adns5050_cs_deselect(void) { writePinHigh(ADNS5050_CS_PIN); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 uint8_t adns5050_serial_read(void) {
     setPinInput(ADNS5050_SDIO_PIN);
@@ -194,7 +200,11 @@ int8_t convert_twoscomp(uint8_t data) {
 
 // Don't forget to use the definitions for CPI in the header file.
 void adns5050_set_cpi(uint16_t cpi) {
+<<<<<<< HEAD
     uint8_t cpival = constrain((cpi / 125), 0x1, 0xD); // limits to 0--119
+=======
+    uint8_t cpival = constrain((cpi / 125), 0x1, 0xD);  // limits to 0--119
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     adns5050_write_reg(REG_MOUSE_CONTROL2, 0b10000 | cpival);
 }

@@ -4,9 +4,13 @@ MCU = atmega32a
 # Bootloader selection
 BOOTLOADER = bootloadhid
 
+<<<<<<< HEAD:keyboards/mt/mt40/rules.mk
 # Build Options
 #   change yes to no to disable
 #
+=======
+# build options
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/mt40/rules.mk
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = no   # Mouse keys
 EXTRAKEY_ENABLE = yes  # Audio control and System control

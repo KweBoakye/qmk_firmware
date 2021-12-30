@@ -18,6 +18,7 @@
 
 static uint8_t aref = ADC_REF_POWER;
 
+<<<<<<< HEAD
 void analogReference(uint8_t mode) {
     aref = mode & (_BV(REFS1) | _BV(REFS0));
 }
@@ -25,6 +26,11 @@ void analogReference(uint8_t mode) {
 int16_t analogReadPin(pin_t pin) {
     return adc_read(pinToMux(pin));
 }
+=======
+void analogReference(uint8_t mode) { aref = mode & (_BV(REFS1) | _BV(REFS0)); }
+
+int16_t analogReadPin(pin_t pin) { return adc_read(pinToMux(pin)); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 uint8_t pinToMux(pin_t pin) {
     switch (pin) {

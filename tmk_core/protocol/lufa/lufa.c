@@ -1046,12 +1046,19 @@ void protocol_pre_init(void) {
 #else
     USB_USBTask();
 #endif
+<<<<<<< HEAD
 }
 
 void protocol_post_init(void) {
     host_set_driver(&lufa_driver);
 }
 
+=======
+}
+
+void protocol_post_init(void) { host_set_driver(&lufa_driver); }
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 void protocol_pre_task(void) {
 #if !defined(NO_USB_STARTUP_CHECK)
     if (USB_DeviceState == DEVICE_STATE_Suspended) {

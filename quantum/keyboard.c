@@ -102,6 +102,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef SLEEP_LED_ENABLE
 #    include "sleep_led.h"
 #endif
+<<<<<<< HEAD
 #ifdef SPLIT_KEYBOARD
 #    include "split_util.h"
 #endif
@@ -111,6 +112,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef CAPS_WORD_ENABLE
 #    include "caps_word.h"
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 static uint32_t last_input_modification_time = 0;
 uint32_t        last_input_activity_time(void) {
@@ -403,6 +406,7 @@ void keyboard_init(void) {
 #ifdef VIRTSER_ENABLE
     virtser_init();
 #endif
+<<<<<<< HEAD
 #ifdef SPLIT_KEYBOARD
     split_post_init();
 #endif
@@ -410,6 +414,8 @@ void keyboard_init(void) {
     // init after split init
     pointing_device_init();
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #if defined(DEBUG_MATRIX_SCAN_RATE) && defined(CONSOLE_ENABLE)
     debug_enable = true;
@@ -432,6 +438,7 @@ void switch_events(uint8_t row, uint8_t col, bool pressed) {
 #endif
 }
 
+<<<<<<< HEAD
 /**
  * @brief Generates a tick event at a maximum rate of 1KHz that drives the
  * internal QMK state machine.
@@ -448,6 +455,16 @@ static inline void generate_tick_event(void) {
 /**
  * @brief This task scans the keyboards matrix and processes any key presses
  * that occur.
+=======
+/** \brief Keyboard task: Do keyboard routine jobs
+ *
+ * Do routine keyboard jobs:
+ *
+ * * scan matrix
+ * * handle mouse movements
+ * * handle midi commands
+ * * light LEDs
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * @return true Matrix did change
  * @return false Matrix didn't change
@@ -605,10 +622,15 @@ void keyboard_task(void) {
 #endif
 
 #ifdef ENCODER_ENABLE
+<<<<<<< HEAD
     const bool encoders_changed = encoder_read();
     if (encoders_changed) {
         last_encoder_activity_trigger();
     }
+=======
+    encoders_changed = encoder_read();
+    if (encoders_changed) last_encoder_activity_trigger();
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #ifdef OLED_ENABLE
@@ -669,6 +691,16 @@ void keyboard_task(void) {
 #ifdef PROGRAMMABLE_BUTTON_ENABLE
     programmable_button_send();
 #endif
+<<<<<<< HEAD
+=======
+
+    // update LED
+    if (led_status != host_keyboard_leds()) {
+        led_status = host_keyboard_leds();
+        keyboard_set_leds(led_status);
+    }
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     led_task();
 }

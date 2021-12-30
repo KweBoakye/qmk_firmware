@@ -50,6 +50,11 @@
 // #undef ENABLE_RGB_MATRIX_MULTISPLASH
 // #undef ENABLE_RGB_MATRIX_SOLID_SPLASH
 // #undef ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+<<<<<<< HEAD
+=======
+
+#define QMK_KEYS_PER_SCAN 4
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 // #define RGB_MATRIX_KEYRELEASES
 

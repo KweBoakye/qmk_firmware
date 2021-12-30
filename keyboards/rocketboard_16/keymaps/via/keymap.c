@@ -44,7 +44,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_RMOD,                   KC_MUTE,
         KC_NO,    KC_NO,   KC_NO,   KC_EXAM,
         KC_NO,    KC_NO,   KC_NO,   KC_NO,
+<<<<<<< HEAD
         QK_BOOT,    RGB_TOG, RGB_SPI, RGB_SPD,
+=======
+        RESET,    RGB_TOG, RGB_SPI, RGB_SPD,
+>>>>>>> c0de397925 (merge bedore pointerwork)
         KC_NO,    _______, KC_NO,   KC_NO
     )
 };

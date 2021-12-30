@@ -106,7 +106,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QK_MAKE, _________________ADJUST_L1_________________, _________________ADJUST_R1_________________, QK_BOOT,
     VRSN,    _________________ADJUST_L2_________________, _________________ADJUST_R2_________________, EE_CLR,
     TH_LVL,  _________________ADJUST_L3_________________, _________________ADJUST_R3_________________, RGB_IDL,
+<<<<<<< HEAD
     KEYLOCK, _______, _______, QK_RBT,  _______, KC_NUKE, _______, _______, AUTO_CTN,_______, _______, TG_MODS
+=======
+    KEYLOCK, _______, _______, _______, _______, KC_NUKE, _______, _______, _______, _______, _______, TG_MODS
+>>>>>>> c0de397925 (merge bedore pointerwork)
   )
 
 };

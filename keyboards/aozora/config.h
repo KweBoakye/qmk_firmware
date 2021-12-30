@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD:keyboards/aozora/config.h
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x04D8
+#define PRODUCT_ID      0xE86A
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Salmon Cat Studio
+#define PRODUCT         Aozora
+
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/aozora/hotswap/config.h
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 17

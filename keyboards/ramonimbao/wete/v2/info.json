@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Wete R2",
+<<<<<<< HEAD
     "manufacturer": "Ramon Imbao",
     "url": "",
     "maintainer": "Ramon Imbao",
@@ -8,6 +9,10 @@
         "pid": "0x00B3",
         "device_version": "35.0.0"
     },
+=======
+    "url": "",
+    "maintainer": "Ramon Imbao",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_ansi": {
             "layout": [

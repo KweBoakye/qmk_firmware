@@ -1,4 +1,8 @@
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_iso/rev1/readme.md
 # BM60HSRGB_ISO/rev2
+=======
+# BM60HSRGB_ISO
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60hsrgb_iso/readme.md
 
 ![BM60HSRGB_ISO](https://i.imgur.com/i3gk2vql.jpg)
 
@@ -14,6 +18,10 @@ Make example for this keyboard (after setting up your build environment):
 
 Flashing example for this keyboard:
 
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_iso/rev1/readme.md
     make kprepublic/bm60hsrgb_iso/rev1:default:flash
+=======
+    make kprepublic/bm60hsrgb_iso:default:flash
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60hsrgb_iso/readme.md
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).

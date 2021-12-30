@@ -22,3 +22,8 @@
     { R30, R31, R32, R33, R34, R35, XXX, XXX }, \
     { R40, R41, R42, R43, R44, XXX, XXX, XXX } \
 }
+<<<<<<< HEAD
+=======
+
+#define LAYOUT_split60 LAYOUT
+>>>>>>> c0de397925 (merge bedore pointerwork)

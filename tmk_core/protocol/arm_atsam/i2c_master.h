@@ -110,4 +110,8 @@ typedef int16_t i2c_status_t;
 void         i2c_init(void);
 i2c_status_t i2c_transmit(uint8_t address, const uint8_t *data, uint16_t length, uint16_t timeout);
 
+<<<<<<< HEAD
 #endif // _I2C_MASTER_H_
+=======
+#endif  // _I2C_MASTER_H_
+>>>>>>> c0de397925 (merge bedore pointerwork)

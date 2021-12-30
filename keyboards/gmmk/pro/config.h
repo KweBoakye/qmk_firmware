@@ -105,6 +105,15 @@
 #define ENABLE_RGB_MATRIX_MULTISPLASH
 #define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+<<<<<<< HEAD
+=======
+
+/* 1000Hz USB polling - it's the default on stock firmware */
+#define USB_POLLING_INTERVAL_MS 1
+
+/* Send up to 4 key press events per scan */
+#define QMK_KEYS_PER_SCAN 4
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* Set debounce time to 5ms */
 #define DEBOUNCE 5

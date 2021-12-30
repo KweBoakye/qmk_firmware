@@ -54,8 +54,13 @@ And in your `config.h` file, add the following:
 #    define RGB_MATRIX_VAL_STEP 8
 #    define RGB_MATRIX_SPD_STEP 10
 
+<<<<<<< HEAD
 /* Enable the animations you want/need.  You may need to enable only a small number of these because       *
  * they take up a lot of space.  Enable and confirm that you can still successfully compile your firmware. */
+=======
+/* Disable the animations you don't want/need.  You will need to disable a good number of these    *
+ * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects

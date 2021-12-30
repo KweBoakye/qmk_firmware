@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright 2021 QMK
+=======
+/* Copyright 2020 Neil Brian Ramirez
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 #include "platform_deps.h"
 
 static void disable_jtag(void) {
@@ -30,3 +35,10 @@ static void disable_jtag(void) {
 void platform_setup(void) {
     disable_jtag();
 }
+=======
+#include "quantum.h"
+
+void encoder_action_unregister(void);
+
+void encoder_action_register(uint8_t index, bool clockwise);
+>>>>>>> c0de397925 (merge bedore pointerwork)

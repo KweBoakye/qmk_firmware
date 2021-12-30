@@ -74,7 +74,11 @@
 #    define ENABLE_RGB_MATRIX_HUE_PENDULUM
 #    define ENABLE_RGB_MATRIX_HUE_WAVE
 #    define ENABLE_RGB_MATRIX_PIXEL_RAIN
+<<<<<<< HEAD
 // #    define ENABLE_RGB_MATRIX_PIXEL_FLOW
+=======
+#    define ENABLE_RGB_MATRIX_PIXEL_FLOW
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
 // enabled only if RGB_MATRIX_FRAMEBUFFER_EFFECTS is defined
 #    define ENABLE_RGB_MATRIX_TYPING_HEATMAP

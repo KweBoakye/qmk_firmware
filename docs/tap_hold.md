@@ -50,7 +50,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 Set the tapping term as usual with `#define TAPPING_TERM <value>` in `config.h` and add `DYNAMIC_TAPPING_TERM_ENABLE = yes` in `rules.mk`. Then, place the above three keys somewhere in your keymap and flash the new firmware onto your board.
 
+<<<<<<< HEAD
 Now, you can try using your dual-role keys, such as layer-taps and mod-taps, and use `DT_DOWN` and `DT_UP` to adjust the tapping term immediately. If you find that you frequently trigger the modifier of your mod-tap(s) by accident, for example, that's a sign that your tapping term may be too low so tap `DT_UP` a few times to increase the tapping term until that no longer happens. On the flip side, if you get superfluous characters when you actually intended to momentarily activate a layer, tap `DT_DOWN` to lower the tapping term. Do note that these keys affect the *global* tapping term, you cannot change the tapping term of a specific key on the fly.
+=======
+Now, you can try using your dual-role keys, such as layer-taps and mod-taps, and use `DT_DOWN` and `DT_UP` to adjust the tapping term immediately. If you find that you frequently trigger the modifier of your mod-tap(s) by accident for example, that's a sign that your tapping term may be too low so tap `DT_UP` a few times to increase the tapping term until that no longer happens. On the flip side, if you get superfluous characters when you actually intended to momentarily activate a layer, tap `DT_DOWN` to lower the tapping term. Do note that these keys affect the *global* tapping term, you cannot change the tapping term of a specific key on the fly.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 Once you're satisfied with the current tapping term value, open `config.h` and replace whatever value you first wrote for the tapping term by the output of the `DT_PRNT` key.
 
@@ -97,7 +101,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 In order for this feature to be effective if you use per-key tapping terms, you need to make a few changes to the syntax of the `get_tapping_term` function. All you need to do is replace every occurrence of `TAPPING_TERM` in the `get_tapping_term` function by lowercase `g_tapping_term`. If you don't do that, you will still see the value typed by `DT_PRNT` go up and down as you configure the tapping term on the fly but you won't feel those changes as they don't get applied. If you can go as low as 10ms and still easily trigger the tap function of a dual-role key, that's a sign that you forgot to make the necessary changes to your `get_tapping_term` function.
 
+<<<<<<< HEAD
 For instance, here's how the example `get_tapping_term` shown earlier should look after the transformation:
+=======
+For instance, here's how the example `get_tapping_term` shown earlier should look like after the transformation:
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ```c
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -112,7 +120,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 ```
 
+<<<<<<< HEAD
 The reason is that `TAPPING_TERM` is a macro that expands to a constant integer and thus cannot be changed at runtime whereas `g_tapping_term` is a variable whose value can be changed at runtime. If you want, you can temporarily enable `DYNAMIC_TAPPING_TERM_ENABLE` to find a suitable tapping term value and then disable that feature and revert back to using the classic syntax for per-key tapping term settings. In case you need to access the tapping term from elsewhere in your code, you can use the `GET_TAPPING_TERM(keycode, record)` macro. This macro will expand to whatever is the appropriate access pattern given the current configuration.
+=======
+The reason being that `TAPPING_TERM` is a macro that expands to a constant integer and thus cannot be changed at runtime whereas `g_tapping_term` is a variable whose value can be changed at runtime. If you want, you can temporarily enable `DYNAMIC_TAPPING_TERM_ENABLE` to find a suitable tapping term value and then disable that feature and revert back to using the classic syntax for per-key tapping term settings.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ## Tap-Or-Hold Decision Modes
 
@@ -200,6 +212,7 @@ An example of a sequence that is affected by the “permissive hold” mode:
 - `KC_L` Up
 - `LT(2, KC_A)` Up
 
+<<<<<<< HEAD
 ```
                          TAPPING_TERM   
   +---------------------------|--------+
@@ -212,6 +225,8 @@ An example of a sequence that is affected by the “permissive hold” mode:
   +---------------------------|--------+
 ```
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 Normally, if you do all this within the `TAPPING_TERM` (default: 200ms), this will be registered as `al` by the firmware and host system.  With the `PERMISSIVE_HOLD` option enabled, the Layer Tap key is considered as a layer switch if another key is tapped, and the above sequence would be registered as `KC_RGHT` (the mapping of `L` on layer 2). We could describe this sequence as a “nested press” (the modified key's key down and key up events are “nested” between the dual-role key's key down and key up events).
 
 However, this slightly different sequence will not be affected by the “permissive hold” mode:
@@ -221,6 +236,7 @@ However, this slightly different sequence will not be affected by the “permiss
 - `LT(2, KC_A)` Up
 - `KC_L` Up
 
+<<<<<<< HEAD
 ```
                          TAPPING_TERM   
   +---------------------------|--------+
@@ -233,6 +249,8 @@ However, this slightly different sequence will not be affected by the “permiss
   +---------------------------|--------+
 ```
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 In the sequence above the dual-role key is released before the other key is released, and if that happens within the tapping term, the “permissive hold” mode will still choose the tap action for the dual-role key, and the sequence will be registered as `al` by the host. We could describe this as a “rolling press” (the two keys' key down and key up events behave as if you were rolling a ball across the two keys, first pressing each key down in sequence and then releasing them in the same order).
 
 ?> The `PERMISSIVE_HOLD` option also affects Mod Tap keys, but this may not be noticeable if you do not also enable the `IGNORE_MOD_TAP_INTERRUPT` option for those keys, because the default handler for Mod Tap keys also considers both the “nested press” and “rolling press” sequences like shown above as a modifier hold, not the tap action.  If you do not enable `IGNORE_MOD_TAP_INTERRUPT`, the effect of `PERMISSIVE_HOLD` on Mod Tap keys would be limited to reducing the delay before the key events are made visible to the host.
@@ -430,6 +448,7 @@ Holding and releasing a dual-function key without pressing another key will resu
 
 For instance, holding and releasing `LT(2, KC_SPC)` without hitting another key will result in nothing happening. With this enabled, it will send `KC_SPC` instead.
 
+<<<<<<< HEAD
 ```
                TAPPING_TERM
   +-----------------|------------------+
@@ -441,6 +460,9 @@ For instance, holding and releasing `LT(2, KC_SPC)` without hitting another key 
   |                 |                  |
   +-----------------|------------------+
 ```
+=======
+For instance, holding and releasing `LT(2, KC_SPC)` without hitting another key will result in nothing happening. With this enabled, it will send `KC_SPC` instead.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 For more granular control of this feature, you can add the following to your `config.h`:
 

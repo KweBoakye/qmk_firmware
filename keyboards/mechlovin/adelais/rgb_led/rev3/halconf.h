@@ -18,7 +18,15 @@
 
 #define HAL_USE_I2C TRUE
 
+<<<<<<< HEAD
 #define HAL_USE_SPI TRUE
 
 #include_next <halconf.h>
 
+=======
+#define HAL_USE_PWM FALSE
+
+#define HAL_USE_SPI FALSE
+
+#include_next <halconf.h>
+>>>>>>> c0de397925 (merge bedore pointerwork)

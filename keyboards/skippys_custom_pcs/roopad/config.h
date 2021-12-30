@@ -19,6 +19,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID    0x36B6 // skippys_custom_pcs
+#define PRODUCT_ID   0x0001 // RooPad
+#define DEVICE_VER   0x0001 // Version 1
+#define MANUFACTURER    ToastyStoemp
+#define PRODUCT         RooPad
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 5
@@ -37,6 +47,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Checked with Eagle Schematic
 #define MATRIX_ROW_PINS { B5, F6, F5, F4, F1 }
 #define MATRIX_COL_PINS { F0, B4, D7, D6, D4 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
@@ -58,3 +72,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_SNAKE
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 #define RGBLIGHT_EFFECT_TWINKLE
+<<<<<<< HEAD
+=======
+
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+>>>>>>> c0de397925 (merge bedore pointerwork)

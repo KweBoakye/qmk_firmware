@@ -12,5 +12,10 @@ bool BAND_VAL(effect_params_t* params) {
     return effect_runner_i(params, &BAND_VAL_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_BAND_VAL
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_BAND_VAL
+>>>>>>> c0de397925 (merge bedore pointerwork)

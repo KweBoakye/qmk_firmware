@@ -16,6 +16,7 @@
 #pragma once
 
 #ifndef USB_VBUS_PIN
+<<<<<<< HEAD
 #    define SPLIT_USB_DETECT // Force this on when dedicated pin is not used
 #endif
 
@@ -41,6 +42,9 @@
 #    define SPI_SCK_PAL_MODE (PAL_MODE_ALTERNATE_SPI | PAL_RP_PAD_SLEWFAST | PAL_RP_PAD_DRIVE4)
 #    define SPI_MOSI_PAL_MODE SPI_SCK_PAL_MODE
 #    define SPI_MISO_PAL_MODE SPI_SCK_PAL_MODE
+=======
+#    define SPLIT_USB_DETECT  // Force this on when dedicated pin is not used
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 // STM32 compatibility
@@ -79,13 +83,20 @@
 #if defined(MCU_WB32)
 #    define CPU_CLOCK WB32_MAINCLK
 
+<<<<<<< HEAD
 #    if defined(WB32F3G71xx) || defined(WB32FQ95xx)
+=======
+#    if defined(WB32F3G71xx)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #        define PAL_OUTPUT_TYPE_OPENDRAIN PAL_WB32_OTYPE_OPENDRAIN
 #        define PAL_OUTPUT_TYPE_PUSHPULL PAL_WB32_OTYPE_PUSHPULL
 #        define PAL_OUTPUT_SPEED_HIGHEST PAL_WB32_OSPEED_HIGH
 #        define PAL_PUPDR_FLOATING PAL_WB32_PUPDR_FLOATING
+<<<<<<< HEAD
 
 #        define SPI_SCK_FLAGS PAL_MODE_ALTERNATE(SPI_SCK_PAL_MODE) | PAL_OUTPUT_TYPE_PUSHPULL | PAL_OUTPUT_SPEED_HIGHEST | PAL_WB32_CURRENT_LEVEL3
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    endif
 #endif
 
@@ -100,18 +111,27 @@
 #if defined(MCU_KINETIS)
 #    define CPU_CLOCK KINETIS_SYSCLK_FREQUENCY
 
+<<<<<<< HEAD
 #    if defined(K20x) || defined(K60x) || defined(KL2x)
 #        define USE_I2CV1
 #        define USE_I2CV1_CONTRIB // for some reason a bunch of ChibiOS-Contrib boards only have clock_speed
+=======
+#    if defined(K20x) || defined(KL2x)
+#        define USE_I2CV1
+#        define USE_I2CV1_CONTRIB  // for some reason a bunch of ChibiOS-Contrib boards only have clock_speed
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #        define USE_GPIOV1
 #    endif
 #endif
 
+<<<<<<< HEAD
 #if defined(MCU_MIMXRT1062)
 #    include "clock_config.h"
 #    define CPU_CLOCK BOARD_BOOTCLOCKRUN_CORE_CLOCK
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #if defined(HT32)
 #    define CPU_CLOCK HT32_CK_SYS_FREQUENCY
 #    define PAL_MODE_ALTERNATE PAL_HT32_MODE_AF
@@ -119,6 +139,7 @@
 #    define PAL_OUTPUT_TYPE_PUSHPULL PAL_HT32_MODE_DIR
 #    define PAL_OUTPUT_SPEED_HIGHEST 0
 #endif
+<<<<<<< HEAD
 
 #if !defined(REALTIME_COUNTER_CLOCK)
 #    define REALTIME_COUNTER_CLOCK CPU_CLOCK
@@ -136,3 +157,5 @@
 #ifndef SPI_MISO_FLAGS
 #    define SPI_MISO_FLAGS PAL_MODE_ALTERNATE(SPI_MISO_PAL_MODE) | PAL_OUTPUT_TYPE_PUSHPULL | PAL_OUTPUT_SPEED_HIGHEST
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

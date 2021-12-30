@@ -3,11 +3,14 @@
     "manufacturer": "Harshit Goel",
     "url": "",
     "maintainer": "harshitgoel96",
+<<<<<<< HEAD
     "usb": {
         "vid": "0x4847",
         "pid": "0x5054",
         "device_version": "0.0.1"
     },
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_split_3x5_3": {
             "layout": [

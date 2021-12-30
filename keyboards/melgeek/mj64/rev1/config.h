@@ -33,5 +33,9 @@
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
+<<<<<<< HEAD
 #define DRIVER_LED_TOTAL 66
+=======
+#define DRIVER_LED_TOTAL 64
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define DRIVER_INDICATOR_LED_TOTAL 0

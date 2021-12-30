@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Jels88",
+<<<<<<< HEAD
     "manufacturer": "Jels",
     "url": "",
     "maintainer": "Jels",
@@ -8,6 +9,10 @@
         "pid": "0x0088",
         "device_version": "0.0.1"
     },
+=======
+    "url": "",
+    "maintainer": "Jels",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [
@@ -103,6 +108,7 @@
                 { "label": "\u2193", "x": 16.25, "y": 5.25 },
                 { "label": "\u2192", "x": 17.25, "y": 5.25 }
             ]
+<<<<<<< HEAD
         },
         "LAYOUT_ansi": {
             "layout": [
@@ -292,6 +298,8 @@
                 { "label": "\u2193", "x": 16.25, "y": 5.25 },
                 { "label": "\u2192", "x": 17.25, "y": 5.25 }
             ]
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
     }
 }

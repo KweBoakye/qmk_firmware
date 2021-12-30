@@ -234,6 +234,7 @@ ISR(TIMERx_OVF_vect) {
 
 // See http://jared.geek.nz/2013/feb/linear-led-pwm
 static uint16_t cie_lightness(uint16_t v) {
+<<<<<<< HEAD
     if (v <= (uint32_t)ICRx / 12) // If the value is less than or equal to ~8% of max
     {
         return v / 9; // Same as dividing by 900%
@@ -243,6 +244,17 @@ static uint16_t cie_lightness(uint16_t v) {
         uint32_t out = (y * y * y * ICRx) >> 15;                                                // Cube it and undo the bit-shifting. (which is now three times as much due to the cubing)
 
         if (out > ICRx) // Avoid overflows
+=======
+    if (v <= (uint32_t)ICRx / 12)  // If the value is less than or equal to ~8% of max
+    {
+        return v / 9;  // Same as dividing by 900%
+    } else {
+        // In the next two lines values are bit-shifted. This is to avoid loosing decimals in integer math.
+        uint32_t y   = (((uint32_t)v + (uint32_t)ICRx / 6) << 5) / ((uint32_t)ICRx / 6 + ICRx);  // If above 8%, add ~16% of max, and normalize with (max + ~16% max)
+        uint32_t out = (y * y * y * ICRx) >> 15;                                                 // Cube it and undo the bit-shifting. (which is now three times as much due to the cubing)
+
+        if (out > ICRx)  // Avoid overflows
+>>>>>>> c0de397925 (merge bedore pointerwork)
         {
             out = ICRx;
         }
@@ -251,6 +263,7 @@ static uint16_t cie_lightness(uint16_t v) {
 }
 
 // rescale the supplied backlight value to be in terms of the value limit	// range for val is [0..ICRx]. PWM pin is high while the timer count is below val.
+<<<<<<< HEAD
 static uint32_t rescale_limit_val(uint32_t val) {
     return (val * (BACKLIGHT_LIMIT_VAL + 1)) / 256;
 }
@@ -259,6 +272,12 @@ static uint32_t rescale_limit_val(uint32_t val) {
 static inline void set_pwm(uint16_t val) {
     OCRxx = val;
 }
+=======
+static uint32_t rescale_limit_val(uint32_t val) { return (val * (BACKLIGHT_LIMIT_VAL + 1)) / 256; }
+
+// range for val is [0..ICRx]. PWM pin is high while the timer count is below val.
+static inline void set_pwm(uint16_t val) { OCRxx = val; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void backlight_set(uint8_t level) {
     if (level > BACKLIGHT_LEVELS) level = BACKLIGHT_LEVELS;
@@ -405,18 +424,26 @@ ISR(TIMERx_OVF_vect)
     uint16_t interval = (uint16_t)get_breathing_period() * breathing_ISR_frequency / BREATHING_STEPS;
     // resetting after one period to prevent ugly reset at overflow.
     breathing_counter = (breathing_counter + 1) % (get_breathing_period() * breathing_ISR_frequency);
+<<<<<<< HEAD
     uint8_t index     = breathing_counter / interval;
     // limit index to max step value
     if (index >= BREATHING_STEPS) {
         index = BREATHING_STEPS - 1;
     }
+=======
+    uint8_t index     = breathing_counter / interval % BREATHING_STEPS;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     if (((breathing_halt == BREATHING_HALT_ON) && (index == BREATHING_STEPS / 2)) || ((breathing_halt == BREATHING_HALT_OFF) && (index == BREATHING_STEPS - 1))) {
         breathing_interrupt_disable();
     }
 
     // Set PWM to a brightnessvalue scaled to the configured resolution
+<<<<<<< HEAD
     set_pwm(cie_lightness(rescale_limit_val(scale_backlight((uint32_t)pgm_read_byte(&breathing_table[index]) * ICRx / 255))));
+=======
+    set_pwm(cie_lightness(rescale_limit_val(scale_backlight((uint16_t)pgm_read_byte(&breathing_table[index]) * ICRx / 255))));
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 #endif // BACKLIGHT_BREATHING
@@ -446,8 +473,13 @@ void backlight_init_ports(void) {
     "In fast PWM mode, the compare units allow generation of PWM waveforms on the OCnx pins. Setting the COMnx1:0 bits to two will produce a non-inverted PWM [..]."
     "In fast PWM mode the counter is incremented until the counter value matches either one of the fixed values 0x00FF, 0x01FF, or 0x03FF (WGMn3:0 = 5, 6, or 7), the value in ICRn (WGMn3:0 = 14), or the value in OCRnA (WGMn3:0 = 15)."
     */
+<<<<<<< HEAD
     TCCRxA = _BV(COMxx1) | _BV(WGM11);            // = 0b00001010;
     TCCRxB = _BV(WGM13) | _BV(WGM12) | _BV(CS10); // = 0b00011001;
+=======
+    TCCRxA = _BV(COMxx1) | _BV(WGM11);             // = 0b00001010;
+    TCCRxB = _BV(WGM13) | _BV(WGM12) | _BV(CS10);  // = 0b00011001;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #ifdef BACKLIGHT_CUSTOM_RESOLUTION

@@ -31,7 +31,11 @@
                             "properties": {
                                 "action": {
                                     "type": "string",
+<<<<<<< HEAD
                                     "enum": ["beep", "delay", "down", "tap", "up"]
+=======
+                                    "enum": ['beep', 'delay', 'down', 'tap', 'up']
+>>>>>>> c0de397925 (merge bedore pointerwork)
                                 },
                                 "keycodes": {
                                     "type": "array",
@@ -52,10 +56,14 @@
         "notes": {
             "type": "string"
         }
+<<<<<<< HEAD
     },
     "required": [
         "keyboard",
         "layout",
         "layers"
     ]
+=======
+    }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }

@@ -57,14 +57,19 @@ Examples of steno strokes and the associated packet:
 
 GeminiPR encodes 42 keys into a 6-byte packet. While TX Bolt contains everything that is necessary for standard stenography, GeminiPR opens up many more options, including differentiating between top and bottom `S-`, and supporting non-English theories.
 
+<<<<<<< HEAD
 To select GeminiPR, add the following lines to your `rules.mk`:
 ```mk
+=======
+```make
+>>>>>>> c0de397925 (merge bedore pointerwork)
 STENO_ENABLE = yes
 STENO_PROTOCOL = geminipr
 ```
 
 All packets in the GeminiPR protocol consist of exactly six bytes, used as bit-arrays for different groups of keys. The beginning of a packet is indicated by setting the most significant bit (MSB) to 1 while setting the MSB of the remaining five bytes to 0.
 
+<<<<<<< HEAD
 The format of GeminiPR packets is shown below.
 ```
 1 Fn  #1  #2 #3 #4 #5   #6
@@ -73,6 +78,12 @@ The format of GeminiPR packets is shown below.
 0 pwr *3  *4 -E -U -F   -R
 0 -P  -B  -L -G -T -S   -D
 0 #7  #8  #9 #A #B #C   -Z
+=======
+```c
+void eeconfig_init_user() {
+    steno_set_mode(STENO_MODE_GEMINI); // or STENO_MODE_BOLT
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ```
 
 Examples of steno strokes and the associated packet:
@@ -200,6 +211,11 @@ You must include `keymap_steno.h` to your `keymap.c` with `#include "keymap_sten
 
 If you do not want to hit two keys with one finger combined keycodes can be used. These are also defined in `keymap_steno.h`, and causes both keys to be reported as pressed or released. To use these keycodes define `STENO_COMBINEDMAP` in your `config.h` file.
 
+<<<<<<< HEAD
+=======
+If you do not want to hit two keys with one finger combined keycodes can be used. These are also defined in `keymap_steno.h`, and causes both keys to be reported as pressed or released. To use these keycodes define `STENO_COMBINEDMAP` in your `config.h` file.
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 |Combined key   | Key1   | Key 2    |
 |---------------|--------|----------|
 |STN_S3         | STN_S1 | STN_S2   |

@@ -201,12 +201,15 @@ typedef struct {
     uint32_t usage;
 } __attribute__((packed)) report_programmable_button_t;
 
+<<<<<<< HEAD:tmk_core/protocol/report.h
 #ifdef MOUSE_EXTENDED_REPORT
 typedef int16_t mouse_xy_report_t;
 #else
 typedef int8_t mouse_xy_report_t;
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/common/report.h
 typedef struct {
 #ifdef MOUSE_SHARED_EP
     uint8_t report_id;

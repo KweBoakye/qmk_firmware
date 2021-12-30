@@ -1142,9 +1142,13 @@ void midi_ep_task(void) {
 
 void virtser_init(void) {}
 
+<<<<<<< HEAD
 void virtser_send(const uint8_t byte) {
     chnWrite(&drivers.serial_driver.driver, &byte, 1);
 }
+=======
+void virtser_send(const uint8_t byte) { chnWrite(&drivers.serial_driver.driver, &byte, 1); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 __attribute__((weak)) void virtser_recv(uint8_t c) {
     // Ignore by default

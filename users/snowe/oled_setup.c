@@ -126,7 +126,11 @@ void render_bootmagic_status(void) {
 }
 
 bool oled_task_user(void) {
+<<<<<<< HEAD
     if (is_keyboard_master()) {
+=======
+    if (is_master) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
         oled_render_layer_state();
         oled_render_keylog();
         render_bootmagic_status();

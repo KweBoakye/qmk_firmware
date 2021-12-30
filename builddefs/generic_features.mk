@@ -17,7 +17,10 @@ SPACE_CADET_ENABLE ?= yes
 GRAVE_ESC_ENABLE ?= yes
 
 GENERIC_FEATURES = \
+<<<<<<< HEAD
     CAPS_WORD \
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     COMBO \
     COMMAND \
     DEFERRED_EXEC \
@@ -25,13 +28,20 @@ GENERIC_FEATURES = \
     DIP_SWITCH \
     DYNAMIC_KEYMAP \
     DYNAMIC_MACRO \
+<<<<<<< HEAD
+=======
+    ENCODER \
+>>>>>>> c0de397925 (merge bedore pointerwork)
     GRAVE_ESC \
     HAPTIC \
     KEY_LOCK \
     KEY_OVERRIDE \
     LEADER \
     PROGRAMMABLE_BUTTON \
+<<<<<<< HEAD
     SECURE \
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     SPACE_CADET \
     SWAP_HANDS \
     TAP_DANCE \

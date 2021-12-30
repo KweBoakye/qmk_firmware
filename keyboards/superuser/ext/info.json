@@ -3,11 +3,14 @@
     "manufacturer": "superuser",
     "url": "",
     "maintainer": "kaylanm",
+<<<<<<< HEAD
     "usb": {
         "vid": "0x5355",
         "pid": "0x4558",
         "device_version": "0.0.1"
     },
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT_tkl": "LAYOUT_all"
     },

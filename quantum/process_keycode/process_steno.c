@@ -37,10 +37,20 @@ static int8_t n_pressed_keys = 0;
 
 #ifdef STENO_ENABLE_ALL
 static steno_mode_t mode;
+<<<<<<< HEAD
 #elif defined(STENO_ENABLE_GEMINI)
 static const steno_mode_t mode = STENO_MODE_GEMINI;
 #elif defined(STENO_ENABLE_BOLT)
 static const steno_mode_t mode = STENO_MODE_BOLT;
+=======
+
+static const uint8_t boltmap[64] PROGMEM = {TXB_NUL, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_S_L, TXB_S_L, TXB_T_L, TXB_K_L, TXB_P_L, TXB_W_L, TXB_H_L, TXB_R_L, TXB_A_L, TXB_O_L, TXB_STR, TXB_STR, TXB_NUL, TXB_NUL, TXB_NUL, TXB_STR, TXB_STR, TXB_E_R, TXB_U_R, TXB_F_R, TXB_R_R, TXB_P_R, TXB_B_R, TXB_L_R, TXB_G_R, TXB_T_R, TXB_S_R, TXB_D_R, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_NUM, TXB_Z_R};
+
+#ifdef STENO_COMBINEDMAP
+/* Used to look up when pressing the middle row key to combine two consonant or vowel keys */
+static const uint16_t combinedmap_first[] PROGMEM  = {STN_S1, STN_TL, STN_PL, STN_HL, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR, STN_A, STN_E};
+static const uint16_t combinedmap_second[] PROGMEM = {STN_S2, STN_KL, STN_WL, STN_RL, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR, STN_O, STN_U};
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 static inline void steno_clear_chord(void) {
@@ -187,9 +197,16 @@ bool process_steno(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef STENO_COMBINEDMAP
         case QK_STENO_COMB ... QK_STENO_COMB_MAX: {
+<<<<<<< HEAD
             bool first_result  = process_steno(combinedmap_first[keycode - QK_STENO_COMB], record);
             bool second_result = process_steno(combinedmap_second[keycode - QK_STENO_COMB], record);
             return first_result && second_result;
+=======
+            uint8_t result;
+            result = process_steno(combinedmap_first[keycode - QK_STENO_COMB], record);
+            result &= process_steno(combinedmap_second[keycode - QK_STENO_COMB], record);
+            return result;
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
 #endif // STENO_COMBINEDMAP
         case STN__MIN ... STN__MAX:

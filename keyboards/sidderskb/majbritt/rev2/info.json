@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Majbritt Rev2",
+<<<<<<< HEAD
     "manufacturer": "SiddersKb",
     "url": "https://sidderskb.co.uk/",
     "maintainer": "Sleepdealr",
@@ -8,6 +9,10 @@
         "pid": "0x0001",
         "device_version": "0.0.2"
     },
+=======
+    "maintainer": "Sleepdealr",
+    "url": "https://sidderskb.co.uk/",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

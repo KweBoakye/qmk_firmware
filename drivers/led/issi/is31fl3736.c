@@ -63,10 +63,13 @@
 #    define ISSI_CSPULLUP PUR_0R
 #endif
 
+<<<<<<< HEAD
 #ifndef ISSI_GLOBALCURRENT
 #    define ISSI_GLOBALCURRENT 0xFF
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // Transfer buffer for TWITransmitData()
 uint8_t g_twi_transfer_buffer[20];
 

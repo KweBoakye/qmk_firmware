@@ -5,8 +5,13 @@
 #include "transactions.h"
 #include <string.h>
 
+<<<<<<< HEAD:users/drashna/split/transport_sync.c
 #ifdef UNICODE_COMMON_ENABLE
 #    include "process_unicode_common.h"
+=======
+#ifdef CUSTOM_UNICODE_ENABLE
+#include "process_unicode_common.h"
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/transport_sync.c
 extern unicode_config_t unicode_config;
 #    include "keyrecords/unicode.h"
 #endif
@@ -115,7 +120,11 @@ void user_transport_update(void) {
         keymap_config.raw    = transport_keymap_config;
         userspace_config.raw = transport_userspace_config;
         user_state.raw       = transport_user_state;
+<<<<<<< HEAD:users/drashna/split/transport_sync.c
 #ifdef UNICODE_COMMON_ENABLE
+=======
+#ifdef UNICODE_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/transport_sync.c
         unicode_config.input_mode = user_state.unicode_mode;
         typing_mode               = user_state.unicode_typing_mode;
 #endif
@@ -135,12 +144,18 @@ void user_transport_update(void) {
 void user_transport_sync(void) {
     if (is_keyboard_master()) {
         // Keep track of the last state, so that we can tell if we need to propagate to slave
+<<<<<<< HEAD:users/drashna/split/transport_sync.c
         static uint16_t last_keymap = 0;
         static uint32_t last_config = 0, last_sync[4], last_user_state = 0;
         bool            needs_sync = false;
 #ifdef CUSTOM_OLED_DRIVER
         static char keylog_temp[OLED_KEYLOGGER_LENGTH] = {0};
 #endif
+=======
+        static uint16_t              last_keymap = 0;
+        static uint32_t              last_config = 0, last_sync[3], last_user_state = 0;
+        bool                         needs_sync = false;
+>>>>>>> c0de397925 (merge bedore pointerwork):users/drashna/transport_sync.c
 
         // Check if the state values are different
         if (memcmp(&transport_user_state, &last_user_state, sizeof(transport_user_state))) {

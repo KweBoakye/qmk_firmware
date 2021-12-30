@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Infinity87 Rev.2",
     "manufacturer": "Mechlovin.Studio",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x8702",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "infinity87 Rev.2",
+    "url": "",
+    "maintainer": "Mechlovin' Studio",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [

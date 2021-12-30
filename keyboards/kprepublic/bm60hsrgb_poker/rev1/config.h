@@ -19,6 +19,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_poker/rev1/config.h
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x4B50 // "KP"
+#define PRODUCT_ID      0xEF8D
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    KP Republic
+#define PRODUCT         BM60HSRGB_POKER
+
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60poker/config.h
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 14

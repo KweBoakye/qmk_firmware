@@ -2,6 +2,14 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+#undef PRODUCT
+#define PRODUCT    Planck Light
+#define PRODUCT_ID 0xBEA2
+#define DEVICE_VER 0x0001
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #undef MATRIX_ROW_PINS
 #undef MATRIX_COL_PINS
 

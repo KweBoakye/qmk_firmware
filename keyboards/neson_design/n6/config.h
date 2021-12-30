@@ -58,4 +58,13 @@
 #define RGBLIGHT_HUE_STEP   8
 #define RGBLIGHT_SAT_STEP   8
 #define RGBLIGHT_VAL_STEP   8
+<<<<<<< HEAD
 #define RGBLIGHT_LIMIT_VAL  192
+=======
+
+#define DRIVER_ADDR_1 0b1110100
+#define DRIVER_COUNT 1
+#define DRIVER_LED_TOTAL 32
+
+#define CAPS_PIN    F5
+>>>>>>> c0de397925 (merge bedore pointerwork)

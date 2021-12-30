@@ -208,6 +208,12 @@ static void stm32_gpio_init(void) {
  *          else.
  */
 void __early_init(void) {
+<<<<<<< HEAD
+=======
+  extern void enter_bootloader_mode_if_requested(void);
+  enter_bootloader_mode_if_requested();
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
   stm32_gpio_init();
   stm32_clock_init();
 }

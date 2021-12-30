@@ -3,11 +3,14 @@
     "manufacturer": "Rocketboard",
     "url": "",
     "maintainer": "fl3tching101",
+<<<<<<< HEAD
     "usb": {
         "vid": "0xB034",
         "pid": "0xFF16",
         "device_version": "0.0.1"
     },
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT_default": "LAYOUT"
     },

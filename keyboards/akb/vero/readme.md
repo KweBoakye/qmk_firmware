@@ -1,9 +1,16 @@
+<<<<<<< HEAD:keyboards/akb/vero/readme.md
 # antipode/vero
 
 ![antipode/vero](https://i.imgur.com/znKP8XQh.jpeg)
+=======
+# %(KEYBOARD)s
+
+![%(KEYBOARD)s](imgur.com image replace me!)
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/ps2avrgb/readme.md
 
 AKB Vero - Vero means true. This keyboard brings you a truly great typing experience in a true HHKB layout. With its 6U spacebar and asymmetrical blockers it brings the classic design of the HHKB to MX keyboards.
 
+<<<<<<< HEAD:keyboards/akb/vero/readme.md
 * Keyboard Maintainer: [Antipode](https://antipode.no)
 * Hardware Supported: AKB Vero PCB
 * Hardware Availability: https://www.antipode.no/products/akb-vero
@@ -11,10 +18,23 @@ AKB Vero - Vero means true. This keyboard brings you a truly great typing experi
 Make example for this keyboard (after setting up your build environment):
 
     make antipode/vero:default
+=======
+* Keyboard Maintainer: [%(YOUR_NAME)s](https://github.com/yourusername)
+* Hardware Supported: *The PCBs, controllers supported*
+* Hardware Availability: *Links to where you can find this hardware*
+
+Make example for this keyboard (after setting up your build environment):
+
+    make %(KEYBOARD)s:default
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/ps2avrgb/readme.md
 
 Flashing example for this keyboard:
 
+<<<<<<< HEAD:keyboards/akb/vero/readme.md
     make antipode/vero:default:flash
+=======
+    make %(KEYBOARD)s:default:flash
+>>>>>>> c0de397925 (merge bedore pointerwork):data/templates/ps2avrgb/readme.md
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 

@@ -16,6 +16,12 @@
 
 #pragma once
 
-#include <stdint.h>
+#define CH_CFG_ST_RESOLUTION 16
 
+<<<<<<< HEAD:quantum/utf8.h
 const char *decode_utf8(const char *str, int32_t *code_point);
+=======
+#define CH_CFG_ST_FREQUENCY 10000
+
+#include_next <chconf.h>
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/handwired/onekey/sipeed_longan_nano/chconf.h

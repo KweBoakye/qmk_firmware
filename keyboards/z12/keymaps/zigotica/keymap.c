@@ -16,6 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "zigotica.h"
+<<<<<<< HEAD
 #include "raw_hid.h"
 
 #ifdef RAW_ENABLE
@@ -32,20 +33,30 @@ void raw_hid_receive(uint8_t* data, uint8_t length) {
 
 // Custom Keycodes
 #define MODE_1 TO(_BASE)
+=======
+
+// Custom Keycodes
+#define MODE_1 TO(_TERMINAL)
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define MODE_2 TO(_FIGMA)
 #define MODE_3 TO(_BROWSER)
 #define MODE_4 TO(_VIM)
 
 enum custom_keycodes {
+<<<<<<< HEAD
     VIM_SIF = SAFE_RANGE,
     VIM_SIP,
     VIM_RIF,
     VIM_RIP,
     VIM_NEW
+=======
+    VIM_SIP = SAFE_RANGE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+<<<<<<< HEAD
         case VIM_SIF:// Search in File
             if (record->event.pressed) {
                 register_code(KC_ESC);
@@ -83,6 +94,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("\e:vnew\n");
             } else { // released
                 unregister_code(KC_ENT);
+=======
+        case VIM_SIP:
+            if (record->event.pressed) {
+                register_code(KC_ESC);
+                SEND_STRING(":Ag ");
+            } else {
+                // released
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 unregister_code(KC_ESC);
             }
         break;
@@ -92,6 +111,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
+<<<<<<< HEAD
  * BASE Layer
  *
  * ,-----------------------------.
@@ -101,17 +121,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+------+------+-------|
  *    |-------+-------+-------|
  *    |   o   |   o   |   o   |
+=======
+ * TERMINAL Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  VOL  | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    | MEDIA |   o   |   o   |
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *    |-------+-------+-------|
  *    |   o   |   o   |   o   |
  *    |-------+-------+-------|
  */
+<<<<<<< HEAD
     [_BASE] = LAYOUT(
+=======
+    [_TERMINAL] = LAYOUT(
+>>>>>>> c0de397925 (merge bedore pointerwork)
                MODE_1, MODE_2,
     ZK_MEDIA,  MODE_3, MODE_4,  _______,
     _______,      _______,      _______,
     _______,      _______,      _______
     ),
 /*
+<<<<<<< HEAD
  * FIGMA Layer
  *
  * ,-----------------------------.
@@ -170,5 +206,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______,  _______,
     VIM_SIF,      VIM_RIF,      VIM_NEW,
     VIM_SIP,      VIM_RIP,      _______
+=======
+ * VIM Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |BUFFER | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    |SEARCH |   o   |   o   |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_VIM] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    VIM_SIP,      _______,      _______,
+    _______,      _______,      _______
+    ),
+/*
+ * FIGMA Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  VOL  | BROW |  VIM | ZOOM  |
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    | ZOOM  | GRIDS |  FULL |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_FIGMA] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    LSFT(KC_1), LCTL(KC_G), LGUI(KC_BSLS),
+    _______,      _______,      _______
+    ),
+/*
+ * BROWSER Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  TABS | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    |SEARCH | BOOKM | DEVTL |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_BROWSER] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    G(KC_F),      G(KC_D),   G(A(KC_I)),
+    _______,      _______,      _______
+>>>>>>> c0de397925 (merge bedore pointerwork)
     ),
 };

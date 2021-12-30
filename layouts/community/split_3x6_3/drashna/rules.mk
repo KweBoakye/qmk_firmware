@@ -1,8 +1,12 @@
 # Build Options
 #   change to "no" to disable the options
 #
+<<<<<<< HEAD
 
 BOOTMAGIC_ENABLE           = yes # Enable Bootmagic Lite
+=======
+BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
+>>>>>>> c0de397925 (merge bedore pointerwork)
 MOUSEKEY_ENABLE            = no  # Mouse keys
 EXTRAKEY_ENABLE            = yes # Audio control and System control
 CONSOLE_ENABLE             = no  # Console for debug
@@ -43,6 +47,7 @@ else
 endif
 
 ifeq ($(strip $(KEYBOARD)), crkbd/rev1)
+<<<<<<< HEAD
     OLED_ENABLE            = yes
     RGB_MATRIX_ENABLE      = yes
     HAPTIC_ENABLE          = no
@@ -50,4 +55,20 @@ endif
 
 ifeq ($(strip $(KEYBOARD)), cantor)
     SWAP_HANDS_ENABLE      = no
+=======
+    OLED_ENABLE = yes
+    RGB_MATRIX_ENABLE = yes
+    HAPTIC_ENABLE = no
+endif
+
+ifeq ($(strip $(CTPC)), yes)
+    HAPTIC_ENABLE = no
+    WS2812_DRIVER = pwm # won't work without a patch to the ctpc mk file
+    SERIAL_DRIVER = usart
+    SWAP_HANDS_ENABLE = yes
+    WPM_ENABLE = yes
+else
+    BOOTLOADER = qmk-hid
+    BOOTLOADER_SIZE = 512
+>>>>>>> c0de397925 (merge bedore pointerwork)
 endif

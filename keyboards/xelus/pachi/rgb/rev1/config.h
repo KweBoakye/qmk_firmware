@@ -16,6 +16,16 @@
 
 #pragma once
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x5845 // "XE"
+#define PRODUCT_ID      0x5052 // "PR"
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Xelus
+#define PRODUCT         Xelus Pachi RGB
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 17
@@ -23,6 +33,10 @@
 /* key matrix pins */
 #define MATRIX_ROW_PINS { B14, B13, B12, B2, A8, B15 }
 #define MATRIX_COL_PINS { C13, C14, C15, H0, A0, A1, A2, A3, A4, A5, A6, A7, B0, B1, H1, B10, B11 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
@@ -37,8 +51,13 @@
 #define LOCKING_RESYNC_ENABLE
 
 // I2C setup
+<<<<<<< HEAD
 #define I2C1_SCL_PIN        B8
 #define I2C1_SDA_PIN        B9
+=======
+#define I2C1_SCL            8
+#define I2C1_SDA            9
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define I2C1_SCL_PAL_MODE   4
 #define I2C1_SDA_PAL_MODE   4
 #define I2C1_TIMINGR_PRESC  0U
@@ -50,9 +69,12 @@
 // I2C EEPROM
 #define EEPROM_I2C_24LC64
 
+<<<<<<< HEAD
 // More EEPROM for layers
 #define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 8191
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // RGB Matrix defines
 #define DRIVER_ADDR_1 0b0110000
 
@@ -93,7 +115,11 @@
 #define ENABLE_RGB_MATRIX_HUE_BREATHING
 #define ENABLE_RGB_MATRIX_HUE_PENDULUM
 #define ENABLE_RGB_MATRIX_HUE_WAVE
+<<<<<<< HEAD
 #define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
+=======
+#define ENABLE_RGB_MATRIX_FRACTAL
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define ENABLE_RGB_MATRIX_PIXEL_RAIN
 
 #define ENABLE_RGB_MATRIX_TYPING_HEATMAP

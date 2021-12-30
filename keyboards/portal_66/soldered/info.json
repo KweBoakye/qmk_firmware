@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Portal 66 Soldered",
     "manufacturer": "Parallel Limited",
     "maintainer": "matthewdias",
@@ -7,11 +8,26 @@
         "pid": "0x5066",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "Parallel 65% PCB",
+    "manufacturer": "Parallel Limited",
+    "maintainer": "matthewdias",
+<<<<<<< HEAD:keyboards/parallel/parallel_65/soldered/info.json
+    "usb": {
+        "vid": "0x504C",
+        "pid": "0x5068",
+        "device_version": "0.0.1"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT_65_ansi_split_bs": "LAYOUT_65_ansi_blocker_split_bs",
         "LAYOUT_65_ansi": "LAYOUT_65_ansi_blocker",
         "LAYOUT_65_tsangan_split_bs": "LAYOUT_65_ansi_blocker_tsangan_split_bs",
         "LAYOUT_65_iso": "LAYOUT_65_iso_blocker"
+<<<<<<< HEAD
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/portal_66/soldered/info.json
+>>>>>>> c0de397925 (merge bedore pointerwork)
     },
     "layouts": {
         "LAYOUT_65_ansi_blocker_split_bs": {

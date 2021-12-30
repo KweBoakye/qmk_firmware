@@ -69,10 +69,13 @@
 #    define ISSI_CSPULLUP PUR_32KR
 #endif
 
+<<<<<<< HEAD
 #ifndef ISSI_GLOBALCURRENT
 #    define ISSI_GLOBALCURRENT 0xFF
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define ISSI_MAX_LEDS 351
 
 // Transfer buffer for TWITransmitData()

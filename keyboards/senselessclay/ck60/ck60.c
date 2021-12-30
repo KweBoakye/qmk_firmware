@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright 2022 kb-elmo<mail@elmo.space>
+=======
+/* Copyright 2020 Hadi Iskandarani
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 #include "ck60.h"
 
 #define __ NO_LED
@@ -41,3 +46,6 @@ led_config_t g_led_config = { {
     1,   1,   1,                  4,                  1,   1,   1,   1
 } };
 #endif
+=======
+#include "ck60.h"
+>>>>>>> c0de397925 (merge bedore pointerwork)

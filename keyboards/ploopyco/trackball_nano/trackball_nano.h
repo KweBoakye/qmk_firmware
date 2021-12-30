@@ -21,7 +21,11 @@
 
 #include "quantum.h"
 
+<<<<<<< HEAD
 #define LAYOUT(k00) {{ k00 }}
+=======
+#define LAYOUT(k00) {{ KC_NO }}
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 typedef union {
   uint32_t raw;

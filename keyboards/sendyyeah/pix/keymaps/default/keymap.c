@@ -188,6 +188,7 @@ void draw_brightness_icon(int key_position, int row) {
     oled_write_P(ICON_BRIGHTNESS_1, false);
 }
 
+<<<<<<< HEAD
 void draw_mode_icon(int key_position, int row) {
     static const char PROGMEM ICON_MODE_0[] = {0x94, 0x95, 0};
     static const char PROGMEM ICON_MODE_1[] = {0xB4, 0xB5, 0};
@@ -215,6 +216,8 @@ void draw_sat_icon(int key_position, int row) {
     oled_write_P(ICON_SAT_1, false);
 }
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 bool oled_task_user(void) {
     // Host Keyboard Layer Status
     static const char PROGMEM ICON_LAYER[] = {0x80, 0x81, 0x82, 0x83, 0};

@@ -16,6 +16,7 @@
 
 #pragma once
 
+<<<<<<< HEAD
 #define DEBOUNCE 45
 
 #ifdef OLED_DRIVER_SH1107
@@ -34,3 +35,9 @@
 #define BOOTMAGIC_LITE_EEPROM_COLUMN       0
 #define BOOTMAGIC_LITE_EEPROM_ROW_RIGHT    7
 #define BOOTMAGIC_LITE_EEPROM_COLUMN_RIGHT 5
+=======
+#define TRACKBALL_DPI_OPTIONS { 1200, 1800, 2600, 3400 }
+
+#define DEBOUNCE 45
+#define ENCODER_DEFAULT_POS 0x3
+>>>>>>> c0de397925 (merge bedore pointerwork)

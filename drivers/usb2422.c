@@ -352,7 +352,11 @@ void USB2422_init() {
     setPinInput(USB2422_ACTIVE_PIN);
 #endif
 
+<<<<<<< HEAD:drivers/usb2422.c
     i2c_init(); // IC2 clk must be high at USB2422 reset release time to signal SMB configuration
+=======
+    i2c_init();  // IC2 clk must be high at USB2422 reset release time to signal SMB configuration
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/protocol/arm_atsam/usb/usb2422.h
 }
 
 void USB2422_configure() {
@@ -363,6 +367,7 @@ void USB2422_configure() {
     // configure Usb2422 registers
     config.VID.reg               = USB2422_VENDOR_ID;
     config.PID.reg               = USB2422_PRODUCT_ID;
+<<<<<<< HEAD:drivers/usb2422.c
     config.DID.reg               = USB2422_DEVICE_VER; // BCD format, eg 01.01
     config.CFG1.bit.SELF_BUS_PWR = 1;                  // self powered for now
     config.CFG1.bit.HS_DISABLE   = 1;                  // full or high speed
@@ -371,6 +376,16 @@ void USB2422_configure() {
     // config.NRD.bit.PORT2_NR = 0; // MCU is non-removable
     config.MAXPB.reg = 20; // 0mA
     config.HCMCB.reg = 20; // 0mA
+=======
+    config.DID.reg               = USB2422_DEVICE_VER;  // BCD format, eg 01.01
+    config.CFG1.bit.SELF_BUS_PWR = 1;                   // self powered for now
+    config.CFG1.bit.HS_DISABLE   = 1;                   // full or high speed
+    // config.CFG2.bit.COMPOUND = 0; // compound device
+    config.CFG3.bit.STRING_EN = 1;  // strings enabled
+    // config.NRD.bit.PORT2_NR = 0; // MCU is non-removable
+    config.MAXPB.reg = 20;  // 0mA
+    config.HCMCB.reg = 20;  // 0mA
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/protocol/arm_atsam/usb/usb2422.h
     config.MFRSL.reg = sizeof(USB2422_MANUFACTURER);
     config.PRDSL.reg = sizeof(USB2422_PRODUCT);
     config.SERSL.reg = sizeof(SERNAME);

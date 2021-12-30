@@ -296,10 +296,13 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 	}
 
     #ifdef LANDSCAPE_MODE
+<<<<<<< HEAD
     oled_rotation_t oled_init_user(oled_rotation_t rotation) {
        return OLED_ROTATION_0;       // do not flip the display
     }
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     bool oled_task_user(void) {
 
         render_logo();
@@ -369,6 +372,13 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
     // regular mode
     #ifndef LANDSCAPE_MODE
+<<<<<<< HEAD
+=======
+ 	oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+		return OLED_ROTATION_270;       // flips the display 270 degrees
+	}
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
     bool oled_task_user(void) {
 		render_logo();
 		oled_set_cursor(0,5);

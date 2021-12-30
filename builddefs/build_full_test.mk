@@ -14,7 +14,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 $(TEST)_INC := \
+<<<<<<< HEAD:builddefs/build_full_test.mk
 	tests/test_common/common_config.h
+=======
+	tests\test_common\common_config.h
+>>>>>>> c0de397925 (merge bedore pointerwork):build_full_test.mk
 
 $(TEST)_SRC := \
 	$(TMK_COMMON_SRC) \
@@ -33,4 +37,8 @@ $(TEST)_DEFS := $(TMK_COMMON_DEFS) $(OPT_DEFS)
 
 $(TEST)_CONFIG := $(TEST_PATH)/config.h
 
+<<<<<<< HEAD:builddefs/build_full_test.mk
 VPATH += $(TOP_DIR)/tests/test_common
+=======
+VPATH += $(TOP_DIR)/tests/test_common
+>>>>>>> c0de397925 (merge bedore pointerwork):build_full_test.mk

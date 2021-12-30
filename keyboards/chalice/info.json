@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Chalice",
+<<<<<<< HEAD
     "manufacturer": "CustomKBD",
     "url": "https://customkbd.com/products/chalice-pre-order",
     "maintainer": "joshajohnson, CustomKBD",
@@ -8,6 +9,10 @@
         "pid": "0x000C",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://customkbd.com/products/chalice-pre-order",
+    "maintainer": "joshajohnson, CustomKBD",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_default": {
             "layout": [

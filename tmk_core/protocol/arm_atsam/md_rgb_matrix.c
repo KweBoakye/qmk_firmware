@@ -53,6 +53,7 @@ void eeconfig_update_md_led_default(void) {
     eeconfig_flush_md_led(true);
 }
 
+<<<<<<< HEAD
 void md_led_changed(void) {
     eeconfig_flag_md_led(true);
 }
@@ -61,12 +62,22 @@ void md_led_changed(void) {
 void housekeeping_task_kb(void) {
     eeconfig_flush_md_led_task(FLUSH_TIMEOUT);
 }
+=======
+void md_led_changed(void) { eeconfig_flag_md_led(true); }
+
+// todo: use real task rather than this bodge
+void housekeeping_task_kb(void) { eeconfig_flush_md_led_task(FLUSH_TIMEOUT); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 __attribute__((weak)) led_instruction_t led_instructions[] = {{.end = 1}};
 static void                             md_rgb_matrix_config_override(int i);
 #    else
 uint8_t gcr_desired;
+<<<<<<< HEAD
 #    endif // USE_MASSDROP_CONFIGURATOR
+=======
+#    endif  // USE_MASSDROP_CONFIGURATOR
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void SERCOM1_0_Handler(void) {
     if (SERCOM1->I2CM.INTFLAG.bit.ERROR) {
@@ -449,8 +460,11 @@ static void md_rgb_matrix_config_override(int i) {
     float go = 0;
     float bo = 0;
     float po;
+<<<<<<< HEAD
 
     uint8_t highest_active_layer = get_highest_layer(layer_state);
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     if (led_animation_circular) {
         // TODO: should use min/max values from LED configuration instead of
@@ -465,6 +479,22 @@ static void md_rgb_matrix_config_override(int i) {
         }
     }
 
+<<<<<<< HEAD
+=======
+    if (led_animation_circular) {
+        // TODO: should use min/max values from LED configuration instead of
+        // hard-coded 224, 64
+        // po = sqrtf((powf(fabsf((disp.width / 2) - (led_cur->x - disp.left)), 2) + powf(fabsf((disp.height / 2) - (led_cur->y - disp.bottom)), 2))) / disp.max_distance * 100;
+        po = sqrtf((powf(fabsf((224 / 2) - (float)g_led_config.point[i].x), 2) + powf(fabsf((64 / 2) - (float)g_led_config.point[i].y), 2))) / RGB_MAX_DISTANCE * 100;
+    } else {
+        if (led_animation_orientation) {
+            po = (float)g_led_config.point[i].y / 64.f * 100;
+        } else {
+            po = (float)g_led_config.point[i].x / 224.f * 100;
+        }
+    }
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
     if (led_edge_mode == LED_EDGE_MODE_ALTERNATE && LED_IS_EDGE_ALT(led_map[i].scan)) {
         // Do not act on this LED (Edge alternate lighting mode)
     } else if (led_lighting_mode == LED_MODE_KEYS_ONLY && HAS_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) {
@@ -550,5 +580,10 @@ static void md_rgb_matrix_config_override(int i) {
     led_buffer[i].b = (uint8_t)bo;
 }
 
+<<<<<<< HEAD
 #    endif // USE_MASSDROP_CONFIGURATOR
 #endif     // RGB_MATRIX_ENABLE
+=======
+#    endif  // USE_MASSDROP_CONFIGURATOR
+#endif      // RGB_MATRIX_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork)

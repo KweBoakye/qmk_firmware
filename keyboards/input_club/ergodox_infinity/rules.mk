@@ -19,7 +19,11 @@ MOUSEKEY_ENABLE  = yes # Mouse keys
 EXTRAKEY_ENABLE  = yes # Audio control and System control
 CONSOLE_ENABLE   = no  # Console for debug
 COMMAND_ENABLE   = yes # Commands for debug and configuration
+<<<<<<< HEAD:keyboards/input_club/ergodox_infinity/rules.mk
 NKRO_ENABLE = yes           # Enable N-Key Rollover
+=======
+NKRO_ENABLE      = yes # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ergodox_infinity/rules.mk
 UNICODE_ENABLE   = yes # Unicode
 SWAP_HANDS_ENABLE= yes # Allow swapping hands of keyboard
 SLEEP_LED_ENABLE = yes

@@ -57,10 +57,13 @@
 #    define ISSI_PERSISTENCE 0
 #endif
 
+<<<<<<< HEAD
 #ifndef ISSI_PWM_FREQUENCY
 #    define ISSI_PWM_FREQUENCY 0b000 // PFS - IS31FL3737B only
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #ifndef ISSI_SWPULLUP
 #    define ISSI_SWPULLUP PUR_0R
 #endif
@@ -69,10 +72,13 @@
 #    define ISSI_CSPULLUP PUR_0R
 #endif
 
+<<<<<<< HEAD
 #ifndef ISSI_GLOBALCURRENT
 #    define ISSI_GLOBALCURRENT 0xFF
 #endif
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // Transfer buffer for TWITransmitData()
 uint8_t g_twi_transfer_buffer[20];
 

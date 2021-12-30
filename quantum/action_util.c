@@ -184,7 +184,11 @@ void reset_oneshot_layer(void) {
 void clear_oneshot_layer_state(oneshot_fullfillment_t state) {
     uint8_t start_state = oneshot_layer_data;
     oneshot_layer_data &= ~state;
+<<<<<<< HEAD
     if ((!get_oneshot_layer_state() && start_state != oneshot_layer_data) && keymap_config.oneshot_enable) {
+=======
+    if ((!get_oneshot_layer_state() && start_state != oneshot_layer_data) && !keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
         layer_off(get_oneshot_layer());
         reset_oneshot_layer();
     }

@@ -54,9 +54,13 @@ void shift_out_impl(const uint8_t *data, uint16_t length) {
 
 #else
 
+<<<<<<< HEAD
 void shift_init_impl(void) {
     spi_init();
 }
+=======
+void shift_init_impl(void) { spi_init(); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void shift_out_impl(const uint8_t *data, uint16_t length) {
     spi_start(SR_EXP_RCLK_PIN, true, 0, 0);
@@ -69,9 +73,13 @@ void shift_out_impl(const uint8_t *data, uint16_t length) {
 
 // ***************************************************************
 
+<<<<<<< HEAD
 void shift_out(const uint8_t *data, uint16_t length) {
     shift_out_impl(data, length);
 }
+=======
+void shift_out(const uint8_t *data, uint16_t length) { shift_out_impl(data, length); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void shift_enable(void) {
     setPinOutput(SR_EXP_OE_PIN);
@@ -94,8 +102,13 @@ sr_exp_t sr_exp_data;
 
 void SR_EXP_WriteData(void) {
     uint8_t data[2] = {
+<<<<<<< HEAD
         sr_exp_data.reg & 0xFF,        // Shift in bits 7-0
         (sr_exp_data.reg >> 8) & 0xFF, // Shift in bits 15-8
+=======
+        sr_exp_data.reg & 0xFF,         // Shift in bits 7-0
+        (sr_exp_data.reg >> 8) & 0xFF,  // Shift in bits 15-8
+>>>>>>> c0de397925 (merge bedore pointerwork)
     };
     shift_out(data, 2);
 }

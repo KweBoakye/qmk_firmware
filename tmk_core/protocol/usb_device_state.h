@@ -27,10 +27,17 @@ void usb_device_state_set_reset(void);
 void usb_device_state_init(void);
 
 enum usb_device_state {
+<<<<<<< HEAD
     USB_DEVICE_STATE_NO_INIT    = 0, // We're in this state before calling usb_device_state_init()
     USB_DEVICE_STATE_INIT       = 1, // Can consume up to 100mA
     USB_DEVICE_STATE_CONFIGURED = 2, // Can consume up to what is specified in configuration descriptor, typically 500mA
     USB_DEVICE_STATE_SUSPEND    = 3  // Can consume only suspend current
+=======
+    USB_DEVICE_STATE_NO_INIT    = 0,  // We're in this state before calling usb_device_state_init()
+    USB_DEVICE_STATE_INIT       = 1,  // Can consume up to 100mA
+    USB_DEVICE_STATE_CONFIGURED = 2,  // Can consume up to what is specified in configuration descriptor, typically 500mA
+    USB_DEVICE_STATE_SUSPEND    = 3   // Can consume only suspend current
+>>>>>>> c0de397925 (merge bedore pointerwork)
 };
 
 extern enum usb_device_state usb_device_state;

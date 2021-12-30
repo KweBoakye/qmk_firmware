@@ -35,6 +35,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define MATRIX_ROW_PINS { B5, B4 }
 #define MATRIX_COL_PINS { B6, C6, C7, D4 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

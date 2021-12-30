@@ -37,8 +37,13 @@
 /* Disable DIP switch in matrix data */
 #define MATRIX_MASKED
 
+<<<<<<< HEAD
 /* Disable RGB lighting when PC is in suspend */
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
+=======
+/* NKRO */
+#define FORCE_NKRO
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
@@ -88,6 +93,9 @@
 #define ENABLE_RGB_MATRIX_MULTISPLASH
 #define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+<<<<<<< HEAD
 
 // #define RGB_MATRIX_KEYPRESSES
 // #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

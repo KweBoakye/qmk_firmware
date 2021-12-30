@@ -12,6 +12,7 @@ endif
 
 include paths.mk
 include $(BUILDDEFS_PATH)/message.mk
+<<<<<<< HEAD:builddefs/build_keyboard.mk
 
 # Helper to add defines with a 'QMK_' prefix
 define add_qmk_prefix_defs
@@ -20,6 +21,8 @@ define add_qmk_prefix_defs
         OPT_DEFS += -DQMK_$(2)="$($1)" -DQMK_$(2)_$(shell echo $($1) | sed -e 's@+@Plus@g' -e 's@[^a-zA-Z0-9]@_@g' | tr '[:lower:]' '[:upper:]')
     endif
 endef
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):build_keyboard.mk
 
 # Set the qmk cli to use
 QMK_BIN ?= qmk
@@ -41,11 +44,14 @@ endif
 #     this an empty or blank macro!
 KEYMAP_OUTPUT := $(BUILD_DIR)/obj_$(TARGET)
 
+<<<<<<< HEAD:builddefs/build_keyboard.mk
 ifdef SKIP_VERSION
     OPT_DEFS += -DSKIP_VERSION
 endif
 
 # Generate the version.h file
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):build_keyboard.mk
 ifdef SKIP_VERSION
 VERSION_H_FLAGS := --skip-all
 endif
@@ -424,7 +430,11 @@ VPATH += $(COMMON_VPATH)
 VPATH += $(KEYBOARD_OUTPUT)/src
 VPATH += $(KEYMAP_OUTPUT)/src
 
+<<<<<<< HEAD:builddefs/build_keyboard.mk
 include $(BUILDDEFS_PATH)/common_features.mk
+=======
+include common_features.mk
+>>>>>>> c0de397925 (merge bedore pointerwork):build_keyboard.mk
 include $(BUILDDEFS_PATH)/generic_features.mk
 include $(TMK_PATH)/protocol.mk
 include $(PLATFORM_PATH)/common.mk
@@ -451,6 +461,7 @@ ifneq ($(strip $(PROTOCOL)),)
 else
     include $(TMK_PATH)/protocol/$(PLATFORM_KEY).mk
 endif
+<<<<<<< HEAD:builddefs/build_keyboard.mk
 
 # Setup definitions based on the selected MCU
 $(eval $(call add_qmk_prefix_defs,MCU_ORIG,MCU))
@@ -459,6 +470,8 @@ $(eval $(call add_qmk_prefix_defs,MCU_PORT_NAME,MCU_PORT_NAME))
 $(eval $(call add_qmk_prefix_defs,MCU_FAMILY,MCU_FAMILY))
 $(eval $(call add_qmk_prefix_defs,MCU_SERIES,MCU_SERIES))
 $(eval $(call add_qmk_prefix_defs,BOARD,BOARD))
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):build_keyboard.mk
 
 # TODO: remove this bodge?
 PROJECT_DEFS := $(OPT_DEFS)
@@ -493,6 +506,7 @@ check-size: build
 check-md5: build
 objs-size: build
 
+<<<<<<< HEAD:builddefs/build_keyboard.mk
 ifeq ($(strip $(TOP_SYMBOLS)),yes)
 all: top-symbols
 check-size: top-symbols
@@ -508,6 +522,10 @@ endif
 
 include $(BUILDDEFS_PATH)/show_options.mk
 include $(BUILDDEFS_PATH)/common_rules.mk
+=======
+include $(BUILDDEFS_PATH)/show_options.mk
+include $(TMK_PATH)/rules.mk
+>>>>>>> c0de397925 (merge bedore pointerwork):build_keyboard.mk
 
 # Ensure we have generated files available for each of the objects
 define GEN_FILES

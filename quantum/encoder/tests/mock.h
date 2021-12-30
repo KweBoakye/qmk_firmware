@@ -19,6 +19,15 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+<<<<<<< HEAD
+=======
+/* Here, "pins" from 0 to 31 are allowed. */
+#define ENCODERS_PAD_A \
+    { 0 }
+#define ENCODERS_PAD_B \
+    { 1 }
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 typedef uint8_t pin_t;
 
 extern bool pins[];

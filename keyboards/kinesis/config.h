@@ -16,6 +16,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+<<<<<<< HEAD
+=======
+
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0xFEED
+#define MANUFACTURER    You
+#define PRODUCT         Kinesis Advantage/Contoured
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 // Mouse
 #define MOUSEKEY_DELAY          60
@@ -70,3 +78,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+<<<<<<< HEAD
+=======
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -80,9 +80,13 @@ OTHER_OPTION_NAMES = \
   LED_MIRRORED \
   RGBLIGHT_FULL_POWER \
   LTO_ENABLE \
+<<<<<<< HEAD:builddefs/show_options.mk
   PROGRAMMABLE_BUTTON_ENABLE \
   SECURE_ENABLE \
   CAPS_WORD_ENABLE
+=======
+  PROGRAMMABLE_BUTTON_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork):show_options.mk
 
 define NAME_ECHO
        @printf "  %-30s = %-16s # %s\\n" "$1" "$($1)" "$(origin $1)"

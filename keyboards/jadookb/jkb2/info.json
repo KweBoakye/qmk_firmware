@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "keyboard_name": "JKB2",
   "manufacturer": "JadooKB",
   "url": "https://jadookb.com/",
@@ -8,6 +9,11 @@
     "pid": "0x3225",
     "device_version": "0.0.1"
   },
+=======
+  "keyboard_name": "jkb2",
+  "url": "https://jadookb.com/",
+  "maintainer": "Wizard-GG",
+>>>>>>> c0de397925 (merge bedore pointerwork)
   "layouts": {
     "LAYOUT": {
       "layout": [ {"label":"z","x": 0, "y": 0 }, {"label":"x","x": 1, "y": 0 }]

@@ -285,6 +285,29 @@ bool oled_task_user(void) {
     render_space();
     render_mod_status_gui_alt(get_mods()|get_oneshot_mods());
     render_mod_status_ctrl_shift(get_mods()|get_oneshot_mods());
+<<<<<<< HEAD
+=======
+}
+
+void suspend_power_down_user() {
+    oled_off();
+}
+
+bool oled_task_user(void) {
+    if (timer_elapsed32(oled_timer) > 30000) {
+        oled_off();
+        return;
+    }
+#ifndef SPLIT_KEYBOARD
+    else { oled_on(); }
+#endif
+
+    if (is_keyboard_master()) {
+        render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+    } else {
+        render_status_secondary();
+    }
+>>>>>>> c0de397925 (merge bedore pointerwork)
     return false;
 }
 

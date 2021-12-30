@@ -32,7 +32,11 @@
 #define AUTO_SHIFT_SPECIAL          \
              KC_TAB:                \
         case KC_MINUS ... KC_SLASH: \
+<<<<<<< HEAD
         case KC_NONUS_BACKSLASH
+=======
+        case KC_NONUS_BSLASH
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // clang-format on
 
 bool process_auto_shift(uint16_t keycode, keyrecord_t *record);

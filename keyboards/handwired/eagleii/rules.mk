@@ -12,7 +12,11 @@ MOUSEKEY_ENABLE = yes
 EXTRAKEY_ENABLE = yes
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
+<<<<<<< HEAD
 NKRO_ENABLE = no            # Enable N-Key Rollover
+=======
+NKRO_ENABLE = no
+>>>>>>> c0de397925 (merge bedore pointerwork)
 BACKLIGHT_ENABLE = no
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = no

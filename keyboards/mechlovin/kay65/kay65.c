@@ -15,6 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+<<<<<<< HEAD:keyboards/mechlovin/kay65/kay65.c
 #include "kay65.h"
 
 void keyboard_pre_init_user(void) {
@@ -23,3 +24,8 @@ void keyboard_pre_init_user(void) {
   // Set our LED pins as output
   setPinOutput(D7);
 }
+=======
+#pragma once
+
+#include "config_common.h"
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ergodash/config.h

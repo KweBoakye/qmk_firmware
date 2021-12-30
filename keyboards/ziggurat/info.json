@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Ziggurat",
     "manufacturer": "LaminarWoob",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x5258",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "ziggurat",
+    "url": "",
+    "maintainer": "kb-elmo",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [

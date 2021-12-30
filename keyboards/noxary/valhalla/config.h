@@ -17,6 +17,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x4E58 //"NX"
+#define PRODUCT_ID      0x5648 // "VH" for Valhalla
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Noxary
+#define PRODUCT         Valhalla
+
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
@@ -59,3 +70,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+<<<<<<< HEAD
+=======
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+>>>>>>> c0de397925 (merge bedore pointerwork)

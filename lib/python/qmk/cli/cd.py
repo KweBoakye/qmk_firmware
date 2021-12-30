@@ -2,7 +2,10 @@
 """
 import sys
 import os
+<<<<<<< HEAD
 import subprocess
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 from milc import cli
 
@@ -42,6 +45,10 @@ def cd(cli):
             # Set the prompt for the new shell
             qmk_env['MSYS2_PS1'] = qmk_env['PS1']
             # Start the new subshell
+<<<<<<< HEAD
             subprocess.run([os.environ.get('SHELL', '/usr/bin/bash')], env=qmk_env)
+=======
+            cli.run([os.environ.get('SHELL', '/usr/bin/bash')], env=qmk_env)
+>>>>>>> c0de397925 (merge bedore pointerwork)
     else:
         cli.log.info("Already within qmk_firmware directory.")

@@ -34,6 +34,12 @@ __attribute__((weak)) bool get_haptic_enabled_key(uint16_t keycode, keyrecord_t 
         case KC_LEFT_CTRL ... KC_RIGHT_GUI:
         case QK_MOMENTARY ... QK_MOMENTARY_MAX:
         case QK_LAYER_MOD ... QK_LAYER_MOD_MAX:
+<<<<<<< HEAD
+=======
+#endif
+#ifdef NO_HAPTIC_FN
+        case KC_FN0 ... KC_FN31:
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 #ifdef NO_HAPTIC_ALPHA
         case KC_A ... KC_Z:

@@ -27,6 +27,13 @@ ifeq ($(strip $(KEYBOARD)), tkc/osav2)
   SRC += rgblight_layers_osa.c
   VELOCIKEY_ENABLE=yes
   SRC += rgb_timeout.c
+<<<<<<< HEAD
+=======
+endif
+ifeq ($(strip $(KEYBOARD)), boardsource/the_mark)
+  RGB_MATRIX_ENABLE = yes
+  RGBLIGHT_ENABLE = no
+>>>>>>> c0de397925 (merge bedore pointerwork)
 endif
 ifeq ($(strip $(KEYBOARD)), jacky_studio/bear_65)
   BACKLIGHT_ENABLE = yes

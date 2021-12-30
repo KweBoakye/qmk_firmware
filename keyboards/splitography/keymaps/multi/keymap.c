@@ -331,7 +331,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case KC_QUOT:
+<<<<<<< HEAD
             if ((base_layer != dvorak) || (get_highest_layer(layer_state) != _BLUE)) {
+=======
+            if ((base_layer != dvorak) || (biton32(layer_state) != _BLUE)) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 break;
             }
             if (record->event.pressed) {

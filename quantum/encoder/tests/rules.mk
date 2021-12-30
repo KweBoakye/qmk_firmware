@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 encoder_DEFS := -DENCODER_TESTS -DENCODER_ENABLE -DENCODER_MOCK_SINGLE
 encoder_CONFIG := $(QUANTUM_PATH)/encoder/tests/config_mock.h
 
 encoder_SRC := \
 	platforms/test/timer.c \
+=======
+encoder_DEFS := -DENCODER_MOCK_SINGLE
+
+encoder_SRC := \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 	$(QUANTUM_PATH)/encoder/tests/mock.c \
 	$(QUANTUM_PATH)/encoder/tests/encoder_tests.cpp \
 	$(QUANTUM_PATH)/encoder.c
 
+<<<<<<< HEAD
 encoder_split_left_eq_right_DEFS := -DENCODER_TESTS -DENCODER_ENABLE -DENCODER_MOCK_SPLIT
 encoder_split_left_eq_right_INC := $(QUANTUM_PATH)/split_common
 encoder_split_left_eq_right_CONFIG := $(QUANTUM_PATH)/encoder/tests/config_mock_split_left_eq_right.h
@@ -55,4 +62,11 @@ encoder_split_no_right_SRC := \
 	platforms/test/timer.c \
 	$(QUANTUM_PATH)/encoder/tests/mock_split.c \
 	$(QUANTUM_PATH)/encoder/tests/encoder_tests_split_no_right.cpp \
+=======
+encoder_split_DEFS := -DENCODER_MOCK_SPLIT
+
+encoder_split_SRC := \
+	$(QUANTUM_PATH)/encoder/tests/mock_split.c \
+	$(QUANTUM_PATH)/encoder/tests/encoder_tests_split.cpp \
+>>>>>>> c0de397925 (merge bedore pointerwork)
 	$(QUANTUM_PATH)/encoder.c

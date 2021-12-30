@@ -42,6 +42,13 @@ void protocol_task(void) {
 
     protocol_post_task();
 }
+<<<<<<< HEAD
+=======
+
+#ifdef DEFERRED_EXEC_ENABLE
+void deferred_exec_task(void);
+#endif  // DEFERRED_EXEC_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /** \brief Main
  *
@@ -59,6 +66,7 @@ int main(void) {
     while (true) {
         protocol_task();
 
+<<<<<<< HEAD
 #ifdef QUANTUM_PAINTER_ENABLE
         // Run Quantum Painter animations
         void qp_internal_animation_tick(void);
@@ -70,6 +78,12 @@ int main(void) {
         void deferred_exec_task(void);
         deferred_exec_task();
 #endif // DEFERRED_EXEC_ENABLE
+=======
+#ifdef DEFERRED_EXEC_ENABLE
+        // Run deferred executions
+        deferred_exec_task();
+#endif  // DEFERRED_EXEC_ENABLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
         housekeeping_task();
     }

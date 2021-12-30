@@ -40,11 +40,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS2812_DMA_CHANNEL  3                   // DMA Channel for TIMx_UP, see the respective reference manual for the appropriate values for your MCU.
 #define WS2812_PWM_TARGET_PERIOD 800000
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define RGBLED_NUM          52
 #define RGBLIGHT_SPLIT
 #define RGBLED_SPLIT \
     { 26, 26 }
+<<<<<<< HEAD
+=======
+#define RGBLIGHT_LIMIT_VAL 150
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #define DEBUG_LED_PIN      C13
 
@@ -95,6 +102,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* eeprom config */
 #define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN A4
 #define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    64
+
+#ifdef EEPROM_SPI
+#    define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 8195
+#endif
 
 /* pmw3360 config  */
 #define PMW33XX_CS_PIN                       B0

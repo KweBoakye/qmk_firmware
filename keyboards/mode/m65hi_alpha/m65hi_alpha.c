@@ -18,6 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "m65hi_alpha.h"
 
 void board_init(void) {
+<<<<<<< HEAD
+=======
+    setPinInput(B9);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     setPinInput(B10);
 }
 

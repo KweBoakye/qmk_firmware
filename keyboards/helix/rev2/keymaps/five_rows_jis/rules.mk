@@ -11,6 +11,7 @@ HELIX_ROWS = 5              # Helix Rows is 4 or 5
 # LED_UNDERGLOW_ENABLE = no   # LED underglow (Enable WS2812 RGB underlight.)
 # LED_ANIMATIONS = yes        # LED animations
 # IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
+<<<<<<< HEAD
 
 # OLED_ENABLE が yes のとき
 #   OLED_SELECT が core ならば QMK 標準の oled_dirver.c を使用します。
@@ -19,3 +20,5 @@ HELIX_ROWS = 5              # Helix Rows is 4 or 5
 #   If OLED_SELECT is 'core', use QMK standard oled_dirver.c.
 #   If OLED_SELECT is other than 'core', use helix/local_drivers/ssd1306.c.
 OLED_SELECT = core
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

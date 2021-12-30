@@ -174,12 +174,19 @@ void protocol_pre_init(void) {
     wait_ms(50);
 
     print("USB configured.\n");
+<<<<<<< HEAD
 }
 
 void protocol_post_init(void) {
     host_set_driver(driver);
 }
 
+=======
+}
+
+void protocol_post_init(void) { host_set_driver(driver); }
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 void protocol_pre_task(void) {
     usb_event_queue_task();
 
@@ -188,7 +195,11 @@ void protocol_pre_task(void) {
         print("[s]");
         while (USB_DRIVER.state == USB_SUSPENDED) {
             /* Do this in the suspended state */
+<<<<<<< HEAD
             suspend_power_down(); // on AVR this deep sleeps for 15ms
+=======
+            suspend_power_down();  // on AVR this deep sleeps for 15ms
+>>>>>>> c0de397925 (merge bedore pointerwork)
             /* Remote wakeup */
             if (suspend_wakeup_condition()) {
                 usbWakeupHost(&USB_DRIVER);

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Keebcats Dougal 65",
     "manufacturer": "Cutie Club",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0xB265",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "Keebcats Dougal",
+    "url": "",
+    "maintainer": "Cutie Club",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [
@@ -85,6 +91,7 @@
                 { "x": 14, "y": 4 },
                 { "x": 15, "y": 4 }
             ]
+<<<<<<< HEAD
         },
         "LAYOUT_65_ansi": {
             "layout": [
@@ -238,6 +245,8 @@
                 {"x":14, "y":4},
                 {"x":15, "y":4}
             ]
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
     }
 }

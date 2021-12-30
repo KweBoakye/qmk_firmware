@@ -34,6 +34,12 @@ bool SOLID_REACTIVE_MULTICROSS(effect_params_t* params) {
 }
 #            endif
 
+<<<<<<< HEAD
 #        endif // LED_MATRIX_CUSTOM_EFFECT_IMPLS
 #    endif     // defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_CROSS) || defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTICROSS)
 #endif         // LED_MATRIX_KEYREACTIVE_ENABLED
+=======
+#        endif  // LED_MATRIX_CUSTOM_EFFECT_IMPLS
+#    endif      // defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_CROSS) || defined(ENABLE_LED_MATRIX_SOLID_REACTIVE_MULTICROSS)
+#endif          // LED_MATRIX_KEYREACTIVE_ENABLED
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_poker/rev1/info.json
     "keyboard_name": "BM60HSRGB Poker Rev1",
     "manufacturer": "KPrepublic",
+=======
+    "keyboard_name": "BM60HSRGB_POKER",
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60poker/info.json
     "url": "",
     "maintainer": "qmk",
     "usb": {

@@ -17,6 +17,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+<<<<<<< HEAD
+=======
+
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x6535
+#define DEVICE_VER      0x0100
+#define MANUFACTURER    QMK
+#define PRODUCT         IBM Terminal Keyboard
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* matrix size */
 #define MATRIX_ROWS 17  // keycode bit: 3-0

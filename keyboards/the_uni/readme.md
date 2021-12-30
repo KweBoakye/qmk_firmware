@@ -19,6 +19,7 @@ A compact unibody split ortholinear keyboard made specifically for stenography.
 
 Enter the bootloader by:
 
+<<<<<<< HEAD
 -   **Physical reset button**: On the Uni v3, briefly press the button on the back of the PCB.
 -   **Reset Pads**: Uni v1 and v2 have pins/pads you must short instead (RST to GND).
 
@@ -32,5 +33,15 @@ Make examples for this keyboard (after setting up your build environment):
 
     # version 4
     qmk compile -kb the_uni/rp_2040 -km default
+=======
+* **Physical reset button**: On the Uni v3, briefly press the button on the back of the PCB.
+* **Reset Pads**: Uni v1 and v2 have pins/pads you must short instead (RST to GND).
+
+Make examples for this keyboard (after setting up your build environment):
+
+    make the_uni/pro_micro:default
+
+    make the_uni/usb_c:default
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).

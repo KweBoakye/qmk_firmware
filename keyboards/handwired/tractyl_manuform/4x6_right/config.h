@@ -81,7 +81,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
 
+<<<<<<< HEAD
 /* PMW33XX Settings */
 #define PMW33XX_CS_PIN           B0
+=======
+/* PMW3360 Settings */
+#define PMW3360_CS_PIN           B0
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #define POINTING_DEVICE_RIGHT

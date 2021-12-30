@@ -14,7 +14,10 @@ CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = yes        # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
 AUDIO_ENABLE = no           # Audio output
+<<<<<<< HEAD
 SPLIT_KEYBOARD = yes
 RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 DEFAULT_FOLDER = rgbkb/zen/rev2

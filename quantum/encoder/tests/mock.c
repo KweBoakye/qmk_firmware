@@ -26,9 +26,13 @@ uint8_t mockSetPinInputHigh(pin_t pin) {
     return 0;
 }
 
+<<<<<<< HEAD
 bool mockReadPin(pin_t pin) {
     return pins[pin];
 }
+=======
+bool mockReadPin(pin_t pin) { return pins[pin]; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 bool setPin(pin_t pin, bool val) {
     pins[pin] = val;

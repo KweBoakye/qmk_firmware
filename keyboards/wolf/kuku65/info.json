@@ -1,5 +1,6 @@
 {
     "keyboard_name": "kuku65",
+<<<<<<< HEAD
     "manufacturer": "ToastyStoemp",
     "url": "",
     "maintainer": "ToastyStoemp",
@@ -8,6 +9,10 @@
         "pid": "0x0052",
         "device_version": "0.0.1"
     },
+=======
+    "url": "",
+    "maintainer": "ToastyStoemp",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

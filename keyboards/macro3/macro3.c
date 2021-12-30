@@ -10,9 +10,15 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     if (!encoder_update_user(index, clockwise)) { return false; }
     if (index == 0) {
         if (clockwise) {
+<<<<<<< HEAD
             tap_code_delay(KC_VOLU, 10);
         } else {
             tap_code_delay(KC_VOLD, 10);
+=======
+            tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
     } else if (index == 1) {
         if (clockwise) {

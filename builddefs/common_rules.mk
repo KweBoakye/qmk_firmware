@@ -39,6 +39,7 @@ USE_CCACHE ?= no
 ifneq ($(USE_CCACHE),no)
     CC_PREFIX ?= ccache
 endif
+<<<<<<< HEAD:builddefs/common_rules.mk
 
 #---------------- C Compiler Options ----------------
 
@@ -51,6 +52,24 @@ ifeq ($(strip $(LTO_ENABLE)), yes)
     CDEFS += -DLTO_ENABLE
 endif
 
+=======
+
+#---------------- Compiler Options C ----------------
+#  -g*:          generate debugging information
+#  -O*:          optimization level
+#  -f...:        tuning, see GCC manual and avr-libc documentation
+#  -Wall...:     warning level
+#  -Wa,...:      tell GCC to pass this to the assembler.
+ifeq ($(strip $(LTO_ENABLE)), yes)
+    ifeq ($(PLATFORM),CHIBIOS)
+        $(info Enabling LTO on ChibiOS-targeting boards is known to have a high likelihood of failure.)
+        $(info If unsure, set LTO_ENABLE = no.)
+    endif
+    CDEFS += -flto
+    CDEFS += -DLTO_ENABLE
+endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 DEBUG_ENABLE ?= yes
 ifeq ($(strip $(SKIP_DEBUG_INFO)),yes)
   DEBUG_ENABLE=no
@@ -72,14 +91,31 @@ CFLAGS += -Wstrict-prototypes
 ifneq ($(strip $(ALLOW_WARNINGS)), yes)
     CFLAGS += -Werror
 endif
+<<<<<<< HEAD:builddefs/common_rules.mk
+=======
+#CFLAGS += -mshort-calls
+#CFLAGS += -fno-unit-at-a-time
+#CFLAGS += -Wundef
+#CFLAGS += -Wunreachable-code
+#CFLAGS += -Wsign-compare
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 CFLAGS += $(CSTANDARD)
 
 # This fixes lots of keyboards linking errors but SHOULDN'T BE A FINAL SOLUTION
 # Fixing of multiple variable definitions must be made.
 CFLAGS += -fcommon
 
+<<<<<<< HEAD:builddefs/common_rules.mk
 #---------------- C++ Compiler Options ----------------
 
+=======
+#---------------- Compiler Options C++ ----------------
+#  -g*:          generate debugging information
+#  -O*:          optimization level
+#  -f...:        tuning, see GCC manual and avr-libc documentation
+#  -Wall...:     warning level
+#  -Wa,...:      tell GCC to pass this to the assembler.
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 ifeq ($(strip $(DEBUG_ENABLE)),yes)
   CXXFLAGS += -g$(DEBUG)
 endif
@@ -93,9 +129,20 @@ CXXFLAGS += -Wundef
 ifneq ($(strip $(ALLOW_WARNINGS)), yes)
     CXXFLAGS += -Werror
 endif
+<<<<<<< HEAD:builddefs/common_rules.mk
 
 #---------------- Assembler Options ----------------
 
+=======
+#CXXFLAGS += -mshort-calls
+#CXXFLAGS += -fno-unit-at-a-time
+#CXXFLAGS += -Wstrict-prototypes
+#CXXFLAGS += -Wunreachable-code
+#CXXFLAGS += -Wsign-compare
+#CXXFLAGS += $(CSTANDARD)
+
+#---------------- Assembler Options ----------------
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 ASFLAGS += $(ADEFS)
 ifeq ($(VERBOSE_AS_CMD),yes)
 	ASFLAGS += -v
@@ -118,6 +165,17 @@ LDFLAGS += -lm
 LDFLAGS += $(EXTRALDFLAGS)
 
 #---------------- Assembler Listings ----------------
+<<<<<<< HEAD:builddefs/common_rules.mk
+=======
+#  -Wa,...:   tell GCC to pass this to the assembler.
+#  -adhlns:   create listing
+#  -gstabs:   have the assembler create line number information; note that
+#             for use in COFF files, additional information about filenames
+#             and function names needs to be present in the assembler source
+#             files -- see avr-libc docs [FIXME: not yet described there]
+#  -listing-cont-lines: Sets the maximum number of continuation lines of hex
+#       dump that will be displayed for a given single line of source input.
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 
 ADHLNS_ENABLE ?= no
 ifeq ($(ADHLNS_ENABLE),yes)
@@ -382,7 +440,11 @@ ifeq ($(findstring avr-gcc,$(CC)),avr-gcc)
 SIZE_MARGIN = 1024
 
 check-size:
+<<<<<<< HEAD:builddefs/common_rules.mk
 	$(eval MAX_SIZE=$(shell n=`$(CC) -E -mmcu=$(MCU) -D__ASSEMBLER__ $(CFLAGS) $(OPT_DEFS) platforms/avr/bootloader_size.c 2> /dev/null | $(SED) -ne 's/\r//;/^#/n;/^AVR_SIZE:/,$${s/^AVR_SIZE: //;p;}'` && echo $$(($$n)) || echo 0))
+=======
+	$(eval MAX_SIZE=$(shell n=`$(CC) -E -mmcu=$(MCU) -D__ASSEMBLER__ $(CFLAGS) $(OPT_DEFS) platforms/avr/bootloader_size.c 2> /dev/null | sed -ne 's/\r//;/^#/n;/^AVR_SIZE:/,$${s/^AVR_SIZE: //;p;}'` && echo $$(($$n)) || echo 0))
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/rules.mk
 	$(eval CURRENT_SIZE=$(shell if [ -f $(BUILD_DIR)/$(TARGET).hex ]; then $(SIZE) --target=$(FORMAT) $(BUILD_DIR)/$(TARGET).hex | $(AWK) 'NR==2 {print $$4}'; else printf 0; fi))
 	$(eval FREE_SIZE=$(shell expr $(MAX_SIZE) - $(CURRENT_SIZE)))
 	$(eval OVER_SIZE=$(shell expr $(CURRENT_SIZE) - $(MAX_SIZE)))

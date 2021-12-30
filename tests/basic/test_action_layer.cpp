@@ -131,12 +131,22 @@ TEST_F(ActionLayer, MomentaryLayerDoesNothing) {
     set_keymap({layer_key});
 
     /* Press and release MO, nothing should happen. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -151,28 +161,46 @@ TEST_F(ActionLayer, MomentaryLayerWithKeypress) {
     set_keymap({layer_key, regular_key, KeymapKey{1, 1, 0, KC_B}});
 
     /* Press MO. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press key on layer 1 */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_B)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_B))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release key on layer 1 */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release MO */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
@@ -188,14 +216,23 @@ TEST_F(ActionLayer, ToggleLayerDoesNothing) {
     set_keymap({layer_key});
 
     /* Press TG. Layer state should not change as it's applied on release. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release TG. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
@@ -212,26 +249,44 @@ TEST_F(ActionLayer, ToggleLayerUpAndDown) {
     set_keymap({toggle_layer_1_on_layer_0, toggle_layer_0_on_layer_1});
 
     /* Toggle Layer 1. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     toggle_layer_1_on_layer_0.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     toggle_layer_1_on_layer_0.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Toggle Layer 0. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     toggle_layer_0_on_layer_1.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     toggle_layer_0_on_layer_1.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
@@ -247,13 +302,22 @@ TEST_F(ActionLayer, LayerTapToggleDoesNothing) {
     set_keymap({layer_key});
 
     /* Press and release TT. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(2);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
@@ -271,25 +335,43 @@ TEST_F(ActionLayer, LayerTapToggleWithKeypress) {
     set_keymap({layer_key, regular_key, KeymapKey{1, 1, 0, KC_B}});
 
     /* Press TT. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_B)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_B))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
@@ -307,7 +389,12 @@ TEST_F(ActionLayer, LayerTapToggleWithToggleWithKeypress) {
     set_keymap({layer_key, regular_key, KeymapKey{1, 1, 0, KC_B}});
 
     /* Tap TT five times . */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    /* TODO: QMK currently sends an empty report even if nothing needs to be reported to the host! */
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(9);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
     layer_key.press();
     run_one_scan_loop();
@@ -346,13 +433,21 @@ TEST_F(ActionLayer, LayerTapToggleWithToggleWithKeypress) {
 
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_B)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_B))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
@@ -370,7 +465,11 @@ TEST_F(ActionLayer, LayerTapReleasedBeforeKeypressReleaseWithModifiers) {
     set_keymap({layer_0_key_0, layer_1_key_1});
 
     /* Press layer tap and wait for tapping term to switch to layer 1 */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_0_key_0.press();
     idle_for(TAPPING_TERM);
     EXPECT_TRUE(layer_state_is(0));
@@ -378,23 +477,37 @@ TEST_F(ActionLayer, LayerTapReleasedBeforeKeypressReleaseWithModifiers) {
 
     /* Press key with layer 1 mapping, result basically expected
      * altough more reports are send then necessary. */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_RALT)).Times(1);
     EXPECT_REPORT(driver, (KC_RALT, KC_9)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_RALT))).Times(1);
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_RALT, KC_9))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_1_key_1.press();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(1));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release layer tap key, no report is send because key is still held. */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_0_key_0.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Unregister keycode and modifier. */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (KC_RALT)).Times(1);
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(KC_RALT))).Times(1);
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     layer_1_key_1.release();
     run_one_scan_loop();
     EXPECT_TRUE(layer_state_is(0));

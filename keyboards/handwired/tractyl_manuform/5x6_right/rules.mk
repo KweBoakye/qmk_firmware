@@ -6,7 +6,12 @@ MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
+<<<<<<< HEAD
 NKRO_ENABLE = yes           # Enable N-Key Rollover
+=======
+# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes           # USB Nkey Rollover
+>>>>>>> c0de397925 (merge bedore pointerwork)
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
@@ -18,4 +23,9 @@ MOUSE_SHARED_EP = yes
 
 SPLIT_KEYBOARD = yes
 
+<<<<<<< HEAD
+=======
+QUANTUM_LIB_SRC += tm_sync.c
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 DEFAULT_FOLDER = handwired/tractyl_manuform/5x6_right/teensy2pp

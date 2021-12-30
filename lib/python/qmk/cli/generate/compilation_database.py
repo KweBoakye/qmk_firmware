@@ -26,8 +26,12 @@ def system_libs(binary: str) -> List[Path]:
 
     # Actually query xxxxxx-gcc to find its include paths.
     if binary.endswith("gcc") or binary.endswith("g++"):
+<<<<<<< HEAD
         # (TODO): Remove 'stdin' once 'input' no longer causes issues under MSYS
         result = cli.run([binary, '-E', '-Wp,-v', '-'], capture_output=True, check=True, stdin=None, input='\n')
+=======
+        result = cli.run([binary, '-E', '-Wp,-v', '-'], capture_output=True, check=True, input='\n')
+>>>>>>> c0de397925 (merge bedore pointerwork)
         paths = []
         for line in result.stderr.splitlines():
             if line.startswith(" "):

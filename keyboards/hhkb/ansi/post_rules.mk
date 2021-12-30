@@ -4,6 +4,7 @@ OPT_DEFS += -DHHKB_RN42_ENABLE
 
 # Support for the RN42 Bluetooth module. This is the BT module in Hasu's BT
 # HHKB Alt controller.
+<<<<<<< HEAD
 RN42_DIR = keyboards/hhkb/rn42
 
 SRC +=  serial_uart.c \
@@ -12,6 +13,16 @@ SRC +=  serial_uart.c \
 	rn42_task.c \
 	battery.c \
 	main.c
+=======
+RN42_DIR = ../rn42
+
+SRC +=  serial_uart.c \
+	../rn42/suart.S \
+	../rn42/rn42.c \
+	../rn42/rn42_task.c \
+	../rn42/battery.c \
+	../rn42/main.c
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 VPATH += $(RN42_DIR)
 

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "keyboard_name": "NumPad",
   "manufacturer": "tlprt",
   "maintainer": "ebastler",
@@ -7,6 +8,10 @@
     "pid": "0x0001",
     "device_version": "0.0.1"
   },
+=======
+  "keyboard_name": "tlprt_NumPad",
+  "maintainer": "ebastler",
+>>>>>>> c0de397925 (merge bedore pointerwork)
   "layouts": {
     "LAYOUT_numpad_5x4": {
       "layout": [

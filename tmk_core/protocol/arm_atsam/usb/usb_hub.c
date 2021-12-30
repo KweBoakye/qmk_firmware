@@ -150,9 +150,13 @@ void USB_configure(void) {
     DBGC(DC_USB_CONFIGURE_COMPLETE);
 }
 
+<<<<<<< HEAD:tmk_core/protocol/arm_atsam/usb/usb_hub.c
 uint16_t USB_active(void) {
     return USB2422_active();
 }
+=======
+uint16_t USB_active(void) { return USB2422_active(); }
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/protocol/arm_atsam/usb/usb2422.c
 
 void USB_set_host_by_voltage(void) {
     // UP is upstream device (HOST)

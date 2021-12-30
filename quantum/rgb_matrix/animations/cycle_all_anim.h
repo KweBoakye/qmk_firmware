@@ -11,5 +11,10 @@ bool CYCLE_ALL(effect_params_t* params) {
     return effect_runner_i(params, &CYCLE_ALL_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_CYCLE_ALL
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_CYCLE_ALL
+>>>>>>> c0de397925 (merge bedore pointerwork)

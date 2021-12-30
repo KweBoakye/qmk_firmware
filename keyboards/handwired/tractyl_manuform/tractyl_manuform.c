@@ -17,6 +17,7 @@
 #include "tractyl_manuform.h"
 #include "transactions.h"
 #include <string.h>
+<<<<<<< HEAD
 
 #ifdef CONSOLE_ENABLE
 #    include "print.h"
@@ -215,6 +216,26 @@ static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
         mouse_report->y = DISPLACEMENT_WITH_ACCELERATION(mouse_report->y);
     }
 }
+=======
+#include "drivers/sensors/pmw3360.h"
+
+#ifndef TRACKBALL_DPI_OPTIONS
+#    define TRACKBALL_DPI_OPTIONS \
+        { 1200, 1600, 2400 }
+#    ifndef TRACKBALL_DPI_DEFAULT
+#        define TRACKBALL_DPI_DEFAULT 1
+#    endif
+#endif
+#ifndef TRACKBALL_DPI_DEFAULT
+#    define TRACKBALL_DPI_DEFAULT 0
+#endif
+
+keyboard_config_t keyboard_config;
+uint16_t          dpi_array[] = TRACKBALL_DPI_OPTIONS;
+#define DPI_OPTION_SIZE (sizeof(dpi_array) / sizeof(uint16_t))
+
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     pointing_device_task_charybdis(&mouse_report);
@@ -312,9 +333,15 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
     // Simulate mouse keys if full support is not enabled (reduces firmware size
     // while maintaining support for mouse keys).
     if (IS_MOUSEKEY_BUTTON(keycode)) {
+<<<<<<< HEAD
         report_mouse_t mouse_report = pointing_device_get_report();
         mouse_report.buttons        = pointing_device_handle_buttons(mouse_report.buttons, record->event.pressed, keycode - KC_MS_BTN1);
         pointing_device_set_report(mouse_report);
+=======
+        report_mouse_t currentReport = pointing_device_get_report();
+        currentReport.buttons        = pointing_device_handle_buttons(currentReport.buttons, record->event.pressed, keycode - KC_MS_BTN1);
+        pointing_device_set_report(currentReport);
+>>>>>>> c0de397925 (merge bedore pointerwork)
         pointing_device_send();
     }
 #    endif  // !MOUSEKEY_ENABLE
@@ -330,6 +357,7 @@ void eeconfig_init_kb(void) {
 
 void matrix_power_up(void) { pointing_device_task(); }
 
+<<<<<<< HEAD
 void charybdis_config_sync_handler(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
     if (initiator2target_buffer_size == sizeof(g_charybdis_config)) {
         memcpy(&g_charybdis_config, initiator2target_buffer, sizeof(g_charybdis_config));
@@ -368,6 +396,19 @@ void housekeeping_task_kb(void) {
         }
     }
     // no need for user function, is called already
+=======
+#ifdef POINTING_DEVICE_ENABLE
+void pointing_device_init_kb(void) {
+    trackball_set_cpi(dpi_array[keyboard_config.dpi_config]);
+    pointing_device_init_user();
+}
+
+report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
+    if (is_keyboard_master()) {
+        mouse_report = pointing_device_task_user(mouse_report);
+    }
+    return mouse_report;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 #endif  // POINTING_DEVICE_ENABLE

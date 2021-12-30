@@ -36,10 +36,17 @@ ifeq ($(strip $(MCU)), risc-v)
     # RISC-V Support
     # As of 7.4.2021 there is only one supported RISC-V platform in Chibios-Contrib,
     # therefore all required settings are hard-coded
+<<<<<<< HEAD:platforms/chibios/platform.mk
     USE_CHIBIOS_CONTRIB = yes
     STARTUP_MK = $(CHIBIOS_CONTRIB)/os/common/startup/RISCV-ECLIC/compilers/GCC/mk/startup_$(MCU_STARTUP).mk
     PORT_V = $(CHIBIOS_CONTRIB)/os/common/ports/RISCV-ECLIC/compilers/GCC/mk/port.mk
     RULESPATH = $(CHIBIOS_CONTRIB)/os/common/startup/RISCV-ECLIC/compilers/GCC
+=======
+    STARTUP_MK = $(CHIBIOS_CONTRIB)/os/common/startup/RISCV-ECLIC/compilers/GCC/mk/startup_$(MCU_STARTUP).mk
+    PORT_V = $(CHIBIOS_CONTRIB)/os/common/ports/RISCV-ECLIC/compilers/GCC/mk/port.mk
+    RULESPATH = $(CHIBIOS_CONTRIB)/os/common/startup/RISCV-ECLIC/compilers/GCC
+    PLATFORM_MK = $(CHIBIOS_CONTRIB)/os/hal/ports/GD/GD32VF103/platform.mk
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/chibios.mk
 else
     # ARM Support
     CHIBIOS_PORT ?=
@@ -80,6 +87,7 @@ endif
 
 ifeq ("$(PLATFORM_NAME)","")
     PLATFORM_NAME = platform
+<<<<<<< HEAD:platforms/chibios/platform.mk
 endif
 
 # If no MCU port name was specified, use the family instead
@@ -99,6 +107,17 @@ ifeq ("$(MCU_ARCH)","")
     MCU_ARCH = $(MCU)
 endif
 
+=======
+endif
+
+ifeq ("$(wildcard $(PLATFORM_MK))","")
+    PLATFORM_MK = $(CHIBIOS)/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)/$(PLATFORM_NAME).mk
+    ifeq ("$(wildcard $(PLATFORM_MK))","")
+        PLATFORM_MK = $(CHIBIOS_CONTRIB)/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)/$(PLATFORM_NAME).mk
+    endif
+endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/chibios.mk
 include $(STARTUP_MK)
 include $(PORT_V)
 include $(PLATFORM_MK)
@@ -271,8 +290,12 @@ PLATFORM_SRC = \
         $(STREAMSSRC) \
         $(CHIBIOS)/os/various/syscalls.c \
         $(PLATFORM_COMMON_DIR)/syscall-fallbacks.c \
+<<<<<<< HEAD:platforms/chibios/platform.mk
         $(PLATFORM_COMMON_DIR)/wait.c \
         $(PLATFORM_COMMON_DIR)/synchronization_util.c
+=======
+        $(PLATFORM_COMMON_DIR)/wait.c
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/chibios.mk
 
 # Ensure the ASM files are not subjected to LTO -- it'll strip out interrupt handlers otherwise.
 QUANTUM_LIB_SRC += $(STARTUPASM) $(PORTASM) $(OSALASM) $(PLATFORMASM)
@@ -349,6 +372,7 @@ SHARED_CFLAGS = -fomit-frame-pointer \
                 -ffunction-sections \
                 -fdata-sections \
                 -fno-common \
+<<<<<<< HEAD:platforms/chibios/platform.mk
                 -fshort-wchar \
                 -fno-builtin-printf
 
@@ -357,6 +381,12 @@ LDSCRIPT_PATH := $(shell dirname "$(LDSCRIPT)")
 # Shared Linker flags for all toolchains
 SHARED_LDFLAGS = -T $(LDSCRIPT) \
                  -L $(LDSCRIPT_PATH) \
+=======
+                -fshort-wchar
+
+# Shared Linker flags for all toolchains
+SHARED_LDFLAGS = -T $(LDSCRIPT) \
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/chibios.mk
                  -Wl,--gc-sections \
                  -nostartfiles
 
@@ -370,7 +400,11 @@ ifeq ($(strip $(MCU)), risc-v)
             ifneq ($(shell which riscv64-unknown-elf-gcc 2>/dev/null),)
                 TOOLCHAIN = riscv64-unknown-elf-
             else
+<<<<<<< HEAD:platforms/chibios/platform.mk
                 $(call CATASTROPHIC_ERROR,Missing toolchain,No RISC-V toolchain found. Can't find riscv32-unknown-elf-gcc or riscv64-unknown-elf-gcc found in your systems PATH variable. Please install a valid toolchain and make it accessible!)
+=======
+                $(error "No RISC-V toolchain found. Can't find riscv32-unknown-elf-gcc or riscv64-unknown-elf-gcc found in your systems PATH variable. Please install a valid toolchain and make it accessible!")
+>>>>>>> c0de397925 (merge bedore pointerwork):tmk_core/chibios.mk
             endif
         endif
     endif

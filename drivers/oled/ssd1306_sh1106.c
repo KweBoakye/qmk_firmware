@@ -232,12 +232,17 @@ bool oled_init(oled_rotation_t rotation) {
     return true;
 }
 
+<<<<<<< HEAD
 __attribute__((weak)) oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
     return rotation;
 }
 __attribute__((weak)) oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return rotation;
 }
+=======
+__attribute__((weak)) oled_rotation_t oled_init_kb(oled_rotation_t rotation) { return rotation; }
+__attribute__((weak)) oled_rotation_t oled_init_user(oled_rotation_t rotation) { return rotation; }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 void oled_clear(void) {
     memset(oled_buffer, 0, sizeof(oled_buffer));
@@ -788,9 +793,14 @@ void oled_task(void) {
 #endif
 }
 
+<<<<<<< HEAD
 __attribute__((weak)) bool oled_task_kb(void) {
     return oled_task_user();
 }
 __attribute__((weak)) bool oled_task_user(void) {
     return true;
 }
+=======
+__attribute__((weak)) bool oled_task_kb(void) { return oled_task_user(); }
+__attribute__((weak)) bool oled_task_user(void) { return true; }
+>>>>>>> c0de397925 (merge bedore pointerwork)

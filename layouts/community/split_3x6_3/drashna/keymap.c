@@ -87,10 +87,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_ADJUST] = LAYOUT_split_3x6_3_wrapper( \
+<<<<<<< HEAD
     QK_MAKE, _________________ADJUST_L1_________________,                    _________________ADJUST_R1_________________, QK_BOOT,
     VRSN,    _________________ADJUST_L2_________________,                    _________________ADJUST_R2_________________, EE_CLR,
     KEYLOCK, _________________ADJUST_L3_________________,                    _________________ADJUST_R3_________________, RGB_IDL,
                                      QK_RBT, KC_NUKE, _______,        _______, TG_MODS, AUTO_CTN
+=======
+    KC_MAKE, _________________ADJUST_L1_________________,                    _________________ADJUST_R1_________________, KC_RESET,
+    VRSN,    _________________ADJUST_L2_________________,                    _________________ADJUST_R2_________________, EEP_RST,
+    KEYLOCK, _________________ADJUST_L3_________________,                    _________________ADJUST_R3_________________, RGB_IDL,
+                                     HPT_TOG, KC_NUKE, _______,        _______, TG_MODS, HPT_FBK
+>>>>>>> c0de397925 (merge bedore pointerwork)
   )
 };
 // clang-format on

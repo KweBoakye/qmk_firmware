@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Unicomp Mini M",
+<<<<<<< HEAD
     "manufacturer": "stevendlander",
     "url": "",
     "maintainer": "stevendlander",
@@ -8,6 +9,10 @@
         "pid": "0x0000",
         "device_version": "0.0.1"
     },
+=======
+    "maintainer": "stevendlander",
+    "url": "",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

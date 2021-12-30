@@ -1,5 +1,13 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD:keyboards/kapcave/arya/arya.c
 Copyright 2021 KapCave
+=======
+Copyright 2021 Thomas Weißschuh <thomas@t-8ch.de>
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/process_keycode/process_programmable_button.h
+=======
+Copyright 2021 KapCave
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,6 +22,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+<<<<<<< HEAD
+<<<<<<< HEAD:keyboards/kapcave/arya/arya.c
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #include "arya.h"
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -25,3 +37,15 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     return true;
 }
+<<<<<<< HEAD
+=======
+
+#pragma once
+
+#include <stdint.h>
+#include "quantum.h"
+
+bool process_programmable_button(uint16_t keycode, keyrecord_t *record);
+>>>>>>> c0de397925 (merge bedore pointerwork):quantum/process_keycode/process_programmable_button.h
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

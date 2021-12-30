@@ -146,7 +146,11 @@ bool process_music(uint16_t keycode, keyrecord_t *record) {
 
     if (music_activated || midi_activated) {
         if (record->event.pressed) {
+<<<<<<< HEAD
             if (keycode == KC_LEFT_CTRL) { // Start recording
+=======
+            if (keycode == KC_LEFT_CTRL) {  // Start recording
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 music_all_notes_off();
                 music_sequence_recording = true;
                 music_sequence_recorded  = false;
@@ -155,7 +159,11 @@ bool process_music(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
 
+<<<<<<< HEAD
             if (keycode == KC_LEFT_ALT) { // Stop recording/playing
+=======
+            if (keycode == KC_LEFT_ALT) {  // Stop recording/playing
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 music_all_notes_off();
                 if (music_sequence_recording) { // was recording
                     music_sequence_recorded = true;
@@ -165,7 +173,11 @@ bool process_music(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
 
+<<<<<<< HEAD
             if (keycode == KC_LEFT_GUI && music_sequence_recorded) { // Start playing
+=======
+            if (keycode == KC_LEFT_GUI && music_sequence_recorded) {  // Start playing
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 music_all_notes_off();
                 music_sequence_recording = false;
                 music_sequence_playing   = true;

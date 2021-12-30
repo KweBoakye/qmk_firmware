@@ -17,6 +17,12 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+#undef PRODUCT_ID
+#define PRODUCT_ID   0x10FF
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 

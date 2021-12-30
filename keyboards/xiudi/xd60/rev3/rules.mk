@@ -5,8 +5,11 @@ MCU = atmega32u4
 BOOTLOADER = atmel-dfu
 
 # Build Options
+<<<<<<< HEAD
 #   change yes to no to disable
 #
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control

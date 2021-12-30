@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Portal 66 Hotswap",
+<<<<<<< HEAD
     "manufacturer": "Parallel Limited",
     "maintainer": "matthewdias",
     "usb": {
@@ -7,6 +8,9 @@
         "pid": "0x5067",
         "device_version": "0.0.1"
     },
+=======
+    "maintainer": "matthewdias",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT": "LAYOUT_65_ansi_blocker"
     },

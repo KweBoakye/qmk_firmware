@@ -55,7 +55,10 @@ static debounce_counter_t *debounce_counters;
 static fast_timer_t        last_time;
 static bool                counters_need_update;
 static bool                matrix_need_update;
+<<<<<<< HEAD
 static bool                cooked_changed;
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #    define DEBOUNCE_ELAPSED 0
 

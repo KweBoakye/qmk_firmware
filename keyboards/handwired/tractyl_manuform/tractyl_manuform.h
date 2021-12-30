@@ -97,6 +97,7 @@ void charybdis_cycle_pointer_sniping_dpi_noeeprom(bool forward);
 /** \brief Whether sniper-mode is enabled. */
 bool charybdis_get_pointer_sniping_enabled(void);
 
+<<<<<<< HEAD
 /**
  * \brief Enable/disable sniper mode.
  *
@@ -117,5 +118,8 @@ bool charybdis_get_pointer_dragscroll_enabled(void);
 void charybdis_set_pointer_dragscroll_enabled(bool enable);
 #endif  // POINTING_DEVICE_ENABLE
 
+=======
+void trackball_set_cpi(uint16_t cpi);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 void matrix_init_sub_kb(void);
 void matrix_scan_sub_kb(void);

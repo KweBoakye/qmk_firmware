@@ -89,6 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_LSFT, _______,                     _______,
                                                KC_LCTL, KC_V,               _______, _______
     ),
+<<<<<<< HEAD
     [_MOUSE] = LAYOUT_5x6_right(
         _______, _______, _______, _______, _______, _______,                        DRGSCRL, DPI_RMOD,DPI_MOD, S_D_RMOD,S_D_MOD, SNP_TOG,
         _______, _______, _______, _______, _______, _______,                        KC_WH_U, _______, _______, _______, _______, _______,
@@ -99,6 +100,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,               _______,
                                                      _______, _______,      _______, _______
     ),
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     [_LOWER] = LAYOUT_5x6_right_wrapper(
         KC_F12,  _________________FUNC_LEFT_________________,                        _________________FUNC_RIGHT________________, KC_F11,
         _______, _________________LOWER_L1__________________,                        _________________LOWER_R1__________________, _______,
@@ -120,6 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,      _______, _______
     ),
     [_ADJUST] = LAYOUT_5x6_right_wrapper(
+<<<<<<< HEAD
         QK_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,                 KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, QK_BOOT,
         VRSN,    _________________ADJUST_L1_________________,                        _________________ADJUST_R1_________________, EE_CLR,
         KEYLOCK, _________________ADJUST_L2_________________,                        _________________ADJUST_R2_________________, TG_MODS,
@@ -128,6 +132,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, QK_RBT,                                  KC_NUKE,
                                                      _______, _______,               _______,
                                                      _______, _______,      KC_NUKE, _______
+=======
+        KC_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,               KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, KC_RST,
+        VRSN,    _________________ADJUST_L1_________________,                      _________________ADJUST_R1_________________, EEP_RST,
+        KEYLOCK, _________________ADJUST_L2_________________,                      _________________ADJUST_R2_________________, TG_MODS,
+        UC_MOD,  _________________ADJUST_L3_________________,                      _________________ADJUST_R3_________________, KC_MPLY,
+                          HPT_DWLI, HPT_DWLD,                                                        TG_GAME, TG_DBLO,
+                                            HPT_TOG, HPT_BUZ,                               KC_NUKE,
+                                                     _______, _______,             _______,
+                                                     _______, TG(_DIABLOII),KC_NUKE, _______
+>>>>>>> c0de397925 (merge bedore pointerwork)
     ),
 };
 
@@ -167,12 +181,88 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         tap_code_delay(clockwise ? KC_VOLD : KC_VOLU, 5);
     } else if (index == 1) {
+<<<<<<< HEAD
         if (last_direction != clockwise || encoder_token == INVALID_DEFERRED_TOKEN) {
             uint8_t keycode = clockwise ? KC_WH_D : KC_WH_U;
             last_direction  = clockwise;
             if (encoder_token != INVALID_DEFERRED_TOKEN) {
                 if (cancel_deferred_exec(encoder_token)) {
                     encoder_token = INVALID_DEFERRED_TOKEN;
+=======
+        tap_code_delay(clockwise ? KC_WH_D : KC_WH_U, 5);
+    }
+    return false;
+}
+#endif
+
+#ifdef POINTING_DEVICE_ENABLE
+static uint16_t mouse_timer           = 0;
+static uint16_t mouse_debounce_timer  = 0;
+static uint8_t  mouse_keycode_tracker = 0;
+bool            tap_toggling          = false;
+
+#    ifdef TAPPING_TERM_PER_KEY
+#        define TAP_CHECK get_tapping_term(KC_BTN1, NULL)
+#    else
+#        ifndef TAPPING_TERM
+#            define TAPPING_TERM 200
+#        endif
+#        define TAP_CHECK TAPPING_TERM
+#    endif
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    int8_t x = mouse_report.x, y = mouse_report.y;
+    mouse_report.x = 0;
+    mouse_report.y = 0;
+
+    if (x != 0 && y != 0) {
+        mouse_timer = timer_read();
+#    ifdef OLED_ENABLE
+        oled_timer = timer_read32();
+#    endif
+        if (timer_elapsed(mouse_debounce_timer) > TAP_CHECK) {
+            if (enable_acceleration) {
+                x = (x > 0 ? x * x / 16 + x : -x * x / 16 + x);
+                y = (y > 0 ? y * y / 16 + y : -y * y / 16 + y);
+            }
+            mouse_report.x = x;
+            mouse_report.y = y;
+            if (!layer_state_is(_MOUSE)) {
+                layer_on(_MOUSE);
+            }
+        }
+    }
+    return mouse_report;
+}
+
+void matrix_scan_keymap(void) {
+    if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE) && !mouse_keycode_tracker && !tap_toggling) {
+        layer_off(_MOUSE);
+    }
+    if (tap_toggling) {
+        if (!layer_state_is(_MOUSE)) {
+            layer_on(_MOUSE);
+        }
+    }
+}
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case TT(_MOUSE):
+            if (record->event.pressed) {
+                mouse_keycode_tracker++;
+            } else {
+#    if TAPPING_TOGGLE != 0
+                if (record->tap.count == TAPPING_TOGGLE) {
+                    tap_toggling ^= 1;
+#        if TAPPING_TOGGLE == 1
+                    if (!tap_toggling) mouse_keycode_tracker -= record->tap.count + 1;
+#        else
+                    if (!tap_toggling) mouse_keycode_tracker -= record->tap.count;
+#        endif
+                } else {
+                    mouse_keycode_tracker--;
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 }
                 unregister_code(clockwise ? KC_WH_U : KC_WH_D);
             }
@@ -193,9 +283,44 @@ oled_rotation_t oled_init_keymap(oled_rotation_t rotation) {
     return OLED_ROTATION_180;
 }
 
+<<<<<<< HEAD
 void oled_render_large_display(bool side) {
     if (side) {
         render_wpm_graph(56, 64);
+=======
+    // assumes 1 frame prep stage
+    void        animation_phase(void) {
+        if (tap_toggling) {
+            anim_frame_duration = 300;
+            current_rtogi_frame = (current_rtogi_frame + 1) % RTOGI_FRAMES;
+            oled_write_raw_P(rtogi[abs((RTOGI_FRAMES - 1) - current_rtogi_frame)], ANIM_SIZE);
+        } else {
+            if (get_current_wpm() <= SLEEP_SPEED) {
+                anim_frame_duration = 500;
+                current_sleep_frame = (current_sleep_frame + 1) % SLEEP_FRAMES;
+                oled_write_raw_P(sleep[abs((SLEEP_FRAMES - 1) - current_sleep_frame)], ANIM_SIZE);
+            }
+            // if(get_current_wpm() >IDLE_SPEED && get_current_wpm() <TAP_SPEED){
+            if (get_current_wpm() > SLEEP_SPEED) {
+                anim_frame_duration = 800;
+                current_wake_frame  = (current_wake_frame + 1) % WAKE_FRAMES;
+                oled_write_raw_P(wake[abs((WAKE_FRAMES - 1) - current_wake_frame)], ANIM_SIZE);
+                // oled_write_raw_P(wake[0], ANIM_SIZE);  // remove if IDLE_FRAMES >1
+            }
+            if (get_current_wpm() >= KAKI_SPEED) {
+                anim_frame_duration = 500;
+                current_kaki_frame  = (current_kaki_frame + 1) % KAKI_FRAMES;
+                oled_write_raw_P(kaki[abs((KAKI_FRAMES - 1) - current_kaki_frame)], ANIM_SIZE);
+            }
+        }
+    }
+    if (get_current_wpm() != 000) {
+        // if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
+        if (timer_elapsed32(anim_timer) > anim_frame_duration) {
+            anim_timer = timer_read32();
+            animation_phase();
+        }
+>>>>>>> c0de397925 (merge bedore pointerwork)
     } else {
         oled_advance_page(true);
         oled_advance_page(true);
@@ -238,6 +363,22 @@ void oled_render_large_display(bool side) {
                 oled_write_P(PSTR("     Unknown"), false);
                 break;
         }
+<<<<<<< HEAD
+=======
+    }
+}
+
+void oled_driver_render_logo_left(void) {
+    render_kitty();
+
+    oled_set_cursor(6, 0);
+    oled_write_P(PSTR("  Tractyl      "), false);
+    oled_set_cursor(6, 1);
+    oled_write_P(PSTR("     Manuform  "), false);
+    oled_set_cursor(6, 2);
+#    if defined(WPM_ENABLE)
+    render_wpm(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    endif
     }
 }

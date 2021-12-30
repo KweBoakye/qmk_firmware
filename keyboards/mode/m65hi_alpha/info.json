@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "keyboard_name": "SixtyFive HI",
   "manufacturer": "Mode",
   "url": "",
@@ -13,6 +14,13 @@
   },
   "layouts": {
       "LAYOUT_65_iso_blocker": {
+=======
+  "keyboard_name": "Mode SixtyFive HI",
+  "url": "",
+  "maintainer": "Gondolindrim",
+  "layouts": {
+      "LAYOUT_all": {
+>>>>>>> c0de397925 (merge bedore pointerwork)
           "layout": [
               { "label": "K00", "x": 0, "y": 0 },
               { "label": "K01", "x": 1, "y": 0 },
@@ -87,6 +95,7 @@
               { "label": "K5D", "x": 14, "y": 4 },
               { "label": "K5E", "x": 15, "y": 4 }
           ]
+<<<<<<< HEAD
       },
       "LAYOUT_65_iso_blocker_tsangan": {
           "layout": [
@@ -162,6 +171,8 @@
               { "label": "K5D", "x": 14, "y": 4 },
               { "label": "K5E", "x": 15, "y": 4 }
           ]
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
       }
   }
 }

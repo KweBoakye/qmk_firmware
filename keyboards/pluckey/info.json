@@ -1,5 +1,6 @@
 {
     "keyboard_name": "pluckey",
+<<<<<<< HEAD
     "manufacturer": "floookay",
     "url": "https://github.com/floookay/pluckey",
     "maintainer": "floookay",
@@ -8,6 +9,10 @@
         "pid": "0x91CE",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://github.com/floookay/pluckey",
+    "maintainer": "floookay",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT": "LAYOUT_all"
     },

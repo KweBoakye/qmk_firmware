@@ -11,5 +11,10 @@ bool CYCLE_PINWHEEL(effect_params_t* params) {
     return effect_runner_dx_dy(params, &CYCLE_PINWHEEL_math);
 }
 
+<<<<<<< HEAD
 #    endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
+=======
+#    endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
+>>>>>>> c0de397925 (merge bedore pointerwork)

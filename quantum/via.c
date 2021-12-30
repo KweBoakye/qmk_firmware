@@ -49,7 +49,11 @@
 #include "raw_hid.h"
 #include "dynamic_keymap.h"
 #include "eeprom.h"
+<<<<<<< HEAD
 #include "version.h" // for QMK_BUILDDATE used in EEPROM magic
+=======
+#include "version.h"  // for QMK_BUILDDATE used in EEPROM magic
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #include "via_ensure_keycode.h"
 
 // Forward declare some helpers.

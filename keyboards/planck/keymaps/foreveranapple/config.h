@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /* Copyright 2015-2021 Jack Humbert
+=======
+<<<<<<< HEAD:keyboards/gmmk/pro/rev1/iso/keymaps/jonavin/config.h
+/* Copyright 2021 Jonavin Eng
+=======
+/* Copyright 2015-2021 Jack Humbert
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/planck/keymaps/foreveranapple/config.h
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +24,32 @@
 
 #pragma once
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:keyboards/gmmk/pro/rev1/iso/keymaps/jonavin/config.h
+#define TAPPING_TOGGLE 2
+// TT set to two taps
+
+/*  Handle GRAVESC combo keys */
+#define GRAVE_ESC_ALT_OVERRIDE
+    //Always send Escape if Alt is pressed
+#define GRAVE_ESC_CTRL_OVERRIDE
+    //Always send Escape if Control is pressed
+
+#define TAPPING_TERM 180
+
+#ifdef RGB_MATRIX_ENABLE
+#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
+#endif
+
+// add fifth layer for colemak  -- set "COLEMAK_LAYER_ENABLE = yes" in rules.mk to enable
+#if defined COLEMAK_LAYER_ENABLE
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#    define _COLEMAK 4
+#endif // COLEMAK_LAYER_ENABLE
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PLANCK_SOUND)
 // #define STARTUP_SONG SONG(NO_SOUND)
@@ -44,3 +78,7 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
+<<<<<<< HEAD
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/planck/keymaps/foreveranapple/config.h
+>>>>>>> c0de397925 (merge bedore pointerwork)

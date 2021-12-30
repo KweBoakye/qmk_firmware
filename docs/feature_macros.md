@@ -40,13 +40,21 @@ You can define up to 32 macros in a `keymap.json` file, as used by [Configurator
 
 ### Selecting Your Host Keyboard Layout
 
+<<<<<<< HEAD
 If you type in a language other than English, or use a non-QWERTY layout like Colemak, Dvorak, or Workman, you may have set your computer's input language to match this layout. This presents a challenge when creating macros - you may need to type different keys to get the same letters! To address this you can add the `host_language` key to your `keymap.json`, like so:
+=======
+If you type in a language other than English, or use a non-QWERTY layout like Colemak, Dvorak, or Workman, you may have set your computer's input language to match this layout. This presents a challenge when creating macros- you may need to type different keys to get the same letters! To address this you can add the `host_language` key to your keymap.json, like so:
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ```json
 {
     "keyboard": "handwired/my_macropad",
     "keymap": "my_keymap",
+<<<<<<< HEAD
     "host_language": "dvorak",
+=======
+    "host_layout": "dvorak",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "macros": [
         ["Hello, World!"]
     ],
@@ -75,7 +83,11 @@ The current list of available languages is:
 
 ### Macro Basics
 
+<<<<<<< HEAD
 Each macro is an array consisting of strings and objects (dictionaries). Strings are typed to your computer while objects allow you to control how your macro is typed out.
+=======
+Each macro is an array consisting of strings and objects (dictionaries.) Strings are typed to your computer while objects allow you to control how your macro is typed out.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #### Object Format
 
@@ -105,8 +117,11 @@ Only basic keycodes (prefixed by `KC_`) are supported. Do not include the `KC_` 
 ## Using Macros in C Keymaps
 
 ### `SEND_STRING()` & `process_record_user`
+<<<<<<< HEAD
 
 See also: [Send String](feature_send_string.md)
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 Sometimes you want a key to type out words or phrases. For the most common situations, we've provided `SEND_STRING()`, which will type out a string (i.e. a sequence of characters) for you. All ASCII characters that are easily translatable to a keycode are supported (e.g. `qmk 123\n\t`).
 
@@ -195,8 +210,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 ```
 
+<<<<<<< HEAD
 ?> An enumerated list of custom keycodes (`enum custom_keycodes`) must be declared before `keymaps[]` array, `process_record_user()` and any other function that use the list for the compiler to recognise it.
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #### Advanced Macros
 
 In addition to the `process_record_user()` function, is the `post_process_record_user()` function. This runs after `process_record` and can be used to do things after a keystroke has been sent.  This is useful if you want to have a key pressed before and released after a normal key, for instance. 
@@ -349,7 +367,11 @@ If the keycode is `KC_CAPS`, it waits `TAP_HOLD_CAPS_DELAY` milliseconds instead
 
 Like `tap_code(<kc>)`, but with a `delay` parameter for specifying arbitrary intervals before sending the unregister event.
 
+<<<<<<< HEAD
 #### `register_code16(<kc>);`, `unregister_code16(<kc>);`, `tap_code16(<kc>);` and `tap_code16_delay(<kc>, <delay>);`
+=======
+#### `register_code16(<kc>);`, `unregister_code16(<kc>);` and `tap_code16(<kc>);`
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 These functions work similar to their regular counterparts, but allow you to use modded keycodes (with Shift, Alt, Control, and/or GUI applied to them).
 

@@ -17,4 +17,8 @@ BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 
+<<<<<<< HEAD:keyboards/maple_computing/launchpad/rules.mk
 DEFAULT_FOLDER = maple_computing/launchpad/rev1
+=======
+DEFAULT_FOLDER = launchpad/rev1
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/launchpad/rules.mk

@@ -593,6 +593,7 @@ enum quantum_keycodes {
     MACRO_30,
     MACRO_31,
 
+<<<<<<< HEAD
     MAGIC_TOGGLE_CONTROL_CAPSLOCK,
 
     QK_MAKE,
@@ -611,6 +612,8 @@ enum quantum_keycodes {
 
     UNICODE_MODE_EMACS,
 
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     // Start of custom keycode range for keyboards and keymaps - always leave at the end
     SAFE_RANGE
 };
@@ -652,12 +655,23 @@ enum quantum_keycodes {
 #define MOD_MEH 0x7
 
 // US ANSI shifted keycode aliases
+<<<<<<< HEAD
 #define KC_TILDE LSFT(KC_GRAVE) // ~
 #define KC_TILD KC_TILDE
+=======
+#define KC_TILDE LSFT(KC_GRAVE)  // ~
+#define KC_TILD KC_TILDE
+
+#define KC_EXCLAIM LSFT(KC_1)  // !
+#define KC_EXLM KC_EXCLAIM
+
+#define KC_AT LSFT(KC_2)  // @
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #define KC_EXCLAIM LSFT(KC_1) // !
 #define KC_EXLM KC_EXCLAIM
 
+<<<<<<< HEAD
 #define KC_AT LSFT(KC_2) // @
 
 #define KC_HASH LSFT(KC_3) // #
@@ -711,6 +725,57 @@ enum quantum_keycodes {
 #define KC_QUES KC_QUESTION
 
 #define KC_DOUBLE_QUOTE LSFT(KC_QUOTE) // "
+=======
+#define KC_DOLLAR LSFT(KC_4)  // $
+#define KC_DLR KC_DOLLAR
+
+#define KC_PERCENT LSFT(KC_5)  // %
+#define KC_PERC KC_PERCENT
+
+#define KC_CIRCUMFLEX LSFT(KC_6)  // ^
+#define KC_CIRC KC_CIRCUMFLEX
+
+#define KC_AMPERSAND LSFT(KC_7)  // &
+#define KC_AMPR KC_AMPERSAND
+
+#define KC_ASTERISK LSFT(KC_8)  // *
+#define KC_ASTR KC_ASTERISK
+
+#define KC_LEFT_PAREN LSFT(KC_9)  // (
+#define KC_LPRN KC_LEFT_PAREN
+
+#define KC_RIGHT_PAREN LSFT(KC_0)  // )
+#define KC_RPRN KC_RIGHT_PAREN
+
+#define KC_UNDERSCORE LSFT(KC_MINUS)  // _
+#define KC_UNDS KC_UNDERSCORE
+
+#define KC_PLUS LSFT(KC_EQUAL)  // +
+
+#define KC_LEFT_CURLY_BRACE LSFT(KC_LEFT_BRACKET)  // {
+#define KC_LCBR KC_LEFT_CURLY_BRACE
+
+#define KC_RIGHT_CURLY_BRACE LSFT(KC_RIGHT_BRACKET)  // }
+#define KC_RCBR KC_RIGHT_CURLY_BRACE
+
+#define KC_LEFT_ANGLE_BRACKET LSFT(KC_COMMA)  // <
+#define KC_LABK KC_LEFT_ANGLE_BRACKET
+#define KC_LT KC_LEFT_ANGLE_BRACKET
+
+#define KC_RIGHT_ANGLE_BRACKET LSFT(KC_DOT)  // >
+#define KC_RABK KC_RIGHT_ANGLE_BRACKET
+#define KC_GT KC_RIGHT_ANGLE_BRACKET
+
+#define KC_COLON LSFT(KC_SEMICOLON)  // :
+#define KC_COLN KC_COLON
+
+#define KC_PIPE LSFT(KC_BACKSLASH)  // |
+
+#define KC_QUESTION LSFT(KC_SLASH)  // ?
+#define KC_QUES KC_QUESTION
+
+#define KC_DOUBLE_QUOTE LSFT(KC_QUOTE)  // "
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define KC_DQUO KC_DOUBLE_QUOTE
 #define KC_DQT KC_DOUBLE_QUOTE
 
@@ -855,12 +920,21 @@ enum quantum_keycodes {
 #define CMD_T(kc) LCMD_T(kc)
 #define WIN_T(kc) LWIN_T(kc)
 
+<<<<<<< HEAD
 #define C_S_T(kc) MT(MOD_LCTL | MOD_LSFT, kc)                        // Left Control + Shift e.g. for gnome-terminal
 #define MEH_T(kc) MT(MOD_LCTL | MOD_LSFT | MOD_LALT, kc)             // Meh is a less hyper version of the Hyper key -- doesn't include GUI, so just Left Control + Shift + Alt
 #define LCAG_T(kc) MT(MOD_LCTL | MOD_LALT | MOD_LGUI, kc)            // Left Control + Alt + GUI
 #define RCAG_T(kc) MT(MOD_RCTL | MOD_RALT | MOD_RGUI, kc)            // Right Control + Alt + GUI
 #define HYPR_T(kc) MT(MOD_LCTL | MOD_LSFT | MOD_LALT | MOD_LGUI, kc) // see http://brettterpstra.com/2012/12/08/a-useful-caps-lock-key/
 #define LSG_T(kc) MT(MOD_LSFT | MOD_LGUI, kc)                        // Left Shift + GUI
+=======
+#define C_S_T(kc) MT(MOD_LCTL | MOD_LSFT, kc)                         // Left Control + Shift e.g. for gnome-terminal
+#define MEH_T(kc) MT(MOD_LCTL | MOD_LSFT | MOD_LALT, kc)              // Meh is a less hyper version of the Hyper key -- doesn't include GUI, so just Left Control + Shift + Alt
+#define LCAG_T(kc) MT(MOD_LCTL | MOD_LALT | MOD_LGUI, kc)             // Left Control + Alt + GUI
+#define RCAG_T(kc) MT(MOD_RCTL | MOD_RALT | MOD_RGUI, kc)             // Right Control + Alt + GUI
+#define HYPR_T(kc) MT(MOD_LCTL | MOD_LSFT | MOD_LALT | MOD_LGUI, kc)  // see http://brettterpstra.com/2012/12/08/a-useful-caps-lock-key/
+#define LSG_T(kc) MT(MOD_LSFT | MOD_LGUI, kc)                         // Left Shift + GUI
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define SGUI_T(kc) LSG_T(kc)
 #define SCMD_T(kc) LSG_T(kc)
 #define SWIN_T(kc) LSG_T(kc)
@@ -890,8 +964,13 @@ enum quantum_keycodes {
 #define UC_RMOD UNICODE_MODE_REVERSE
 
 #define UC_M_MA UNICODE_MODE_MAC
+<<<<<<< HEAD
 #define UNICODE_MODE_OSX UNICODE_MODE_MAC // Deprecated alias
 #define UC_M_OS UNICODE_MODE_MAC          // Deprecated alias
+=======
+#define UNICODE_MODE_OSX UNICODE_MODE_MAC  // Deprecated alias
+#define UC_M_OS UNICODE_MODE_MAC           // Deprecated alias
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define UC_M_LN UNICODE_MODE_LNX
 #define UC_M_WI UNICODE_MODE_WIN
 #define UC_M_BS UNICODE_MODE_BSD
@@ -971,6 +1050,9 @@ enum quantum_keycodes {
 #define PB_32 PROGRAMMABLE_BUTTON_32
 #define PROGRAMMABLE_BUTTON_MIN PROGRAMMABLE_BUTTON_1
 #define PROGRAMMABLE_BUTTON_MAX PROGRAMMABLE_BUTTON_32
+<<<<<<< HEAD
 #define CAPSWRD CAPS_WORD
 
 #include "quantum_keycodes_legacy.h"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)

@@ -25,6 +25,7 @@ static HSV SOLID_REACTIVE_NEXUS_math(HSV hsv, int16_t dx, int16_t dy, uint8_t di
 }
 
 #            ifdef ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
+<<<<<<< HEAD
 bool SOLID_REACTIVE_NEXUS(effect_params_t* params) {
     return effect_runner_reactive_splash(qsub8(g_last_hit_tracker.count, 1), params, &SOLID_REACTIVE_NEXUS_math);
 }
@@ -39,3 +40,15 @@ bool SOLID_REACTIVE_MULTINEXUS(effect_params_t* params) {
 #        endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #    endif     // !defined(ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS) || !defined(ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS)
 #endif         // RGB_MATRIX_KEYREACTIVE_ENABLED
+=======
+bool SOLID_REACTIVE_NEXUS(effect_params_t* params) { return effect_runner_reactive_splash(qsub8(g_last_hit_tracker.count, 1), params, &SOLID_REACTIVE_NEXUS_math); }
+#            endif
+
+#            ifdef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+bool SOLID_REACTIVE_MULTINEXUS(effect_params_t* params) { return effect_runner_reactive_splash(0, params, &SOLID_REACTIVE_NEXUS_math); }
+#            endif
+
+#        endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#    endif      // !defined(ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS) || !defined(ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS)
+#endif          // RGB_MATRIX_KEYREACTIVE_ENABLED
+>>>>>>> c0de397925 (merge bedore pointerwork)

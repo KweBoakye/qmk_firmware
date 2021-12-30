@@ -44,5 +44,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
+<<<<<<< HEAD
 
+=======
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+#define OLED_DISPLAY_128X64
+
+#define POINTING_DEVICE_TASK_THROTTLE
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #define POINTING_DEVICE_RIGHT

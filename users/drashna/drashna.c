@@ -73,6 +73,7 @@ void tap_code16_nomods(uint16_t kc) {
     set_mods(temp_mod);
 }
 
+<<<<<<< HEAD
 #ifdef I2C_SCANNER_ENABLE
 #    include "i2c_master.h"
 #    include "debug.h"
@@ -80,6 +81,29 @@ void tap_code16_nomods(uint16_t kc) {
 #    ifndef I2C_SCANNER_TIMEOUT
 #        define I2C_SCANNER_TIMEOUT 50
 #    endif
+=======
+#ifdef RGB_MATRIX_ENABLE
+void rgb_matrix_update_pwm_buffers(void);
+#endif
+
+__attribute__((weak)) void shutdown_keymap(void) {}
+void                       shutdown_user(void) {
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(1);
+    rgblight_setrgb_red();
+#endif  // RGBLIGHT_ENABLE
+#ifdef RGB_MATRIX_ENABLE
+    rgb_matrix_set_color_all(0xFF, 0x00, 0x00);
+    rgb_matrix_update_pwm_buffers();
+#endif  // RGB_MATRIX_ENABLE
+#ifdef OLED_ENABLE
+    oled_off();
+#endif
+
+    shutdown_keymap();
+}
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 i2c_status_t i2c_start_bodge(uint8_t address, uint16_t timeout) {
     i2c_start(address);
@@ -129,3 +153,61 @@ void keyboard_post_init_i2c(void) {
     scan_timer = timer_read();
 }
 #endif
+
+__attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+__attribute__((weak)) bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    // Immediately select the hold action when another key is tapped:
+    // return true;
+    // Do not select the hold action when another key is tapped.
+    // return false;
+    switch (keycode) {
+        default:
+            return false;
+    }
+}
+
+__attribute__((weak)) bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    // Immediately select the hold action when another key is pressed.
+    // return true;
+    // Do not select the hold action when another key is pressed.
+    // return false;
+    switch (keycode) {
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            return true;
+        default:
+            return false;
+    }
+}
+
+__attribute__((weak)) bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
+    // Do not force the mod-tap key press to be handled as a modifier
+    // if any other key was pressed while the mod-tap key is held down.
+    // return true;
+    // Force the mod-tap key press to be handled as a modifier if any
+    // other key was pressed while the mod-tap key is held down.
+    // return false;
+    switch (keycode) {
+        default:
+            return true;
+    }
+}
+
+__attribute__((weak)) bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        default:
+            return false;
+    }
+}
+
+__attribute__((weak)) bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        default:
+            return false;
+    }
+}

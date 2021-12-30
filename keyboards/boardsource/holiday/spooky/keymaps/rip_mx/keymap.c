@@ -66,6 +66,12 @@ static void render_RIP(void) {
 
 bool oled_task_user(void) {
   render_RIP();
+<<<<<<< HEAD
   return false;
 }
+=======
+    return false;
+  }
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif

@@ -16,6 +16,7 @@
 
 #pragma once
 
+<<<<<<< HEAD:keyboards/handwired/dactyl_manuform/6x6/promicro/config.h
 #include "config_common.h"
 
 // wiring of each half
@@ -27,3 +28,10 @@
 // WS2812 RGB LED strip input and number of LEDs
 #define RGB_DI_PIN D3
 #define RGBLED_NUM 12
+=======
+// i2c_master defines
+#define I2C1_SCL_PIN B0 // A2 on pinout = B0
+#define I2C1_SDA_PIN B1 // A3 on pinout = B1
+#define I2C1_SCL_PAL_MODE PAL_MODE_ALTERNATIVE_2
+#define I2C1_SDA_PAL_MODE PAL_MODE_ALTERNATIVE_2
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/ez_maker/directpins/teensy_lc/config.h

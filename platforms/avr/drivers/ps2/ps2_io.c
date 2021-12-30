@@ -23,9 +23,13 @@ void clock_lo(void) {
     setPinOutput(PS2_CLOCK_PIN);
 }
 
+<<<<<<< HEAD
 void clock_hi(void) {
     setPinInputHigh(PS2_CLOCK_PIN);
 }
+=======
+void clock_hi(void) { setPinInputHigh(PS2_CLOCK_PIN); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 bool clock_in(void) {
     setPinInputHigh(PS2_CLOCK_PIN);
@@ -44,9 +48,13 @@ void data_lo(void) {
     setPinOutput(PS2_DATA_PIN);
 }
 
+<<<<<<< HEAD
 void data_hi(void) {
     setPinInputHigh(PS2_DATA_PIN);
 }
+=======
+void data_hi(void) { setPinInputHigh(PS2_DATA_PIN); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 bool data_in(void) {
     setPinInputHigh(PS2_DATA_PIN);

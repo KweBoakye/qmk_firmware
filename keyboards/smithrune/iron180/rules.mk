@@ -7,6 +7,10 @@ BOOTLOADER = stm32-dfu
 # Build Options
 #   change yes to no to disable
 #
+<<<<<<< HEAD:keyboards/smithrune/iron180/rules.mk
+=======
+
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/xelus/kangaroo/rules.mk
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control

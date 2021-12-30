@@ -8,9 +8,12 @@ The breaking change period is when we will merge PR's that change QMK in dangero
 
 ## What has been included in past Breaking Changes?
 
+<<<<<<< HEAD
 * [2022 Aug 27](ChangeLog/20220827.md)
 * [2022 May 28](ChangeLog/20220528.md)
 * [2022 Feb 26](ChangeLog/20220226.md)
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 * [2021 Nov 27](ChangeLog/20211127.md)
 * [2021 Aug 28](ChangeLog/20210828.md)
 * [2021 May 29](ChangeLog/20210529.md)
@@ -23,6 +26,7 @@ The breaking change period is when we will merge PR's that change QMK in dangero
 
 ## When is the next Breaking Change?
 
+<<<<<<< HEAD
 The next Breaking Change is scheduled for November 26, 2022.
 
 ### Important Dates
@@ -35,6 +39,19 @@ The next Breaking Change is scheduled for November 26, 2022.
 * 2022 Nov 24 - `master` is locked, no PR's merged.
 * 2022 Nov 26 - Merge `develop` to `master`.
 * 2022 Nov 26 - `master` is unlocked. PR's can be merged again.
+=======
+The next Breaking Change is scheduled for February 26, 2022.
+
+### Important Dates
+
+* [x] 2021 Nov 27 - `develop` is tagged with a new release version. Each push to `master` is subsequently merged to `develop` by GitHub actions.
+* [ ] 2022 Jan 31 - `develop` closed to new PR's.
+* [ ] 2022 Jan 31 - Call for testers.
+* [ ] 2022 Feb 12 - Last day for merges -- after this point `develop` is locked for testing and accepts only bugfixes
+* [ ] 2022 Feb 24 - `master` is locked, no PR's merged.
+* [ ] 2022 Feb 26 - Merge `develop` to `master`.
+* [ ] 2022 Feb 26 - `master` is unlocked. PR's can be merged again.
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ## What changes will be included?
 
@@ -45,7 +62,11 @@ If you want your breaking change to be included in this round you need to create
 Criteria for acceptance:
 
 * The PR is complete and ready to merge
+<<<<<<< HEAD
 * The PR has a ChangeLog file describing the changes under `<qmk_firmware>/docs/Changelog/20221126`.
+=======
+* The PR has a ChangeLog file describing the changes under `<qmk_firmware>/docs/Changelog/20220226`.
+>>>>>>> c0de397925 (merge bedore pointerwork)
     * This should be in Markdown format, with a name in the format `PR12345.md`, substituting the digits for your PR's ID.
     * One strong recommendation that the ChangeLog document matches the PR description on GitHub, so as to ensure traceability.
 
@@ -65,7 +86,19 @@ This section documents various processes we use when running the Breaking Change
 * Post call for testers: message `@Breaking Changes Updates` on `#qmk_firmware` in Discord.
     * `@Breaking Changes Updates -- Hey folks, last day for functional PRs to be merged into qmk_firmware for this breaking changes cycle is today. After that, we're handling bugfixes only.`
 
+<<<<<<< HEAD
 ### 1 Week Before Merge
+=======
+## 2 Weeks Before Merge
+
+* `develop` is now closed to existing PR merges, only bugfixes for previous merges may be included
+* Post call for testers
+    * [ ] Discord
+    * [ ] GitHub PR
+    * [ ] https://reddit.com/r/olkb
+
+## 1 Week Before Merge
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 * `develop` is now closed to PR merges, only critical bugfixes may be included
 * Announce that master will be closed from <2 Days Before> to <Day of Merge> -- message `@Breaking Changes Updates` on `#qmk_firmware` in Discord:

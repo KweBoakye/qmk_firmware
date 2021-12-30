@@ -17,7 +17,10 @@
 #include "print.h"
 #include "process_combo.h"
 #include "action_tapping.h"
+<<<<<<< HEAD
 #include "action.h"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 #ifdef COMBO_COUNT
 __attribute__((weak)) combo_t key_combos[COMBO_COUNT];
@@ -68,7 +71,11 @@ __attribute__((weak)) bool combo_should_trigger(uint16_t combo_index, combo_t *c
 #ifndef COMBO_NO_TIMER
 static uint16_t timer = 0;
 #endif
+<<<<<<< HEAD
 static bool     b_combo_enable = true; // defaults to enabled
+=======
+static bool     b_combo_enable = true;  // defaults to enabled
+>>>>>>> c0de397925 (merge bedore pointerwork)
 static uint16_t longest_term   = 0;
 
 typedef struct {
@@ -88,6 +95,11 @@ static queued_combo_t combo_buffer[COMBO_BUFFER_LENGTH];
 
 #define INCREMENT_MOD(i) i = (i + 1) % COMBO_BUFFER_LENGTH
 
+<<<<<<< HEAD
+=======
+#define COMBO_KEY_POS ((keypos_t){.col = 254, .row = 254})
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #ifndef EXTRA_SHORT_COMBOS
 /* flags are their own elements in combo_t struct. */
 #    define COMBO_ACTIVE(combo) (combo->active)
@@ -138,7 +150,16 @@ static queued_combo_t combo_buffer[COMBO_BUFFER_LENGTH];
 static inline void release_combo(uint16_t combo_index, combo_t *combo) {
     if (combo->keycode) {
         keyrecord_t record = {
+<<<<<<< HEAD
             .event   = MAKE_KEYEVENT(KEYLOC_COMBO, KEYLOC_COMBO, false),
+=======
+            .event =
+                {
+                    .key     = COMBO_KEY_POS,
+                    .time    = timer_read() | 1,
+                    .pressed = false,
+                },
+>>>>>>> c0de397925 (merge bedore pointerwork)
             .keycode = combo->keycode,
         };
 #ifndef NO_ACTION_TAPPING
@@ -327,7 +348,11 @@ void apply_combo(uint16_t combo_index, combo_t *combo) {
         if (ALL_COMBO_KEYS_ARE_DOWN(state, key_count)) {
             // this in the end executes the combo when the key_buffer is dumped.
             record->keycode   = combo->keycode;
+<<<<<<< HEAD
             record->event.key = MAKE_KEYPOS(KEYLOC_COMBO, KEYLOC_COMBO);
+=======
+            record->event.key = COMBO_KEY_POS;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
             qrecord->combo_index = combo_index;
             ACTIVATE_COMBO(combo);
@@ -476,7 +501,11 @@ static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *
                     // get possible longer waiting time for tap-/hold-only combos.
                     longest_term = _get_wait_time(combo_index, combo);
                 }
+<<<<<<< HEAD
             } // if timer elapsed end
+=======
+            }  // if timer elapsed end
+>>>>>>> c0de397925 (merge bedore pointerwork)
         }
     } else {
         // chord releases
@@ -491,7 +520,7 @@ static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *
             else if (get_combo_must_tap(combo_index, combo)) {
                 // immediately apply tap-only combo
                 apply_combo(combo_index, combo);
-                apply_combos(); // also apply other prepared combos and dump key buffer
+                apply_combos();  // also apply other prepared combos and dump key buffer
 #    ifdef COMBO_PROCESS_KEY_RELEASE
                 if (process_combo_key_release(combo_index, combo, key_index, keycode)) {
                     release_combo(combo_index, combo);
@@ -573,7 +602,11 @@ bool process_combo(uint16_t keycode, keyrecord_t *record) {
             key_buffer[key_buffer_size++] = (queued_record_t){
                 .record      = *record,
                 .keycode     = keycode,
+<<<<<<< HEAD
                 .combo_index = -1, // this will be set when applying combos
+=======
+                .combo_index = -1,  // this will be set when applying combos
+>>>>>>> c0de397925 (merge bedore pointerwork)
             };
         }
     } else {

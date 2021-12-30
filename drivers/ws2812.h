@@ -33,6 +33,7 @@
 #endif
 
 #ifndef WS2812_T1H
+<<<<<<< HEAD
 #    define WS2812_T1H 900 // Width of a 1 bit in ns
 #endif
 
@@ -46,6 +47,21 @@
 
 #ifndef WS2812_T0L
 #    define WS2812_T0L (WS2812_TIMING - WS2812_T0H) // Width of a 0 bit in ns
+=======
+#    define WS2812_T1H 900  // Width of a 1 bit in ns
+#endif
+
+#ifndef WS2812_T1L
+#    define WS2812_T1L (WS2812_TIMING - WS2812_T1H)  // Width of a 1 bit in ns
+#endif
+
+#ifndef WS2812_T0H
+#    define WS2812_T0H 350  // Width of a 0 bit in ns
+#endif
+
+#ifndef WS2812_T0L
+#    define WS2812_T0L (WS2812_TIMING - WS2812_T0H)  // Width of a 0 bit in ns
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 /*

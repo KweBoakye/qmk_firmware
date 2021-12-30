@@ -18,6 +18,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0x7070
+#define PRODUCT_ID      0x1849
+#define DEVICE_VER      0x0001
+#define MANUFACTURER    Nasp
+#define PRODUCT         PHOENIX45_ORTHO
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 13
@@ -25,6 +35,10 @@
 /* key matrix pins */
 #define MATRIX_ROW_PINS { D2, D1, D0, C4 }
 #define MATRIX_COL_PINS { D3, C2, C5, B0, D6, D5, D4, B4, B5, B6, B7, C7, C6 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

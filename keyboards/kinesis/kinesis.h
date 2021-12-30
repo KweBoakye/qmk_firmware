@@ -12,8 +12,11 @@
 #    include "kint36.h"
 #elif defined(KEYBOARD_kinesis_kint41)
 #    include "kint41.h"
+<<<<<<< HEAD
 #elif defined(KEYBOARD_kinesis_kintlc)
 #    include "kintlc.h"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #include "quantum.h"

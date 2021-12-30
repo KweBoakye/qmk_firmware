@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Compacx",
+<<<<<<< HEAD
     "manufacturer": "takashicompany",
     "url": "https://github.com/takashicompany/compacx",
     "maintainer": "takashicompany",
@@ -8,6 +9,10 @@
         "pid": "0x0014",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://github.com/takashicompany/compacx",
+    "maintainer": "takashicompany",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

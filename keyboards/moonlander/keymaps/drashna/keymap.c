@@ -79,11 +79,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_DIABLO_CLEAR,  SFT_T(KC_SPACE),  ALT_T(KC_Q),             KC_PGDN, KC_DEL,  KC_ENT
     ),
     [_DIABLOII] = LAYOUT_moonlander_wrapper(
+<<<<<<< HEAD
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_GRV,  XXXXXXX,                 _______, KC_F9,   KC_F10,   KC_F11,  KC_F12,  XXXXXXX, KC_NO,
         KC_TAB,  KC_A,    KC_T,    KC_Q,    KC_I,    KC_M,    TG(_DIABLOII),           _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
         KC_S,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,                 _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
         KC_LCTL, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                                    KC_N,    KC_M,     XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
         XXXXXXX, XXXXXXX, KC_G,    KC_F,    KC_L,             KC_V,                    XXXXXXX,          XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
+=======
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_GRV,  KC_NO,                   KC_TRNS, KC_F9,   KC_F10,   KC_F11,  KC_F12,  KC_NO,   KC_NO,
+        KC_TAB,  KC_A,    KC_T,    KC_Q,    KC_I,    KC_M,    TG(_DIABLOII),           KC_TRNS, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_S,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,                   KC_TRNS, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_LCTL, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                                    KC_N,    KC_M,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_G,    KC_F,    KC_L,             KC_V,                    KC_NO,            KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
+>>>>>>> c0de397925 (merge bedore pointerwork)
                                             KC_G,    KC_LSFT, KC_LCTL,                 KC_PGDN, KC_DEL,  KC_ENT
     ),
 
@@ -106,12 +114,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ADJUST] = LAYOUT_moonlander_wrapper(
+<<<<<<< HEAD
         QK_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,_______,   KC_NUKE,KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, QK_BOOT,
         VRSN,    _________________ADJUST_L1_________________, TG(_DIABLOII),  _______, _________________ADJUST_R1_________________, EE_CLR,
         KEYLOCK, _________________ADJUST_L2_________________, _______,        _______, _________________ADJUST_R2_________________, RGB_IDL,
         UC_MOD,  _________________ADJUST_L3_________________,                          _________________ADJUST_R3_________________, TG_MODS,
         _______, _______, _______, _______, _______,          _______,        _______,          _______, _______, _______, _______, AUTO_CTN,
                                             QK_RBT,  _______, _______,        _______, _______, _______
+=======
+        KC_MAKE, KC_WIDE,KC_AUSSIE,KC_SCRIPT,KC_ZALGO,KC_NOMODE,_______,   KC_NUKE,KC_NOMODE,KC_BLOCKS,KC_REGIONAL,_______,_______, KC_RST,
+        VRSN,    _________________ADJUST_L1_________________, TG(_DIABLOII),  _______, _________________ADJUST_R1_________________, EEP_RST,
+        KEYLOCK, _________________ADJUST_L2_________________, _______,        _______, _________________ADJUST_R2_________________, RGB_IDL,
+        UC_MOD,  _________________ADJUST_L3_________________,                          _________________ADJUST_R3_________________, TG_MODS,
+        _______, _______, _______, _______, _______,          _______,        _______,          _______, _______, _______, _______, KC_PAUS,
+                                            _______, _______, _______,        _______, _______, _______
+>>>>>>> c0de397925 (merge bedore pointerwork)
     ),
 };
 

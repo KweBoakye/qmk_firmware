@@ -23,7 +23,11 @@
     "usb": {
         "vid": "0xFEED",
         "pid": "0x6060",
+<<<<<<< HEAD
         "device_version": "0.0.1"
+=======
+        "device_ver": "0x0001"
+>>>>>>> c0de397925 (merge bedore pointerwork)
     },
     "layouts": {
         "LAYOUT": {

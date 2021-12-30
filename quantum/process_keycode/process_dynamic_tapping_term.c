@@ -22,14 +22,20 @@
 #endif
 
 static void tapping_term_report(void) {
+<<<<<<< HEAD
 #ifdef SEND_STRING_ENABLE
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     const char *tapping_term_str = get_u16_str(g_tapping_term, ' ');
     // Skip padding spaces
     while (*tapping_term_str == ' ') {
         tapping_term_str++;
     }
     send_string(tapping_term_str);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 bool process_dynamic_tapping_term(uint16_t keycode, keyrecord_t *record) {

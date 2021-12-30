@@ -20,6 +20,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID               0x44DD
+#define MANUFACTURER            Drashna
+
+#define USB_POLLING_INTERVAL_MS 1
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* disable debug print */
 // #define NO_DEBUG
 

@@ -15,6 +15,18 @@
  */
 #include QMK_KEYBOARD_H
 
+<<<<<<< HEAD
+=======
+
+#define LAYOUT_via( \
+    k00, k01, k02, \
+    k00_a, k00_b \
+) { \
+    { k00, k01,   k02, k00_a, k00_b } \
+}
+
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [0] = LAYOUT(

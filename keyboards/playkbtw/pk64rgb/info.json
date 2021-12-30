@@ -1,5 +1,6 @@
 {
     "keyboard_name": "PK64RGB",
+<<<<<<< HEAD
     "manufacturer": "Play Keyboard",
     "url": "",
     "maintainer": "yj7272098",
@@ -8,6 +9,10 @@
         "pid": "0x3634",
         "device_version": "0.0.1"
     },
+=======
+    "url": "",
+    "maintainer": "yj7272098",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_64_ansi": {
             "layout": [

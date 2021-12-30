@@ -1,5 +1,6 @@
 {
     "keyboard_name": "Puca",
+<<<<<<< HEAD
     "manufacturer": "FootFingers",
     "url": "https://ffkeebs.com/collections/puca/",
     "maintainer": "Sleepdealr",
@@ -8,6 +9,10 @@
         "pid": "0x0002",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://ffkeebs.com/collections/puca/",
+    "maintainer": "Sleepdealr",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT": "LAYOUT_all"
     },

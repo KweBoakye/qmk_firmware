@@ -24,6 +24,7 @@
 #define DELTA_Y_THRESHOLD 15
 
 // safe range starts at `PLOOPY_SAFE_RANGE` instead.
+<<<<<<< HEAD
 bool scroll_enabled = false;
 bool lock_state     = false;
 
@@ -58,6 +59,37 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         mouse_report.y = 0;
     }
     return mouse_report;
+=======
+uint8_t scroll_enabled = 0;
+uint8_t lock_state = 0;
+int8_t  delta_x        = 0;
+int8_t  delta_y        = 0;
+
+void process_mouse_user(report_mouse_t *mouse_report, int8_t x, int8_t y) {
+    if (scroll_enabled) {
+        delta_x += x;
+		delta_y += y;
+
+		if (delta_x > 60) {
+			mouse_report->h = 1;
+			delta_x = 0;
+		} else if (delta_x < -60) {
+			mouse_report->h = -1;
+			delta_x = 0;
+		}
+
+		if (delta_y > 15) {
+			mouse_report->v = -1;
+			delta_y = 0;
+		} else if (delta_y < -15) {
+			mouse_report->v = 1;
+			delta_y = 0;
+		}
+    } else {
+        mouse_report->x = x;
+		mouse_report->y = y;
+    }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 void keyboard_post_init_user(void) {

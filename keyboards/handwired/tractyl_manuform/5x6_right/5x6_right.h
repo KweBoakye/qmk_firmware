@@ -26,8 +26,11 @@
 #    include "teensy2pp.h"
 #elif defined(KEYBOARD_handwired_tractyl_manuform_5x6_right_elite_c)
 #    include "elite_c.h"
+<<<<<<< HEAD
 #elif defined(KEYBOARD_handwired_tractyl_manuform_5x6_right_arduinomicro)
 #    include "arduinomicro.h"
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #endif
 
 #include "quantum.h"

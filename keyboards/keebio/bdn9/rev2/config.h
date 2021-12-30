@@ -48,8 +48,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // RGB Matrix
 #    ifdef RGB_MATRIX_ENABLE
 #        define DRIVER_LED_TOTAL RGBLED_NUM
+<<<<<<< HEAD
 #        define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #        define RGB_MATRIX_KEYPRESSES
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects

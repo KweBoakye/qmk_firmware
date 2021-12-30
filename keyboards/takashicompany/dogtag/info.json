@@ -1,5 +1,6 @@
 {
     "keyboard_name": "DogTag",
+<<<<<<< HEAD
     "manufacturer": "takashicompany",
     "url": "https://github.com/takashicompany/dogtag",
     "maintainer": "takashicompany",
@@ -8,6 +9,10 @@
         "pid": "0x0018",
         "device_version": "0.0.1"
     },
+=======
+    "url": "https://github.com/takashicompany/dogtag",
+    "maintainer": "takashicompany",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [
@@ -28,6 +33,7 @@
                     "y": 0
                 },
                 {
+<<<<<<< HEAD
                     "x": 8,
                     "y": 0
                 },
@@ -41,6 +47,21 @@
                 },
                 {
                     "x": 11,
+=======
+                    "x": 7,
+                    "y": 0
+                },
+                {
+                    "x": 8,
+                    "y": 0
+                },
+                {
+                    "x": 9,
+                    "y": 0
+                },
+                {
+                    "x": 10,
+>>>>>>> c0de397925 (merge bedore pointerwork)
                     "y": 0
                 },
                 {
@@ -60,12 +81,17 @@
                     "y": 1
                 },
                 {
+<<<<<<< HEAD
                     "x": 4,
                     "y": 2
                 },
                 {
                     "x": 7,
                     "y": 2
+=======
+                    "x": 7,
+                    "y": 1
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 },
                 {
                     "x": 8,
@@ -80,6 +106,7 @@
                     "y": 1
                 },
                 {
+<<<<<<< HEAD
                     "x": 11,
                     "y": 1
                 },
@@ -98,6 +125,14 @@
                 {
                     "x": 7.5,
                     "y": 3.25
+=======
+                    "x": 4,
+                    "y": 2
+                },
+                {
+                    "x": 6,
+                    "y": 2
+>>>>>>> c0de397925 (merge bedore pointerwork)
                 }
             ]
         }

@@ -56,6 +56,7 @@ For a regular solenoid,  you will need a build a circuit to drive the solenoid t
 
 [Wiring diagram provided by Adafruit](https://cdn-shop.adafruit.com/product-files/412/solenoid_driver.pdf)
 
+<<<<<<< HEAD
 For relay switches, the hardware may already contain all of that ciruitry, and just require VCC, GND and a data pin.
 
 | Settings                   | Default              | Description                                                  |
@@ -72,6 +73,19 @@ For relay switches, the hardware may already contain all of that ciruitry, and j
 |`SOLENOID_DEFAULT_BUZZ`     | `0` (disabled)       |On HPT_RST buzz is set "on" if this is "1"                    |
 |`SOLENOID_BUZZ_ACTUATED`    | `SOLENOID_MIN_DWELL` |Actuated-time when the switch is in buzz mode.                |
 |`SOLENOID_BUZZ_NONACTUATED` | `SOLENOID_MIN_DWELL` |Non-Actuated-time when the switch is in buzz mode.            |
+=======
+| Settings                   | Default              | Description                                           |
+|----------------------------|----------------------|-------------------------------------------------------|
+|`SOLENOID_PIN`              | *Not defined*        |Configures the pin that the Solenoid is connected to.  |
+|`SOLENOID_PIN_ACTIVE_LOW`   | *Not defined*        |If defined then the solenoid trigger pin is active low.|
+|`SOLENOID_DEFAULT_DWELL`    | `12` ms              |Configures the default dwell time for the solenoid.    |
+|`SOLENOID_MIN_DWELL`        | `4` ms               |Sets the lower limit for the dwell.                    |
+|`SOLENOID_MAX_DWELL`        | `100` ms             |Sets the upper limit for the dwell.                    |
+|`SOLENOID_DWELL_STEP_SIZE`  | `1` ms               |The step size to use when `HPT_DWL*` keycodes are sent |
+|`SOLENOID_DEFAULT_BUZZ`     | `0` (disabled)       |On HPT_RST buzz is set "on" if this is "1"             |
+|`SOLENOID_BUZZ_ACTUATED`    | `SOLENOID_MIN_DWELL` |Actuated-time when the solenoid is in buzz mode        |
+|`SOLENOID_BUZZ_NONACTUATED` | `SOLENOID_MIN_DWELL` |Non-Actuated-time when the solenoid is in buzz mode    |
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 * If solenoid buzz is off, then dwell time is how long the "plunger" stays activated. The dwell time changes how the solenoid sounds.
 * If solenoid buzz is on, then dwell time sets the length of the buzz, while `SOLENOID_BUZZ_ACTUATED` and `SOLENOID_BUZZ_NONACTUATED` set the (non-)actuation times withing the buzz period.

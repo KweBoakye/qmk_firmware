@@ -134,7 +134,34 @@ bool oled_task_user(void) {
     if (debug_enable) {
         return;
     }
+<<<<<<< HEAD:users/mtei/oled_display.c
 #    endif
+=======
+#        endif
+
+#if      OLED_UPDATE_INTERVAL > 0
+    if (timer_elapsed(oled_update_timeout) < OLED_UPDATE_INTERVAL) {
+        return;
+    }
+    oled_update_timeout = timer_read();
+#endif
+    matrix_clear(&matrix);
+    if (is_keyboard_master()) {
+        render_status(&matrix);
+    } else {
+        render_logo(&matrix);
+    }
+    matrix_update(&display, &matrix);
+}
+#    else
+bool oled_task_user(void) {
+
+#        if DEBUG_TO_SCREEN
+    if (debug_enable) {
+        return;
+    }
+#        endif
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/helix/rev3_5rows/keymaps/five_rows/oled_display.c
 
     if(is_keyboard_master()){
         render_status();

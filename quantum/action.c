@@ -101,7 +101,11 @@ void action_exec(keyevent_t event) {
     keyrecord_t record = {.event = event};
 
 #ifndef NO_ACTION_ONESHOT
+<<<<<<< HEAD
     if (keymap_config.oneshot_enable) {
+=======
+    if (!keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
 #    if (defined(ONESHOT_TIMEOUT) && (ONESHOT_TIMEOUT > 0))
         if (has_oneshot_layer_timed_out()) {
             clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
@@ -258,7 +262,11 @@ void process_record(keyrecord_t *record) {
 
     if (!process_record_quantum(record)) {
 #ifndef NO_ACTION_ONESHOT
+<<<<<<< HEAD
         if (is_oneshot_layer_active() && record->event.pressed && keymap_config.oneshot_enable) {
+=======
+        if (is_oneshot_layer_active() && record->event.pressed && !keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
             clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
         }
 #endif
@@ -323,7 +331,11 @@ void process_action(keyrecord_t *record, action_t action) {
 #    ifdef SWAP_HANDS_ENABLE
         && !(action.kind.id == ACT_SWAP_HANDS && action.swap.code == OP_SH_ONESHOT)
 #    endif
+<<<<<<< HEAD
         && keymap_config.oneshot_enable) {
+=======
+        && !keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
         clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
         do_release_oneshot = !is_oneshot_layer_active();
     }
@@ -367,7 +379,11 @@ void process_action(keyrecord_t *record, action_t action) {
 #    ifndef NO_ACTION_ONESHOT
                 case MODS_ONESHOT:
                     // Oneshot modifier
+<<<<<<< HEAD
                     if (!keymap_config.oneshot_enable) {
+=======
+                    if (keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
                         if (event.pressed) {
                             if (mods) {
                                 if (IS_MOD(action.key.code) || action.key.code == KC_NO) {
@@ -404,7 +420,11 @@ void process_action(keyrecord_t *record, action_t action) {
                             } else if (tap_count == ONESHOT_TAP_TOGGLE) {
                                 dprint("MODS_TAP: Toggling oneshot");
                                 clear_oneshot_mods();
+<<<<<<< HEAD
                                 set_oneshot_locked_mods(mods | get_oneshot_locked_mods());
+=======
+                                set_oneshot_locked_mods(mods);
+>>>>>>> c0de397925 (merge bedore pointerwork)
                                 register_mods(mods);
 #        endif
                             } else {
@@ -418,8 +438,13 @@ void process_action(keyrecord_t *record, action_t action) {
                                 // Retain Oneshot mods
 #        if defined(ONESHOT_TAP_TOGGLE) && ONESHOT_TAP_TOGGLE > 1
                                 if (mods & get_mods()) {
+<<<<<<< HEAD
                                     clear_oneshot_mods();
                                     set_oneshot_locked_mods(~mods & get_oneshot_locked_mods());
+=======
+                                    clear_oneshot_locked_mods();
+                                    clear_oneshot_mods();
+>>>>>>> c0de397925 (merge bedore pointerwork)
                                     unregister_mods(mods);
                                 }
                             } else if (tap_count == ONESHOT_TAP_TOGGLE) {
@@ -613,7 +638,11 @@ void process_action(keyrecord_t *record, action_t action) {
 #        ifndef NO_ACTION_ONESHOT
                 case OP_ONESHOT:
                     // Oneshot modifier
+<<<<<<< HEAD
                     if (!keymap_config.oneshot_enable) {
+=======
+                    if (keymap_config.oneshot_disable) {
+>>>>>>> c0de397925 (merge bedore pointerwork)
                         if (event.pressed) {
                             layer_on(action.layer_tap.val);
                         } else {
@@ -623,6 +652,10 @@ void process_action(keyrecord_t *record, action_t action) {
 #            if defined(ONESHOT_TAP_TOGGLE) && ONESHOT_TAP_TOGGLE > 1
                         do_release_oneshot = false;
                         if (event.pressed) {
+<<<<<<< HEAD
+=======
+                            del_mods(get_oneshot_locked_mods());
+>>>>>>> c0de397925 (merge bedore pointerwork)
                             if (get_oneshot_layer_state() == ONESHOT_TOGGLED) {
                                 reset_oneshot_layer();
                                 layer_off(action.layer_tap.val);
@@ -632,8 +665,15 @@ void process_action(keyrecord_t *record, action_t action) {
                                 set_oneshot_layer(action.layer_tap.val, ONESHOT_START);
                             }
                         } else {
+<<<<<<< HEAD
                             if (tap_count >= ONESHOT_TAP_TOGGLE) {
                                 reset_oneshot_layer();
+=======
+                            add_mods(get_oneshot_locked_mods());
+                            if (tap_count >= ONESHOT_TAP_TOGGLE) {
+                                reset_oneshot_layer();
+                                clear_oneshot_locked_mods();
+>>>>>>> c0de397925 (merge bedore pointerwork)
                                 set_oneshot_layer(action.layer_tap.val, ONESHOT_TOGGLED);
                             } else {
                                 clear_oneshot_layer_state(ONESHOT_PRESSED);
@@ -844,7 +884,11 @@ __attribute__((weak)) void register_code(uint8_t code) {
 #    endif
         add_key(KC_CAPS_LOCK);
         send_keyboard_report();
+<<<<<<< HEAD
         wait_ms(TAP_HOLD_CAPS_DELAY);
+=======
+        wait_ms(100);
+>>>>>>> c0de397925 (merge bedore pointerwork)
         del_key(KC_CAPS_LOCK);
         send_keyboard_report();
     }
@@ -872,9 +916,10 @@ __attribute__((weak)) void register_code(uint8_t code) {
     }
 #endif
 
-    else if IS_KEY (code) {
-        // TODO: should push command_proc out of this block?
-        if (command_proc(code)) return;
+    else if
+        IS_KEY(code) {
+            // TODO: should push command_proc out of this block?
+            if (command_proc(code)) return;
 
 #ifndef NO_ACTION_ONESHOT
 /* TODO: remove
@@ -891,33 +936,35 @@ __attribute__((weak)) void register_code(uint8_t code) {
         } else
 */
 #endif
-        {
-            // Force a new key press if the key is already pressed
-            // without this, keys with the same keycode, but different
-            // modifiers will be reported incorrectly, see issue #1708
-            if (is_key_pressed(keyboard_report, code)) {
-                del_key(code);
+            {
+                // Force a new key press if the key is already pressed
+                // without this, keys with the same keycode, but different
+                // modifiers will be reported incorrectly, see issue #1708
+                if (is_key_pressed(keyboard_report, code)) {
+                    del_key(code);
+                    send_keyboard_report();
+                }
+                add_key(code);
                 send_keyboard_report();
             }
-            add_key(code);
+        }
+    else if
+        IS_MOD(code) {
+            add_mods(MOD_BIT(code));
             send_keyboard_report();
         }
-    } else if IS_MOD (code) {
-        add_mods(MOD_BIT(code));
-        send_keyboard_report();
-    }
 #ifdef EXTRAKEY_ENABLE
-    else if IS_SYSTEM (code) {
-        host_system_send(KEYCODE2SYSTEM(code));
-    } else if IS_CONSUMER (code) {
-        host_consumer_send(KEYCODE2CONSUMER(code));
-    }
+    else if
+        IS_SYSTEM(code) { host_system_send(KEYCODE2SYSTEM(code)); }
+    else if
+        IS_CONSUMER(code) { host_consumer_send(KEYCODE2CONSUMER(code)); }
 #endif
 #ifdef MOUSEKEY_ENABLE
-    else if IS_MOUSEKEY (code) {
-        mousekey_on(code);
-        mousekey_send();
-    }
+    else if
+        IS_MOUSEKEY(code) {
+            mousekey_on(code);
+            mousekey_send();
+        }
 #endif
 }
 
@@ -962,22 +1009,26 @@ __attribute__((weak)) void unregister_code(uint8_t code) {
     }
 #endif
 
-    else if IS_KEY (code) {
-        del_key(code);
-        send_keyboard_report();
-    } else if IS_MOD (code) {
-        del_mods(MOD_BIT(code));
-        send_keyboard_report();
-    } else if IS_SYSTEM (code) {
-        host_system_send(0);
-    } else if IS_CONSUMER (code) {
-        host_consumer_send(0);
-    }
+    else if
+        IS_KEY(code) {
+            del_key(code);
+            send_keyboard_report();
+        }
+    else if
+        IS_MOD(code) {
+            del_mods(MOD_BIT(code));
+            send_keyboard_report();
+        }
+    else if
+        IS_SYSTEM(code) { host_system_send(0); }
+    else if
+        IS_CONSUMER(code) { host_consumer_send(0); }
 #ifdef MOUSEKEY_ENABLE
-    else if IS_MOUSEKEY (code) {
-        mousekey_off(code);
-        mousekey_send();
-    }
+    else if
+        IS_MOUSEKEY(code) {
+            mousekey_off(code);
+            mousekey_send();
+        }
 #endif
 }
 
@@ -998,9 +1049,13 @@ __attribute__((weak)) void tap_code_delay(uint8_t code, uint16_t delay) {
  *
  * \param code The basic keycode to tap. If `code` is `KC_CAPS_LOCK`, the delay will be `TAP_HOLD_CAPS_DELAY`, otherwise `TAP_CODE_DELAY`, if defined.
  */
+<<<<<<< HEAD
 __attribute__((weak)) void tap_code(uint8_t code) {
     tap_code_delay(code, code == KC_CAPS_LOCK ? TAP_HOLD_CAPS_DELAY : TAP_CODE_DELAY);
 }
+=======
+void tap_code(uint8_t code) { tap_code_delay(code, code == KC_CAPS_LOCK ? TAP_HOLD_CAPS_DELAY : TAP_CODE_DELAY); }
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /** \brief Adds the given physically pressed modifiers and sends a keyboard report immediately.
  *
@@ -1083,6 +1138,18 @@ void clear_keyboard_but_mods_and_keys() {
     programmable_button_clear();
     programmable_button_send();
 #endif
+<<<<<<< HEAD
+=======
+}
+
+/** \brief Utilities for actions. (FIXME: Needs better description)
+ *
+ * FIXME: Needs documentation.
+ */
+bool is_tap_key(keypos_t key) {
+    action_t action = layer_switch_get_action(key);
+    return is_tap_action(action);
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 /** \brief Utilities for actions. (FIXME: Needs better description)

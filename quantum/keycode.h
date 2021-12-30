@@ -62,6 +62,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // clang-format off
 
+// clang-format off
+
 /*
  * Short names for ease of definition of keymap
  */
@@ -283,7 +285,11 @@ enum hid_keyboard_keypad_usage {
     KC_MINUS,
     KC_EQUAL,
     KC_LEFT_BRACKET,
+<<<<<<< HEAD
     KC_RIGHT_BRACKET, // 0x30
+=======
+    KC_RIGHT_BRACKET,  // 0x30
+>>>>>>> c0de397925 (merge bedore pointerwork)
     KC_BACKSLASH,
     KC_NONUS_HASH,
     KC_SEMICOLON,
@@ -363,7 +369,11 @@ enum hid_keyboard_keypad_usage {
     KC_PASTE,
     KC_FIND,
     KC_KB_MUTE,
+<<<<<<< HEAD
     KC_KB_VOLUME_UP, // 0x80
+=======
+    KC_KB_VOLUME_UP,  // 0x80
+>>>>>>> c0de397925 (merge bedore pointerwork)
     KC_KB_VOLUME_DOWN,
     KC_LOCKING_CAPS_LOCK,
     KC_LOCKING_NUM_LOCK,
@@ -379,7 +389,11 @@ enum hid_keyboard_keypad_usage {
     KC_INTERNATIONAL_7,
     KC_INTERNATIONAL_8,
     KC_INTERNATIONAL_9,
+<<<<<<< HEAD
     KC_LANGUAGE_1, // 0x90
+=======
+    KC_LANGUAGE_1,  // 0x90
+>>>>>>> c0de397925 (merge bedore pointerwork)
     KC_LANGUAGE_2,
     KC_LANGUAGE_3,
     KC_LANGUAGE_4,

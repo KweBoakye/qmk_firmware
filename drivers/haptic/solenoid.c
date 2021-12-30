@@ -20,6 +20,7 @@
 #include "haptic.h"
 #include "gpio.h"
 #include "usb_device_state.h"
+<<<<<<< HEAD
 #include <stdlib.h>
 
 uint8_t      solenoid_dwell  = SOLENOID_DEFAULT_DWELL;
@@ -36,6 +37,13 @@ uint16_t solenoid_start[NUMBER_OF_SOLENOIDS]   = {0};
 #    define high true
 #endif
 static bool solenoid_active_state[NUMBER_OF_SOLENOIDS];
+=======
+
+bool     solenoid_on      = false;
+bool     solenoid_buzzing = false;
+uint16_t solenoid_start   = 0;
+uint8_t  solenoid_dwell   = SOLENOID_DEFAULT_DWELL;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 extern haptic_config_t haptic_config;
 
@@ -55,6 +63,7 @@ void solenoid_set_dwell(uint8_t dwell) {
     solenoid_dwell = dwell;
 }
 
+<<<<<<< HEAD
 /**
  * @brief Stops a specific solenoid
  *
@@ -64,6 +73,12 @@ void solenoid_stop(uint8_t index) {
     writePin(solenoid_pads[index], !solenoid_active_state[index]);
     solenoid_on[index]      = false;
     solenoid_buzzing[index] = false;
+=======
+void solenoid_stop(void) {
+    SOLENOID_PIN_WRITE_INACTIVE();
+    solenoid_on      = false;
+    solenoid_buzzing = false;
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 /**
@@ -81,6 +96,7 @@ void solenoid_fire(uint8_t index) {
     writePin(solenoid_pads[index], solenoid_active_state[index]);
 }
 
+<<<<<<< HEAD
 /**
  * @brief Handles selecting a non-active solenoid, and firing it.
  *
@@ -103,6 +119,12 @@ void solenoid_fire_handler(void) {
         }
     }
 #endif
+=======
+    solenoid_on      = true;
+    solenoid_buzzing = true;
+    solenoid_start   = timer_read();
+    SOLENOID_PIN_WRITE_ACTIVE();
+>>>>>>> c0de397925 (merge bedore pointerwork)
 }
 
 /**
@@ -123,6 +145,7 @@ void solenoid_check(void) {
             continue;
         }
 
+<<<<<<< HEAD
         // Check whether to buzz the solenoid on and off
         if (haptic_config.buzz) {
             if ((elapsed[i] % (SOLENOID_BUZZ_ACTUATED + SOLENOID_BUZZ_NONACTUATED)) < SOLENOID_BUZZ_ACTUATED) {
@@ -135,6 +158,19 @@ void solenoid_check(void) {
                     solenoid_buzzing[i] = false;
                     writePin(solenoid_pads[i], !solenoid_active_state[i]);
                 }
+=======
+    // Check whether to buzz the solenoid on and off
+    if (haptic_config.buzz) {
+        if ((elapsed % (SOLENOID_BUZZ_ACTUATED + SOLENOID_BUZZ_NONACTUATED)) < SOLENOID_BUZZ_ACTUATED) {
+            if (!solenoid_buzzing) {
+                solenoid_buzzing = true;
+                SOLENOID_PIN_WRITE_ACTIVE();
+            }
+        } else {
+            if (solenoid_buzzing) {
+                solenoid_buzzing = false;
+                SOLENOID_PIN_WRITE_INACTIVE();
+>>>>>>> c0de397925 (merge bedore pointerwork)
             }
         }
     }
@@ -145,6 +181,7 @@ void solenoid_check(void) {
  *
  */
 void solenoid_setup(void) {
+<<<<<<< HEAD
 #ifdef SOLENOID_PINS_ACTIVE_STATE
     bool    state_temp[] = SOLENOID_PINS_ACTIVE_STATE;
     uint8_t bound_check  = (sizeof(state_temp) / sizeof(bool));
@@ -173,3 +210,13 @@ void solenoid_shutdown(void) {
         writePin(solenoid_pads[i], !solenoid_active_state[i]);
     }
 }
+=======
+    SOLENOID_PIN_WRITE_INACTIVE();
+    setPinOutput(SOLENOID_PIN);
+    if ((!HAPTIC_OFF_IN_LOW_POWER) || (usb_device_state == USB_DEVICE_STATE_CONFIGURED)) {
+        solenoid_fire();
+    }
+}
+
+void solenoid_shutdown(void) { SOLENOID_PIN_WRITE_INACTIVE(); }
+>>>>>>> c0de397925 (merge bedore pointerwork)

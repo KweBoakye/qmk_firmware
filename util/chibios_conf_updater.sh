@@ -12,11 +12,15 @@ umask 022
 #   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 #   sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 #   sudo apt-get update && sudo apt-get install adoptopenjdk-8-hotspot
+<<<<<<< HEAD
 #
 # For Fedora 36-ish distros:
 #  # Prep yum repository from https://adoptium.net/installation/linux/
 #  sudo dnf install -y ant temurin-8-jdk
 #  export JAVA_HOME=/usr/lib/jvm/temurin-8-jdk
+=======
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 sinfo() { echo "$@" >&2 ; }
 shead() { sinfo "" ; sinfo "---------------------------------" ; sinfo "-- $@" ; sinfo "---------------------------------" ; }
@@ -101,8 +105,12 @@ upgrade_mcuconf_files() {
     popd >/dev/null 2>&1
 }
 
+<<<<<<< HEAD
 hash -r
 [[ -n "$(which fmpp 2>/dev/null)" ]] || build_fmpp
+=======
+havecmd fmpp || build_fmpp
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 upgrade_mcuconf_files
 upgrade_chconf_files

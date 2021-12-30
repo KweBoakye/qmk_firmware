@@ -47,6 +47,7 @@ void keyboard_post_init_user(void) {
 
 然后可以使用以下输出函数：
 
+<<<<<<< HEAD
 * `print("string")`: 字符串输出
 * `uprintf("%s string", var)`: 格式化字符串输出
 * `dprint("string")` 仅调试模式下，字符串输出
@@ -55,6 +56,8 @@ void keyboard_post_init_user(void) {
 ## 调试示例
 
 以下列出了一些实际出现过的调试范例，更多资料参见[调试/定位QMK问题](zh-cn/faq_debug.md)。
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 ### 当前按下的键的矩阵坐标是什么？
 

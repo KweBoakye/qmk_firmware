@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "keyboard_name": "Heavy Left",
     "manufacturer": "takashicompany",
     "url": "",
@@ -8,6 +9,11 @@
         "pid": "0x0015",
         "device_version": "0.0.1"
     },
+=======
+    "keyboard_name": "heavy_left",
+    "url": "",
+    "maintainer": "takashicompany",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT": {
             "layout": [

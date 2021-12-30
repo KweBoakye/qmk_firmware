@@ -19,6 +19,16 @@
 
 #include "config_common.h"
 
+<<<<<<< HEAD
+=======
+/* USB Device descriptor parameter */
+#define VENDOR_ID 0xFEED
+#define PRODUCT_ID 0x6060
+#define DEVICE_VER 0x0001
+#define MANUFACTURER Leon Omelan
+#define PRODUCT Nozbe Reunion Pad
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 /* key matrix size */
 #define MATRIX_ROWS 1
 #define MATRIX_COLS 4
@@ -28,6 +38,10 @@
     { B0 }
 #define MATRIX_COL_PINS \
     { D1, D0, D4, C6 }
+<<<<<<< HEAD
+=======
+#define UNUSED_PINS
+>>>>>>> c0de397925 (merge bedore pointerwork)
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

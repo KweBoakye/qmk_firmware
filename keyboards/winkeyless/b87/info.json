@@ -1,5 +1,6 @@
 {
     "keyboard_name": "B87",
+<<<<<<< HEAD
     "manufacturer": "Winkeyless",
     "url": "",
     "maintainer": "qmk",
@@ -8,6 +9,10 @@
         "pid": "0x0B87",
         "device_version": "0.0.1"
     },
+=======
+    "url": "",
+    "maintainer": "qmk",
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layouts": {
         "LAYOUT_all": {
             "layout": [

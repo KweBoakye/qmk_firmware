@@ -10,5 +10,10 @@ bool DUAL_BEACON(effect_params_t* params) {
     return effect_runner_sin_cos_i(params, &DUAL_BEACON_math);
 }
 
+<<<<<<< HEAD
 #    endif // LED_MATRIX_CUSTOM_EFFECT_IMPLS
 #endif     // ENABLE_LED_MATRIX_DUAL_BEACON
+=======
+#    endif  // LED_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif      // ENABLE_LED_MATRIX_DUAL_BEACON
+>>>>>>> c0de397925 (merge bedore pointerwork)

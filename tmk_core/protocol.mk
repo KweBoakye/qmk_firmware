@@ -28,6 +28,7 @@ ifeq ($(strip $(EXTRAKEY_ENABLE)), yes)
     SHARED_EP_ENABLE = yes
 endif
 
+<<<<<<< HEAD
 ifeq ($(strip $(PROGRAMMABLE_BUTTON_ENABLE)), yes)
     TMK_COMMON_DEFS += -DPROGRAMMABLE_BUTTON_ENABLE
     SHARED_EP_ENABLE = yes
@@ -45,6 +46,20 @@ else
     TMK_COMMON_DEFS += -DNO_DEBUG
 endif
 
+=======
+ifeq ($(strip $(RAW_ENABLE)), yes)
+    TMK_COMMON_DEFS += -DRAW_ENABLE
+endif
+
+ifeq ($(strip $(CONSOLE_ENABLE)), yes)
+    TMK_COMMON_DEFS += -DCONSOLE_ENABLE
+else
+    # TODO: decouple this so other print backends can exist
+    TMK_COMMON_DEFS += -DNO_PRINT
+    TMK_COMMON_DEFS += -DNO_DEBUG
+endif
+
+>>>>>>> c0de397925 (merge bedore pointerwork)
 ifeq ($(strip $(NKRO_ENABLE)), yes)
     ifeq ($(PROTOCOL), VUSB)
         $(info NKRO is not currently supported on V-USB, and has been disabled.)

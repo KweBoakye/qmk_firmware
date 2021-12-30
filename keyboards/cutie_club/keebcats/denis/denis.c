@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /* Copyright 2021 Cutie Club
+=======
+<<<<<<< HEAD:keyboards/deltapad/deltapad.c
+/* Copyright 2021 Richard Snijder
+=======
+/* Copyright 2021 Cutie Club
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/cutie_club/keebcats/denis/denis.c
+>>>>>>> c0de397925 (merge bedore pointerwork)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,4 +22,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 #include "denis.h"
+=======
+<<<<<<< HEAD:keyboards/deltapad/deltapad.c
+#include "deltapad.h"
+=======
+#include "denis.h"
+>>>>>>> c0de397925 (merge bedore pointerwork):keyboards/cutie_club/keebcats/denis/denis.c
+>>>>>>> c0de397925 (merge bedore pointerwork)

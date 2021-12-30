@@ -3,11 +3,14 @@
     "manufacturer": "Xelus",
     "url": "",
     "maintainer": "Xelus22",
+<<<<<<< HEAD
     "usb": {
         "vid": "0x5845",
         "pid": "0x0060",
         "device_version": "0.0.1"
     },
+=======
+>>>>>>> c0de397925 (merge bedore pointerwork)
     "layout_aliases": {
         "LAYOUT_60_all": "LAYOUT_all"
     },

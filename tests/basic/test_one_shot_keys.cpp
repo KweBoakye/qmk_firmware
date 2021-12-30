@@ -31,7 +31,11 @@ TEST_F(OneShot, OSMWithoutAdditionalKeypressDoesNothing) {
     set_keymap({osm_key});
 
     /* Press and release OSM key*/
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osm_key.press();
     run_one_scan_loop();
     osm_key.release();
@@ -39,7 +43,11 @@ TEST_F(OneShot, OSMWithoutAdditionalKeypressDoesNothing) {
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* OSM are added when an actual report is send */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (osm_key.report_code));
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(osm_key.report_code)));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     send_keyboard_report();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
@@ -57,7 +65,11 @@ TEST_P(OneShotParametrizedTestFixture, OSMExpiredDoesNothing) {
     set_keymap({osm_key, regular_key});
 
     /* Press and release OSM */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osm_key.press();
     run_one_scan_loop();
     osm_key.release();
@@ -65,13 +77,21 @@ TEST_P(OneShotParametrizedTestFixture, OSMExpiredDoesNothing) {
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (regular_key.report_code)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(regular_key.report_code))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -87,7 +107,11 @@ TEST_P(OneShotParametrizedTestFixture, OSMWithAdditionalKeypress) {
     set_keymap({osm_key, regular_key});
 
     /* Press and release OSM */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osm_key.press();
     run_one_scan_loop();
     osm_key.release();
@@ -95,13 +119,21 @@ TEST_P(OneShotParametrizedTestFixture, OSMWithAdditionalKeypress) {
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (osm_key.report_code, regular_key.report_code)).Times(1);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(osm_key.report_code, regular_key.report_code))).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -117,26 +149,43 @@ TEST_P(OneShotParametrizedTestFixture, OSMAsRegularModifierWithAdditionalKeypres
     set_keymap({osm_key, regular_key});
 
     /* Press OSM */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osm_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release OSM */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (regular_key.report_code, osm_key.report_code)).Times(1);
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(regular_key.report_code, osm_key.report_code))).Times(1);
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(1);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osm_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
@@ -169,26 +218,45 @@ TEST_F(OneShot, OSLWithAdditionalKeypress) {
     set_keymap({osl_key, regular_key});
 
     /* Press OSL key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(_)).Times(0);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osl_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release OSL key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport())).Times(2);
+>>>>>>> c0de397925 (merge bedore pointerwork)
     osl_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Press regular key */
+<<<<<<< HEAD
     EXPECT_REPORT(driver, (regular_key.report_code)).Times(1);
     EXPECT_EMPTY_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport(regular_key.report_code))).Times(2);
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.press();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
 
     /* Release regular key */
+<<<<<<< HEAD
     EXPECT_NO_REPORT(driver);
+=======
+    EXPECT_CALL(driver, send_keyboard_mock(KeyboardReport()));
+>>>>>>> c0de397925 (merge bedore pointerwork)
     regular_key.release();
     run_one_scan_loop();
     testing::Mock::VerifyAndClearExpectations(&driver);
