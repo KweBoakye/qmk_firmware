@@ -5,3 +5,4 @@ MCU = STM32F411
 BOOTLOADER = stm32-dfu
 
 KEYBOARD_SHARED_EP = yes
+BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
