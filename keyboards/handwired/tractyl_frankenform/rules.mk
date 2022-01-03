@@ -31,16 +31,14 @@ MIDI_ENABLE = no
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = usart
 EEPROM_DRIVER = spi
-SRC += analog.c  #oled.c#cirque_tm040040.c
-QUANTUM_LIB_SRC += spi_master.c #i2c_master.c i2c2_master.c
 
-MOUSE_SHARED_EP = yes
+MOUSE_SHARED_EP = no
 KEYBOARD_SHARED_EP = yes
 STENO_ENABLE = no
 VIRTSER_ENABLE = no
 
 POINTING_DEVICE_ENABLE = yes
-POINTING_DEVICE_DRIVER = pmw3360
+POINTING_DEVICE_DRIVER = analog_joystick
 HAPTIC_ENABLE = no
 HAPTIC_DRIVER += DRV2605L
 JOYSTICK_ENABLE = no
@@ -49,3 +47,7 @@ JOYSTICK_DRIVER = analog
 DIP_SWITCH_ENABLE = yes
 
 DEBOUNCE_TYPE = asym_eager_defer_pk
+
+#OPT_DEFS += -DSTM32_I2C -DHAL_USE_I2C=TRUE  -DSTM32_SPI -DHAL_USE_SPI=TRUE #-DPOINTING_DEVICE_DRIVER_cirque_pinnacle_i2c -DPOINTING_DEVICE_DRIVER_pmw3360
+SRC += analog.c #oled.c drivers/sensors/pmw3360.c drivers/sensors/cirque_pinnacle.c drivers/sensors/cirque_pinnacle_i2c.c # drivers/sensors/pmw3360.c   $(QUANTUM_DIR)/pointing_device_drivers.c $(QUANTUM_DIR)/pointing_device_drivers.c #pointing_logic.c
+QUANTUM_LIB_SRC += spi_master.c i2c_master.c #pointing_device_drivers.c
