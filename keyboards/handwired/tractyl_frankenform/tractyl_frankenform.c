@@ -19,9 +19,16 @@
 
 #include <quantum.h>
 #include "analog.h"
-#ifdef POINTING_DEVICE_ENABLE
+/* #ifdef POINTING_DEVICE_ENABLE
 #    include "pointing_device.h"
-#endif
+#endif */
+#include "pointing_device.h"
+#include "spi_master.h"
+#include "i2c_master.h"
+//#include "pointing_device_drivers.c"
+#include "drivers/sensors/pmw3360.h"
+//#include "analog_joystick.h"
+#include "drivers/sensors/cirque_pinnacle.h"
 
 
 
@@ -132,3 +139,181 @@ void matrix_scan_kb(void) {
     eeconfig_init_user();
 }
  */
+
+
+#define constrain_hid(amt) ((amt) < -127 ? -127 : ((amt) > 127 ? 127 : (amt)))
+
+/*  void           pointing_device_driver_init(void) {
+     if (!is_keyboard_left()) {
+         pmw3360_init();
+        i2c_init();
+        cirque_pinnacle_init();
+        analog_joystick_init
+ }
+ } */
+/*
+  report_mouse_t pmw3360_get_report(report_mouse_t mouse_report) {
+    report_pmw3360_t data        = pmw3360_read_burst();
+    static uint16_t  MotionStart = 0;  // Timer for accel, 0 is resting state
+
+    if (data.isOnSurface && data.isMotion) {
+        // Reset timer if stopped moving
+        if (!data.isMotion) {
+            if (MotionStart != 0) MotionStart = 0;
+            return mouse_report;
+        }
+
+        // Set timer if new motion
+        if ((MotionStart == 0) && data.isMotion) {
+#    ifdef CONSOLE_ENABLE
+            if (debug_mouse) dprintf("Starting motion.\n");
+#    endif
+            MotionStart = timer_read();
+        }
+        mouse_report.x = constrain_hid(data.dx);
+        mouse_report.y = constrain_hid(data.dy);
+    }
+
+    return mouse_report;
+}
+
+static inline int8_t pointing_device_movement_clamp(int16_t value) {
+    if (value < INT8_MIN) {
+        return INT8_MIN;
+    } else if (value > INT8_MAX) {
+        return INT8_MAX;
+    } else {
+        return value;
+    }
+}
+ */
+/*  #    ifndef CIRQUE_PINNACLE_TAPPING_TERM
+#        ifdef TAPPING_TERM_PER_KEY
+#            include "action.h"
+#            include "action_tapping.h"
+#            define CIRQUE_PINNACLE_TAPPING_TERM get_tapping_term(KC_BTN1, NULL)
+#        else
+#            ifdef TAPPING_TERM
+#                define CIRQUE_PINNACLE_TAPPING_TERM TAPPING_TERM
+#            else
+#                define CIRQUE_PINNACLE_TAPPING_TERM 200
+#            endif
+#        endif
+#    endif
+#    ifndef CIRQUE_PINNACLE_TOUCH_DEBOUNCE
+#        define CIRQUE_PINNACLE_TOUCH_DEBOUNCE (CIRQUE_PINNACLE_TAPPING_TERM * 8)
+#    endif  */
+
+// report_mouse_t rotate_cirque(report_mouse_t mouse_report){
+//      int8_t x = mouse_report.x, y = mouse_report.y;
+//        mouse_report.x = y;
+//        mouse_report.y = -x;
+//     return mouse_report;
+/* // }
+report_mouse_t cirque_pinnacle_get_report_custom(report_mouse_t mouse_report) {
+    pinnacle_data_t touchData = cirque_pinnacle_read_data();
+    static uint16_t x = 0, y = 0, mouse_timer = 0;
+    int8_t          report_x = 0, report_y = 0;
+    static bool     is_z_down = false;
+
+    cirque_pinnacle_scale_data(&touchData, cirque_pinnacle_get_scale(), cirque_pinnacle_get_scale());  // Scale coordinates to arbitrary X, Y resolution
+
+    if (x && y && touchData.xValue && touchData.yValue) {
+        report_x = (int8_t)(touchData.xValue - x);
+        report_y = (int8_t)(touchData.yValue - y);
+    }
+    x = touchData.xValue;
+    y = touchData.yValue;
+
+    if ((bool)touchData.zValue != is_z_down) {
+        is_z_down = (bool)touchData.zValue;
+        if (!touchData.zValue) {
+            if (timer_elapsed(mouse_timer) < CIRQUE_PINNACLE_TAPPING_TERM && mouse_timer != 0) {
+                mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, true, POINTING_DEVICE_BUTTON1);
+                pointing_device_set_report(mouse_report);
+                pointing_device_send();
+#    if TAP_CODE_DELAY > 0
+                wait_ms(TAP_CODE_DELAY);
+#    endif
+                mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, false, POINTING_DEVICE_BUTTON1);
+                pointing_device_set_report(mouse_report);
+                pointing_device_send();
+            }
+        }
+        mouse_timer = timer_read();
+    }
+    if (timer_elapsed(mouse_timer) > (CIRQUE_PINNACLE_TOUCH_DEBOUNCE)) {
+        mouse_timer = 0;
+    }
+    mouse_report.x = report_x;
+    mouse_report.y = report_y;
+
+    return mouse_report;
+}
+
+report_mouse_t analog_joystick_get_report(report_mouse_t mouse_report) {
+    report_analog_joystick_t data = analog_joystick_read();
+
+#    ifdef CONSOLE_ENABLE
+    if (debug_mouse) dprintf("Raw ] X: %d, Y: %d\n", data.x, data.y);
+#    endif
+
+    mouse_report.x = data.x;
+    mouse_report.y = data.y;
+
+    mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, data.button, POINTING_DEVICE_BUTTON1);
+
+    return mouse_report;
+}
+
+
+ report_mouse_t pointing_device_driver_get_report(report_mouse_t mouse_report) {
+if (!is_keyboard_left()) {
+    report_mouse_t pmw3360_report, cirque_pinnacle_report, analog_joystick_report;
+      pmw3360_report =  pmw3360_get_report(mouse_report);
+    analog_joystick_report = analog_joystick_get_report;
+     cirque_pinnacle_report = cirque_pinnacle_get_report_custom(mouse_report);
+      mouse_report.x = pointing_device_movement_clamp((int16_t) -pmw3360_report.x + cirque_pinnacle_report.y);
+      mouse_report.y = pointing_device_movement_clamp((int16_t) -pmw3360_report.y + -cirque_pinnacle_report.x);
+
+      mouse_report.x = pointing_device_movement_clamp((int16_t) analog_joystick_report.x + cirque_pinnacle_report.y);
+      mouse_report.y = pointing_device_movement_clamp((int16_t) analog_joystick_report.y + -cirque_pinnacle_report.x);
+       mouse_report.buttons = cirque_pinnacle_report.buttons;
+
+}
+    return mouse_report; }
+uint16_t       pointing_device_driver_get_cpi(void) { return cirque_pinnacle_get_scale(); }
+void           pointing_device_driver_set_cpi(uint16_t cpi) {
+    pmw3360_set_cpi(cpi);
+    cirque_pinnacle_set_scale(cpi);
+    }
+ */
+
+ void pointing_device_init_kb(void) {
+    if (!is_keyboard_left()) {
+        //pmw3360_init();
+        pmw3360_set_cpi(200);
+    }
+}
+
+  report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
+      dprintf("Raw ] X: %d, Y: %d\n", right_report.x, right_report.y);
+     /*if (!is_keyboard_left()) {
+         report_mouse_t pmw3360_report;
+
+   //if(right_report.x == 0 && right_report.y== 0){
+pmw3360_report = pmw3360_get_report(pmw3360_report);
+
+//right_report.x = pmw3360_report.x;
+//right_report.y = pmw3360_report.y;
+   // }
+
+   right_report.x = pointing_device_movement_clamp((int16_t)(-pmw3360_report.x) + (-pmw3360_report.x));
+   right_report.y = 0;
+    //right_report = pointing_device_combine_reports(pmw3360_report, right_report) ;
+
+     } */
+      return pointing_device_task_combined_user(left_report, right_report);
+      }
+
+

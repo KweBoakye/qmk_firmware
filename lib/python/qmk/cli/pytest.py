@@ -12,11 +12,7 @@ from milc import cli
 def pytest(cli):
     """Run several linting/testing commands.
     """
-<<<<<<< HEAD
-    nose2 = cli.run(['nose2', '-v'], capture_output=False, stdin=DEVNULL)
-=======
     nose2 = cli.run(['nose2', '-v', '-t' 'lib/python', *cli.args.test], capture_output=False, stdin=DEVNULL)
->>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
     flake8 = cli.run(['flake8', 'lib/python'], capture_output=False, stdin=DEVNULL)
 
     return flake8.returncode | nose2.returncode
