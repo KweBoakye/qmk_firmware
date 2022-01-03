@@ -23,6 +23,8 @@
 #define HAL_USE_GPT    TRUE
 #define HAL_USE_ADC   TRUE
 #define HAL_USE_PAL                 TRUE
+#define SPI_USE_WAIT TRUE
+#define SPI_SELECT_MODE SPI_SELECT_MODE_PAD
 
 
 #include_next <halconf.h>
