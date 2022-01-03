@@ -3,11 +3,14 @@
     "manufacturer": "KPrepublic",
     "url": "",
     "maintainer": "bdtc123",
+<<<<<<< HEAD
     "usb": {
         "vid": "0x4B50",
         "pid": "0x1122",
         "device_version": "0.0.2"
     },
+=======
+>>>>>>> ca0e870a0d (merge)
     "layouts": {
         "LAYOUT_60_ansi": {
             "layout": [

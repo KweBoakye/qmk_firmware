@@ -238,10 +238,14 @@ void keyboard_pre_init_kb(void) {
 
 void pointing_device_init_kb(void) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     pointing_device_set_cpi(dpi_array[keyboard_config.dpi_config]);
 =======
     pmw3360_set_cpi(dpi_array[keyboard_config.dpi_config]);
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+    pointing_device_set_cpi(dpi_array[keyboard_config.dpi_config]);
+>>>>>>> ca0e870a0d (merge)
     // initialize the scroll wheel's optical encoder
     opt_encoder_init();
 }

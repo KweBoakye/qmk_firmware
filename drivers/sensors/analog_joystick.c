@@ -39,11 +39,7 @@ int16_t xOrigin, yOrigin;
 
 uint16_t lastCursor = 0;
 
-<<<<<<< HEAD
-int16_t axisCoordinate(pin_t pin, uint16_t origin) {
-=======
 int16_t axisCoordinate(uint8_t pin, uint16_t origin) {
->>>>>>> c0de397925 (merge bedore pointerwork)
     int8_t  direction;
     int16_t distanceFromOrigin;
     int16_t range;
@@ -73,11 +69,7 @@ int16_t axisCoordinate(uint8_t pin, uint16_t origin) {
     }
 }
 
-<<<<<<< HEAD
-int8_t axisToMouseComponent(pin_t pin, int16_t origin, uint8_t maxSpeed) {
-=======
 int8_t axisToMouseComponent(uint8_t pin, int16_t origin, uint8_t maxSpeed) {
->>>>>>> c0de397925 (merge bedore pointerwork)
     int16_t coordinate = axisCoordinate(pin, origin);
     if (coordinate != 0) {
         float percent = (float)coordinate / 100;
