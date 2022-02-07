@@ -24,5 +24,6 @@ AUDIO_ENABLE = no           # Audio output
 
 # Add trackball support
 POINTING_DEVICE_ENABLE = yes
+POINTING_DEVICE_DRIVER = custom
 SRC += adns.c
 QUANTUM_LIB_SRC += spi_master.c

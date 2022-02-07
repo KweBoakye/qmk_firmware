@@ -29,6 +29,3 @@ NKRO_ENABLE = no            # Enable N-Key Rollover
 >>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
-
-# Project specific files
-SRC = babblePaste.c

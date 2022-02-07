@@ -20,6 +20,7 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 >>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+UNICODE_ENABLE = yes        # Unicode
 AUDIO_ENABLE = no           # Audio output
-UNICODE_ENABLE = yes
-SPLIT_KEYBOARD = yes
+SPLIT_KEYBOARD = yes        # Use shared split_common code
+LAYOUTS = split_3x5_2

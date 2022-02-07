@@ -90,11 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MAKE, _________________ADJUST_L1_________________,                    _________________ADJUST_R1_________________, KC_RESET,
     VRSN,    _________________ADJUST_L2_________________,                    _________________ADJUST_R2_________________, EEP_RST,
     KEYLOCK, _________________ADJUST_L3_________________,                    _________________ADJUST_R3_________________, RGB_IDL,
-<<<<<<< HEAD
-                                     HPT_TOG, KC_NUKE, _______,        _______, TG_MODS, HPT_FBK
-=======
-                                     AUTO_CTN,KC_NUKE, _______,        _______, TG_MODS, HPT_FBK
->>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+                                     REBOOT, KC_NUKE, _______,        _______, TG_MODS, AUTO_CTN
   )
 };
 // clang-format on

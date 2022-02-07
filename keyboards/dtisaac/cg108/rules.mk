@@ -20,5 +20,4 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 >>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
-BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
