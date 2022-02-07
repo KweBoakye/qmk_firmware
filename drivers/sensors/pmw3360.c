@@ -112,9 +112,9 @@ void pmw33xx_set_cpi(uint8_t sensor, uint16_t cpi) {
 
 bool _inBurst = false;
 
-#ifdef CONSOLE_ENABLE
-void print_byte(uint8_t byte) { dprintf("%c%c%c%c%c%c%c%c|", (byte & 0x80 ? '1' : '0'), (byte & 0x40 ? '1' : '0'), (byte & 0x20 ? '1' : '0'), (byte & 0x10 ? '1' : '0'), (byte & 0x08 ? '1' : '0'), (byte & 0x04 ? '1' : '0'), (byte & 0x02 ? '1' : '0'), (byte & 0x01 ? '1' : '0')); }
-#endif
+//#ifdef CONSOLE_ENABLE
+//void print_byte(uint8_t byte) { dprintf("%c%c%c%c%c%c%c%c|", (byte & 0x80 ? '1' : '0'), (byte & 0x40 ? '1' : '0'), (byte & 0x20 ? '1' : '0'), (byte & 0x10 ? '1' : '0'), (byte & 0x08 ? '1' : '0'), (byte & 0x04 ? '1' : '0'), (byte & 0x02 ? '1' : '0'), (byte & 0x01 ? '1' : '0')); }
+///#endif
 #define constrain(amt, low, high) ((amt) < (low) ? (low) : ((amt) > (high) ? (high) : (amt)))
 
 bool spi_start_adv(void) {
@@ -583,7 +583,7 @@ report_pmw3360_t pmw3360_read_burst(void) {
 
     spi_stop();
 
-#ifdef CONSOLE_ENABLE
+/* #ifdef CONSOLE_ENABLE
     if (debug_mouse) {
         print_byte(data.motion);
         print_byte(data.dx);
@@ -592,7 +592,7 @@ report_pmw3360_t pmw3360_read_burst(void) {
         print_byte(data.mdy);
         dprintf("\n");
     }
-#endif
+#endif */
 
     data.isMotion    = (data.motion & 0x80) != 0;
     data.isOnSurface = (data.motion & 0x08) == 0;
