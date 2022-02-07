@@ -15,25 +15,30 @@
  */
 
 #include "tractyl_frankenform.h"
+ #ifdef RGB_MATRIX_ENABLE
 #include "drivers/led/issi/is31fl3731.h"
+#endif
 
 #include <quantum.h>
 #include "analog.h"
-/* #ifdef POINTING_DEVICE_ENABLE
+/*
 #    include "pointing_device.h"
-#endif */
-#include "pointing_device.h"
+ */
 #include "spi_master.h"
 #include "i2c_master.h"
 //#include "pointing_device_drivers.c"
+ #ifdef POINTING_DEVICE_ENABLE
+#include "pointing_device.h"
 #include "drivers/sensors/pmw3360.h"
-//#include "analog_joystick.h"
+
 #include "drivers/sensors/cirque_pinnacle.h"
+#include "drivers/sensors/analog_joystick.h"
+#endif
 
 
 
 //keyboard_config_t keyboard_config;
-
+ #ifdef RGB_MATRIX_ENABLE
 const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
 /* Refer to IS31 manual for these locations
  *   driver
@@ -66,50 +71,78 @@ const is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
     {0, C7_7,  C8_7,  C9_7},
     {0, C7_8,  C8_8,  C9_8},
 
-    {0, C7_14,  C8_14,  C9_14},
+    {0, C1_16,  C2_16,  C3_16},
+    {0, C1_15,  C2_15,  C3_15},
+    {0, C1_14,  C2_14,  C3_14},
+    {0, C1_13,  C2_13,  C3_13},
+    {0, C1_12,  C2_12,  C3_12},
+    {0, C9_13,  C8_13,  C7_13},
+    {0, C9_12,  C8_12,  C7_12},
+    {0, C9_11,  C8_11,  C7_11},
+    {0, C9_10,  C8_10,  C7_10},
+   //S {0, C9_9,   C8_9,   C7_9},
+
+
+
 };
-
-
+// from https://github.com/tzarc/qmk_firmware/blob/djinn/keyboards/tzarc/djinn/rev2/rev2.c
+// clang-format off
+#define RLO 33 //33 not 32 to accunt for 0
+#define LLI(x) (x)
+#define LLP(x,y) {(x),(y)}
+#define RLI(x) (RLO+(x))
+#define RLP(x,y) {(224-(x)),((y))}
 led_config_t g_led_config  = { {
-    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
-    {  NO_LED,  NO_LED,  NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
-    {  NO_LED,  NO_LED, NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
-    {  NO_LED,  NO_LED, NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
-    {  NO_LED,  NO_LED, NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
-    {  NO_LED,  NO_LED, NO_LED,  NO_LED, NO_LED, NO_LED, NO_LED },
-    {   0,   1, 2,  3, 4, 5, 6 },
-    {   8,   9, 10,  11,  12, 13, 7 },
-    {   16,   17, 18,  19,  20, 14, 15 },
-    {   NO_LED,   24, NO_LED,  NO_LED,  21, 22, 23 },
-    {   NO_LED,   NO_LED, NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED },
-    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED }
+    {  6,  5,  4,  3,  2, 1, 0 },
+    {  7,  13,  12,  11, 10, 9, 8 },
+    {  15,  14, 20,  19,  18, 17, 16 },
+    {  23,  22, 21,  25,  30, 26, NO_LED },
+    {  NO_LED,  NO_LED, 24,  29,  NO_LED, 31, NO_LED },
+    {  NO_LED,  NO_LED, NO_LED,  32, 28, 27, NO_LED },
+    {  RLI(0),       RLI(1),      RLI(2),       RLI(3),      RLI(4),      RLI(5),      RLI(6 )    },
+    {  RLI(8),       RLI(9),      RLI(10),      RLI( 11),    RLI(12),     RLI(13),     RLI(7 )    },
+    {  RLI(16),      RLI(17),     RLI(18),      RLI( 19),    RLI(20),     RLI(14),     RLI(15)     },
+    {  NO_LED,   RLI(26),   RLI(30),  RLI(25),     RLI(21),    RLI(22),      RLI(23) },
+    {  NO_LED,   RLI(31), NO_LED,  RLI(29),  RLI(24), NO_LED, NO_LED },
+    {  NO_LED, RLI(27), RLI(28), RLI(32), NO_LED, NO_LED, NO_LED }
 }, {
-    { 0,   0 }, { 38,  0 }, { 75,   0  }, { 112,   0  }, {    187,  0 }, { 224,  0 },
-    {0,  12 }, { 38,  12 }, { 75,  12 }, { 112,  12 },{150,  25 },{187,  25 }, { 224,  25 },
-    {0,  25 }, { 38,  25 }, { 75,  25 }, { 112,  38 },{150,  38 },{187,  38 }, { 224,  38 },
-    /*{0,  38 },*/ { 38,  38 },/* { 75,  51 }, { 112,  51 },*/{150,  51 },{187,  51 }, { 224,  51 }//,
-    /*{0,  50 }, { 38,  50 }, { 75,  50 }, { 112,  50 },{150,  50 },{187,  50 }, { 224,  50 },*/
-    /*{0,  63 }, { 38,  63 }, { 75,  63 }, { 112,  63 },{150,  63 },{187,  63 }, { 224,  63 }*/
-}, {
-    4, 4, 4, 4, 4, 4, 4,
-    4, 4, 4, 4, 4, 4, 4,
-    4, 4, 4, 4, 4, 4, 4,
-        4,        4, 4, 4
-} };
 
-void matrix_init_kb(void) {
-#if BOOTMAGIC_ENABLE
+    LLP( 0,   0 ), LLP( 38,  0 ), LLP( 75,   0  ), LLP( 112,   0  ) ,LLP( 149,  0), LLP(187,  0 ), LLP(224,  0 ),
+    LLP(224,  13 ), LLP( 0,  13 ), LLP( 38,  13 ), LLP( 75,  13 ) ,LLP(112,  13 ),LLP(149,  13 ), LLP(187,  13 ),
+    LLP(187,  26 ), LLP( 224,  26 ), LLP( 0,  26 ), LLP( 38,  26 ) ,LLP(75,  26 ),LLP(112,  26 ), LLP(224,  149 ),
+    LLP(112,  38 ), LLP( 149,  38 ), LLP( 187,  38 ), LLP( 149,  51 ) ,LLP(112,  38 ),LLP(38,  38 ), LLP(75,  51 ),
+    LLP(38,  64 ), LLP( 112,  51 ), LLP( 75,  38 ), LLP( 38,  51 ),
+
+
+
+    RLP( 0,   0 ), RLP( 38,  0 ), RLP( 75,   0  ), RLP( 112,   0  ) ,RLP( 149,  0), RLP(187,  0 ), RLP(224,  0 ),
+    RLP(224,  13 ), RLP( 0,  13 ), RLP( 38,  13 ), RLP( 75,  13 ) ,RLP(112,  13 ),RLP(149,  13 ), RLP(187,  13 ),
+    RLP(187,  26 ), RLP( 224,  26 ), RLP( 0,  26 ), RLP( 38,  26 ) ,RLP(75,  26 ),RLP(112,  26 ), RLP(224,  149 ),
+    RLP(112,  38 ), RLP( 149,  38 ), RLP( 187,  38 ), RLP( 149,  51 ) ,RLP(112,  38 ),RLP(38,  38 ), RLP(75,  51 ),
+    RLP(38,  64 ), RLP( 112,  51 ), RLP( 75,  38 ), RLP( 38,  51 ),
+}, {
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+    LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
+} };
+// clang-format on
+#endif
+
+void keyboard_pre_init_kb(void) {
+    #if BOOTMAGIC_ENABLE
      setPinInputHigh(A0);
 #endif
-    // setPinInputHigh(B12);
-   /*  keyboard_config.raw = eeconfig_read_kb();
 
-    if (!keyboard_config.dpi_config) {
-        keyboard_config.dpi_config = 2;
-        eeconfig_update_kb(keyboard_config.raw);
-    } */
-    matrix_init_user();
-}
+    }
+
 
 
 
@@ -124,9 +157,35 @@ void matrix_scan_kb(void) {
     uint16_t y_val = analogReadPin(B2);
     xprintf("%6d, %6d", x_val, y_val);
     xprintf("\n"); */
-    matrix_scan_user();
 
 }
+
+void bootmagic_lite(void) {
+    // We need multiple scans because debouncing can't be turned off.
+    matrix_scan();
+#if defined(DEBOUNCE) && DEBOUNCE > 0
+    wait_ms(DEBOUNCE * 2);
+#else
+    wait_ms(30);
+#endif
+    matrix_scan();
+
+    uint8_t row = BOOTMAGIC_LITE_ROW;
+    uint8_t col = BOOTMAGIC_LITE_COLUMN;
+
+#if defined(SPLIT_KEYBOARD) && defined(BOOTMAGIC_LITE_ROW_RIGHT) && defined(BOOTMAGIC_LITE_COLUMN_RIGHT)
+    if (!is_keyboard_left()) {
+        row = BOOTMAGIC_LITE_ROW_RIGHT;
+        col = BOOTMAGIC_LITE_COLUMN_RIGHT;
+    }
+#endif
+
+    if (matrix_get_row(row) & (1 << col) || !readPin(A0)) {
+        eeconfig_disable();
+        bootloader_jump();
+    }
+}
+
 
 
 /* void eeconfig_init_kb(void) {  // EEPROM is getting reset!
@@ -140,18 +199,20 @@ void matrix_scan_kb(void) {
 }
  */
 
-
+#ifdef POINTING_DEVICE_ENABLE
 #define constrain_hid(amt) ((amt) < -127 ? -127 : ((amt) > 127 ? 127 : (amt)))
 
-/*  void           pointing_device_driver_init(void) {
-     if (!is_keyboard_left()) {
-         pmw3360_init();
-        i2c_init();
-        cirque_pinnacle_init();
-        analog_joystick_init
+  void           pointing_device_driver_init(void) {
+       i2c_init();
+    cirque_pinnacle_init();
+     if (is_keyboard_left()) {
+
+        analog_joystick_init();
+ } else {
+      pmw3360_init();
  }
- } */
-/*
+ }
+
   report_mouse_t pmw3360_get_report(report_mouse_t mouse_report) {
     report_pmw3360_t data        = pmw3360_read_burst();
     static uint16_t  MotionStart = 0;  // Timer for accel, 0 is resting state
@@ -186,7 +247,7 @@ static inline int8_t pointing_device_movement_clamp(int16_t value) {
         return value;
     }
 }
- */
+
 /*  #    ifndef CIRQUE_PINNACLE_TAPPING_TERM
 #        ifdef TAPPING_TERM_PER_KEY
 #            include "action.h"
@@ -209,7 +270,7 @@ static inline int8_t pointing_device_movement_clamp(int16_t value) {
 //        mouse_report.x = y;
 //        mouse_report.y = -x;
 //     return mouse_report;
-/* // }
+// }
 report_mouse_t cirque_pinnacle_get_report_custom(report_mouse_t mouse_report) {
     pinnacle_data_t touchData = cirque_pinnacle_read_data();
     static uint16_t x = 0, y = 0, mouse_timer = 0;
@@ -254,10 +315,6 @@ report_mouse_t cirque_pinnacle_get_report_custom(report_mouse_t mouse_report) {
 report_mouse_t analog_joystick_get_report(report_mouse_t mouse_report) {
     report_analog_joystick_t data = analog_joystick_read();
 
-#    ifdef CONSOLE_ENABLE
-    if (debug_mouse) dprintf("Raw ] X: %d, Y: %d\n", data.x, data.y);
-#    endif
-
     mouse_report.x = data.x;
     mouse_report.y = data.y;
 
@@ -268,36 +325,53 @@ report_mouse_t analog_joystick_get_report(report_mouse_t mouse_report) {
 
 
  report_mouse_t pointing_device_driver_get_report(report_mouse_t mouse_report) {
-if (!is_keyboard_left()) {
-    report_mouse_t pmw3360_report, cirque_pinnacle_report, analog_joystick_report;
-      pmw3360_report =  pmw3360_get_report(mouse_report);
-    analog_joystick_report = analog_joystick_get_report;
+if (is_keyboard_left()) {
+    report_mouse_t  cirque_pinnacle_report, analog_joystick_report;
+      //pmw3360_report =  pmw3360_get_report(mouse_report);
+    analog_joystick_report = analog_joystick_get_report(mouse_report);
      cirque_pinnacle_report = cirque_pinnacle_get_report_custom(mouse_report);
-      mouse_report.x = pointing_device_movement_clamp((int16_t) -pmw3360_report.x + cirque_pinnacle_report.y);
-      mouse_report.y = pointing_device_movement_clamp((int16_t) -pmw3360_report.y + -cirque_pinnacle_report.x);
+     // mouse_report.x = pointing_device_movement_clamp((int16_t) -pmw3360_report.x + cirque_pinnacle_report.y);
+     // mouse_report.y = pointing_device_movement_clamp((int16_t) -pmw3360_report.y + -cirque_pinnacle_report.x);
 
       mouse_report.x = pointing_device_movement_clamp((int16_t) analog_joystick_report.x + cirque_pinnacle_report.y);
       mouse_report.y = pointing_device_movement_clamp((int16_t) analog_joystick_report.y + -cirque_pinnacle_report.x);
-       mouse_report.buttons = cirque_pinnacle_report.buttons;
+       mouse_report.buttons = cirque_pinnacle_report.buttons | analog_joystick_report.buttons;
 
+} else {
+    report_mouse_t  cirque_pinnacle_report, pmw3360_report;
+     cirque_pinnacle_report = cirque_pinnacle_get_report_custom(mouse_report);
+     pmw3360_report =  pmw3360_get_report(mouse_report);
+
+     mouse_report.x = pointing_device_movement_clamp((int16_t) -pmw3360_report.x + cirque_pinnacle_report.y);
+     mouse_report.y = pointing_device_movement_clamp((int16_t) pmw3360_report.y + -cirque_pinnacle_report.x);
+      mouse_report.buttons = cirque_pinnacle_report.buttons;
 }
     return mouse_report; }
-uint16_t       pointing_device_driver_get_cpi(void) { return cirque_pinnacle_get_scale(); }
+uint16_t       pointing_device_driver_get_cpi(void) { return cirque_pinnacle_get_scale();}
+
+
+
 void           pointing_device_driver_set_cpi(uint16_t cpi) {
-    pmw3360_set_cpi(cpi);
-    cirque_pinnacle_set_scale(cpi);
+    if(is_keyboard_left()){
+        cirque_pinnacle_set_scale(cpi);
+    } else {
+        pmw3360_set_cpi(cpi);
+ cirque_pinnacle_set_scale(cpi);
     }
- */
+
+    }
+
 
  void pointing_device_init_kb(void) {
     if (!is_keyboard_left()) {
-        //pmw3360_init();
+
         pmw3360_set_cpi(200);
     }
 }
 
   report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
-      dprintf("Raw ] X: %d, Y: %d\n", right_report.x, right_report.y);
+
+
      /*if (!is_keyboard_left()) {
          report_mouse_t pmw3360_report;
 
@@ -315,5 +389,5 @@ pmw3360_report = pmw3360_get_report(pmw3360_report);
      } */
       return pointing_device_task_combined_user(left_report, right_report);
       }
-
+#endif
 

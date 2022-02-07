@@ -13,9 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include QMK_KEYBOARD_H
+#ifdef RGB_MATRIX_ENABLE
 #include <rgb_matrix.h>
 #include "color.h"
+#endif
 #ifdef POINTING_DEVICE_ENABLE
 #     include "pointing_device.h"
 #endif
@@ -25,17 +28,18 @@
 #include "analog.h"
 #include "print.h"
 #include "audio.h"
+#include "../../wrappers.h"
 #include "song_list.h"
 float my_song[][2] = SONG(QWERTY_SOUND);
 
-void matrix_scan_user() {
-    /* int16_t val = (((uint32_t)timer_read() % 5000 - 2500) * 255) / 5000;
+/* void matrix_scan_user() {
+    int16_t val = (((uint32_t)timer_read() % 5000 - 2500) * 255) / 5000;
 
     if (val != joystick_status.axes[1]) {
         joystick_status.axes[1] = val;
         joystick_status.status |= JS_UPDATED;
-    } */
-}
+    }
+} */
 
 /* #ifdef JOYSTICK_ENABLE
 //joystick config
@@ -46,6 +50,24 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
 #endif */
 
 // Defines the keycodes used by our macros in process_record_user
+
+#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
+#define LAYOUT_base( \
+    K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
+    K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, \
+    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
+  ) \
+  LAYOUT_wrapper ( \
+        KC_ESC,  ________________NUMBER_LEFT________________,  KC_GRV,                   ________________NUMBER_RIGHT_______________,     KC_MINS,  KC_EQL, \
+        KC_TAB,    K01,    K02,      K03,     K04,     K05,   KC_LBRC,                   KC_RBRC,    K06,     K07,     K08,     K09,      K0A,      KC_BSLS,     \
+        KC_LCTL,   K11,    K12,      K13,     K14,     K15,   TAB_RO,                    KC_LEFT,    K16,     K17,     K18,     K19,      K1A,      K1B,   \
+        OSM(MOD_LSFT),K21, K22,      K23,     K24,     K25,                                          K26,     K27,     K28,     K29,      K2A,      OSM(MOD_RSFT), \
+                                  KC_LALT,   TAB_R,                                                                    KC_LEFT, KC_UP, \
+                                                 KC_SPC,                                            KC_ENT,       \
+                                                  KC_HOME,                                         KC_PGDN, \
+                                                 KC_PSCR, TASK,                                    KC_LCTL, KC_LALT \
+    )
+#define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
 
 enum custom_keycodes {
@@ -68,25 +90,10 @@ enum custom_keycodes {
 #define TAB_RO LCTL(LSFT(KC_T))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT(
-        // left hand
-        KC_ESC,    KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,
-        KC_TAB,    KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_LBRC,
-        KC_LCTL,   KC_A,    KC_S,    KC_D,   KC_F,   KC_G,   TAB_RO,
-        OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,
-                                  KC_LALT,   TAB_R,
-                                                 KC_SPC,
-                                                  KC_HOME,
-                                                 KC_PSCR, TASK,
-        // right hand
-                          KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_GRV,
-                          KC_RBRC, KC_Y,    KC_U,    KC_I,     KC_O,     KC_P,     KC_BSLS,
-                      KC_LEFT, KC_H,    KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-                                   KC_N,    KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  OSM(MOD_RSFT),
-                                            KC_LEFT, KC_UP,
-                      KC_ENT,
-                      KC_PGDN,
-             KC_LCTL, KC_LALT
+    [_QWERTY]  = LAYOUT_base_wrapper(
+        _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
+        _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
+        _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
     ),
 
     [_FN] = LAYOUT(
@@ -144,11 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void keyboard_post_init_user(void){
     //rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-    if (is_keyboard_master()) {
-		rgb_matrix_sethsv_noeeprom(HSV_GOLD);
-	} else {
-		rgb_matrix_sethsv_noeeprom(HSV_ORANGE);
-	}
+
 
     // Customise these values to desired behaviour
 
@@ -172,6 +175,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
     }
     return true;
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+
+
+        if (clockwise) {
+            tap_code(KC_AUDIO_VOL_UP);
+        } else {
+            tap_code(KC_AUDIO_VOL_DOWN);
+        }
+
+    return false;
 }
 
 
@@ -207,13 +222,13 @@ void oled_task_user(void) {
 }
 #endif */
 
-void matrix_init_user(void) {
+ /*void matrix_init_user(void) {
     // init pin? Is needed?
- /* #ifdef POINTING_DEVICE_ENABLE
+ #ifdef POINTING_DEVICE_ENABLE
     setPinInputHigh(B12);
     // Account for drift
     xOrigin = analogReadPin(B0);
     yOrigin = analogReadPin(B1);
-#endif */
-}
+#endif
+} */
 

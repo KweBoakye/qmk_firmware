@@ -25,6 +25,9 @@
 #define HAL_USE_PAL                 TRUE
 #define SPI_USE_WAIT TRUE
 #define SPI_SELECT_MODE SPI_SELECT_MODE_PAD
+#define PAL_USE_CALLBACKS  TRUE
+#define PAL_USE_WAIT TRUE
+
 
 
 #include_next <halconf.h>
