@@ -2,7 +2,7 @@
 MCU = atmega32a
 
 # Bootloader selection
-BOOTLOADER = atmel-dfu
+BOOTLOADER = bootloadhid
 
 <<<<<<< HEAD
 # build options

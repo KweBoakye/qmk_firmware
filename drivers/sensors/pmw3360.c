@@ -21,7 +21,7 @@
 #include "wait.h"
 #include "debug.h"
 #include "print.h"
-#include PMW3360_FIRMWARE_H
+#include "pmw3360_firmware.h"
 
 // Registers
 // clang-format off
@@ -79,9 +79,6 @@
 // clang-format on
 
 // limits to 0--119, resulting in a CPI range of 100 -- 12000 (as only steps of 100 are possible).
-// Note that for the PMW3389DM chip, the step size is 50 and supported range is
-// up to 16000. The datasheet does not indicate the minimum CPI though, neither
-// whether this uses 2 bytes (as 16000/50 == 320)
 #ifndef MAX_CPI
 #    define MAX_CPI 0x77
 #endif
@@ -209,11 +206,11 @@ void pmw3360_upload_firmware(void) {
     spi_write(REG_SROM_Load_Burst | 0x80);
     wait_us(15);
 
-    unsigned char c;
-    for (int i = 0; i < FIRMWARE_LENGTH; i++) {
-        c = (unsigned char)pgm_read_byte(firmware_data + i);
-        spi_write(c);
+    for (uint16_t i = 0; i < FIRMWARE_LENGTH; i++) {
+        spi_write(pgm_read_byte(firmware_data + i));
+#ifndef PMW3360_FIRMWARE_UPLOAD_FAST
         wait_us(15);
+#endif
     }
     wait_us(200);
 
