@@ -19,7 +19,7 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 NKRO_ENABLE = no            # Enable N-Key Rollover
 >>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 
 SPLIT_KEYBOARD=yes

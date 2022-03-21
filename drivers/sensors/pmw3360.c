@@ -144,7 +144,7 @@ bool pmw3360_init(void) {
     pmw3360_spi_start();
     spi_stop();
 
-    pmw3360_write(REG_Shutdown, 0xb6);  // Shutdown first
+    pmw3360_write(REG_Shutdown, 0xb6); // Shutdown first
     wait_ms(300);
 
     pmw3360_spi_start();
@@ -222,7 +222,7 @@ bool pmw3360_check_signature(void) {
     uint8_t pid      = pmw3360_read(REG_Product_ID);
     uint8_t iv_pid   = pmw3360_read(REG_Inverse_Product_ID);
     uint8_t SROM_ver = pmw3360_read(REG_SROM_ID);
-    return (pid == firmware_signature[0] && iv_pid == firmware_signature[1] && SROM_ver == firmware_signature[2]);  // signature for SROM 0x04
+    return (pid == firmware_signature[0] && iv_pid == firmware_signature[1] && SROM_ver == firmware_signature[2]); // signature for SROM 0x04
 }
 
 uint16_t pmw3360_get_cpi(void) {
@@ -248,17 +248,17 @@ report_pmw3360_t pmw3360_read_burst(void) {
 
     pmw3360_spi_start();
     spi_write(REG_Motion_Burst);
-    wait_us(35);  // waits for tSRAD_MOTBR
+    wait_us(35); // waits for tSRAD_MOTBR
 
     report.motion = spi_read();
-    spi_read();  // skip Observation
+    spi_read(); // skip Observation
     // delta registers
     report.dx  = spi_read();
     report.mdx = spi_read();
     report.dy  = spi_read();
     report.mdy = spi_read();
 
-    if (report.motion & 0b111) {  // panic recovery, sometimes burst mode works weird.
+    if (report.motion & 0b111) { // panic recovery, sometimes burst mode works weird.
         _inBurst = false;
     }
 

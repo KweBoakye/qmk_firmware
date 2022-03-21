@@ -18,25 +18,10 @@
 
 #include "config_common.h"
 
-/* USB Device descriptor parameter */
-<<<<<<< HEAD
-#define VENDOR_ID       0xFEED
-=======
-#define VENDOR_ID       0x4025
->>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
-#define PRODUCT_ID      0x6060
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    di0ib
-#define PRODUCT         Polypad
-
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
-<<<<<<< HEAD
-//more detailed config options start below: 
-=======
 //more detailed config options start below:
->>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
@@ -90,8 +75,6 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-//#define NO_ACTION_MACRO
-//#define NO_ACTION_FUNCTION
 
 /* Bootmagic Lite key configuration */
 // #define BOOTMAGIC_LITE_ROW 0

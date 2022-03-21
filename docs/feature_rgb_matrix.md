@@ -361,6 +361,8 @@ Configure the hardware via your `config.h`:
 #define DRIVER_LED_TOTAL 70
 ```
 
+?> There are additional configuration options for ARM controllers that offer increased performance over the default bitbang driver. Please see [WS2812 Driver](ws2812_driver.md) for more information.
+
 ---
 
 ### APA102 :id=apa102
@@ -530,7 +532,7 @@ All RGB keycodes are currently shared with the RGBLIGHT system:
 `RGB_MODE_PLAIN`, `RGB_MODE_BREATHE`, `RGB_MODE_RAINBOW`, and `RGB_MODE_SWIRL` are the only ones that are mapped properly. The rest don't have a direct equivalent, and are not mapped.
 >>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 
-?> `RGB_*` keycodes cannot be used with functions like `tap_code16(RGB_HUD)` as they're not USB HID keycodes. If you wish to replicate similar behaviour in custom code within your firmware (e.g. inside `encoder_update_user()` or `process_record_user()`), the equivalent [RGB functions](#functions-idfunctions) should be used instead.
+?> `RGB_*` keycodes cannot be used with functions like `tap_code16(RGB_HUD)` as they're not USB HID keycodes. If you wish to replicate similar behaviour in custom code within your firmware (e.g. inside `encoder_update_user()` or `process_record_user()`), the equivalent [RGB functions](#functions) should be used instead.
 
 
 !> By default, if you have both the [RGB Light](feature_rgblight.md) and the RGB Matrix feature enabled, these keycodes will work for both features, at the same time. You can disable the keycode functionality by defining the `*_DISABLE_KEYCODES` option for the specific feature.
