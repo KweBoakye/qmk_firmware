@@ -69,4 +69,13 @@
 
 //extern keyboard_config_t keyboard_config;
 
+/*  typedef union {
+  uint32_t raw;
+  struct {
+      bool  eeprom_works :1;
+
+  };
+} keyboard_config_t;
+
+extern keyboard_config_t keyboard_config; */
 
