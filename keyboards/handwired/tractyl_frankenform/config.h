@@ -17,6 +17,7 @@
 #pragma once
 
 #include "config_common.h"
+
 //#include "audio.c"
 
 /* USB Device descriptor parameter */
@@ -52,8 +53,9 @@
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
+#ifdef DIP_SWITCH_ENABLE
 #define  DIP_SWITCH_MATRIX_GRID { {4,6}, {5,6},{4,0}, {5,0}}
-
+#endif
 
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
@@ -70,14 +72,12 @@
 #define SPLIT_HAND_PIN C14
 #define SPLIT_MAX_CONNECTION_ERRORS 10
 
-#define SPLIT_POINTING_ENABLE
-#define POINTING_DEVICE_COMBINED
-#define POINTING_DEVICE_TASK_THROTTLE_MS 1
+
 
 #define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
 #define SERIAL_USART_TX_PIN B6     // USART TX pin
 #define SERIAL_USART_RX_PIN B7     // USART RX pin
-#define SELECT_SOFT_SERIAL_SPEED 1 // or 0, 2, 3, 4, 5
+#define SELECT_SOFT_SERIAL_SPEED 0 // or 0, 2, 3, 4, 5
                                    //  0: 460800 baud
                                    //  1: 230400 baud (default)
                                    //  2: 115200 baud
@@ -105,7 +105,6 @@
 #define I2C1_SDA_PAL_MODE 4
 #define I2C1_CLOCK_SPEED  400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
-//#define I2C1_OPMODE OPMODE_I2C
 
 
 #define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN A4
@@ -126,11 +125,12 @@
 //#define BACKLIGHT_BREATHING
 
 //#define OLED_DRIVER = SSD1306
+#ifdef OLED_ENABLE
 #define OLED_DISPLAY_128X64
 #define OLED_DISPLAY_ADDRESS 0x3C
-#define OLED_FONT_H "keyboards/handwired/tractyl_frankenform/glcdfont.c"
+#define OLED_FONT_H "users/kweboakye/oled/glcdfont.c"
 #define OLED_FONT_END 255
-
+#endif
 
 #ifdef JOYSTICK_ENABLE
 #define JOYSTICK_AXES_COUNT 2
@@ -225,6 +225,7 @@
 //#    define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 //#endif
 
+#ifdef HAPTIC_ENABLE
 #define FB_ERM_LRA 1
 #define FB_BRAKEFACTOR 3 /* For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 */
 #define FB_LOOPGAIN 1 /* For  Low:0, Medium:1, High:2, Very High:3 */
@@ -235,6 +236,12 @@
 #define V_RMS 2.0
 #define F_LRA 150 /* resonance freq */
 #define DRV_GREETING transition_rampup_long_smooth1
+//#define NO_HAPTIC_ALPHA
+//#define NO_HAPTIC_PUNCTUATION
+//#define NO_HAPTIC_NAV
+//#define NO_HAPTIC_NUMERIC
+#endif
+
 
 #ifdef AUDIO_ENABLE
 /* Audio config */
@@ -247,6 +254,8 @@
 #define AUDIO_INIT_DELAY 2000
 #endif
 
+
+#ifdef ENCODER_ENABLE
 /* encoder config */
 #define ENCODERS_PAD_A \
     { A13 }
@@ -255,10 +264,10 @@
 #define ENCODER_DEFAULT_POS 0x3
 
 #define ENCODER_RESOLUTION 2
-
+#endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 45
+#define DEBOUNCE 5
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
@@ -317,10 +326,18 @@
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 0
-#define BOOTMAGIC_LITE_ROW_RIGHT    0
+#define BOOTMAGIC_LITE_ROW_RIGHT    6
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 6
 
+
+//#ifdef POINTING_DEVICE_ENABLE
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_COMBINED
+#define POINTING_DEVICE_TASK_THROTTLE_MS 1
+#define SPLIT_TRANSACTION_IDS_KB RPC_ID_KB_CONFIG_SYNC
+
 /* pmw3360 config  */
+//#define PMW3360_ENABLED
 #define PMW3360_CS_PIN   B0
 #define PMW3360_SPI_MODE                     3
 #define PMW3360_SPI_DIVISOR                  64
@@ -329,14 +346,20 @@
 //#define ROTATIONAL_TRANSFORM_ANGLE  -25
 #define PMW3360_LIFTOFF_DISTANCE 0x04
 
-
 #define CIRQUE_PINNACLE_ADDR 0x2A
 #define CIRQUE_PINNACLE_TAPPING_TERM 200
 #define CIRQUE_PINNACLE_TOUCH_DEBOUNCE (CIRQUE_PINNACLE_TAPPING_TERM * 8)
 #define CIRQUE_PINNACLE_TIMEOUT 200
+//#undef  FEEDCONFIG_2_VALUE
+//#define FEEDCONFIG_2_VALUE 0x1F
 
+#define ANALOG_JOYSTICK_ENABLED
 #define ANALOG_JOYSTICK_X_AXIS_PIN B0
 #define ANALOG_JOYSTICK_Y_AXIS_PIN B1
 #define ANALOG_JOYSTICK_AXIS_MIN 230
 #define ANALOG_JOYSTICK_AXIS_MAX 800
 #define ANALOG_JOYSTICK_CLICK_PIN B10
+//#endif
+
+#define COMBO_COUNT 1
+

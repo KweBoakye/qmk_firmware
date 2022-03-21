@@ -41,7 +41,7 @@
 // Register config values for this demo
 #define SYSCONFIG_1_VALUE    0x00
 #define FEEDCONFIG_1_VALUE   0x03  // 0x03 for absolute mode 0x01 for relative mode
-#define FEEDCONFIG_2_VALUE   0x1C  // 0x1F for normal functionality 0x1E for intellimouse disabled
+#define FEEDCONFIG_2_VALUE   0x1F // 0x1F for normal functionality 0x1E for intellimouse disabled 0x1C
 #define Z_IDLE_COUNT_VALUE   0x05
 // clang-format on
 
@@ -207,7 +207,7 @@ void cirque_pinnacle_init(void) {
     // Host sets z-idle packet count to 5 (default is 30)
     RAP_Write(Z_IDLE_COUNT, Z_IDLE_COUNT_VALUE);
 
-    cirque_pinnacle_set_adc_attenuation(0xFF);
+    cirque_pinnacle_set_adc_attenuation(ADC_ATTENUATE_2X);
     cirque_pinnacle_tune_edge_sensitivity();
     cirque_pinnacle_enable_feed(true);
 }

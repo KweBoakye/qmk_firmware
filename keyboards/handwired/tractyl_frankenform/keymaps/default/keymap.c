@@ -15,7 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
-#ifdef RGB_MATRIX_ENABLE
+#ifdef RGB_MATRIX_ENABLEkkkkk
 #include <rgb_matrix.h>
 #include "color.h"
 #endif
@@ -27,61 +27,15 @@
 //#endif
 #include "analog.h"
 #include "print.h"
+#ifdef AUDIO_ENABLE
 #include "audio.h"
-#include "../../wrappers.h"
+#endif
+
 #include "song_list.h"
+
+#ifdef AUDIO_ENABLE
 float my_song[][2] = SONG(QWERTY_SOUND);
-
-/* void matrix_scan_user() {
-    int16_t val = (((uint32_t)timer_read() % 5000 - 2500) * 255) / 5000;
-
-    if (val != joystick_status.axes[1]) {
-        joystick_status.axes[1] = val;
-        joystick_status.status |= JS_UPDATED;
-    }
-} */
-
-/* #ifdef JOYSTICK_ENABLE
-//joystick config
-joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
-   [0] = JOYSTICK_AXIS_IN(B0, 141, 490, 810),
-    [1] = JOYSTICK_AXIS_IN(B1, 224, 534, 811)
-};
-#endif */
-
-// Defines the keycodes used by our macros in process_record_user
-
-#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
-#define LAYOUT_base( \
-    K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
-    K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, \
-    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
-  ) \
-  LAYOUT_wrapper ( \
-        KC_ESC,  ________________NUMBER_LEFT________________,  KC_GRV,                   ________________NUMBER_RIGHT_______________,     KC_MINS,  KC_EQL, \
-        KC_TAB,    K01,    K02,      K03,     K04,     K05,   KC_LBRC,                   KC_RBRC,    K06,     K07,     K08,     K09,      K0A,      KC_BSLS,     \
-        KC_LCTL,   K11,    K12,      K13,     K14,     K15,   TAB_RO,                    KC_LEFT,    K16,     K17,     K18,     K19,      K1A,      K1B,   \
-        OSM(MOD_LSFT),K21, K22,      K23,     K24,     K25,                                          K26,     K27,     K28,     K29,      K2A,      OSM(MOD_RSFT), \
-                                  KC_LALT,   TAB_R,                                                                    KC_LEFT, KC_UP, \
-                                                 KC_SPC,                                            KC_ENT,       \
-                                                  KC_HOME,                                         KC_PGDN, \
-                                                 KC_PSCR, TASK,                                    KC_LCTL, KC_LALT \
-    )
-#define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
-
-
-enum custom_keycodes {
-    KC_AUDIO = SAFE_RANGE,
-};
-
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
-#define _QWERTY 0
-#define _FN     1
-#define _NUMPAD 2
-
+#endif
 
 // Some basic macros
 #define TASK   LCTL(LSFT(KC_ESC))
@@ -89,146 +43,59 @@ enum custom_keycodes {
 #define TAB_L  LCTL(LSFT(KC_TAB))
 #define TAB_RO LCTL(LSFT(KC_T))
 
+//TD_MACR removed from nav see https://github.com/rafaelromao/keyboards/blob/main/docs/navigation.md
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY]  = LAYOUT_base_wrapper(
-        _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
-        _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
-        _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
+    [_QWERTY]  = LAYOUT(
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,  KC_GRV,                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL, \
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_LBRC,                   KC_RBRC,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,      KC_DELETE,     \
+        KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   TAB_RO,                    KC_LEFT,   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,   \
+        OSM(MOD_LSFT),KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,      KC_BSLS, \
+                          KC_LALT,   TAB_R,                                                                    KC_COMMA, KC_DOT, \
+                                         KC_SPC,                                            MO(_SYM),       \
+                                          KC_LSFT,                                         KC_ENT, \
+                                         KC_LCTL, MO(_NAV),                                    KC_BSPC, KC_LALT \
+    ),
+      [_SYM] = LAYOUT(
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5 , _______,             _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, _______,
+        _______, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, KC_DOT ,  _______,            _______, _______,KC_AMPR, SCOPE  , KC_LBRC, KC_RBRC, KC_PERC,
+        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,  _______,            _______, _______, KC_PIPE, KC_COLN, KC_LPRN, KC_RPRN, KC_QUES,
+        _______, KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, UPDIR,                                  _______, KC_TILD, KC_DLR , KC_LCBR, KC_RCBR, KC_AT  ,
+                          _______, _______,                                                                  _______, _______,
+                                                     _______,                               _______,
+                                                     KC_ACCEL,                              _______,
+                                                     _______, _______,            _______, _______
+    ),
+     [_NAV] = LAYOUT(
+        _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
+        _______, KC_ESC , KC_LEAD, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_LBRC, KC_RBRC, KC_PERC,
+        _______, SS_SWIN, KC_LALT, OS_LCTL, KC_LSFT, _______,  _______,            _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_QUES,
+        _______, KC_TAB , XXXXXXX , _______ , OS_LGUI ,  UPDIR,                              _______, KC_INS, KC_HOME , KC_END, KC_RCBR, KC_DEL  ,
+                          _______, _______,                                                                  _______, _______,
+                                                     _______,                               _______,
+                                                     KC_ACCEL,                              _______,
+                                                     _______, _______,            _______, _______
     ),
 
-    [_FN] = LAYOUT(
-        // left hand
-        _______,   KC_F1,     KC_F2,      KC_F3,    KC_F4,     KC_F5,    KC_F6,
-        _______,   _______,   _______,    _______,    _______,   _______,  _______,
-        _______,   KC_LEFT,   KC_DOWN,    KC_UP,  KC_RGHT,   _______,  RESET,
-        _______,   _______,   _______,   _______,   _______,   _______,
-                                KC_MPRV,   KC_MNXT,
-                                    _______,
-                                    _______,
-                                    _______, _______,
-        // right hand
-                          KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,    _______,
-                          _______,   _______,   _______,   _______,   _______,   _______,   _______,
-                          _______,   _______,   _______,   _______,   _______,   _______,   _______,
-                                     _______,   _______,   _______,   _______,   _______,   _______,
-                                                           _______,   _______,
-                     _______,
-                      _______,
-             _______, _______
+ [_MOUSE] = LAYOUT(
+        _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
+        _______, _______, _______, _______, _______, _______,                              KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
+                          _______, _______,                                                                  _______, _______,
+                                                     _______,                               KC_BTN3,
+                                                     KC_ACCEL,                              _______,
+                                                     _______, _______,            _______, _______
     ),
-
-    [_NUMPAD] = LAYOUT(
-        // left hand
-        _______,   _______,   _______,   _______,   _______,   _______,  _______,
-        _______,   _______,   _______,   _______,   _______,   _______,  _______,
-        _______,   _______,   _______,   _______,   _______,   _______,  _______,
-        _______,   _______,   _______,   _______,   _______,   _______,
-           _______,   _______,
-                                    _______,
-                                    _______,
-                                    _______, _______,
-        // right hand
-                          _______,   _______,   KC_NLCK,   _______,   KC_PMNS,   KC_PPLS,   _______,
-                          _______,   _______,   KC_P7,     KC_P8,     KC_P9,     _______,   _______,
-                          _______,   _______,   KC_P4,     KC_P5,     KC_P6,     KC_PAST,   _______,
-                                     _______,   KC_P1,     KC_P2,     KC_P3,     KC_PSLS,   _______,
-                                                           KC_P0,     KC_PDOT,
-                     KC_PENT,
-                    _______,
-             _______, _______
+    [_MAINTENANCE] = LAYOUT(
+        _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
+        _______, _______, _______, _______, _______, _______,                              KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
+                          _______, _______,                                                                  _______, _______,
+                                                     _______,                               KC_BTN3,
+                                                     KC_ACCEL,                              _______,
+                                                     _______, _______,            _______, _______
     ),
 };
-
-
-
-
-
-//static uint8_t test_led_index, test_color;
-
-/* void rgb_matrix_indicators_user(void) {
-    rgb_matrix_set_color(test_led_index, (test_color == 0) * 255, (test_color == 1) * 255, (test_color == 2) * 255);
-} */
-
-void keyboard_post_init_user(void){
-    //rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-
-
-    // Customise these values to desired behaviour
-
-  debug_enable=true;
-  debug_matrix=true;
-  debug_keyboard=true;
-  debug_mouse=true;
-
-}
-
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    #ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-#endif
-    switch (keycode) {
-        case KC_7:
-            if (record->event.pressed) {
-               PLAY_SONG(my_song);
-            }
-            return true;
-    }
-    return true;
-}
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-
-
-        if (clockwise) {
-            tap_code(KC_AUDIO_VOL_UP);
-        } else {
-            tap_code(KC_AUDIO_VOL_DOWN);
-        }
-
-    return false;
-}
-
-
-
-/* #ifdef OLED_ENABLE
-
-void oled_task_user(void) {
-
-    // Host Keyboard Layer Status
-    oled_write_P(PSTR("Layer: "), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("Default\n"), false);
-            break;
-        case _FN:
-            oled_write_P(PSTR("FN\n"), false);
-            break;
-        case _NUMPAD:
-            oled_write_P(PSTR("NUMPAD\n"), false);
-            break;
-        default:
-            // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Undefined"), false);
-    }
-
-    // Host Keyboard LED Status
-    led_t led_state = host_keyboard_led_state();
-    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
-    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-
-}
-#endif */
-
- /*void matrix_init_user(void) {
-    // init pin? Is needed?
- #ifdef POINTING_DEVICE_ENABLE
-    setPinInputHigh(B12);
-    // Account for drift
-    xOrigin = analogReadPin(B0);
-    yOrigin = analogReadPin(B1);
-#endif
-} */
 

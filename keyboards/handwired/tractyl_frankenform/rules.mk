@@ -8,7 +8,7 @@ BOOTLOADER = stm32-dfu
 #   change yes to no to disable
 #
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
-MOUSEKEY_ENABLE = no       # Mouse keys
+MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes          # Audio control and System control
 CONSOLE_ENABLE  = yes        # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
@@ -29,10 +29,11 @@ WPM_ENABLE = yes
 MIDI_ENABLE = no
 
 SPLIT_KEYBOARD = yes
+CUSTOM_SPLIT_TRANSPORT_SYNC = yes
 SERIAL_DRIVER = usart
 EEPROM_DRIVER = spi
 
-MOUSE_SHARED_EP = yes
+MOUSE_SHARED_EP = no
 KEYBOARD_SHARED_EP = yes
 STENO_ENABLE = no
 VIRTSER_ENABLE = no
@@ -44,12 +45,15 @@ HAPTIC_DRIVER += DRV2605L
 JOYSTICK_ENABLE = no
 JOYSTICK_DRIVER = analog
 ENCODER_ENABLE = yes
-
+CIRQUE_ENABLED = yes
+PMW3360_ENABLE = yes
+POINTING_ANALOG_JOYSTICK_ENABLE = yes
+CUSTOM_SPLIT_TRANSPORT_SYNC = yes
 
 DIP_SWITCH_ENABLE = yes
 
 DEBOUNCE_TYPE = asym_eager_defer_pk
 
-#OPT_DEFS += -DSTM32_I2C -DHAL_USE_I2C=TRUE  -DSTM32_SPI -DHAL_USE_SPI=TRUE -DSTM32_ADC -DHAL_USE_ADC=TRUE #-DPOINTING_DEVICE_DRIVER_cirque_pinnacle_i2c -DPOINTING_DEVICE_DRIVER_pmw3360
-SRC += analog.c oled.c drivers/sensors/pmw3360.c drivers/sensors/cirque_pinnacle.c drivers/sensors/cirque_pinnacle_i2c.c  drivers/sensors/analog_joystick.c  # drivers/sensors/pmw3360.c   $(QUANTUM_DIR)/pointing_device_drivers.c $(QUANTUM_DIR)/pointing_device_drivers.c #pointing_logic.c
+OPT_DEFS += -DSTM32_I2C -DHAL_USE_I2C=TRUE  -DSTM32_SPI -DHAL_USE_SPI=TRUE -DSTM32_ADC -DHAL_USE_ADC=TRUE #-DPOINTING_DEVICE_DRIVER_cirque_pinnacle_i2c -DPOINTING_DEVICE_DRIVER_pmw3360
+SRC += analog.c drivers/sensors/pmw3360.c drivers/sensors/cirque_pinnacle.c drivers/sensors/cirque_pinnacle_i2c.c  drivers/sensors/analog_joystick.c   # drivers/sensors/pmw3360.c   $(QUANTUM_DIR)/pointing_device_drivers.c $(QUANTUM_DIR)/pointing_device_drivers.c #pointing_logic.c
 QUANTUM_LIB_SRC += spi_master.c i2c_master.c #pointing_device_drivers.c

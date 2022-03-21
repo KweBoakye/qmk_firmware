@@ -20,8 +20,8 @@
 
 #undef SOFT_SERIAL_PIN
 
-#define MATRIX_ROW_PINS          { B12, B13, B14, B15, A8 , A9, A10}
-#define MATRIX_COL_PINS          { B1, B0, A7, A6, A5, A4}
+#define MATRIX_ROW_PINS          { A1,B12, B13, B14, B15, A8 , A10 }
+#define MATRIX_COL_PINS          {A15, B3, B4, A3, A2, C15}
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
@@ -33,7 +33,7 @@
 // in col2row col is input, and row is output
 // #define SPLIT_HAND_MATRIX_GRID A10, A4
 // 68kohm
-#define SPLIT_HAND_PIN              B10
+#define SPLIT_HAND_PIN              C14
 
 /* connection */
 #define SERIAL_USART_FULL_DUPLEX   // Enable full duplex operation mode.
