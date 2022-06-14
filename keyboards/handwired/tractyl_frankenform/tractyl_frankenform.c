@@ -164,7 +164,7 @@ led_config_t g_led_config  = { {
 #endif
 
 void keyboard_pre_init_kb(void) {
-#if BOOTMAGIC_ENABLE
+#ifdef BOOTMAGIC_ENABLE
      setPinInputHigh(A0);
 #endif
 
@@ -174,7 +174,7 @@ void keyboard_pre_init_kb(void) {
 
 
 void matrix_scan_kb(void) {
-#if BOOTMAGIC_ENABLE
+#ifdef BOOTMAGIC_ENABLE
     if (!readPin(A0)) {
         reset_keyboard();
    }
@@ -209,7 +209,65 @@ void keyboard_post_init_kb(void){
 keyboard_post_init_user();
 }
 
-#if BOOTMAGIC_ENABLE
+ void eeconfig_init_kb(void){
+    keymap_config.raw = 0;
+    keymap_config.swap_control_capslock = false;
+    keymap_config.capslock_to_control = false;
+    keymap_config.swap_lalt_lgui = false;
+    keymap_config.swap_ralt_rgui = false;
+    keymap_config.no_gui = false;
+    keymap_config.swap_grave_esc = false;
+    keymap_config.swap_backslash_backspace = false;
+    keymap_config.nkro = false;
+    keymap_config.swap_lctl_lgui = false;
+    keymap_config.swap_rctl_rgui = false;
+    keymap_config.oneshot_disable = false;
+    eeconfig_update_kb(keymap_config.raw);
+
+    eeconfig_init_user();
+}
+
+
+
+/* uint8_t prng(void) {
+    static uint8_t s = 0xAA, a = 0;
+    s ^= s << 3;
+    s ^= s >> 5;
+    s ^= a++ >> 2;
+    return s;
+}
+
+void keyboard_post_init_user(void) {
+    debug_enable = true;
+}
+
+void matrix_scan_user(void) {
+    static uint32_t last_eeprom_access = 0;
+    uint32_t        now                = timer_read32();
+    if (now - last_eeprom_access > 5000) {
+        dprint("reading eeprom\n");
+        last_eeprom_access = now;
+
+        union {
+            uint8_t  bytes[4];
+            uint32_t raw;
+        } tmp;
+        tmp.bytes[0] = prng();
+        tmp.bytes[1] = prng();
+        tmp.bytes[2] = prng();
+        tmp.bytes[3] = prng();
+
+        eeconfig_update_user(tmp.raw);
+        uint32_t value = eeconfig_read_user();
+        if (value != tmp.raw) {
+            dprint("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+            dprint("!! EEPROM readback mismatch!\n");
+            dprint("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+        }
+    }
+}
+ */
+#ifdef BOOTMAGIC_ENABLE
 void bootmagic_lite(void) {
     // We need multiple scans because debouncing can't be turned off.
     matrix_scan();
@@ -235,7 +293,6 @@ void bootmagic_lite(void) {
         bootloader_jump();
     }
 }
-S
 #endif
 
 /* void eeconfig_init_kb(void) {  // EEPROM is getting reset!
@@ -268,6 +325,7 @@ const uint8_t music_map[MATRIX_ROWS][MATRIX_COLS] = LAYOUT (
 
 
 deferred_token derigister_cirque_click_token;
+ bool init_success;
 
 void  pointing_device_driver_init(void) {
 
@@ -279,6 +337,7 @@ void  pointing_device_driver_init(void) {
         analog_joystick_logic_init();
  } else {
       pmw3360_init();
+     init_success = pmw3360_check_signature();
  }
  }
 
@@ -341,13 +400,7 @@ static inline int8_t pointing_device_movement_clamp(int16_t value) {
 //     return mouse_report;
 // }
 
-uint32_t derigister_cirque_click_callback(uint32_t trigger_time, void *cb_arg) {
-   report_mouse_t mouse_report = pointing_device_get_report();
-    mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, false, POINTING_DEVICE_BUTTON1);
-                pointing_device_set_report(mouse_report);
-                pointing_device_send();
-    return  0;
-}
+
 
 
 /* report_mouse_t analog_joystick_get_report(report_mouse_t mouse_report) {
@@ -383,15 +436,23 @@ if (is_keyboard_left()) {
      mouse_report.buttons = analog_joystick_report.buttons  | cirque_pinnacle_report.buttons;
 
 } else {
-    report_mouse_t  cirque_pinnacle_report, pmw3360_report;
+    report_mouse_t  cirque_pinnacle_report;
      cirque_pinnacle_report = cirque_trackpad_pointing_device_task(mouse_report);
-     pmw3360_report =  pmw3360_get_report(mouse_report);
+
+     if(init_success){
+
+     report_mouse_t pmw3360_report =  pmw3360_get_report(mouse_report);
 
      mouse_report.x = pointing_device_movement_clamp((int16_t) -pmw3360_report.x + cirque_pinnacle_report.y);
      mouse_report.y = pointing_device_movement_clamp((int16_t) pmw3360_report.y + -cirque_pinnacle_report.x);
      mouse_report.h = pointing_device_movement_clamp((int16_t) -pmw3360_report.h + cirque_pinnacle_report.v);
      mouse_report.v = pointing_device_movement_clamp((int16_t) pmw3360_report.v + -cirque_pinnacle_report.h);
-
+     } else {
+     mouse_report.x =  cirque_pinnacle_report.y;
+     mouse_report.y = -cirque_pinnacle_report.x;
+     mouse_report.h =  cirque_pinnacle_report.v;
+     mouse_report.v = -cirque_pinnacle_report.h;
+     }
      mouse_report.buttons = cirque_pinnacle_report.buttons;
 }
 

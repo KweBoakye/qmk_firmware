@@ -8,15 +8,23 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    if (!process_achordion(keycode, record)) { return false; }
+
     #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 #endif
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif
+if (!process_caps_word(keycode, record)) { return false; }
 
+ // Process case modes
+    if (!process_case_modes(keycode, record)) {
+        return false;
+    }
 
-if (!(process_record_keymap(keycode, record)));
+if (!process_record_keymap(keycode, record)) { return false; }
 
 const uint8_t mods = get_mods();
 const uint8_t oneshot_mods = get_oneshot_mods();
@@ -29,6 +37,17 @@ const uint8_t oneshot_mods = get_oneshot_mods();
         default:
             break;
     };
+
+
+    switch (process_combos(keycode, record)) {
+        case PROCESS_RECORD_RETURN_TRUE:
+            return true;
+        case PROCESS_RECORD_RETURN_FALSE:
+            return false;
+        default:
+            break;
+    };
+
 
     switch (process_record_pointing(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
@@ -48,37 +67,80 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
+     // Process OS toggle
+    switch (process_os_toggle(keycode, record)) {
+        case PROCESS_RECORD_RETURN_TRUE:
+            return true;
+        case PROCESS_RECORD_RETURN_FALSE:
+            return false;
+        default:
+            break;
+    };
 
-if (record->event.pressed) {
+ // Process select word
+    switch (process_select_word(keycode, record)) {
+        case PROCESS_RECORD_RETURN_TRUE:
+            return true;
+        case PROCESS_RECORD_RETURN_FALSE:
+            return false;
+        default:
+            break;
+    };
+
+    switch (process_case_mode_keycodes(keycode, record)) {
+        case PROCESS_RECORD_RETURN_TRUE:
+            return true;
+        case PROCESS_RECORD_RETURN_FALSE:
+            return false;
+        default:
+            break;
+    };
+    //return true;
+
+  //      // Process default modifier key
+  //  switch (process_default_mod_key(keycode, record)) {
+  //      case PROCESS_RECORD_RETURN_TRUE:
+  //          return true;
+  //      case PROCESS_RECORD_RETURN_FALSE:
+  //          return false;
+  //      default:
+  //          break;
+  //  };
+
+
+
     switch (keycode) {
 
         case KC_BTN1:
-
+           if (record->event.pressed) {
 
 #ifdef HAPTIC_ENABLE
                DRV_pulse(strong_click);
 #endif
+         break;
+}
 
+  case SCOPE:
 
-            return true;
+ if(record->event.pressed){
+     SEND_STRING("::");
+ }
+  break;
 
-         case SCOPE:
-        SEND_STRING("::");
-        return false;
+case UPDIR:
+if(record->event.pressed){
+  SEND_STRING("../");
+  break;
+}
 
-      case UPDIR:
-        SEND_STRING("../");
-        return false;
+ case EQ3X:  // Types triple equal ===
+if(record->event.pressed){
+   SEND_STRING("===");
 
-      case EQ3X:  // Types triple equal ===
-
-        SEND_STRING("===");
-
-      return false;
-
-
+ break;
+}
   case ARROW:  // Arrow macro, types -> or =>.
-
+if(record->event.pressed){
       if ((mods | oneshot_mods) & MOD_MASK_SHIFT) {  // Is shift held?
         del_mods(MOD_MASK_SHIFT);  // Temporarily delete shift.
         del_oneshot_mods(MOD_MASK_SHIFT);
@@ -87,9 +149,10 @@ if (record->event.pressed) {
       } else {
         SEND_STRING("->");
       }
-    return false;
+    break;
+}
 
-    }
+
     }
     return true;
 }

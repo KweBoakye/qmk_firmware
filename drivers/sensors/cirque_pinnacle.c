@@ -41,7 +41,7 @@
 // Register config values for this demo
 #define SYSCONFIG_1_VALUE    0x00
 #define FEEDCONFIG_1_VALUE   0x03  // 0x03 for absolute mode 0x01 for relative mode
-#define FEEDCONFIG_2_VALUE   0x1F // 0x1F for normal functionality 0x1E for intellimouse disabled 0x1C
+#define FEEDCONFIG_2_VALUE   0x1C // 0x1F for normal functionality 0x1E for intellimouse disabled 0x1C
 #define Z_IDLE_COUNT_VALUE   0x05
 // clang-format on
 

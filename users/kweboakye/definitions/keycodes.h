@@ -15,8 +15,14 @@ enum custom_keycodes {
     SS_SWIN,
     DF_CDH,
     DF_QWE,
-
+    TG_MAC,
+    TG_WIN,
+    TG_LIN,
     GAME,
+    SNAKECASE,
+    CAMELCASE,
+    KEBABCASE,
+    SCREAMINGSNAKECASE,
     CUSTOM_KEYCODES_SAFE_RANGE,
 
     TRACKBALL_KEYCODES_SAFE_RANGE,
@@ -27,6 +33,7 @@ enum cirque_trackpad_keycodes {
     DRAG_SCROLL = CUSTOM_KEYCODES_SAFE_RANGE ,
     DRAG_MOM,
     CARET,
+    TRACKPAD,
     CIRQUE_TRACKPAD_KEYCODES_SAFE_RANGE,
 };
 
@@ -56,6 +63,8 @@ enum  analog_joystick_pointing_keycodes{
 #define DRGSCRL DRAGSCROLL_MODE
 #define DRG_TOG DRAGSCROLL_MODE_TOGGLE
 
+#define TRCKPD TRACKPAD
+
 // One-shot mods
 #define OS_RALT OSM(MOD_RALT)
 #define OS_LCTL OSM(MOD_LCTL)
@@ -73,4 +82,21 @@ enum  analog_joystick_pointing_keycodes{
 #define ALT_I LALT_T(KC_I)
 #define GUI_O RGUI_T(KC_O)
 
+
+#define NAV TT(_NAV)
+#define SYM MO(_SYM)
+#define DF_CMG DF(_COLEMAK_DH_GAMING)
+
+#define TAB_R  LCTL(KC_TAB)
+#define TAB_L  LCTL(LSFT(KC_TAB))
+
+#define NAV_SPC   LT(_NAV, KC_SPC)
+#define SYM_BSPC LT(_SYM, KC_BSPC)
+#define NAV_ENT LT(_NAV, KC_ENT)
+#define SYM_DEL LT(_SYM, KC_DELETE)
+
+#define SNK_CS SNAKECASE
+#define CML_CS  CAMELCASE
+#define KB_CS   KEBABCASE
+#define SC_SNK_CS SCREAMINGSNAKECASE
 uint16_t extract_base_tapping_keycode(uint16_t keycode);

@@ -49,7 +49,7 @@ char wpm_counter[5];
 int x = 31;
 int currwpm = 0;
 int vert_count = 0;
-
+uint32_t oled_timer = 0;
 //=============  USER CONFIG PARAMS  ===============
 float max_wpm = 150.0f; //WPM value at the top of the graph window
 int graph_refresh_interval = 100; //in milliseconds
@@ -89,6 +89,10 @@ uint8_t  current_idle_frame = 0;
 uint8_t  current_total_frame = 0;
 uint8_t  max_frame = SMILEY_ANIM_FRAMES * 5;
 uint8_t current_anim_frame_duration = ANIM_FRAME_DURATION;
+
+uint32_t wallpaper_timeout = OLED_TIMEOUT > 40000 ? OLED_TIMEOUT - 30000 : 0;
+bool was_displaying_anim_master = false;
+bool was_displaying_anim = false;
 animation_type current_animation = smiley;
 
 #ifdef OLED_ENABLE
@@ -188,7 +192,20 @@ oled_set_cursor(0, 3);
 		//oled_write_raw_P(qmk_logo, sizeof(qmk_logo));
 }
 
-
+static void render_default_layer(void){
+    //oled_write_P(PSTR(OLED_RENDER_LAYOUT_NAME), false);
+    switch (get_highest_layer(default_layer_state)) {
+        case _QWERTY:
+            oled_write_P(PSTR(OLED_RENDER_LAYOUT_QWERTY), false);
+            break;
+        case _COLEMAK_MOD_DH:
+            oled_write_P(PSTR(OLED_RENDER_LAYOUT_COLEMAK_DH), false);
+            break;
+           case _COLEMAK_DH_GAMING:
+            oled_write_P(PSTR(OLED_RENDER_LAYOUT_COLEMAK_DH_GAMING), false);
+            break;
+    }
+}
 
 static void render_layers(void) {
 	static const char PROGMEM layer_background_r1[1][38] = {
@@ -260,7 +277,7 @@ static void render_layers(void) {
 		oled_render_image(1, 38, layer_background_r1, 15, 4, 0);
 			oled_render_image(1, 38, layer_background_r2, 15, 5, 0);
 		    oled_render_image(2, 38, lower, 15, 6, 0);
-			
+
 		break;
 		case 1:
 			oled_render_image(1, 38, layer_background_r1, 15, 4, 0);
@@ -585,11 +602,33 @@ void render_analog_joystick(analog_joystick_mode_t mode) {
         case ANALOG_JOYSTICK_MODE_SCROLL:
             oled_write_P(PSTR("Scroll"), false);
             break;
+		case ANALOG_JOYSTICK_MODE_WHEEL:
+			oled_write_P(PSTR("Wheel"), false);
+            break;
         default:
             oled_write_P(PSTR("???\n"), false);
     }
 }
 #endif
+
+void render_cirque_trackpad_mode(cirque_trackpad_mode_t mode) {
+    switch (mode) {
+        case CIRQUE_TRACKPAD_TRACKPAD_MODE:
+            oled_write_P(PSTR("Trckpd"), false);
+            break;
+    case CIRQUE_TRACKPAD_SCROLLING_MODE:
+            oled_write_P(PSTR("Scroll"), false);
+            break;
+    case CIRQUE_TRACKPAD_CARET_MODE:
+            oled_write_P(PSTR("Caret"), false);
+            break;
+    case CIRQUE_TRACKPAD_DRAG_MOM_MODE:
+            oled_write_P(PSTR("Drag"), false);
+            break;
+    default:
+            oled_write_P(PSTR("???\n"), false);
+    }
+}
 
 void render_right_pointing_dpi(void){
 
@@ -599,22 +638,7 @@ oled_set_cursor(10, 0);
 oled_write("TP CPI", false);
 oled_write(get_u16_str(cirque_cpi, ' '), false);
 oled_set_cursor(10, 2);
-switch(cirque_trackpad_mode){
-    case CIRQUE_TRACKPAD_TRACKPAD_MODE:
-            oled_write_P(PSTR("Trckpd"), false);
-            break;
-        case CIRQUE_TRACKPAD_SCROLLING_MODE:
-            oled_write_P(PSTR("Scroll"), false);
-            break;
-        case CIRQUE_TRACKPAD_CARET_MODE:
-            oled_write_P(PSTR("Caret"), false);
-            break;
-            case CIRQUE_TRACKPAD_DRAG_MOM_MODE:
-            oled_write_P(PSTR("Drag"), false);
-            break;
-        default:
-            oled_write_P(PSTR("???\n"), false);
-    }
+render_cirque_trackpad_mode(cirque_trackpad_mode);
 #endif
 
 #ifdef PMW3360_ENABLE
@@ -637,31 +661,35 @@ switch(cirque_trackpad_mode){
 void render_left_pointing_dpi(void){
 #ifdef CIRQUE_ENABLED
 uint16_t cirque_cpi = cirque_pinnacle_get_scale();
-if(is_keyboard_master()){
+//if(is_keyboard_master()){
 oled_set_cursor(10, 0);
 oled_write("TP CPI", false);
 oled_write(get_u16_str(cirque_cpi, ' '), false);
-} else {
-    oled_set_cursor(5, 4);
-oled_write("TP CPI", false);
-oled_write(get_u16_str(cirque_cpi, ' '), false);
-}
+oled_set_cursor(10, 1);
+render_cirque_trackpad_mode(cirque_trackpad_mode);
+//} else {
+//    oled_set_cursor(5, 4);
+//oled_write("TP CPI", false);
+//oled_write(get_u16_str(cirque_cpi, ' '), false);
+//oled_set_cursor(5, 5);
+//render_cirque_trackpad_mode(cirque_trackpad_mode);
+//}
 #endif
 
 #ifdef ANALOG_JOYSTICK_ENABLED
-  float joystick_speed_coeeficient = ANALOG_JOYSTICK_SPEED_MAX / ANALOG_JOYSTICK_SPEED_REGULATOR;
-  char buffer[64];
-   snprintf(buffer, sizeof buffer, "%2.2f", joystick_speed_coeeficient);
-   if(is_keyboard_master()){
-oled_set_cursor(10, 1);
-oled_write("JS COEF", false);
-oled_write(buffer, false);
+//  float joystick_speed_coeeficient = ANALOG_JOYSTICK_SPEED_MAX / ANALOG_JOYSTICK_SPEED_REGULATOR;
+//  char buffer[64];
+//   snprintf(buffer, sizeof buffer, "%2.2f", joystick_speed_coeeficient);
+if(is_keyboard_master()){
+//oled_set_cursor(10, 1);
+//oled_write("JS COEF", false);
+//oled_write(buffer, false);
 oled_set_cursor(10, 2);
 render_analog_joystick(analog_joystick_state.config.mode);
 } else {
-    oled_set_cursor(5, 5);
-oled_write("JS COEF", false);
-oled_write(buffer, false);
+//    oled_set_cursor(5, 5);
+//oled_write("JS COEF", false);
+//oled_write(buffer, false);
  oled_set_cursor(5, 6);
 render_analog_joystick(analog_joystick_state.config.mode);
 }
@@ -739,28 +767,65 @@ void render_status_secondary(void) {
     #    ifdef OCEAN_DREAM_ENABLE
         render_stars();
     #    endif
-    //render_box();
-    if(true){
+   // if(is_keyboard_left()){
+    //    oled_set_cursor(10,3);
+    //}else {
+        oled_set_cursor(10,3);
+   // }
+    render_default_layer();
 
-    } else {
-        render_anim();
-    }
+    //render_box();
 }
 
 //__attribute__((weak)) bool oled_task_keymap(void) { return true; }
 
-bool oled_task_user(void) {
-	if (is_keyboard_master()) {
-		render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
-    } else {
-		render_status_secondary();
-	}
-
-     if(is_keyboard_left()){
+void render_dpi(void){
+	if(is_keyboard_left()){
          render_left_pointing_dpi();
      }else {
         render_right_pointing_dpi();
     }
+}
+
+bool oled_task_user(void) {
+	if (is_keyboard_master()) {
+		if (get_current_wpm() != 000 || timer_elapsed32(oled_timer) <= OLED_TIMEOUT){
+            if (timer_elapsed32(oled_timer) >= wallpaper_timeout){
+           if (!was_displaying_anim_master) {
+                was_displaying_anim_master = true;
+                userspace_config.anim_displaying = true;
+           }
+            render_anim();
+            } else {
+               if (was_displaying_anim_master) {
+                   oled_clear();
+               was_displaying_anim_master = false;
+               userspace_config.anim_displaying = false;
+               }
+		render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+		render_dpi();}
+		} else {
+			oled_off();
+		}
+    } else {
+		if(is_oled_on()){
+            if (userspace_config.anim_displaying){
+                if (!was_displaying_anim) {
+                was_displaying_anim = true;
+           }
+            render_anim();
+            } else {
+                if (was_displaying_anim) {
+                   oled_clear();
+               was_displaying_anim = false;
+               }
+		render_status_secondary();
+		render_dpi();
+            }
+		}
+	}
+
+
      return false;
 }
 
@@ -791,6 +856,10 @@ bool process_record_user_oled(uint16_t keycode, keyrecord_t *record) {
             break;
 
         /* KEYBOARD PET STATUS END */
+    }
+
+	 if (record->event.pressed) {
+        oled_timer = timer_read32();
     }
     return true;
 }

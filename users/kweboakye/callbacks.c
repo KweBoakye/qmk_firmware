@@ -111,7 +111,7 @@ void                       matrix_scan_user(void) {
 
     matrix_scan_keymap();
 }
-/* 
+/*
 #ifdef AUDIO_ENABLE
 float doom_song[][2] = SONG(E1M1_DOOM);
 #endif */
@@ -176,6 +176,7 @@ void                       eeconfig_init_user(void) {
 #ifdef SPLIT_KEYBOARD
 __attribute__((weak)) void matrix_slave_scan_keymap(void) {}
 void                       matrix_slave_scan_user(void) {
+     achordion_task();
 #    if defined(AUDIO_ENABLE)
 #        if !defined(NO_MUSIC_MODE)
     music_task();

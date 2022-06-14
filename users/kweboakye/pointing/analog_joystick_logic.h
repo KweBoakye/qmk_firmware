@@ -12,6 +12,7 @@ typedef enum {
     ANALOG_JOYSTICK_MODE_MOUSE = 0,
     ANALOG_JOYSTICK_MODE_ARROWS,
     ANALOG_JOYSTICK_MODE_SCROLL,
+    ANALOG_JOYSTICK_MODE_WHEEL,
     _ANALOG_JOYSTICK_MODE_LAST  // Do not use, except for looping through enum values
 } analog_joystick_mode_t;
 

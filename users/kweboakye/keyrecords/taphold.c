@@ -2,8 +2,17 @@
 
 
 bool get_tapping_force_hold_result(uint16_t keycode) {
+      switch (keycode) {
+        case NAV_SPC:
+        case SYM_BSPC:
+        case NAV_ENT:
+        case SYM_DEL:
+            return false;
+    }
    switch (keycode) {
         case QK_MOD_TAP...QK_MOD_TAP_MAX:
+        case QK_LAYER_TAP...QK_LAYER_TAP_MAX:
+        case QK_MOMENTARY...QK_MOMENTARY_MAX:
             return true;
         default:
             return false;
@@ -20,7 +29,7 @@ uint16_t get_tapping_term_result(uint16_t keycode) {
     }
 }
 
-bool get_retro_tapping_result(uint16_t keycode){
+/* bool get_retro_tapping_result(uint16_t keycode){
     switch (keycode) {
         case GUI_A:
         case ALT_R:
@@ -34,7 +43,7 @@ bool get_retro_tapping_result(uint16_t keycode){
         default:
             return false;
     }
-}
+} */
 
 process_record_result_t proccess_record_taphold(uint16_t keycode, keyrecord_t *record){
     switch (keycode) {
@@ -93,6 +102,33 @@ process_record_result_t proccess_record_taphold(uint16_t keycode, keyrecord_t *r
         }
          /*else process LCTL_T(KC_T) as usual.*/
         return PROCESS_RECORD_RETURN_TRUE;
+
+        case LALT_T(TAB_L):
+        if (record->tap.count && record->event.pressed) {
+            tap_code16(TAB_L);
+            return PROCESS_RECORD_RETURN_FALSE;
+        }
+        return PROCESS_RECORD_RETURN_TRUE;
     }
+
+
     return PROCESS_RECORD_CONTINUE;
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                                           keyrecord_t* tap_hold_record,
+                                           uint16_t other_keycode,
+                                           keyrecord_t* other_record) {
+
+switch (tap_hold_keycode) {
+        case NAV_SPC:
+        case SYM_BSPC:
+        case NAV_ENT:
+        case SYM_DEL:
+        return true;
+}
+
+if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
+
+  return achordion_opposite_hands(tap_hold_record, other_record);
 }

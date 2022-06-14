@@ -1,6 +1,7 @@
 #include "trackball_logic.h"
 #include "drivers/sensors/pmw3360.h"
 #include "pointing_utils.h"
+#include "../definitions/keycodes.h"
 
 #ifdef CONSOLE_ENABLE
 #    include "print.h"
@@ -157,7 +158,7 @@ void pointing_device_init_trackball(void) { maybe_update_pointing_device_cpi(&g_
 #        endif  // CHARYBDIS_POINTER_ACCELERATION_ENABLE
 #    endif      // !DISPLACEMENT_WITH_ACCELERATION
 
-  report_mouse_t pmw3360_get_report(report_mouse_t mouse_report) {
+/*   report_mouse_t pmw3360_get_report(report_mouse_t mouse_report) {
     report_pmw3360_t data        = pmw3360_read_burst();
     static uint16_t  MotionStart = 0;  // Timer for accel, 0 is resting state
 
@@ -180,7 +181,7 @@ void pointing_device_init_trackball(void) { maybe_update_pointing_device_cpi(&g_
     }
 
     return mouse_report;
-}
+} */
 /**
  * \brief Augment the pointing device behavior.
  *
@@ -189,41 +190,49 @@ void pointing_device_init_trackball(void) { maybe_update_pointing_device_cpi(&g_
  *   - Sniping
  *   - Acceleration
  */
-static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
+static report_mouse_t pointing_device_task_charybdis(report_mouse_t mouse_report) {
 
 
     static int16_t scroll_buffer_x = 0;
     static int16_t scroll_buffer_y = 0;
     if (g_charybdis_config.is_dragscroll_enabled) {
 #    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_X
-        scroll_buffer_x -= mouse_report->x;
+        scroll_buffer_x -= mouse_report.x;
 #    else
-        scroll_buffer_x += mouse_report->x;
+        scroll_buffer_x += mouse_report.x;
 #    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_X
 #    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_Y
-        scroll_buffer_y -= mouse_report->y;
+        scroll_buffer_y -= mouse_report.y;
 #    else
-        scroll_buffer_y += mouse_report->y;
+        scroll_buffer_y += mouse_report.y;
 #    endif  // CHARYBDIS_DRAGSCROLL_REVERSE_Y
-        mouse_report->x = 0;
-        mouse_report->y = 0;
+        mouse_report.x = 0;
+        mouse_report.y = 0;
         if (abs(scroll_buffer_x) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+            mouse_report.h = scroll_buffer_x > 0 ? 1 : -1;
             scroll_buffer_x = 0;
         }
         if (abs(scroll_buffer_y) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+            mouse_report.v = scroll_buffer_y > 0 ? 1 : -1;
             scroll_buffer_y = 0;
         }
     } else if (!g_charybdis_config.is_sniping_enabled) {
-        mouse_report->x = DISPLACEMENT_WITH_ACCELERATION(mouse_report->x);
-        mouse_report->y = DISPLACEMENT_WITH_ACCELERATION(mouse_report->y);
+        mouse_report.x = DISPLACEMENT_WITH_ACCELERATION(mouse_report.x);
+        mouse_report.y = DISPLACEMENT_WITH_ACCELERATION(mouse_report.y);
+
+
     }
+    return mouse_report;
 }
 
 report_mouse_t pointing_device_task_trackball(report_mouse_t mouse_report) {
-        pointing_device_task_charybdis(&mouse_report);
+    report_mouse_t pmw3360_report;
+    pmw3360_report = pointing_device_task_charybdis(mouse_report);
         //mouse_report = pointing_device_task_user(mouse_report);
+        mouse_report.x = pmw3360_report.x ;
+        mouse_report.y = pmw3360_report.y ;
+        mouse_report.h = pmw3360_report.h ;
+        mouse_report.v = pmw3360_report.v ;
     return mouse_report;
 }
 
@@ -336,7 +345,7 @@ void eeconfig_init_trackball(void) {
     //eeconfig_init_user();
 }
 
-void matrix_init_user(void) {
+void matrix_init_trackball(void) {
     read_charybdis_config_from_eeprom(&g_charybdis_config);
     //matrix_init_user();
 }

@@ -1,6 +1,7 @@
 #include "kweboakye.h"
 
 userspace_config_t userspace_config;
+extern os_t os;
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     return get_tapping_force_hold_result(keycode);
@@ -10,19 +11,26 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     return get_tapping_term_result(keycode);
 }
 
-bool get_retro_tapping(uint16_t keycode, keyrecord_t *record){
+/* bool get_retro_tapping(uint16_t keycode, keyrecord_t *record){
     return get_retro_tapping_result(keycode);
-}
+} */
 
 bool  get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+    case NAV_SPC:
+    case SYM_BSPC:
+    case NAV_ENT:
+    case SYM_DEL:
         if (record->tap.count == 0){
         return true;
         } else {
             return false;
         }
         break;
+    case KC_WH_U:
+    case KC_WH_D:
+         return false;
 #ifdef NO_HAPTIC_MOD
         /* case QK_MOD_TAP ... QK_MOD_TAP_MAX:
             if (record->tap.count == 0) return false;
