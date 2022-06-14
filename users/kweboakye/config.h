@@ -23,14 +23,14 @@
 #define TAPPING_TERM 200
 
 #define TAPPING_TOGGLE 2
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
 #define TAPPING_FORCE_HOLD_PER_KEY
 #define TAPPING_TERM_PER_KEY
-#define RETRO_TAPPING
-#define RETRO_TAPPING_PER_KEY
+//#define RETRO_TAPPING
+//#define RETRO_TAPPING_PER_KEY
 
 /* Set Polling rate to 1000Hz */
 #define USB_POLLING_INTERVAL_MS 1
@@ -62,3 +62,10 @@
 #define NO_HAPTIC_NUMERIC
 #endif
 
+#define CAPS_WORD_IDLE_TIMEOUT 5000  // Turn off Caps Word after 5 seconds.
+
+#undef COMBO_COUNT
+
+#ifdef DRV2605L
+#define DRV_MODE_DEFAULT soft_bump_60
+#endif

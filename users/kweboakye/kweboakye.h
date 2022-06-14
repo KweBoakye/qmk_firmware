@@ -6,8 +6,14 @@
 #include "definitions/wrappers.h"
 #include "keyrecords/process_records.h"
 #include "keyrecords/process_record_result.h"
+#include "keyrecords/os_toggle.h"
 #include "keyrecords/combos.h"
 #include "keyrecords/taphold.h"
+#include "keyrecords/caps_word.h"
+#include "keyrecords/achordion.h"
+#include "keyrecords/select_word.h"
+#include "keyrecords/casemodes.h"
+//#include "keyrecords/default_mod_key.h"
 #include "eeprom.h"
 #include "callbacks.h"
 
@@ -33,6 +39,7 @@ typedef union {
         bool    swapped_numbers      :1;
         bool    rgb_matrix_idle_anim :1;
         bool    autocorrection       :1;
+        bool    anim_displaying :1;
     };
 } userspace_config_t;
 // clang-format on

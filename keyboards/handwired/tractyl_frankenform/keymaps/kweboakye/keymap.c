@@ -39,7 +39,7 @@
 float my_song[][2] = SONG(QWERTY_SOUND);
 #endif
 
-
+extern keymap_config_t keymap_config;
 
 /* void matrix_scan_user() {
     int16_t val = (((uint32_t)timer_read() % 5000 - 2500) * 255) / 5000;
@@ -70,11 +70,11 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
         KC_ESC,  ________________NUMBER_LEFT________________,  KC_GRV,                                ________________NUMBER_RIGHT_______________,     KC_MINS,  KC_EQL, \
         KC_TAB,      K01,    K02,      K03,     K04,     K05,   KC_LBRC,                                KC_RBRC,    K06,     K07,     K08,     K09,      K0A,      KC_DELETE,     \
         TT(_MOUSE),   K11,    K12,      K13,     K14,     K15,   TAB_RO,                                KC_LEFT,     K16,     K17,     K18,     K19,      K1A,      K1B,   \
-        KC_LGUI,     K21,     K22,      K23,     K24,     K25,                                                      K26,     K27,     K28,     K29,      K2A,      KC_BSLS, \
-                                  KC_LALT,   TAB_R,                                                                    KC_COMMA, KC_DOT, \
-                                                 KC_SPC,                                            KC_BSPC,       \
-                                                  KC_LSFT,                                         KC_ENT, \
-                                                 KC_LCTL, MO(_NAV),                                    MO(_SYM), KC_LALT \
+        KC_LGUI,     K21,     K22,      K23,     K24,     K25,                                                      K26,     K27,     K28,     K29,      K2A,      KC_NUBS, \
+                                  LALT_T(TAB_L),   TAB_R,                                                                    KC_BTN4, KC_BTN5, \
+                                                 NAV_SPC,                                            SYM_BSPC,       \
+                                                 SYM_DEL,                                           NAV_ENT, \
+                                                  OSM(MOD_LCTL) , OSM(MOD_LSFT),                                  KC_ENT,  KC_LALT \
     )
 #define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
@@ -86,8 +86,7 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
 
 // Some basic macros
 #define TASK   LCTL(LSFT(KC_ESC))
-#define TAB_R  LCTL(KC_TAB)
-#define TAB_L  LCTL(LSFT(KC_TAB))
+
 #define TAB_RO LCTL(LSFT(KC_T))
 
 //TD_MACR removed from nav see https://github.com/rafaelromao/keyboards/blob/main/docs/navigation.md
@@ -103,35 +102,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______COLEMAK_MOD_DH_L2_HOME_ROW_MODS_____, _______COLEMAK_MOD_DH_R2_HOME_ROW_MODS_____,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
+     [_COLEMAK_DH_GAMING]  = LAYOUT_base_wrapper(
+        ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
+        ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
+        ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
+    ),
       [_SYM] = LAYOUT_wrapper(
         _______, _________________FUNC_LEFT_________________ , _______,             _______,  _________________FUNC_RIGHT________________, _______,
-        _______, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, KC_NUBS ,  _______,            _______,    EQ3X,KC_AMPR, KC_LBRC  , KC_RBRC, SCOPE, KC_PERC,
-        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_DOT , KC_NUHS ,  _______,            _______,   ARROW, KC_NUBS, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,
-        _______, KC_CIRC, KC_SLSH, KC_ASTR, KC_EQL, UPDIR,                                  KC_QUES, KC_TILD, KC_LCBR , KC_RCBR, KC_DLR, KC_AT  ,
+        _______, KC_QUOT,  KC_DQUO, KC_MINS, KC_PLUS, KC_DOT , _______,            _______,    EQ3X,KC_LCBR , KC_RCBR, SCOPE, KC_PERC,    KC_AMPR,
+        _______, KC_EXLM,  KC_NUBS,  KC_LABK, KC_RABK, KC_NUHS ,  _______,            _______,   ARROW, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,   KC_NUBS,
+        _______, KC_CIRC,  KC_EQL,  KC_SLSH, KC_ASTR, UPDIR,                                    KC_QUES,KC_LBRC  , KC_RBRC, KC_DLR, KC_AT  ,  KC_TILD,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
-                                                     KC_ACCEL,                              _______,
+                                                     _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
      [_NAV] = LAYOUT(
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
-        _______, KC_ESC , KC_LEAD, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_LBRC, KC_RBRC, KC_PERC,
-        _______, SS_SWIN, KC_LALT, OS_LCTL, KC_LSFT, _______,  _______,            _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_QUES,
-        _______, KC_TAB , XXXXXXX , _______ , OS_LGUI ,  UPDIR,                              _______, KC_INS, KC_HOME , KC_END, KC_RCBR, KC_DEL  ,
+        _______, KC_ESC , KC_LEAD, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_PGDN, _______, _______,
+        _______, SS_SWIN, KC_LALT ,KC_LSFT, OS_LCTL, KC_ENT,  _______,            _______, _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______,
+        _______, KC_TAB , XXXXXXX , _______ , OS_LGUI ,  _______,                              _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL  ,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
-                                                     KC_ACCEL,                              _______,
+                                                     _______,                              _______,
+                                                     _______, _______,            _______, _______
+    ),
+    [_FN] = LAYOUT_wrapper(
+        _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
+        _______,_________________FUNC_LEFT_________________,  _______,            _______, _________________FUNC_RIGHT________________, _______,
+        _______, ________________NUMBER_LEFT________________,  _______,            _______, ________________NUMBER_RIGHT_______________, _______,
+        _______, _______ , _______ , _______ , KC_SPC ,  _______,                              _______, KC_BSPC, _______ , _______, _______, _______  ,
+                          _______, _______,                                                                  _______, _______,
+                                                     _______,                               _______,
+                                                     _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
 
  [_MOUSE] = LAYOUT(
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
         DPI_MOD, DPI_RMOD, S_D_MOD, S_D_RMOD, SNP_TOG, DRG_TOG,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
-        _______, _______, CARET, DRAG_MOM, DRAG_SCROLL, _______,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
+        _______, _______, CARET, DRAG_MOM, DRAG_SCROLL, TRCKPD,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
         _______, _______, _______, _______, _______, AJS_MODE,                              KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
                           _______, _______,                                                                  _______, _______,
-                                                     _______,                               KC_BTN3,
-                                                     KC_ACCEL,                              _______,
+                                                     _______,                               _______,
+                                                     _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
 [_MEDIA] = LAYOUT(
@@ -144,11 +158,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
+
+
     [_MAINTENANCE] = LAYOUT(
         RESET, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, EE_CLR,
-        AU_ON, AU_OFF, CLICKY_TOGGLE, MU_ON, MU_OFF,  MU_MOD, _______,            _______, _______, _______, _______, DF_CDH, DF_QWE, _______,
-        _______, QK_BOOT, _______, _______, _______, _______,  _______,            _______, HPT_TOG, _______, _______, _______, _______, _______,
-        _______, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP,                              _______, _______, _______, _______, _______, _______,
+        AU_ON, AU_OFF, CLICKY_TOGGLE, MU_ON, MU_OFF,  MU_MOD, _______,            _______, _______, _______, DF_CMG  , DF_CDH, DF_QWE, _______,
+        _______, SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______,  _______,            _______, HPT_TOG, HPT_MODD, HPT_MODI, _______, _______, _______,
+        QK_BOOT, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP,                              _______, _______, _______, _______, _______, _______,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
                                                      _______,                              _______,
@@ -176,13 +192,13 @@ bool dip_switch_update_user(uint8_t index, bool active) {
         /* case 1:
             if(active) { clicky_on(); } else { clicky_off(); }
             break; */
-        case 2:
+    /*     case 2:
              if (active) {
                 set_single_persistent_default_layer(_COLEMAK_MOD_DH);
             } else {
                 set_single_persistent_default_layer(_QWERTY);
             }
-            break;
+            break; */
         /* case 3:
 
             break; */

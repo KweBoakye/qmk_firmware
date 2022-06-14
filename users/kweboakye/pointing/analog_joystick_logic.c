@@ -43,6 +43,8 @@ void analog_joystick_mode_cycle(bool reverse) {
 
 
 
+
+
 // Fix direction within one of 8 axes (or 4 if 8-axis is disabled)
 analog_joystick_direction_t analog_joystick_get_discretized_direction(report_analog_joystick_t vector, float axisSeparation, bool eightAxis) {
     analog_joystick_direction_t direction;
@@ -146,7 +148,7 @@ report_mouse_t analog_joystick_pointing_device_task(report_mouse_t mouse_report)
 #endif
                 break;
             case ANALOG_JOYSTICK_MODE_SCROLL:
-            if (timer_elapsed(analog_joystickScrollTimer) > ANALOG_JOYSTICK_SCROLL_TIMEOUT) {
+            /* if (timer_elapsed(analog_joystickScrollTimer) > ANALOG_JOYSTICK_SCROLL_TIMEOUT) {
                 analog_joystick_state.vector.x = analog_joystick_get_component(ANALOG_JOYSTICK_X_AXIS_PIN);
                 analog_joystick_state.vector.y = analog_joystick_get_component(ANALOG_JOYSTICK_Y_AXIS_PIN);
                     analog_joystickScrollTimer     = timer_read();
@@ -157,7 +159,10 @@ report_mouse_t analog_joystick_pointing_device_task(report_mouse_t mouse_report)
                     analog_joystick_state.report.v = analog_joystick_state.report.h = 0;
                 }
                 mouse_report.v = analog_joystick_state.report.v;
-                mouse_report.h = analog_joystick_state.report.h;
+                mouse_report.h = analog_joystick_state.report.h; */
+                analog_joystick_report = analog_joystick_get_report(mouse_report);
+                mouse_report.h =  analog_joystick_report.x;
+                mouse_report.v =  -analog_joystick_report.y;
 #ifdef ANALOG_JOYSTICK_DEBUG
                 if (timer_elapsed(analog_joystickLogTimer) > 100) {
                     analog_joystickLogTimer = timer_read();
@@ -165,6 +170,17 @@ report_mouse_t analog_joystick_pointing_device_task(report_mouse_t mouse_report)
                 }
 #endif
                 break;
+            case ANALOG_JOYSTICK_MODE_WHEEL:
+            analog_joystick_report = analog_joystick_get_report(mouse_report);
+                uint8_t x, y;
+                x = analogReadPin(ANALOG_JOYSTICK_X_AXIS_PIN) >> 2;
+                y = analogReadPin(ANALOG_JOYSTICK_Y_AXIS_PIN) >> 2;
+                 mouse_report.h = ( x >> 6 ) - 2;
+                 mouse_report.v = ( y >> 6 ) - 2;
+                 if (mouse_report.h < 0) mouse_report.h++;
+                 if (mouse_report.v < 0) mouse_report.v++;
+                 mouse_report.v *= -1;
+                    
             default:
                 break;
         }

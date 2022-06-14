@@ -10,8 +10,9 @@
 
 #pragma once
 #include "quantum.h"
+#include "pointing_device.h"
 
-void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y);
+//void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y);
 
 //*****************************************************************************
 //
@@ -309,3 +310,73 @@ void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y);
 #define	ZoomInitDistance_adr	0x06CB	//(READ/WRITE/E2)	//2 BYTES;
 #define	ZoomConsDistance_adr	0x06CD	//(READ/WRITE/E2)	//2 BYTES;
 
+#ifndef IQS5xx_ADDR
+        #define IQS5xx_ADDR  0x74
+#endif
+
+#define	END_WINDOW				(uint16_t)0xEEEE
+
+#ifdef IQS5xx_PALM_REJECT_DISABLE
+       #undef PALM_REJECT
+       #define PALM_REJECT 0x00
+#endif
+
+#ifdef IQS5xx_SWITCH_XY_AXIS
+       #undef SWITCH_XY_AXIS 0x00
+       #define SWITCH_XY_AXIS
+#endif
+
+#ifdef IQS5xx_FLIP_Y
+       #undef FLIP_Y
+       #define FLIP_Y 0x00
+#endif
+
+#ifdef IQS5xx_FLIP_X
+       #undef FLIP_X
+       #define FLIP_X 0x00
+#endif
+
+typedef enum {
+NONE,
+SINGLE_TAP_GESTURE,
+TAP_AND_HOLD_GESTURE,
+SWIPE_X_NEG_GESTURE,
+SWIPE_X_POS_GESTURE,
+SWIPE_Y_POS_GESTURE,
+SWIPE_Y_NEG_GESTURE
+} single_finger_gesture;
+
+typedef enum {
+
+TWO_FINGER_TAP_GESTURE,
+SCROLL_GESTURE,
+ZOOM_GESTURE
+} two_finger_gesture;
+
+
+typedef struct {
+    // uint8_t 	i;
+	uint8_t ui8FirstTouch;
+	uint8_t 	ui8NoOfFingers;
+	uint8_t 	ui8SystemFlags[2];
+	int16_t 	i16RelX[6];
+	int16_t 	i16RelY[6];
+	uint16_t 	ui16AbsX[6];
+	uint16_t 	ui16AbsY[6];
+	uint16_t 	ui16TouchStrength[6];
+	uint8_t  	ui8Area[6];
+    bool        swipe_y_neg;
+    bool        swipe_y_pos;
+    bool        swipe_x_neg;
+    bool        swipe_x_pos;
+    bool        tap_and_hold;
+    bool        single_tap;
+    bool        zoom;
+    bool        scroll;
+    bool        two_finger_tap;
+
+} iqs55xx_data_t;
+
+void init_iqs55xx(void);
+
+report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report);

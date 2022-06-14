@@ -2,6 +2,7 @@
 #include "oled_driver.h"
 #include "oled_utils.h"
 #include "../definitions/layers.h"
+#include "../keyrecords/caps_word.h"
 
 /* settings */
 #define MIN_WALK_SPEED 10
@@ -17,7 +18,7 @@ bool isSneaking = false;
 bool isJumping = false;
 bool showedJump = true;
 int jump_height = 0;
-int current_wpm = 0;
+static int current_wpm = 0;
 
 // timers
 uint32_t luna_anim_timer = 0;
@@ -141,7 +142,7 @@ void render_luna(int LUNA_X, int LUNA_Y) {
 		luna_current_frame = (luna_current_frame + 3) % 6;
 
         /* current status */
-        if(host_keyboard_led_state().caps_lock) {
+        if(host_keyboard_led_state().caps_lock || caps_word_get()) {
             oled_render_image(3, LUNA_SIZE, bark, LUNA_X, LUNA_Y + 1, luna_current_frame);
 
         } else if(isSneaking) {
@@ -170,8 +171,8 @@ void render_luna(int LUNA_X, int LUNA_Y) {
     // this fixes the screen on and off bug
     if (current_wpm > 0) {
         //oled_on();
-        luna_anim_timer = timer_read32();
-    } else if(timer_elapsed32(luna_anim_timer) > OLED_TIMEOUT) {
+        luna_anim_sleep = timer_read32();
+    } else if(timer_elapsed32(luna_anim_sleep) > OLED_TIMEOUT) {
        // oled_off();
     }
 

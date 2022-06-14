@@ -23,8 +23,12 @@
 
 #define ADC_PIN A0
 
-#define RGB_CI_PIN A2
-
-#define SOLENOID_PIN B12
-#define SOLENOID_PINS { B12, B13, B14, B15 }
-#define SOLENOID_PINS_ACTIVE_STATE { high, high, low }
+#define I2C_DRIVER        I2CD1
+#define I2C1_SCL_BANK     GPIOB
+#define I2C1_SDA_BANK     GPIOB
+#define I2C1_SCL          8
+#define I2C1_SDA          9
+#define I2C1_SCL_PAL_MODE 4
+#define I2C1_SDA_PAL_MODE 4
+//#define I2C1_CLOCK_SPEED  400000
+//#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2

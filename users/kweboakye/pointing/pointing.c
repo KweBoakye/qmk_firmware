@@ -8,7 +8,7 @@
 
 #include <math.h>
 
-static uint16_t mouse_timer           = 0;
+uint16_t mouse_timer           = 0;
 static uint16_t mouse_debounce_timer  = 0;
  uint8_t  mouse_keycode_tracker = 0;
 bool            tap_toggling = false, enable_acceleration = false;
@@ -42,9 +42,9 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
     if (x != 0 && y != 0) {
         mouse_timer = timer_read();
-//#ifdef OLED_ENABLE
-//        oled_timer = timer_read32();
-//#endif
+#ifdef OLED_ENABLE
+        oled_timer = timer_read32();
+#endif
         if (timer_elapsed(mouse_debounce_timer) > TAP_CHECK) {
             if (enable_acceleration) {
                 x = (x > 0 ? x * x / 16 + x : -x * x / 16 + x);
@@ -80,9 +80,9 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
     if ((left_x != 0 && left_y != 0) ||( right_x != 0 && right_y != 0)) {
         mouse_timer = timer_read();
-//#ifdef OLED_ENABLE
-//        oled_timer = timer_read32();
-//#endif
+#ifdef OLED_ENABLE
+        oled_timer = timer_read32();
+#endif
         if (timer_elapsed(mouse_debounce_timer) > TAP_CHECK) {
             if (enable_acceleration) {
                 left_x = (left_x > 0 ? left_x * left_x / 16 + left_x : -left_x * left_x / 16 + left_x);
@@ -140,7 +140,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
     }
 
-    #ifdef CIRQUE_TRACKPAD_ENABLED
+    #ifdef CIRQUE_ENABLED
      switch (process_record_trackpad(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
             return true;
