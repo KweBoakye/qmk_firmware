@@ -42,3 +42,6 @@
 
 //#define I2C1_CLOCK_SPEED  400000
 //#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+#define SOLENOID_PIN B12
+#define SOLENOID_PINS { B12, B13, B14, B15 }
+#define SOLENOID_PINS_ACTIVE_STATE { high, high, low }
