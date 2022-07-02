@@ -21,6 +21,7 @@ typedef union {
     };
 } user_runtime_config_t;
 
+
 extern user_runtime_config_t user_state;
 
 void keyboard_post_init_transport_sync(void);

@@ -16,6 +16,7 @@ SRC += keyrecords/os_toggle.c
 SRC += keyrecords/caps_word.c
 SRC += keyrecords/select_word.c
 SRC += keyrecords/casemodes.c
+SRC += keyrecords/user_haptic.c
 #SRC += keyrecords/default_mod_key.c
 SRC += pointing/pointing.c
 SRC += callbacks.c

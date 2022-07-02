@@ -1,4 +1,6 @@
 #include "kweboakye.h"
+#include "haptic.h"
+#include "transactions.h"
 
 userspace_config_t userspace_config;
 extern os_t os;
@@ -11,11 +13,27 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     return get_tapping_term_result(keycode);
 }
 
+
+
 /* bool get_retro_tapping(uint16_t keycode, keyrecord_t *record){
     return get_retro_tapping_result(keycode);
 } */
 
+
+
+
+
 bool  get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record) {
+
+    if(record->event.key.row > (MATRIX_ROWS / 2)){
+        haptic_sync_t haptic_sync;
+         haptic_sync.raw = 0;
+         haptic_sync.keycode = keycode;
+        haptic_sync.record = record;
+        haptic_sync.haptic_feedback = haptic_get_feedback();
+       transaction_rpc_send(RPC_ID_HAPTIC_SYNC, sizeof(haptic_sync_t), &haptic_sync);
+       return false;
+    }
     switch (keycode) {
     case QK_MOD_TAP ... QK_MOD_TAP_MAX:
     case NAV_SPC:

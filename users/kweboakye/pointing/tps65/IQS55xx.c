@@ -50,17 +50,17 @@ void Close_Comms(void)
   i2c_writeReg16(IQS5xx_ADDR<<1,END_WINDOW, &stop, 1, 1);
 }
 
-/* void set_xy_config_0(void){
+ void set_xy_config_0(void){
 
     static uint8_t XY_config_0 = (FLIP_X | FLIP_Y | SWITCH_XY_AXIS | PALM_REJECT );
     i2c_writeReg16(IQS5xx_ADDR<<1 ,XYConfig0_adr, &XY_config_0, sizeof(XY_config_0), 4);
-} */
+}
 
 void init_iqs55xx(void) {
     //setPinInputHigh(IQS55XX_RDY_PIN);
     i2c_init();
-//set_xy_config_0();
     IQS5xx_AcknowledgeReset();
+    set_xy_config_0();
     Close_Comms();
 }
 
@@ -261,6 +261,43 @@ __attribute__((weak)) uint8_t iqs55xx_handle_two_finger_tap(uint8_t buttons){
 
 uint16_t timeout = 2;
 static uint16_t timer = 0;
+bool mouse_held = false;
+
+void send_mouse_button(report_mouse_t mouse_report, bool pressed, pointing_device_buttons_t button){
+ mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, pressed, button);
+   pointing_device_set_report(mouse_report);
+                    pointing_device_send();
+}
+
+void send_left_click(report_mouse_t mouse_report){
+    send_mouse_button(mouse_report, true, POINTING_DEVICE_BUTTON1);
+}
+
+void send_left_click_deregister(report_mouse_t mouse_report){
+    send_mouse_button(mouse_report, false, POINTING_DEVICE_BUTTON1);
+}
+uint32_t derigister_left_click_callback(uint32_t trigger_time, void *cb_arg) {
+   report_mouse_t mouse_report = pointing_device_get_report();
+     send_mouse_button(mouse_report, false, POINTING_DEVICE_BUTTON1);
+                return  0;
+}
+
+
+void send_right_click(report_mouse_t mouse_report){
+     send_mouse_button(mouse_report, true, POINTING_DEVICE_BUTTON2);
+
+}
+
+
+void send_right_click_deregister(report_mouse_t mouse_report){
+     send_mouse_button(mouse_report, false, POINTING_DEVICE_BUTTON2);
+
+}
+uint32_t derigister_right_click_callback(uint32_t trigger_time, void *cb_arg) {
+   report_mouse_t mouse_report = pointing_device_get_report();
+     send_mouse_button(mouse_report, false, POINTING_DEVICE_BUTTON2);
+                return  0;
+}
 
 report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report){
 
@@ -278,11 +315,65 @@ report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report){
     iqs55xx_data_t iqs55xx_data = Process_XY();
     //int16_t x, y = 0;
 
+    if(iqs55xx_data.ui8NoOfFingers == 0){
+        if(iqs55xx_data.single_tap){
+                send_left_click(mouse_report);
 
+                 #    if TAP_CODE_DELAY > 0
+                wait_ms(TAP_CODE_DELAY);
+                #    endif
+
+         send_left_click_deregister(mouse_report);
+                      #    if TAP_CODE_DELAY > 0
+                wait_ms(TAP_CODE_DELAY);
+                #    endif
+        }
+
+        if(iqs55xx_data.two_finger_tap){
+         send_left_click(mouse_report);
+         send_left_click_deregister(mouse_report);
+        }
+    }
+
+    if(iqs55xx_data.ui8NoOfFingers == 1){
+        if(iqs55xx_data.tap_and_hold) {
+            if(!mouse_held){
+                mouse_held = true;
+               send_left_click(mouse_report);
+
+            }
+
+        } else if(iqs55xx_data.swipe_y_neg){
+
+        } else if(iqs55xx_data.swipe_y_pos){
+
+        } else if(iqs55xx_data.swipe_x_neg){
+
+        } else if(iqs55xx_data.swipe_x_pos){
+
+        } else {
+              mouse_report.x = (int16_t)iqs55xx_data.i16RelX[1] * -1;
+   mouse_report.y= (int16_t)iqs55xx_data.i16RelY[1] * -1;
+   uprintf("mouse_report.x %d  mouse_report.y %d\n", mouse_report.x,  mouse_report.y);
+        }
+
+
+    }
+
+    if(iqs55xx_data.ui8NoOfFingers == 2){
+        if(iqs55xx_data.scroll){
+            mouse_report.h = (int16_t)iqs55xx_data.i16RelX[1] * -1;
+        mouse_report.v = (int16_t)iqs55xx_data.i16RelY[1] * -1;
+        }
+
+        if(iqs55xx_data.zoom){
+
+        }
+    }
 
 /*     if(iqs55xx_data.scroll){
 
-    }
+    }=
 
     if(){
 
@@ -308,9 +399,7 @@ report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report){
 
     } */
 
-   mouse_report.x = (int16_t)iqs55xx_data.i16RelX[1] * -1;
-   mouse_report.y= (int16_t)iqs55xx_data.i16RelY[1] * -1;
-   uprintf("mouse_report.x %d  mouse_report.y %d\n", mouse_report.x,  mouse_report.y);
+
  // } else {
     //  printf("%s", "IQS55XX_RDY_PIN is low \n");
    //    mouse_report.x = 0;

@@ -4,6 +4,7 @@
 #include "transport_sync.h"
 #include "transactions.h"
 #include <string.h>
+#include "user_haptic.h"
 #ifdef __AVR__
 #    include <avr/wdt.h>
 #endif
@@ -53,6 +54,8 @@ void user_config_sync(uint8_t initiator2target_buffer_size, const void* initiato
     }
 }
 
+
+
 #if defined(SPLIT_WATCHDOG_TIMEOUT)
 void watchdog_handler(uint8_t in_buflen, const void* in_data, uint8_t out_buflen, void* out_data) { watchdog_ping_done = true; }
 #endif
@@ -71,6 +74,7 @@ void keyboard_post_init_transport_sync(void) {
     transaction_register_rpc(RPC_ID_USER_STATE_SYNC, user_state_sync);
     transaction_register_rpc(RPC_ID_USER_KEYMAP_SYNC, user_keymap_sync);
     transaction_register_rpc(RPC_ID_USER_CONFIG_SYNC, user_config_sync);
+    transaction_register_rpc(RPC_ID_HAPTIC_SYNC, user_haptic_sync);
 #ifdef CUSTOM_OLED_DRIVER
     transaction_register_rpc(RPC_ID_USER_KEYLOG_STR, keylogger_string_sync);
 #endif
