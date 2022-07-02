@@ -53,3 +53,4 @@ void pointing_device_task(void) {
 			Process_XY();
 		}
 	}
+

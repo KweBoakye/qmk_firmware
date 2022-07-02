@@ -13,6 +13,8 @@
 #include "keyrecords/achordion.h"
 #include "keyrecords/select_word.h"
 #include "keyrecords/casemodes.h"
+#include "keyrecords/user_haptic.h"
+
 //#include "keyrecords/default_mod_key.h"
 #include "eeprom.h"
 #include "callbacks.h"
