@@ -1,10 +1,20 @@
 #include "user_haptic.h"
 #include "definitions/keycodes.h"
-#include "transport_sync.h"
+#include "DRV2605L.h"
+#//include "transport_sync.h"
 #include "transactions.h"
 
+bool check_is_both_hand_combo(uint16_t keycode){
+    switch(keycode){
+        case MO(_MAINTENANCE):
+        case MO(_FN):
+        return true;
+        default:
+        return false;
+    }
+}
 
-bool  get_haptic_enabled_key_custom(uint16_t keycode, keyrecord_t *record) {
+ bool  get_haptic_enabled_key_custom(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
     case QK_MOD_TAP ... QK_MOD_TAP_MAX:
@@ -22,7 +32,7 @@ bool  get_haptic_enabled_key_custom(uint16_t keycode, keyrecord_t *record) {
     case KC_WH_D:
          return false;
 #ifdef NO_HAPTIC_MOD
-        /* case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+       /*   case QK_MOD_TAP ... QK_MOD_TAP_MAX:
             if (record->tap.count == 0) return false;
             break; */
         case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
@@ -84,27 +94,69 @@ bool  get_haptic_enabled_key_custom(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void handle_split_haptic(uint16_t keycode, keyrecord_t *record, uint8_t haptic_feedback){
+/* void handle_split_haptic(uint16_t keycode, keyrecord_t *record, uint8_t haptic_feedback){
 
 
 
         if (record->event.pressed) {
             // keypress
-            if (haptic_feedback < 2 && get_haptic_enabled_key_custom(keycode, record)) {
-                haptic_play();
+            if (haptic_feedback < 2 ) {
+                //haptic_play();
+                DRV_pulse(soft_bump_60);
             }
         } else {
             // keyrelease
-            if (haptic_feedback > 0 && get_haptic_enabled_key_custom(keycode, record)) {
-                haptic_play();
+            if (haptic_feedback > 0 ) {
+                //haptic_play();
+                 DRV_pulse(soft_bump_60);
             }
         }
 
+} */
+
+
+
+bool is_keypress_on_secondary(uint16_t keycode, keyrecord_t *record){
+ if(is_keyboard_left()){
+    if(record->event.key.row > (MATRIX_ROWS / 2)){
+       return true;
+    } else {
+        return false;
+    }
+    } else {
+        if(record->event.key.row <= (MATRIX_ROWS / 2)){
+        return true;
+        } else {
+        return false;
+    }
+    }
+}
+
+bool should_secondary_haptic_actuate(keyrecord_t *record){
+    if(record->event.pressed){
+    if(haptic_get_feedback() < 2) return true;
+    } else {
+        if(haptic_get_feedback() > 0) return true;
+    }
+    return false;
+}
+
+bool should_primary_send_haptic(uint16_t keycode, keyrecord_t *record){
+     return (is_keypress_on_secondary(keycode, record) && should_secondary_haptic_actuate(record));
 }
 
 void user_haptic_sync(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
-    if (initiator2target_buffer_size == sizeof(haptic_sync_t)) {
-       haptic_sync_t haptic_sync* = (haptic_sync_t*)initiator2target_buffer;
-       handle_split_haptic(haptic_sync->keycode, haptic_sync->record, haptic_sync->haptic_feedback )?
+    if (initiator2target_buffer_size == sizeof(uint8_t)) {
+       uint8_t drv_effect;
+        memcpy(&drv_effect, initiator2target_buffer, initiator2target_buffer_size);
+       DRV_pulse(drv_effect);
     }
+}
+
+
+void send_haptic(uint8_t drv_effect){
+
+      bool haptic_sent = transaction_rpc_send(RPC_ID_HAPTIC_SYNC, sizeof(uint8_t), &drv_effect);
+      dprintf("haptic sent  = ");
+      printf(haptic_sent ? "true \n" : "false \n");
 }

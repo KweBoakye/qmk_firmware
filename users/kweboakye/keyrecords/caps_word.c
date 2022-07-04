@@ -37,14 +37,14 @@ static bool caps_word_active = false;
 
 static uint16_t idle_timer = 0;
 
-void caps_word_task(void) {
+void caps_word_task_custom(void) {
   if (caps_word_active && timer_expired(timer_read(), idle_timer)) {
     caps_word_set(false);
   }
 }
 #endif  // CAPS_WORD_IDLE_TIMEOUT > 0
 
-bool process_caps_word(uint16_t keycode, keyrecord_t* record) {
+bool process_caps_word_custom(uint16_t keycode, keyrecord_t* record) {
 #ifndef NO_ACTION_ONESHOT
   const uint8_t mods = get_mods() | get_oneshot_mods();
 #else

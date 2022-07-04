@@ -221,7 +221,7 @@ keyboard_post_init_user();
     keymap_config.nkro = false;
     keymap_config.swap_lctl_lgui = false;
     keymap_config.swap_rctl_rgui = false;
-    keymap_config.oneshot_disable = false;
+    keymap_config.oneshot_enable  = false;
     eeconfig_update_kb(keymap_config.raw);
 
     eeconfig_init_user();
@@ -336,13 +336,13 @@ void  pointing_device_driver_init(void) {
      if (is_keyboard_left()) {
         analog_joystick_logic_init();
  } else {
-      pmw3360_init();
-     init_success = pmw3360_check_signature();
+       init_success = pmw3360_init(0);
+     //pmw3360_check_signature(0);
  }
  }
 
   report_mouse_t pmw3360_get_report(report_mouse_t mouse_report) {
-    report_pmw3360_t data        = pmw3360_read_burst();
+    report_pmw3360_t data        = pmw3360_read_burst(0);
     static uint16_t  MotionStart = 0;  // Timer for accel, 0 is resting state
 
     if (data.isOnSurface && data.isMotion) {

@@ -47,7 +47,7 @@
 #include QMK_KEYBOARD_H
 
 // Call this function from `process_record_user()` to implement Caps Word.
-bool process_caps_word(uint16_t keycode, keyrecord_t* record);
+bool process_caps_word_custom(uint16_t keycode, keyrecord_t* record);
 
 // If CAPS_WORD_IDLE_TIMEOUT is set, call `caps_word_task()` from
 // `matrix_scan_user()` as described above.
@@ -55,9 +55,9 @@ bool process_caps_word(uint16_t keycode, keyrecord_t* record);
 // If CAPS_WORD_IDLE_TIMEOUT isn't set, calling this function has no effect (but
 // will still compile).
 #if CAPS_WORD_IDLE_TIMEOUT > 0
-void caps_word_task(void);
+void caps_word_task_custom(void);
 #else
-static inline void caps_word_task(void) {}
+static inline void caps_word_task_custom(void) {}
 #endif
 
 // Activates or deactivates Caps Word. For instance activate Caps Word with a
