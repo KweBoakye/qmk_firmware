@@ -17,7 +17,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif
-if (!process_caps_word(keycode, record)) { return false; }
+if (!process_caps_word_custom(keycode, record)) { return false; }
 
  // Process case modes
     if (!process_case_modes(keycode, record)) {

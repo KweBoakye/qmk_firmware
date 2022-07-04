@@ -4,7 +4,7 @@
 #include "transport_sync.h"
 #include "transactions.h"
 #include <string.h>
-#include "user_haptic.h"
+#include "../keyrecords/user_haptic.h"
 #ifdef __AVR__
 #    include <avr/wdt.h>
 #endif
@@ -17,6 +17,10 @@ extern unicode_config_t unicode_config;
 #    include "audio.h"
 extern audio_config_t audio_config;
 extern bool           delayed_tasks_run;
+#endif
+#ifdef HAPTIC_ENABLE
+#    include "haptic.h"
+haptic_config_t haptic_config;
 #endif
 #if defined(POINTING_DEVICE_ENABLE) && defined(KEYBOARD_handwired_tractyl_manuform)
 extern bool tap_toggling;
@@ -34,7 +38,7 @@ extern userspace_config_t userspace_config;
 extern bool               host_driver_disabled;
 
 uint16_t transport_keymap_config    = 0;
-uint32_t transport_userspace_config = 0, transport_user_state = 0;
+uint32_t transport_userspace_config = 0, transport_user_state = 0, transport_haptic_config = 0;
 
 user_runtime_config_t user_state;
 
@@ -53,6 +57,7 @@ void user_config_sync(uint8_t initiator2target_buffer_size, const void* initiato
         memcpy(&transport_userspace_config, initiator2target_buffer, initiator2target_buffer_size);
     }
 }
+
 
 
 
@@ -96,6 +101,9 @@ void user_transport_update(void) {
         user_state.audio_enable        = is_audio_on();
        // user_state.audio_clicky_enable = is_clicky_on();
 #endif
+#ifdef HAPTIC_ENABLE
+        transport_haptic_config =  haptic_config.raw;
+#endif
 #if defined(CUSTOM_POINTING_DEVICE)
         user_state.tap_toggling = tap_toggling;
 #endif
@@ -112,6 +120,9 @@ void user_transport_update(void) {
         keymap_config.raw    = transport_keymap_config;
         userspace_config.raw = transport_userspace_config;
         user_state.raw       = transport_user_state;
+        #ifdef HAPTIC_ENABLE
+        haptic_config.raw    = transport_haptic_config;
+        #endif
 #ifdef UNICODE_COMMON_ENABLE
         unicode_config.input_mode = user_state.unicode_mode;
 #endif
@@ -129,7 +140,8 @@ void user_transport_sync(void) {
     if (is_keyboard_master()) {
         // Keep track of the last state, so that we can tell if we need to propagate to slave
         static uint16_t last_keymap = 0;
-        static uint32_t last_config = 0, last_sync[4], last_user_state = 0;
+        static uint32_t last_config = 0, last_sync[5], last_user_state = 0;
+        static uint32_t last_haptic_config = 0;
         bool            needs_sync = false;
 #ifdef CUSTOM_OLED_DRIVER
         static char keylog_temp[OLED_KEYLOGGER_LENGTH] = {0};
@@ -191,6 +203,9 @@ void user_transport_sync(void) {
             needs_sync = false;
         }
 
+        
+
+       
 #ifdef CUSTOM_OLED_DRIVER
         // Check if the state values are different
         if (memcmp(&keylog_str, &keylog_temp, OLED_KEYLOGGER_LENGTH)) {
@@ -209,7 +224,29 @@ void user_transport_sync(void) {
             needs_sync = false;
         }
 #endif
+
+#ifdef HAPTIC_ENABLE
+         if (memcmp(&haptic_config, &last_haptic_config, sizeof(transport_haptic_config))) {
+            needs_sync = true;
+            memcpy(&last_haptic_config, &haptic_config, sizeof(transport_haptic_config));
+        }
+
+        // Send to slave every 500ms regardless of state change
+        if (timer_elapsed32(last_sync[4]) > 250) {
+            needs_sync = true;
+        }
+
+        // Perform the sync if requested
+        if (needs_sync) {
+            if (transaction_rpc_send(RPC_ID_HAPTIC_SYNC, sizeof(transport_haptic_config), &transport_haptic_config)) {
+                last_sync[4] = timer_read32();
+            }
+            needs_sync = false;
+        }
+#endif
     }
+
+    
 
 #if defined(SPLIT_WATCHDOG_TIMEOUT)
     if (!watchdog_ping_done) {

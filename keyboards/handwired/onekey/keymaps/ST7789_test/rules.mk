@@ -7,3 +7,4 @@ BACKLIGHT_DRIVER = pwm
 
 SRC += users/kweboakye/quantumpainter/ST7789/ST7789_logic.c
 SRC += users/kweboakye/quantumpainter/graphics/rotating_hand.qgf.c
+SRC += users/kweboakye/quantumpainter/fonts/Microgramma_Normal.qff.c

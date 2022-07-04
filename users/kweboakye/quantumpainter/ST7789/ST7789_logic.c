@@ -2,10 +2,12 @@
 #include "ST7789_logic.h"
 #include "color.h"
 #include "../graphics/rotating_hand.qgf.h"
+#include "../fonts/Microgramma_Normal.qff.h"
 
 
  painter_device_t display;
  static painter_image_handle_t my_image;
+ static painter_font_handle_t microgramma_normal;
 static deferred_token my_anim;
 void keyboard_post_init_kb_display(void) {
  setPinOutput(DISPLAY_POWER_ENABLE_PIN);
@@ -22,6 +24,13 @@ void keyboard_post_init_kb_display(void) {
 
    backlight_enable();
     backlight_level(BACKLIGHT_LEVELS);
+
+microgramma_normal = qp_load_font_mem(font_Microgramma_Normal);
+    if (microgramma_normal != NULL) {
+        static const char *text = "WELCOME TO THE WORLD";
+        int16_t width = qp_textwidth(microgramma_normal, text);
+        qp_drawtext(display, 0, 0, microgramma_normal, text);
+    }
 
     my_image = qp_load_image_mem(gfx_rotating_hand);
     if (my_image != NULL) {
