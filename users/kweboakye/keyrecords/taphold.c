@@ -1,6 +1,7 @@
 #include "taphold.h"
 
 
+
 bool get_tapping_force_hold_result(uint16_t keycode) {
       switch (keycode) {
         case NAV_SPC:
@@ -91,7 +92,7 @@ process_record_result_t proccess_record_taphold(uint16_t keycode, keyrecord_t *r
         and holding RSFT_T(KC_E) (which is the right Shift mod tap).
         */
 
-        if (record->event.pressed && record->tap.count > 0) {
+        if (record->event.pressed && record->tap.count > 0 && keycode != TD(NUMPAD_LAYR)) {
             if (get_mods() & MOD_BIT(KC_LSHIFT)) {
                 unregister_mods(MOD_BIT(KC_LSHIFT));
                 tap_code(KC_S);

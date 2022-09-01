@@ -142,7 +142,7 @@ void render_luna(int LUNA_X, int LUNA_Y) {
 		luna_current_frame = (luna_current_frame + 3) % 6;
 
         /* current status */
-        if(host_keyboard_led_state().caps_lock || caps_word_get()) {
+        if(host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             oled_render_image(3, LUNA_SIZE, bark, LUNA_X, LUNA_Y + 1, luna_current_frame);
 
         } else if(isSneaking) {

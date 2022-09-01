@@ -31,6 +31,7 @@
 #include "audio.h"
 #endif
 #include "kweboakye.h"
+#include "keymap_uk.h"
 
 #include "song_list.h"
 #include "dip_switch.h"
@@ -73,8 +74,8 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
         KC_LGUI,     K21,     K22,      K23,     K24,     K25,                                                      K26,     K27,     K28,     K29,      K2A,      KC_NUBS, \
                                   LALT_T(TAB_L),   TAB_R,                                                                    KC_BTN4, KC_BTN5, \
                                                  NAV_SPC,                                            SYM_BSPC,       \
-                                                 SYM_DEL,                                           NAV_ENT, \
-                                                  OSM(MOD_LCTL) , OSM(MOD_LSFT),                                  KC_ENT,  KC_LALT \
+                                                 SH_DEL,                                           NAV_ENT, \
+                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  KC_ENT,  KC_LALT \
     )
 #define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
@@ -107,23 +108,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
+
+    // need &, '\', find the right keycodes for @ and "",  ebia add a second symbol layer
       [_SYM] = LAYOUT_wrapper(
         _______, _________________FUNC_LEFT_________________ , _______,             _______,  _________________FUNC_RIGHT________________, _______,
-        _______, KC_QUOT,  KC_DQUO, KC_MINS, KC_PLUS, KC_DOT , _______,            _______,    EQ3X,KC_LCBR , KC_RCBR, SCOPE, KC_PERC,    KC_AMPR,
-        _______, KC_EXLM,  KC_NUBS,  KC_LABK, KC_RABK, KC_NUHS ,  _______,            _______,   ARROW, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,   KC_NUBS,
-        _______, KC_CIRC,  KC_EQL,  KC_SLSH, KC_ASTR, UPDIR,                                    KC_QUES,KC_LBRC  , KC_RBRC, KC_DLR, KC_AT  ,  KC_TILD,
+        _______, KC_QUOT,  UK_AT   , KC_MINS, KC_EQL, KC_DOT , _______,            _______,    UK_PND ,KC_LCBR , KC_RCBR, SCOPE, KC_NUBS,    KC_AMPR,
+        _______, KC_EXLM,  KC_NUBS,  KC_LABK, KC_RABK, KC_NUHS ,  _______,            _______,   KC_NUBS, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,   KC_NUBS,
+        _______, KC_CIRC,  KC_MINS,  KC_ASTR, KC_PLUS, KC_TILD,                                    KC_AMPR,KC_LBRC  , KC_RBRC, KC_DLR, UK_DQUO  ,  KC_TILD,
                           _______, _______,                                                                  _______, _______,
-                                                     _______,                               _______,
+                                                      MO(_FN),                               _______,
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
      [_NAV] = LAYOUT(
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
-        _______, KC_ESC , KC_LEAD, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_PGDN, _______, _______,
-        _______, SS_SWIN, KC_LALT ,KC_LSFT, OS_LCTL, KC_ENT,  _______,            _______, _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______,
-        _______, KC_TAB , XXXXXXX , _______ , OS_LGUI ,  _______,                              _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL  ,
+        _______, KC_ESC , KC_TAB, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_PGDN, _______, _______,
+        _______, OS_LGUI, OS_LALT ,KC_LSFT, KC_LCTL, OS_RALT,  _______,            _______, _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______,
+        _______, LCTL(KC_Z) , LCTL(KC_X) ,  LCTL(KC_C), KC_LEAD ,  LCTL(KC_V),               _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL  ,
                           _______, _______,                                                                  _______, _______,
-                                                     _______,                               _______,
+                                                     _______,                                MO(_FN),
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
@@ -131,8 +134,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
         _______,_________________FUNC_LEFT_________________,  _______,            _______, _________________FUNC_RIGHT________________, _______,
         _______, ________________NUMBER_LEFT________________,  _______,            _______, ________________NUMBER_RIGHT_______________, _______,
-        _______, _______ , _______ , _______ , KC_SPC ,  _______,                              _______, KC_BSPC, _______ , _______, _______, _______  ,
+        _______, _______ , KC_MINS , KC_ASTR , KC_PLUS ,  KC_SPC,                              KC_BSPC, _______, _______ , _______, _______, _______  ,
                           _______, _______,                                                                  _______, _______,
+                                                     _______,                               _______,
+                                                     _______,                              _______,
+                                                     _______, _______,            _______, _______
+    ),
+    [_NUMPAD] = LAYOUT_wrapper(
+        _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
+        _______,KC_PAST,  KC_P7, KC_P8, KC_P9, KC_PMNS, _______,            _______, _______, _______, _______, _______, _______, _______,
+        _______, KC_PSLS,  KC_P4, KC_P5, KC_P6, KC_PPLS, _______,            _______, _______, _______, _______, _______, _______, _______,
+        _______, KC_P0 , KC_P1 , KC_P2 , KC_P3 ,  KC_PENT,                              _______, _______, _______ , _______, _______, _______  ,
+                          KC_NUM, KC_PDOT,                                                                  _______, _______,
                                                      _______,                               _______,
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______

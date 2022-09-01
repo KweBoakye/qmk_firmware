@@ -4,6 +4,8 @@
 #//include "transport_sync.h"
 #include "transactions.h"
 
+uint8_t transport_drv_effect_config = 0;
+bool should_send_haptic = false;
 bool check_is_both_hand_combo(uint16_t keycode){
     switch(keycode){
         case MO(_MAINTENANCE):
@@ -118,13 +120,13 @@ bool check_is_both_hand_combo(uint16_t keycode){
 
 bool is_keypress_on_secondary(uint16_t keycode, keyrecord_t *record){
  if(is_keyboard_left()){
-    if(record->event.key.row > (MATRIX_ROWS / 2)){
+    if(record->event.key.row >= (matrix_rows() / 2)){
        return true;
     } else {
         return false;
     }
     } else {
-        if(record->event.key.row <= (MATRIX_ROWS / 2)){
+        if(record->event.key.row < (matrix_rows()  / 2)){
         return true;
         } else {
         return false;
@@ -145,18 +147,21 @@ bool should_primary_send_haptic(uint16_t keycode, keyrecord_t *record){
      return (is_keypress_on_secondary(keycode, record) && should_secondary_haptic_actuate(record));
 }
 
-void user_haptic_sync(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
+void user_haptic_send(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
     if (initiator2target_buffer_size == sizeof(uint8_t)) {
-       uint8_t drv_effect;
-        memcpy(&drv_effect, initiator2target_buffer, initiator2target_buffer_size);
+       uint8_t drv_effect =0;
+        memcpy(&drv_effect, initiator2target_buffer, sizeof(drv_effect));
        DRV_pulse(drv_effect);
     }
 }
 
 
+
+
+
+
 void send_haptic(uint8_t drv_effect){
 
-      bool haptic_sent = transaction_rpc_send(RPC_ID_HAPTIC_SYNC, sizeof(uint8_t), &drv_effect);
-      dprintf("haptic sent  = ");
-      printf(haptic_sent ? "true \n" : "false \n");
+transaction_rpc_send(RPC_ID_HAPTIC_SEND, sizeof(drv_effect), &drv_effect);
+
 }
