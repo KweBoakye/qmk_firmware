@@ -54,7 +54,7 @@
 #define DIODE_DIRECTION COL2ROW
 
 #ifdef DIP_SWITCH_ENABLE
-#define  DIP_SWITCH_MATRIX_GRID { {4,6}, {5,6},{4,0}, {5,0}}
+#define  DIP_SWITCH_MATRIX_GRID { {3,6}, {4,6},{9,0}, {10,0}}
 #endif
 
 /*
@@ -236,6 +236,7 @@
 #define V_RMS 2.0
 #define F_LRA 150 /* resonance freq */
 #define DRV_GREETING transition_rampup_long_smooth1
+//#define SPLIT_HAPTIC_ENABLE
 //#define NO_HAPTIC_ALPHA
 //#define NO_HAPTIC_PUNCTUATION
 //#define NO_HAPTIC_NAV

@@ -13,13 +13,18 @@ SRC += keyrecords/combos.c
 SRC += keyrecords/persistent_layers.c
 SRC += keyrecords/taphold.c
 SRC += keyrecords/os_toggle.c
-SRC += keyrecords/caps_word.c
+#SRC += keyrecords/caps_word.c
 SRC += keyrecords/select_word.c
 SRC += keyrecords/casemodes.c
-SRC += keyrecords/user_haptic.c
+SRC += keyrecords/tap_dance.c
+
 #SRC += keyrecords/default_mod_key.c
 SRC += pointing/pointing.c
 SRC += callbacks.c
+
+ifeq ($(strip $(HAPTIC_ENABLE)), yes)
+SRC += keyrecords/user_haptic.c
+endif
 
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
@@ -81,3 +86,5 @@ endif
 
 COMBO_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+TAP_DANCE_ENABLE = yes

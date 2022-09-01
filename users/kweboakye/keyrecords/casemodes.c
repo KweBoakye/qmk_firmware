@@ -169,7 +169,7 @@ bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record) {
 }
 
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
-    if (caps_word_get() || xcase_state) {
+    if (is_caps_word_on() || xcase_state) {
         if ((QK_MOD_TAP <= keycode && keycode <= QK_MOD_TAP_MAX)
             || (QK_LAYER_TAP <= keycode && keycode <= QK_LAYER_TAP_MAX)) {
             // Earlier return if this has not been considered tapped yet
@@ -225,7 +225,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                     else {
                         remove_delimiter();
                         disable_xcase();
-                        caps_word_set(false);
+                        caps_word_on();
                         return true;
                     }
                 }
@@ -246,12 +246,12 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
 
             // check if the case modes have been terminated
             if (terminate_case_modes(keycode, record)) {
-                 caps_word_set(false);
+                caps_word_on();
                 disable_xcase();
             }
 
 #ifdef CAPSWORD_USE_SHIFT
-            else if (caps_word_get() && keycode >= KC_A && keycode <= KC_Z){
+            else if (is_caps_word_on() && keycode >= KC_A && keycode <= KC_Z){
                 tap_code16(LSFT(keycode));
                 return false;
             }
@@ -287,8 +287,8 @@ process_record_result_t process_case_mode_keycodes(uint16_t keycode, const keyre
              return PROCESS_RECORD_RETURN_FALSE;
         case SCREAMINGSNAKECASE:
              if (record->event.pressed){
-                 if (!caps_word_get()){
-                     caps_word_set(true);
+                 if (!is_caps_word_on()){
+                     caps_word_on();
                  }
                  enable_snake_case();
              }

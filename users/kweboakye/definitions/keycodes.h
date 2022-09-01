@@ -2,6 +2,12 @@
 
 #include "layers.h"
 
+enum {
+    NUMPAD_LAYR, // Our custom tap dance key; add any other tap dance keys to this enum
+};
+
+#define TD_NUM TD(NUMPAD_LAYR)
+
 // Custom keycodes
 enum custom_keycodes {
     KC_AUDIO = SAFE_RANGE,
@@ -12,7 +18,6 @@ enum custom_keycodes {
     EQ3X,
     ARROW,
     SS_SELW,
-    SS_SWIN,
     DF_CDH,
     DF_QWE,
     TG_MAC,
@@ -67,6 +72,7 @@ enum  analog_joystick_pointing_keycodes{
 
 // One-shot mods
 #define OS_RALT OSM(MOD_RALT)
+#define OS_LALT OSM(MOD_LALT)
 #define OS_LCTL OSM(MOD_LCTL)
 #define OS_LGUI OSM(MOD_LGUI)
 
@@ -94,6 +100,7 @@ enum  analog_joystick_pointing_keycodes{
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 #define NAV_ENT LT(_NAV, KC_ENT)
 #define SYM_DEL LT(_SYM, KC_DELETE)
+#define SH_DEL SH_T(KC_DELETE)
 
 #define SNK_CS SNAKECASE
 #define CML_CS  CAMELCASE

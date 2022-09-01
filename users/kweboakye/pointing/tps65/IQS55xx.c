@@ -60,6 +60,7 @@ void init_iqs55xx(void) {
     //setPinInputHigh(IQS55XX_RDY_PIN);
     i2c_init();
     IQS5xx_AcknowledgeReset();
+    Close_Comms();
     set_xy_config_0();
     Close_Comms();
 }

@@ -53,9 +53,9 @@ void DRV_init(void) {
 #elif FB_ERM_LRA == 1
     DRV_write(DRV_RATED_VOLT, ((V_RMS * sqrt(1 - ((4 * ((150 + (SAMPLE_TIME * 50)) * 0.000001)) + 0.0003) * F_LRA) / 0.02071)));
 #    if LRA_OPEN_LOOP == 0
-    DRV_write(DRV_OVERDRIVE_CLAMP_VOLT, ((V_PEAK / sqrt(1 - (F_LRA * 0.0008)) / 0.02133)));
-#    elif LRA_OPEN_LOOP == 1
     DRV_write(DRV_OVERDRIVE_CLAMP_VOLT, (V_PEAK / 0.02196));
+#    elif LRA_OPEN_LOOP == 1
+DRV_write(DRV_OVERDRIVE_CLAMP_VOLT, ((V_PEAK / sqrt(1 - (F_LRA * 0.0008)) / 0.02133)));
 #    endif
 #endif
 

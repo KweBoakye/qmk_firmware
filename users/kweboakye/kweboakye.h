@@ -14,6 +14,7 @@
 #include "keyrecords/select_word.h"
 #include "keyrecords/casemodes.h"
 #include "keyrecords/user_haptic.h"
+#include "keyrecords/tap_dance.h"
 
 //#include "keyrecords/default_mod_key.h"
 #include "eeprom.h"
@@ -47,3 +48,5 @@ typedef union {
 // clang-format on
 
 extern userspace_config_t userspace_config;
+
+void software_reset(void);

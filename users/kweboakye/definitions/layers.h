@@ -8,6 +8,7 @@ typedef enum {
   _SYM,
    _NAV,
    _FN,
+   _NUMPAD,
   _MOUSE,
   _FUNCTIONS,
   _MEDIA,
