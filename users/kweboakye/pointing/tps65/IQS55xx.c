@@ -331,8 +331,8 @@ report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report){
         }
 
         if(iqs55xx_data.two_finger_tap){
-         send_left_click(mouse_report);
-         send_left_click_deregister(mouse_report);
+         send_right_click(mouse_report);
+         send_right_click_deregister(mouse_report);
         }
     }
 
@@ -341,8 +341,10 @@ report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report){
             if(!mouse_held){
                 mouse_held = true;
                send_left_click(mouse_report);
-
-            }
+            } else {
+				mouse_held = false;
+				send_left_click_deregister(mouse_report);
+			}
 
         } else if(iqs55xx_data.swipe_y_neg){
 
