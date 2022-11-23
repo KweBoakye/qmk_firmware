@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:keyboards/deltapad/deltapad.c
 /* Copyright 2021 Richard Snijder
 =======
 /* Copyright 2021 Cutie Club
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/cutie_club/keebcats/denis/denis.c
+=======
+<<<<<<< HEAD:keyboards/cutie_club/keebcats/denis/denis.c
+/* Copyright 2021 Cutie Club
+=======
+/* Copyright 2021 Richard Snijder
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/deltapad/deltapad.c
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +26,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 <<<<<<< HEAD:keyboards/deltapad/deltapad.c
 #include "deltapad.h"
 =======
 #include "denis.h"
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/cutie_club/keebcats/denis/denis.c
+=======
+<<<<<<< HEAD:keyboards/cutie_club/keebcats/denis/denis.c
+#include "denis.h"
+=======
+#include "deltapad.h"
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/deltapad/deltapad.c
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

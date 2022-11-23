@@ -19,6 +19,7 @@ CONSOLE_ENABLE   = no   # Console for debug
 COMMAND_ENABLE   = no   # Commands for debug and configuration
 CUSTOM_MATRIX    = lite # Custom matrix file for the ErgoDox EZ
 <<<<<<< HEAD
+<<<<<<< HEAD
 NKRO_ENABLE      = yes           # Enable N-Key Rollover
 UNICODE_ENABLE   = no  # Unicode
 SWAP_HANDS_ENABLE= no   # Allow swapping hands of keyboard
@@ -27,6 +28,16 @@ NKRO_ENABLE      = yes  # USB Nkey Rollover - if this doesn't work, see here: ht
 UNICODE_ENABLE   = yes  # Unicode
 SWAP_HANDS_ENABLE= yes  # Allow swapping hands of keyboard
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+NKRO_ENABLE      = yes  # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+UNICODE_ENABLE   = yes  # Unicode
+SWAP_HANDS_ENABLE= yes  # Allow swapping hands of keyboard
+=======
+NKRO_ENABLE      = yes           # Enable N-Key Rollover
+UNICODE_ENABLE   = no  # Unicode
+SWAP_HANDS_ENABLE= no   # Allow swapping hands of keyboard
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 RGB_MATRIX_ENABLE = no # enable later
 RGB_MATRIX_DRIVER = IS31FL3731

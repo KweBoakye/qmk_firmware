@@ -3,11 +3,19 @@
 A 60% hotswap inswitch RGB keyboard from KP Republic. 
 
 * Keyboard Maintainer: [MechMerlin](https://github.com/mechmerlin)
+<<<<<<< HEAD
 <<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb/rev1/readme.md
 * Hardware Supported: BM60HSRGB/rev1
 =======
 * Hardware Supported: BM60HSRGB
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/kprepublic/bm60hsrgb/readme.md
+=======
+<<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb/readme.md
+* Hardware Supported: BM60HSRGB
+=======
+* Hardware Supported: BM60HSRGB/rev1
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/kprepublic/bm60hsrgb/rev1/readme.md
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 * Hardware Availability: [KP Republic](https://kprepublic.com/products/bm60-rgb-60-gh60-hot-swappable-pcb-programmed-qmk-firmware-type-c)
 
 Make example for this keyboard (after setting up your build environment):

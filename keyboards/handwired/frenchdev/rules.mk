@@ -14,10 +14,17 @@ CONSOLE_ENABLE   = yes  # Console for debug
 COMMAND_ENABLE   = yes # Commands for debug and configuration
 CUSTOM_MATRIX    = yes # Custom matrix file (taken and adapted from the ErgoDox EZ to handle custom number of columns)
 <<<<<<< HEAD
+<<<<<<< HEAD
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 =======
 NKRO_ENABLE      = yes # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+NKRO_ENABLE      = yes # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+=======
+NKRO_ENABLE = yes           # Enable N-Key Rollover
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
 RGBLIGHT_ENABLE = no

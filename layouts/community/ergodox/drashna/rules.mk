@@ -1,8 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 BOOTMAGIC_ENABLE   = yes      # Enable Bootmagic Lite
 =======
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
+=======
+BOOTMAGIC_ENABLE   = yes      # Enable Bootmagic Lite
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 TAP_DANCE_ENABLE   = no
 COMMAND_ENABLE     = no  # Commands for debug and configuration
 CONSOLE_ENABLE     = no

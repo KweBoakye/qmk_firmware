@@ -44,12 +44,23 @@ enum userspace_custom_keycodes {
     KC_REGIONAL,
     KC_AUSSIE,
     KC_ZALGO,
+<<<<<<< HEAD
     KC_SUPER,
+=======
+<<<<<<< HEAD:users/drashna/process_records.h
+    NEW_SAFE_RANGE  // use "NEWPLACEHOLDER for keymap specific codes
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
     KC_ACCEL,
     AUTOCORRECT_ON,
     AUTOCORRECT_OFF,
     AUTOCORRECT_TOGGLE,
+<<<<<<< HEAD
     NEW_SAFE_RANGE // use "NEWPLACEHOLDER for keymap specific codes
+=======
+    NEW_SAFE_RANGE                            // use "NEWPLACEHOLDER for keymap specific codes
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:users/drashna/keyrecords/process_records.h
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 };
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
@@ -127,6 +138,8 @@ bool process_record_unicode(uint16_t keycode, keyrecord_t *record);
 #define ALT_APP ALT_T(KC_APP)
 
 #define MG_NKRO MAGIC_TOGGLE_NKRO
+<<<<<<< HEAD:users/drashna/process_records.h
+=======
 
 #define AUTO_CTN AUTOCORRECT_TOGGLE
 /*
@@ -144,4 +157,9 @@ We use custom codes here, so we can substitute the right stuff
 #    define KC_D3_2 KC_2
 #    define KC_D3_3 KC_3
 #    define KC_D3_4 KC_4
+<<<<<<< HEAD
 #endif // TAP_DANCE_ENABLE
+=======
+#endif  // TAP_DANCE_ENABLE
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:users/drashna/keyrecords/process_records.h
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

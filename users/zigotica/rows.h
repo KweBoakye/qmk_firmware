@@ -40,7 +40,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *   |       |       |       |       | TD ]} |         |  TD ; |       |       |       |  TD : |
  *   `-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------.
  *                           |       |       |         |       |       |
+<<<<<<< HEAD
+ *                           |  ESC  |  SPC  |         |   E   | INTRO |
+=======
  *                           |  TAB  |  SPC  |         |   E   | INTRO |
+<<<<<<< HEAD
 =======
  *   |   B   |   X   |   C   |   V   |  [ {  |         |  , <  |   L   |   Z   |   J   |   . > |
  *   |       |       |       |       | TD ]} |         |  TD ; |       |       |       |  TD : |
@@ -48,6 +52,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                           |       |       |         |       |       |
  *                           |  ESC  |  SPC  |         |   E   | INTRO |
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
  *                           |  num  |  nav  |         |  sym  |   fn  |
  *                           `---------------'         `---------------'
  *
@@ -56,7 +63,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _STENAI_L2      LALT_T(KC_H),     LCTL_T(KC_R),    LSFT_T(KC_S),  LGUI_T(KC_T),     KC_G
 #define _STENAI_L3      KC_B,             KC_X,            KC_C,          KC_V,             ZK_BRC
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define _STENAI_LT      LT(_NUM, KC_ESC), LT(_NAV, KC_SPC)
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 #define _STENAI_LT      LT(_NUM, KC_TAB), LT(_NAV, KC_SPC)
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 
 #define _STENAI_R1      KC_Q,             KC_L,            KC_U,          KC_Y,             KC_QUOT
 #define _STENAI_R2      KC_M,             RGUI_T(KC_N),    RSFT_T(KC_A),  RCTL_T(KC_I),     RALT_T(KC_O)
@@ -168,10 +181,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *   `-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------.
 *                           |       |       |         |:::::::|       |
 <<<<<<< HEAD
+<<<<<<< HEAD
 *                           |       |  ESC  |         |:::::::|       |
 =======
 *                           |       |  TAB  |         |:::::::|       |
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+*                           |       |  TAB  |         |:::::::|       |
+=======
+*                           |       |  ESC  |         |:::::::|       |
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 *                           |       |       |         |:::::::|       |
 *                           `---------------'         `---------------'
 */
@@ -179,10 +199,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ____SYM_L2      KC_HASH, KC_AT,   KC_COLN, KC_SCLN, KC_DLR
 #define ____SYM_L3      ZK_PRN,  KC_TILD, KC_SLSH, KC_BSLS, KC_CIRC
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ____SYM_LT      _______, KC_ESC
 =======
 #define ____SYM_LT      _______, KC_TAB
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+#define ____SYM_LT      _______, KC_TAB
+=======
+#define ____SYM_LT      _______, KC_ESC
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 #define ____SYM_R1      _BLANK_ROW
 #define ____SYM_R2      _BLANK_ROW
@@ -207,10 +234,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *   `-------+-------+-------+-------+-------|         |-------+-------+-------+-------+-------.
 *                           |       |       |         |       |:::::::|
 <<<<<<< HEAD
+<<<<<<< HEAD
 *                           |       |  ESC  |         |       |:::::::|
 =======
 *                           |       |  TAB  |         |       |:::::::|
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+*                           |       |  TAB  |         |       |:::::::|
+=======
+*                           |       |  ESC  |         |       |:::::::|
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 *                           |       |       |         |       |:::::::|
 *                           `---------------'         `---------------'
 */
@@ -218,10 +252,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ____FN_L2       _BLANK_ROW
 #define ____FN_L3       _BLANK_ROW
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ____FN_LT       _______, KC_ESC
 =======
 #define ____FN_LT       _______, KC_TAB
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+#define ____FN_LT       _______, KC_TAB
+=======
+#define ____FN_LT       _______, KC_ESC
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 #define ____FN_R1       _______,  KC_F7,  KC_F8,  KC_F9,  KC_F10
 #define ____FN_R2       _______,  KC_F1,  KC_F2,  KC_F3,  KC_F11

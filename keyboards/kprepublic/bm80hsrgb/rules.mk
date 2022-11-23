@@ -20,6 +20,16 @@ EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes            # USB Nkey Rollover
+BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+AUDIO_ENABLE = no           # Audio output
+ENCODER_ENABLE = yes
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
@@ -29,6 +39,7 @@ RGB_MATRIX_DRIVER = WS2812
 LTO_ENABLE = yes
 
 LAYOUTS = tkl_ansi
+<<<<<<< HEAD
 =======
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = yes           # USB Nkey Rollover
@@ -41,3 +52,6 @@ RGB_MATRIX_DRIVER = AW20216
 EEPROM_DRIVER = wear_leveling
 WEAR_LEVELING_DRIVER = spi_flash
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

@@ -16,10 +16,18 @@
 
 #pragma once
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 #define RGBLIGHT_EFFECT_KNIGHT_LED_NUM 12
 
 #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
+<<<<<<< HEAD
 =======
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

@@ -2,10 +2,17 @@
 
 * System Timer on TIM5
 <<<<<<< HEAD
+<<<<<<< HEAD
 * VBUS mod, using PB10 -- does work, but not on my tractyl... bad soldering probably
 =======
 * ~~VBUS mod, using PB10~~ (*doesn't seem to work for me*)
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+* ~~VBUS mod, using PB10~~ (*doesn't seem to work for me*)
+=======
+* VBUS mod, using PB10 -- does work, but not on my tractyl... bad soldering probably
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 * Split Hand Pin, using PC14
 * Full Duplex Serial/USART using PA2 and PA3 on USART2
 * PWM Audio using PB1 and TIM3 and GPT on TIM4
@@ -17,11 +24,19 @@
 * Pull-up resistor (22k) on PA10 to fix reset issue.
 * Pull-up resistor (5.1k) on PA1 for WS2812 LED support, and wire it's VCC to the 5V pin.
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Pins PA9 is meant for VBUS sense, and has an internal pulldown resistor. A 5.1k pullup resistor can work (but should be avoided)
 * Pins PA11 and A12 are not useable because they're used for USB connection, and can't be shared. 
 =======
 * Pins PA9, PA11, A12 are not useable because they're used for USB connection, and can't be shared. 
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+* Pins PA9, PA11, A12 are not useable because they're used for USB connection, and can't be shared. 
+=======
+* Pins PA9 is meant for VBUS sense, and has an internal pulldown resistor. A 5.1k pullup resistor can work (but should be avoided)
+* Pins PA11 and A12 are not useable because they're used for USB connection, and can't be shared. 
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 * Pin PB2 is used by BOOT1, and is unusable
 
 ## Keyboard Info

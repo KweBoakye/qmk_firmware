@@ -132,19 +132,31 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool rgb_matrix_indicators_advanced_keymap(uint8_t led_min, uint8_t led_max) {
 =======
 void rgb_matrix_indicators_user(void) {}
 
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+void rgb_matrix_indicators_user(void) {}
+
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+=======
+bool rgb_matrix_indicators_advanced_keymap(uint8_t led_min, uint8_t led_max) {
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
     uint8_t this_mod = get_mods();
     uint8_t this_led = host_keyboard_leds();
     uint8_t this_osm = get_oneshot_mods();
 #define THUMB_LED                                   6
 #define RGB_MATRIX_INDICATOR_SET_COLOR_wrapper(...) RGB_MATRIX_INDICATOR_SET_COLOR(__VA_ARGS__)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
     if (!userspace_config.rgb_layer_change) {
         switch (get_highest_layer(layer_state | default_layer_state)) {
             case _GAMEPAD:
@@ -176,7 +188,12 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 break;
         }
     }
+<<<<<<< HEAD
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
     extern bool host_driver_disabled;
     if (host_driver_disabled) {
@@ -227,8 +244,15 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         RGB_MATRIX_INDICATOR_SET_COLOR(5, 0xFF, 0xFF, 0x00);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     return true;
 =======
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+=======
+
+    return true;
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 }

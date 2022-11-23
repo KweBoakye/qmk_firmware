@@ -22,6 +22,20 @@ static void render_status(void) {
     switch (get_highest_layer(layer_state)) {
         case _VIM:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            oled_write_P(PSTR("VIM\n\nBUFFER       SCROLL"), false);
+            break;
+        case _FIGMA:
+            oled_write_P(PSTR("FIGMA\n\nVOLUME         ZOOM"), false);
+            break;
+        case _BROWSER:
+            oled_write_P(PSTR("BROWSER\n\nTABS         SCROLL"), false);
+            break;
+        case _TERMINAL:
+            oled_write_P(PSTR("TERMINAL\n\nVOLUME       SCROLL"), false);
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
             oled_write_P(PSTR("VIM      \n\nBUFFER         SCROLL"), false);
             break;
         case _FIGMA:
@@ -32,6 +46,7 @@ static void render_status(void) {
             break;
         case _BASE:
             oled_write_P(PSTR("BASE     \n\nVOLUME         SCROLL"), false);
+<<<<<<< HEAD
 =======
             oled_write_P(PSTR("VIM\n\nBUFFER       SCROLL"), false);
             break;
@@ -44,6 +59,9 @@ static void render_status(void) {
         case _TERMINAL:
             oled_write_P(PSTR("TERMINAL\n\nVOLUME       SCROLL"), false);
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
             break;
         default:
             oled_write_P(PSTR("Undef\n"), false);

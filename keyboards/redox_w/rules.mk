@@ -30,4 +30,3 @@ NKRO_ENABLE = yes		# USB Nkey Rollover - not yet supported in LUFA
 
 # project specific files
 SRC += matrix.c
-QUANTUM_LIB_SRC += uart.c

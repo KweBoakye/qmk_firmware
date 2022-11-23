@@ -17,6 +17,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "zigotica.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+// Custom Keycodes
+#define MODE_1 TO(_TERMINAL)
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 #include "raw_hid.h"
 
 #ifdef RAW_ENABLE
@@ -33,30 +40,53 @@ void raw_hid_receive(uint8_t* data, uint8_t length) {
 
 // Custom Keycodes
 #define MODE_1 TO(_BASE)
+<<<<<<< HEAD
 =======
 
 // Custom Keycodes
 #define MODE_1 TO(_TERMINAL)
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 #define MODE_2 TO(_FIGMA)
 #define MODE_3 TO(_BROWSER)
 #define MODE_4 TO(_VIM)
 
 enum custom_keycodes {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    VIM_SIP = SAFE_RANGE
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
     VIM_SIF = SAFE_RANGE,
     VIM_SIP,
     VIM_RIF,
     VIM_RIP,
     VIM_NEW
+<<<<<<< HEAD
 =======
     VIM_SIP = SAFE_RANGE
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        case VIM_SIP:
+            if (record->event.pressed) {
+                register_code(KC_ESC);
+                SEND_STRING(":Ag ");
+            } else {
+                // released
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
         case VIM_SIF:// Search in File
             if (record->event.pressed) {
                 register_code(KC_ESC);
@@ -94,6 +124,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("\e:vnew\n");
             } else { // released
                 unregister_code(KC_ENT);
+<<<<<<< HEAD
 =======
         case VIM_SIP:
             if (record->event.pressed) {
@@ -102,6 +133,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 // released
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
                 unregister_code(KC_ESC);
             }
         break;
@@ -112,6 +146,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * TERMINAL Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  VOL  | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    | MEDIA |   o   |   o   |
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
  * BASE Layer
  *
  * ,-----------------------------.
@@ -121,6 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+------+------+-------|
  *    |-------+-------+-------|
  *    |   o   |   o   |   o   |
+<<<<<<< HEAD
 =======
  * TERMINAL Layer
  *
@@ -132,15 +180,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    |-------+-------+-------|
  *    | MEDIA |   o   |   o   |
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
  *    |-------+-------+-------|
  *    |   o   |   o   |   o   |
  *    |-------+-------+-------|
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     [_BASE] = LAYOUT(
 =======
     [_TERMINAL] = LAYOUT(
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+    [_TERMINAL] = LAYOUT(
+=======
+    [_BASE] = LAYOUT(
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
                MODE_1, MODE_2,
     ZK_MEDIA,  MODE_3, MODE_4,  _______,
     _______,      _______,      _______,
@@ -148,6 +206,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * VIM Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |BUFFER | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    |SEARCH |   o   |   o   |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_VIM] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    VIM_SIP,      _______,      _______,
+    _______,      _______,      _______
+    ),
+/*
+ * FIGMA Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  VOL  | BROW |  VIM | ZOOM  |
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    | ZOOM  | GRIDS |  FULL |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_FIGMA] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    LSFT(KC_1), LCTL(KC_G), LGUI(KC_BSLS),
+    _______,      _______,      _______
+    ),
+/*
+ * BROWSER Layer
+ *
+ * ,-----------------------------.
+ * |       | TERM | FIGM |       |
+ * |-------+------+------+-------|
+ * |  TABS | BROW |  VIM | SCROLL|
+ * |-------+------+------+-------|
+ *    |-------+-------+-------|
+ *    |SEARCH | BOOKM | DEVTL |
+ *    |-------+-------+-------|
+ *    |   o   |   o   |   o   |
+ *    |-------+-------+-------|
+ */
+    [_BROWSER] = LAYOUT(
+             _______, _______,
+    _______, _______, _______,  _______,
+    G(KC_F),      G(KC_D),   G(A(KC_I)),
+    _______,      _______,      _______
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
  * FIGMA Layer
  *
  * ,-----------------------------.
@@ -206,6 +326,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______,  _______,
     VIM_SIF,      VIM_RIF,      VIM_NEW,
     VIM_SIP,      VIM_RIP,      _______
+<<<<<<< HEAD
 =======
  * VIM Layer
  *
@@ -266,5 +387,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     G(KC_F),      G(KC_D),   G(A(KC_I)),
     _______,      _______,      _______
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
     ),
 };

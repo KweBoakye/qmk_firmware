@@ -1,4 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+SRC += bcat.c
+
+# Enable Bootmagic Lite to consistently reset to bootloader and clear EEPROM.
+BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 # Enable Bootmagic Lite for keyboards that don't have an easily accessible
 # reset button, but keep it disabled for all others to reduce firmware size.
 ifneq ($(filter $(strip $(KEYBOARD)),ai03/polaris dz60 kbdfans/kbd67/hotswap yanghu/unicorne/f411),)
@@ -6,12 +14,16 @@ ifneq ($(filter $(strip $(KEYBOARD)),ai03/polaris dz60 kbdfans/kbd67/hotswap yan
 else
 	BOOTMAGIC_ENABLE = no
 endif
+<<<<<<< HEAD
 =======
 SRC += bcat.c
 
 # Enable Bootmagic Lite to consistently reset to bootloader and clear EEPROM.
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 # Enable media keys on all keyboards.
 EXTRAKEY_ENABLE = yes
@@ -64,9 +76,15 @@ SLEEP_LED_ENABLE = no
 AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE = no
 <<<<<<< HEAD
+<<<<<<< HEAD
 GRAVE_ESC_ENABLE = no
 =======
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+=======
+GRAVE_ESC_ENABLE = no
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 KEY_LOCK_ENABLE = no
 LEADER_ENABLE = no
 MAGIC_ENABLE = no

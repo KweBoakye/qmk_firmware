@@ -1,4 +1,8 @@
+<<<<<<< HEAD:keyboards/takashicompany/dogtag/dogtag.c
+/* Copyright 2021 takashicompany
+=======
 /* Copyright 2021 paprikman
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/paprikman/albacore/albacore.c
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +18,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD:keyboards/takashicompany/dogtag/dogtag.c
+#include "dogtag.h"
+
+bool encoder_update_kb(uint8_t index, bool clockwise) {
+    if (!encoder_update_user(index, clockwise)) { return false; }
+    if (clockwise) {
+        tap_code(KC_MS_WH_DOWN);
+    } else {
+        tap_code(KC_MS_WH_UP);
+    }
+
+    return true;
+}
+=======
 #include "albacore.h"
 
 #ifdef RGB_MATRIX_ENABLE
@@ -28,3 +46,4 @@ led_config_t g_led_config = { {
     1, 1, 1, 1
 } };
 #endif
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/paprikman/albacore/albacore.c

@@ -13,10 +13,17 @@ EXTRAKEY_ENABLE = yes	# Audio control and System control
 CONSOLE_ENABLE = yes	# Console for debug
 COMMAND_ENABLE = no    # Commands for debug and configuration
 <<<<<<< HEAD:keyboards/kapcave/gskt00/rules.mk
+<<<<<<< HEAD
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 =======
 NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/gskt00/rules.mk
+=======
+NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+=======
+NKRO_ENABLE = yes           # Enable N-Key Rollover
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/gskt00/rules.mk
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 BACKLIGHT_ENABLE = no  # Enable keyboard backlight functionality
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = no

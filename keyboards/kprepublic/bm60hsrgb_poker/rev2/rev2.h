@@ -30,8 +30,12 @@
     { K30,   K31,   K32,   K33,   K34,   K35,   K36,   K37,   K38,   K39,   K3A,   KC_NO, KC_NO, K3D   }, \
     { K40,   K41,   K42,   KC_NO, KC_NO, K45,   KC_NO, KC_NO, KC_NO, K49,   K4A,   K4B,   KC_NO, K4D   }, \
 }
+<<<<<<< HEAD
 <<<<<<< HEAD:keyboards/kprepublic/bm60hsrgb_poker/rev2/rev2.h
 =======
+=======
+<<<<<<< HEAD:keyboards/aozora/aozora.h
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
 #define LAYOUT_all( \
     K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C, K0G, K0D,  K0E, K0F,  \
@@ -46,4 +50,9 @@
     { K30,   K31,   K32,   K33,   K34,   K35,   K36,   K37,   K38,   K39,   K3A,   KC_NO, K3C,   K3D,   K3E,   K3F,     K3G  }, \
     { K40,   K41,   K42,   KC_NO, K44,   KC_NO, KC_NO, KC_NO, K48,   K49,   K4A,   KC_NO, KC_NO, K4D,   K4E,   K4F,   KC_NO  }, \
 }
+<<<<<<< HEAD
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/aozora/aozora.h
+=======
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/kprepublic/bm60hsrgb_poker/rev2/rev2.h
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

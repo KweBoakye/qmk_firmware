@@ -49,6 +49,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 if (clockwise) {
                     tap_code16(C(KC_TAB));
 <<<<<<< HEAD
+<<<<<<< HEAD
                 } else {
                     tap_code16(S(C(KC_TAB)));
 =======
@@ -59,6 +60,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     /* register_code16(G(KC_LCBR)); */
                     /* unregister_code16(G(KC_LCBR)); */
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+                    /* register_code16(G(KC_RCBR)); */
+                    /* unregister_code16(G(KC_RCBR)); */
+                } else {
+                    tap_code16(S(C(KC_TAB)));
+                    /* register_code16(G(KC_LCBR)); */
+                    /* unregister_code16(G(KC_LCBR)); */
+=======
+                } else {
+                    tap_code16(S(C(KC_TAB)));
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
                 }
             } else { // RIGHT
                 // Scroll up/down
@@ -74,11 +87,21 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         case _FIGMA:
             if (index == 0) { // LEFT
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                // Volume control.
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
                 // Cycle through Tabs
                 if (clockwise) {
                     tap_code16(C(KC_TAB));
                 } else {
                     tap_code16(S(C(KC_TAB)));
+<<<<<<< HEAD
 =======
                 // Volume control.
                 if (clockwise) {
@@ -86,6 +109,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 } else {
                     tap_code(KC_VOLD);
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
                 }
             } else { // RIGHT
                 // Zoom in/out
@@ -103,10 +129,17 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             }
         break;
 <<<<<<< HEAD
+<<<<<<< HEAD
         case _BASE:
 =======
         case _TERMINAL:
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+        case _TERMINAL:
+=======
+        case _BASE:
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
         default:
             if (index == 0) { // LEFT
                 // Volume control.

@@ -593,6 +593,7 @@ report_pmw3360_t pmw3360_read_burst(void) {
         dprintf("\n");
     }
 #endif */
+<<<<<<< HEAD
 
     data.isMotion    = (data.motion & 0x80) != 0;
     data.isOnSurface = (data.motion & 0x08) == 0;
@@ -600,6 +601,8 @@ report_pmw3360_t pmw3360_read_burst(void) {
     data.dx = data.dx * -1;
     data.dy |= (data.mdy << 8);
     data.dy = data.dy * -1;
+=======
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 
     spi_stop();
 

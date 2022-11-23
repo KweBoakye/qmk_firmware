@@ -13,9 +13,15 @@ EXTRAKEY_ENABLE = yes         # Audio control and System control
 CONSOLE_ENABLE = no           # Console for debug
 COMMAND_ENABLE = no           # Commands for debug and configuration
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 LTO_ENABLE = yes              # Link Time Optimization, makes the firmware smaller but some features may not work
 NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no         # Enable keyboard backlight functionality

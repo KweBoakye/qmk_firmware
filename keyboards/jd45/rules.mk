@@ -13,9 +13,16 @@ EXTRAKEY_ENABLE = yes	# Audio control and System control
 CONSOLE_ENABLE = yes	# Console for debug
 COMMAND_ENABLE = yes    # Commands for debug and configuration
 <<<<<<< HEAD
+<<<<<<< HEAD
 NKRO_ENABLE = no            # Enable N-Key Rollover
 =======
 # NKRO_ENABLE = yes		# USB Nkey Rollover - not yet supported in LUFA
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+# NKRO_ENABLE = yes		# USB Nkey Rollover - not yet supported in LUFA
+=======
+NKRO_ENABLE = no            # Enable N-Key Rollover
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 MIDI_ENABLE = yes           # MIDI support

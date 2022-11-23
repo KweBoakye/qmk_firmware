@@ -36,7 +36,11 @@ The `G_PWD` macro outputs a shell expansion that returns the current working dir
 Some of my macros and keycodes do different things depending on the value of the [`macroMode` variable](./noroadsleft.c#L23), which is [toggled between `0` and `1`](./noroadsleft.c#L127-L131) by the `M_MDSWP` custom keycode.[<sup>1</sup>](#footnotes) This is mainly at attempt to make various shortcuts use the same physical key combinations between Windows/Linux and MacOS (which I use at home and work, respectively).
 >>>>>>> c0de397925 (merge bedore pointerwork)
 
+<<<<<<< HEAD
+Some of my macros and keycodes do different things depending on the value of the [`macroMode` variable](./noroadsleft.c#L23), which is [toggled between `0` and `1`](./noroadsleft.c#L127-L131) by the `M_MDSWP` custom keycode.[<sup>1</sup>](#footnotes) This is mainly at attempt to make various shortcuts use the same physical key combinations between Windows/Linux and MacOS (which I use at home and work, respectively).
+=======
 I used to have a boolean variable that changed the functionality of these keycodes, but I no longer work in the environment that I wrote the functionality for, so I took it out. The keycodes still exist because all my `keymap.c` files reference the custom keycodes I defined.
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
 
 | Keycode                               | Action    |
 | :------------------------------------ | :-------- |

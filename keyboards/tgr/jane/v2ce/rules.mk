@@ -20,7 +20,14 @@ BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 WS2812_DRIVER = i2c
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 LAYOUTS = tkl_f13_ansi tkl_f13_ansi_tsangan tkl_f13_iso tkl_f13_iso_tsangan
 =======
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+=======
+
+LAYOUTS = tkl_f13_ansi tkl_f13_ansi_tsangan tkl_f13_iso tkl_f13_iso_tsangan
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

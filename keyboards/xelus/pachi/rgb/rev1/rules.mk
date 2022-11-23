@@ -13,11 +13,19 @@ EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = yes        # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 <<<<<<< HEAD:keyboards/xelus/pachi/rgb/rev1/rules.mk
+<<<<<<< HEAD
 NKRO_ENABLE = yes           # Enable N-Key Rollover
 =======
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = yes           # USB Nkey Rollover
 >>>>>>> c0de397925 (merge bedore pointerwork):keyboards/xelus/pachi/rgb/rules.mk
+=======
+# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes           # USB Nkey Rollover
+=======
+NKRO_ENABLE = yes           # Enable N-Key Rollover
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea:keyboards/xelus/pachi/rgb/rules.mk
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 AUDIO_ENABLE = no           # Audio output
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches

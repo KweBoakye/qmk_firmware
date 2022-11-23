@@ -74,11 +74,20 @@
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 /* Serial settings */
 #define USE_SERIAL
 /* serial.c configuration for split keyboard */
@@ -88,9 +97,25 @@
 #define EE_HANDS
 
 /* Top left key on left half */
+<<<<<<< HEAD
 #define BOOTMAGIC_LITE_ROW 0
+=======
+<<<<<<< HEAD
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 0
+/* Top right key on right half */
+#define BOOTMAGIC_LITE_ROW_RIGHT 4
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 4
+=======
+#define BOOTMAGIC_LITE_ROW    0
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 #define BOOTMAGIC_LITE_COLUMN 0
 /* Top right key on right half */
 #define BOOTMAGIC_LITE_ROW_RIGHT 4
 >>>>>>> c0de397925 (merge bedore pointerwork)
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 4
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c

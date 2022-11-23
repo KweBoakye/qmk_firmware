@@ -6,10 +6,17 @@ BOOTLOADER = atmel-dfu
 
 # Build Options
 <<<<<<< HEAD
+<<<<<<< HEAD
 #   change yes to no to disable
 #
 =======
 >>>>>>> c0de397925 (merge bedore pointerwork)
+=======
+=======
+#   change yes to no to disable
+#
+>>>>>>> 4d393d88652f8c755427f162c27746e1a4eb59ea
+>>>>>>> 312f511fa7db3bb9b38cbb44cf2c00ad935e3e1c
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
