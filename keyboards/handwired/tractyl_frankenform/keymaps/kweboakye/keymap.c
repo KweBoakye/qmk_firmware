@@ -109,7 +109,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
-
+    [_QWERTY_GAMING] = LAYOUT_wrapper(
+        _______, ________________NUMBER_LEFT________________ , _______,             _______,  ________________NUMBER_RIGHT_______________, _______,
+        _______,  KC_Q,    KC_F,    KC_E,    KC_R,    KC_T , _______,            _______,   _________________QWERTY_R1_________________,    KC_AMPR,
+        _______, KC_A,     KC_S,     KC_W,    KC_D,    KC_G ,  _______,            _______,  _________________QWERTY_R2_________________,   KC_NUBS,
+        _______, _________________QWERTY_L3_________________,                                 _________________QWERTY_R3_________________  ,  KC_TILD,
+                          _______, _______,                                                                  _______, _______,
+                                                     KC_SPC,                               _______,
+                                                     KC_LSFT,                              _______,
+                                                     KC_LALT, KC_LCTL,            _______, _______
+    ),
     // need &, '\', find the right keycodes for @ and "",  ebia add a second symbol layer
       [_SYM] = LAYOUT_wrapper(
         _______, _________________FUNC_LEFT_________________ , _______,             _______,  _________________FUNC_RIGHT________________, _______,
@@ -184,6 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
+    [g]
 };
 
 
