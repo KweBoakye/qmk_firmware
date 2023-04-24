@@ -1,6 +1,6 @@
 #include "tap_dance.h"
 
-td_state_t cur_dance(qk_tap_dance_state_t *state) {
+td_state_t cur_dance(tap_dance_state_t *state) {
     if (state->count == 1) {
         if (!state->pressed) return TD_SINGLE_TAP;
         else return TD_SINGLE_HOLD;
@@ -18,7 +18,7 @@ static td_tap_t nl_tap_state = {
 };
 
 // Functions that control what our tap dance key does
-void nl_finished(qk_tap_dance_state_t *state, void *user_data) {
+void nl_finished(tap_dance_state_t *state, void *user_data) {
     nl_tap_state.state = cur_dance(state);
     switch (nl_tap_state.state) {
         case TD_SINGLE_TAP:
@@ -44,7 +44,7 @@ void nl_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void nl_reset(qk_tap_dance_state_t *state, void *user_data) {
+void nl_reset(tap_dance_state_t *state, void *user_data) {
     // If the key was held down and now is released then switch off the layer
 
     switch(nl_tap_state.state){

@@ -21,8 +21,8 @@ typedef struct {
 } td_tap_t;
 
 
-td_state_t cur_dance(qk_tap_dance_state_t *state);
+td_state_t cur_dance(tap_dance_state_t *state);
 
-void nl_finished(qk_tap_dance_state_t *state, void *user_data);
-void nl_reset(qk_tap_dance_state_t *state, void *user_data);
+void nl_finished(tap_dance_state_t *state, void *user_data);
+void nl_reset(tap_dance_state_t *state, void *user_data);
 

@@ -15,7 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
-#ifdef RGB_MATRIX_ENABLEkkkkk
+#ifdef RGB_MATRIX_ENABLE
 #include <rgb_matrix.h>
 #include "color.h"
 #endif
