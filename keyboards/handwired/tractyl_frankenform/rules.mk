@@ -1,7 +1,7 @@
 # MCU name
 #MCU = STM32F411
 
-# Bootloader selection
+#  QBootloader selection
 #BOOTLOADER = stm32-dfu
 #BOARD = BLACKPILL_STM32_F411
 

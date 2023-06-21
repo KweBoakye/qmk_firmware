@@ -29,7 +29,7 @@
 #include "ocean_dream.h"
 #include "oled_utils.h"
 #include "print.h"
-#include "../keyerecords/os_toggle.h"
+#include "../keyrecords/os_toggle.h"
 
 #ifdef PMW3360_ENABLE
 //#include "drivers/sensors/pmw3360.h"

@@ -13,5 +13,6 @@ typedef enum {
   _FUNCTIONS,
   _MEDIA,
   _MAINTENANCE,
-  _GAME
+  _GAME,
+  _QWERTY_GAMING
 } layers_t;

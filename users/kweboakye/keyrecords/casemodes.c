@@ -52,42 +52,7 @@ static uint16_t xcase_delimiter;
 // the number of keys to the last delimiter
 static int8_t distance_to_last_delim = -1;
 
-// Check whether caps word is on
-/* bool caps_word_enabled(void) {
-    return caps_word_on;
-}
- */
-// Enable caps word
-/* void enable_caps_word(void) {
-    caps_word_on = true;
-#ifndef CAPSWORD_USE_SHIFT
-    if (!host_keyboard_led_state().caps_lock) {
-        tap_code(KC_CAPS);
-    }
-#endif
-} */
 
-// Disable caps word
-/* void disable_caps_word(void) {
-    caps_word_on = false;
-#ifndef CAPSWORD_USE_SHIFT
-    if (host_keyboard_led_state().caps_lock) {
-        tap_code(KC_CAPS);
-    }
-#else
-    unregister_mods(MOD_LSFT);
-#endif
-} */
-
-// Toggle caps word
-/* void toggle_caps_word(void) {
-    if (caps_word_on) {
-        disable_caps_word();
-    }
-    else {
-        enable_caps_word();
-    }
-} */
 
 // Get xcase state
 enum xcase_state get_xcase_state(void) {
