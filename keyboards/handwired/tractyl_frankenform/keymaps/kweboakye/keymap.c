@@ -111,19 +111,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_QWERTY_GAMING] = LAYOUT_wrapper(
         _______, ________________NUMBER_LEFT________________ , _______,             _______,  ________________NUMBER_RIGHT_______________, _______,
-        _______,  KC_Q,    KC_F,    KC_E,    KC_R,    KC_T , _______,            _______,   _________________QWERTY_R1_________________,    KC_AMPR,
-        _______, KC_A,     KC_S,     KC_W,    KC_D,    KC_G ,  _______,            _______,  _________________QWERTY_R2_________________,   KC_NUBS,
+        _______, _________________QWERTY_L1_________________, _______,            _______,   _________________QWERTY_R1_________________,    KC_AMPR,
+        _______, _________________QWERTY_L2_________________,  _______,            _______,  _________________QWERTY_R2_________________,
         _______, _________________QWERTY_L3_________________,                                 _________________QWERTY_R3_________________  ,  KC_TILD,
                           _______, _______,                                                                  _______, _______,
                                                      KC_SPC,                               _______,
                                                      KC_LSFT,                              _______,
                                                      KC_LALT, KC_LCTL,            _______, _______
     ),
-    // need &, '\', find the right keycodes for @ and "",  ebia add a second symbol layer
       [_SYM] = LAYOUT_wrapper(
         _______, _________________FUNC_LEFT_________________ , _______,             _______,  _________________FUNC_RIGHT________________, _______,
         _______, KC_QUOT,  UK_AT   , KC_MINS, KC_EQL, KC_DOT , _______,            _______,    UK_PND ,KC_LCBR , KC_RCBR, UK_DQUO, KC_GRV,    KC_AMPR,
-        _______, KC_EXLM,  KC_PERC,  KC_LABK, KC_RABK, KC_NUHS ,  _______,            _______,   KC_NUBS, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,   KC_NUBS,
+        _______, KC_EXLM,  UK_PERC,  KC_LABK, KC_RABK, KC_NUHS ,  _______,            _______,   KC_NUBS, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES,   KC_NUBS,
         _______, KC_CIRC,  KC_MINS,  KC_ASTR, KC_PLUS, KC_TILD,                                    KC_AMPR,KC_LBRC  , KC_RBRC, KC_DLR, KC_NUBS  ,  KC_TILD,
                           _______, _______,                                                                  _______, _______,
                                                       MO(_FN),                               _______,
@@ -133,8 +132,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      [_NAV] = LAYOUT(
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
         _______, KC_ESC , KC_TAB, SS_SELW, OS_RALT, _______,  _______,            _______, _______, KC_APP,  KC_PGUP , KC_PGDN, _______, _______,
-        _______, OS_LGUI, OS_LALT ,KC_LSFT, KC_LCTL, OS _RALT,  _______,            _______, _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______,
-        _______, LCTL(KC_Z) , LCTL(KC_X) ,  LCTL(KC_C), KC_LEAD ,  LCTL(KC_V),               _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL  ,
+        _______, OS_LGUI, OS_LALT ,KC_LSFT, KC_LCTL, OS_RALT,  _______,            _______, _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______,
+        _______, LCTL(KC_Z) , LCTL(KC_X) ,  LCTL(KC_C), _______ ,  LCTL(KC_V),               _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL  ,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                                MO(_FN),
                                                      _______,                              _______,
@@ -185,15 +184,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAINTENANCE] = LAYOUT(
         RESET, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, EE_CLR,
-        AU_ON, AU_OFF, CLICKY_TOGGLE, MU_ON, MU_OFF,  MU_MOD, _______,            _______, _______, _______, DF_CMG  , DF_CDH, DF_QWE, _______,
-        _______, SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______,  _______,            _______, HPT_TOG, HPT_MODD, HPT_MODI, TG_WIN, TG_MAC, _______,
+        AU_ON, AU_OFF, CK_TOGG, MU_ON, MU_OFF,  _______, _______,            _______, _______, _______, DF_CMG  , DF_CDH, DF_QWE, _______,
+        _______, SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______,  _______,            _______, HF_TOGG, HF_PREV, HF_NEXT, TG_WIN, TG_MAC, _______,
         QK_BOOT, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP,                              _______, _______, _______, _______, _______, _______,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
-    [g]
 };
 
 

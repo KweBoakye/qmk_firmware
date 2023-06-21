@@ -61,6 +61,6 @@ void nl_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // Associate our tap dance key with its functionality
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [NUMPAD_LAYR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, nl_finished, nl_reset)
 };

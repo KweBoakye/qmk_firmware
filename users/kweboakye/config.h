@@ -24,8 +24,8 @@
 //#define PERMISSIVE_HOLD
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_FORCE_HOLD
-#define TAPPING_FORCE_HOLD_PER_KEY
+//#define TAPPING_FORCE_HOLD
+#define QUICK_TAP_TERM_PER_KEY
 #define TAPPING_TERM_PER_KEY
 //#define RETRO_TAPPING
 //#define RETRO_TAPPING_PER_KEY

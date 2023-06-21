@@ -18,10 +18,10 @@ extern unicode_config_t unicode_config;
 extern audio_config_t audio_config;
 extern bool           delayed_tasks_run;
 #endif
-#ifdef HAPTIC_ENABLE
+/* #ifdef HAPTIC_ENABLE
 #    include "haptic.h"
 extern haptic_config_t haptic_config;
-#endif
+#endif */
 #if defined(POINTING_DEVICE_ENABLE) && defined(KEYBOARD_handwired_tractyl_manuform)
 extern bool tap_toggling;
 #endif
@@ -42,10 +42,10 @@ uint32_t transport_userspace_config = 0, transport_user_state = 0;
 
 
 
- #ifdef HAPTIC_ENABLE
+/*  #ifdef HAPTIC_ENABLE
 uint32_t  transport_haptic_config = 0;
-extern bool should_send_haptic;
-#endif
+//extern bool should_send_haptic;
+#endif */
 
 user_runtime_config_t user_state;
 
@@ -66,13 +66,13 @@ void user_config_sync(uint8_t initiator2target_buffer_size, const void* initiato
     }
 }
 
- #ifdef HAPTIC_ENABLE
+/*  #ifdef HAPTIC_ENABLE
 void user_haptic_sync(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
     if (initiator2target_buffer_size == sizeof(transport_haptic_config)) {
         memcpy(&transport_haptic_config, initiator2target_buffer, initiator2target_buffer_size);
     }
 }
-    #endif
+    #endif */
 
 
 
@@ -97,10 +97,10 @@ void keyboard_post_init_transport_sync(void) {
     transaction_register_rpc(RPC_ID_USER_KEYMAP_SYNC, user_keymap_sync);
     transaction_register_rpc(RPC_ID_USER_CONFIG_SYNC, user_config_sync);
 
-    #ifdef HAPTIC_ENABLE
+/*     #ifdef HAPTIC_ENABLE
      transaction_register_rpc(RPC_ID_HAPTIC_SYNC, user_haptic_sync);
-    transaction_register_rpc(RPC_ID_HAPTIC_SEND, user_haptic_send);
-    #endif
+   // transaction_register_rpc(RPC_ID_HAPTIC_SEND, user_haptic_send);
+    #endif */
 
 #ifdef CUSTOM_OLED_DRIVER
     transaction_register_rpc(RPC_ID_USER_KEYLOG_STR, keylogger_string_sync);
@@ -123,9 +123,9 @@ void user_transport_update(void) {
         user_state.audio_enable        = is_audio_on();
        // user_state.audio_clicky_enable = is_clicky_on();
 #endif
-#ifdef HAPTIC_ENABLE
+/* #ifdef HAPTIC_ENABLE
         transport_haptic_config =  haptic_config.raw;
-#endif
+#endif */
 #if defined(CUSTOM_POINTING_DEVICE)
         user_state.tap_toggling = tap_toggling;
 #endif
@@ -142,9 +142,9 @@ void user_transport_update(void) {
         keymap_config.raw    = transport_keymap_config;
         userspace_config.raw = transport_userspace_config;
         user_state.raw       = transport_user_state;
-        #ifdef HAPTIC_ENABLE
+/*         #ifdef HAPTIC_ENABLE
         haptic_config.raw    = transport_haptic_config;
-        #endif
+        #endif */
 #ifdef UNICODE_COMMON_ENABLE
         unicode_config.input_mode = user_state.unicode_mode;
 #endif
@@ -163,9 +163,9 @@ void user_transport_sync(void) {
         // Keep track of the last state, so that we can tell if we need to propagate to slave
         static uint16_t last_keymap = 0;
         static uint32_t last_config = 0, last_sync[5], last_user_state = 0;
-          #ifdef HAPTIC_ENABLE
+/*           #ifdef HAPTIC_ENABLE
         static uint32_t last_haptic_config = 0;
-        #endif
+        #endif */
         bool            needs_sync = false;
 #ifdef CUSTOM_OLED_DRIVER
         static char keylog_temp[OLED_KEYLOGGER_LENGTH] = {0};
@@ -227,7 +227,7 @@ void user_transport_sync(void) {
             needs_sync = false;
         }
 
-#ifdef HAPTIC_ENABLE
+/* #ifdef HAPTIC_ENABLE
          if (memcmp(&haptic_config, &last_haptic_config, sizeof(transport_haptic_config))) {
             needs_sync = true;
             memcpy(&last_haptic_config, &haptic_config, sizeof(transport_haptic_config));
@@ -252,7 +252,7 @@ void user_transport_sync(void) {
             should_send_haptic = false;
          }
          #endif
-#endif
+#endif */
 
 
 #ifdef CUSTOM_OLED_DRIVER

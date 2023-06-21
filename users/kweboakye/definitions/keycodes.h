@@ -1,6 +1,7 @@
 #pragma once
 
 #include "layers.h"
+#include "keymap_uk.h"
 
 enum {
     NUMPAD_LAYR, // Our custom tap dance key; add any other tap dance keys to this enum
@@ -28,6 +29,9 @@ enum custom_keycodes {
     CAMELCASE,
     KEBABCASE,
     SCREAMINGSNAKECASE,
+    NUM_WORD,
+    NAV_MODE,
+    CANCEL,
     CUSTOM_KEYCODES_SAFE_RANGE,
 
     TRACKBALL_KEYCODES_SAFE_RANGE,

@@ -10,8 +10,12 @@ extern haptic_config_t haptic_config;
 extern bool should_send_haptic;
 #endif
 
-bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
-    return get_tapping_force_hold_result(keycode);
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record){
+     if(get_tapping_force_hold_result(keycode)){
+        return 0;
+     } else {
+        return QUICK_TAP_TERM;
+     }
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -56,24 +60,25 @@ float reset_song[][2] = GOODBYE_SONG;
 
 bool  get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record){
 
- #if defined(DRV2605L) && defined(SPLIT_HAPTIC_ENABLE)
-  if(get_haptic_enabled_key_custom(keycode, record)){
-   /*  if(check_is_both_hand_combo(keycode)){
-        send_haptic(haptic_config.mode);
-        return true;
-    } */
-    if(should_primary_send_haptic(keycode, record)){
-     // send_haptic(haptic_config.mode);
-     should_send_haptic = true;
-    } else {
-        return true;
-    }
-  }
-  return false;
-  #else
+//  #if defined(DRV2605L) && defined(SPLIT_HAPTIC_ENABLE)
+//   if(get_haptic_enabled_key_custom(keycode, record)){
+//    /*  if(check_is_both_hand_combo(keycode)){
+//         send_haptic(haptic_config.mode);
+//         return true;
+//     } */
+//     if(should_primary_send_haptic(keycode, record)){
+//      // send_haptic(haptic_config.mode);
+//      should_send_haptic = true;
+//     } else {
+//         return true;
+//     }
+//   }
+//   return false;
+//   #else
 
-return get_haptic_enabled_key_custom(keycode, record);
-  #endif
+// return get_haptic_enabled_key_custom(keycode, record);
+//   #endif
+  return get_haptic_enabled_key_custom(keycode, record);
 }
 #endif
 
