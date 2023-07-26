@@ -10,6 +10,7 @@
 
 #pragma once
 #include "quantum.h"
+#include "i2c_master.h"
 #include "pointing_device.h"
 
 //void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y);
@@ -340,47 +341,98 @@
        #define ActiveRR 10
 #endif
 
-typedef enum {
-NONE,
-SINGLE_TAP_GESTURE,
-TAP_AND_HOLD_GESTURE,
-SWIPE_X_NEG_GESTURE,
-SWIPE_X_POS_GESTURE,
-SWIPE_Y_POS_GESTURE,
-SWIPE_Y_NEG_GESTURE
-} single_finger_gesture;
-
-typedef enum {
-
-TWO_FINGER_TAP_GESTURE,
-SCROLL_GESTURE,
-ZOOM_GESTURE
-} two_finger_gesture;
 
 
-typedef struct {
-    // uint8_t 	i;
-	uint8_t ui8FirstTouch;
-	uint8_t 	ui8NoOfFingers;
-	uint8_t 	ui8SystemFlags[2];
-	int16_t 	i16RelX[6];
-	int16_t 	i16RelY[6];
-	uint16_t 	ui16AbsX[6];
-	uint16_t 	ui16AbsY[6];
-	uint16_t 	ui16TouchStrength[6];
-	uint8_t  	ui8Area[6];
-    bool        swipe_y_neg;
-    bool        swipe_y_pos;
-    bool        swipe_x_neg;
-    bool        swipe_x_pos;
-    bool        tap_and_hold;
-    bool        single_tap;
-    bool        zoom;
-    bool        scroll;
-    bool        two_finger_tap;
+typedef struct __attribute__((packed)) {
+    uint8_t h : 8;
+    uint8_t l : 8;
+} azoteq_iqs5xx_report_rate_t;
 
-} iqs55xx_data_t;
+typedef enum { ACTIVE, IDLE_TOUCH, IDLE, LP1, LP2 } azoteq_charging_modes_t;
 
-void init_iqs55xx(void);
+typedef struct __attribute__((packed)) {
+    bool    single_tap : 1;     // Single tap gesture status
+    bool    press_and_hold : 1; // Press and hold gesture status
+    bool    swipe_x_neg : 1;    // Swipe in negative X direction status
+    bool    swipe_x_pos : 1;    // Swipe in positive X direction status
+    bool    swipe_y_pos : 1;    // Swipe in positive Y direction status
+    bool    swipe_y_neg : 1;    // Swipe in negative Y direction status
+    uint8_t _unused : 2;        // unused
+} azoteq_iqs5xx_gesture_events_0_t;
 
-report_mouse_t iqs55xx_get_report(report_mouse_t mouse_report);
+typedef struct __attribute__((packed)) {
+    bool    two_finger_tap : 1; // Two finger tap gesture status
+    bool    scroll : 1;         // Scroll status
+    bool    zoom : 1;           // Zoom gesture status
+    uint8_t _unused : 5;        // unused
+} azoteq_iqs5xx_gesture_events_1_t;
+
+typedef struct __attribute__((packed)) {
+    azoteq_charging_modes_t charging_mode : 3;      // Indicates current mode
+    bool                    ati_error : 1;          //
+    bool                    reati_occurred : 1;     //
+    bool                    alp_ati_error : 1;      //
+    bool                    alp_reati_occurred : 1; //
+    bool                    show_reset : 1;         //
+} azoteq_iqs5xx_system_info_0_t;
+
+typedef struct __attribute__((packed)) {
+    bool    tp_movement : 1;      //
+    bool    palm_detect : 1;      //  Palm detect status
+    bool    too_many_fingers : 1; // Total finger status
+    bool    rr_missed : 1;        // Report rate status
+    bool    snap_toggle : 1;      // Change in any snap channel status
+    bool    switch_state : 1;     // Status of input pin SW_IN
+    uint8_t _unused : 2;          // unused
+} azoteq_iqs5xx_system_info_1_t;
+
+typedef struct __attribute__((packed)) {
+    uint8_t h : 8;
+    uint8_t l : 8;
+} azoteq_iqs5xx_relative_xy_t;
+
+typedef struct __attribute__((packed)) {
+    uint8_t h : 8;
+    uint8_t l : 8;
+} azoteq_iqs5xx_absolute_xy_t;
+
+// Single finger data
+typedef struct  __attribute__((packed)){
+    // Absolute Y position
+    azoteq_iqs5xx_absolute_xy_t ax;
+    // Absolute X position
+    azoteq_iqs5xx_absolute_xy_t ay;
+    // Touch strength
+    uint16_t strength;
+    // Touch area
+    uint16_t area;
+} iqs5xx_finger_data;
+
+typedef struct __attribute__((packed)) {
+    uint8_t                          previous_cycle_time;
+    uint8_t                          gesture_events_0;
+    uint8_t                          gesture_events_1;
+    uint8_t                          system_info_0;
+    uint8_t                          system_info_1;
+    uint8_t                          number_of_fingers;
+    azoteq_iqs5xx_relative_xy_t      relative_x;
+    azoteq_iqs5xx_relative_xy_t      relative_y;
+    iqs5xx_finger_data               finger_data; 
+} azoteq_iqs5xx_base_data_t;
+
+#define AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(h, l) ((h << 8) | l)
+// Byte swap macros
+#define SWPEND16(n) ((n >> 8) | (n << 8))
+
+#if SPLIT_KEYBOARD
+     if(is_keyboard_left()){
+        #define RDY_PIN IQS55XX_RDY_PIN_LEFT
+     } else {
+        #define RDY_PIN IQS55XX_RDY_PIN_RIGHT
+     }
+#else
+    #define RDY_PIN IQS55XX_RDY_PIN
+#endif         
+void init_iqs5xx(void);
+
+report_mouse_t iqs5xx_get_report(report_mouse_t mouse_report);
