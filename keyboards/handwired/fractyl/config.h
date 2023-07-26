@@ -35,6 +35,7 @@
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_WPM_ENABLE
 #define SPLIT_HAPTIC_ENABLE
+#define SPLIT_TRANSPORT_MIRROR
 
 #define SPI_DRIVER                           SPID0
 #define SPI_SCK_PIN                          GP2
@@ -82,11 +83,64 @@
     #define AUDIO_PWM_CHANNEL 1
 #endif //AUDIO_ENABLE
 
-//#ifdef RGB_MATRIX_ENABLE
+#ifdef RGB_MATRIX_ENABLE
     #define __flash
     #define DRIVER_ADDR_1  0b0100000
     #define DRIVER_COUNT 2
-    #define DRIVER_1_LED_TOTAL 1
-    #define DRIVER_2_LED_TOTAL 1
+    #define DRIVER_1_LED_TOTAL 18
+    #define DRIVER_2_LED_TOTAL 18
     #define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
-//#endif
+    #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+    #define RGB_MATRIX_KEYPRESSES
+    #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
+    #define RGB_MATRIX_SPLIT { 18, 18}
+    //#define RGB_MATRIX_SOLID_COLOR,     // Static single hue, no speed support
+    #define RGB_MATRIX_ALPHAS_MODS         // Static dual hue, speed is hue for secondary hue
+    #define RGB_MATRIX_GRADIENT_UP_DOWN    // Static gradient top to bottom, speed controls how much gradient changes
+    #define RGB_MATRIX_GRADIENT_LEFT_RIGHT    // Static gradient left to right, speed controls how much gradient changes
+    #define RGB_MATRIX_BREATHING          // Single hue brightness cycling animation
+    #define RGB_MATRIX_BAND_SAT       // Single hue band fading saturation scrolling left to right
+    #define RGB_MATRIX_BAND_VAL        // Single hue band fading brightness scrolling left to right
+    #define RGB_MATRIX_BAND_PINWHEEL_SAT   // Single hue 3 blade spinning pinwheel fades saturation
+    #define RGB_MATRIX_BAND_PINWHEEL_VAL   // Single hue 3 blade spinning pinwheel fades brightness
+    #define RGB_MATRIX_BAND_SPIRAL_SAT     // Single hue spinning spiral fades saturation
+    #define RGB_MATRIX_BAND_SPIRAL_VAL     // Single hue spinning spiral fades brightness
+    #define RGB_MATRIX_CYCLE_ALL           // Full keyboard solid hue cycling through full gradient
+    #define RGB_MATRIX_CYCLE_LEFT_RIGHT    // Full gradient scrolling left to right
+    #define RGB_MATRIX_CYCLE_UP_DOWN       // Full gradient scrolling top to bottom
+    #define RGB_MATRIX_CYCLE_OUT_IN        // Full gradient scrolling out to in
+    #define RGB_MATRIX_CYCLE_OUT_IN_DUAL   // Full dual gradients scrolling out to in
+    #define RGB_MATRIX_RAINBOW_MOVING_CHEVRON  // Full gradient Chevron shapped scrolling left to right
+    #define RGB_MATRIX_CYCLE_PINWHEEL      // Full gradient spinning pinwheel around center of keyboard
+    #define RGB_MATRIX_CYCLE_SPIRAL        // Full gradient spinning spiral around center of keyboard
+    #define RGB_MATRIX_DUAL_BEACON         // Full gradient spinning around center of keyboard
+    #define RGB_MATRIX_RAINBOW_BEACON      // Full tighter gradient spinning around center of keyboard
+    #define RGB_MATRIX_RAINBOW_PINWHEELS   // Full dual gradients spinning two halfs of keyboard
+    #define RGB_MATRIX_RAINDROPS           // Randomly changes a single key's hue
+    #define RGB_MATRIX_JELLYBEAN_RAINDROPS // Randomly changes a single key's hue and saturation
+    #define RGB_MATRIX_HUE_BREATHING       // Hue shifts up a slight ammount at the same time, then shifts back
+    #define RGB_MATRIX_HUE_PENDULUM        // Hue shifts up a slight ammount in a wave to the right, then back to the left
+    #define RGB_MATRIX_HUE_WAVE            // Hue shifts up a slight ammount and then back down in a wave to the right
+    #define RGB_MATRIX_PIXEL_FRACTAL       // Single hue fractal filled keys pulsing horizontally out to edges
+    #define RGB_MATRIX_PIXEL_FLOW          // Pulsing RGB flow along LED wiring with random hues
+    #define RGB_MATRIX_PIXEL_RAIN          // Randomly light keys with random hues
+
+#if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+    #define RGB_MATRIX_TYPING_HEATMAP      // How hot is your WPM!
+    #define RGB_MATRIX_DIGITAL_RAIN        // That famous computer simulation
+#endif
+#if defined(RGB_MATRIX_KEYPRESSES) || defined(RGB_MATRIX_KEYRELEASES)
+    #define RGB_MATRIX_SOLID_REACTIVE_SIMPLE   // Pulses keys hit to hue & value then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE      // Static single hue, pulses keys hit to shifted hue then fades to current hue
+    #define RGB_MATRIX_SOLID_REACTIVE_WIDE       // Hue & value pulse near a single key hit then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE  // Hue & value pulse near multiple key hits then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE_CROSS      // Hue & value pulse the same column and row of a single key hit then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE_MULTICROSS // Hue & value pulse the same column and row of multiple key hits then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE_NEXUS      // Hue & value pulse away on the same column and row of a single key hit then fades value out
+    #define RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS // Hue & value pulse away on the same column and row of multiple key hits then fades value out
+    #define RGB_MATRIX_SPLASH              // Full gradient & value pulse away from a single key hit then fades value out
+    #define RGB_MATRIX_MULTISPLASH         // Full gradient & value pulse away from multiple key hits then fades value out
+    #define RGB_MATRIX_SOLID_SPLASH        // Hue & value pulse away from a single key hit then fades value out
+    #define RGB_MATRIX_SOLID_MULTISPLASH   // Hue & value pulse away from multiple key hits then fades value out
+#endif
+#endif

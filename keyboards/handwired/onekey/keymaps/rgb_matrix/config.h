@@ -1,0 +1,7 @@
+#pragma once
+
+#define __flash
+#define DRIVER_COUNT 1
+#define DRIVER_1_LED_TOTAL 1
+#define RGB_MATRIX_LED_COUNT DRIVER_1_LED_TOTAL
+#define ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
