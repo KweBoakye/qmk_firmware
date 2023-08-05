@@ -28,6 +28,24 @@ void IQS5xx_AcknowledgeReset(void)
 	i2c_writeReg16(IQS5xx_ADDR<<1,SystemControl0_adr, &System_ctrl_0, 1, 4);
 }
 
+void IQS5xx_CheckVersion(void) 
+{
+	uint8_t ui8DataBuffer[6];
+	//
+	// Dont wait for RDY here, since the device could be in EventMode, and then
+	// there will be no communication window to complete this.  Rather do a 
+	// forced communication, where clock stretching will be done on the IQS5xx
+	// until an appropriate time to complete the i2c.
+	//
+	i2c_readReg16(IQS5xx_ADDR<<1,ProductNumber_adr, &ui8DataBuffer[0] ,sizeof(ui8DataBuffer),6);
+    
+    uprintf("Product %d Project %d Version %d . %d",
+     ((ui8DataBuffer[0]<<8) + ui8DataBuffer[1]),
+     ((ui8DataBuffer[2]<<8) + ui8DataBuffer[3]),
+    (ui8DataBuffer[4]),
+    (ui8DataBuffer[5]));
+}
+
 
 //*****************************************************************************
 //
@@ -88,20 +106,43 @@ void set_distance(void){
 // }
 
 void setting_config(void){
-set_xy_config_0();
+    uint8_t reset_buf = RESET_TP;
+    i2c_writeReg16(IQS5xx_ADDR<<1, SystemControl1_adr, &reset_buf,sizeof(reset_buf), 4);
+    IQS5xx_AcknowledgeReset();
+    Close_Comms();
+    set_xy_config_0();
     //set_GestureEvents0();
     set_TapTime();
     set_distance();
+    Close_Comms();
+}
+
+void set_finger_buff_pos(finger_buffer_location_t *finger_buffer_location,int finger_num){
+    int initial_pos = 9 + (7 * finger_num);
+    finger_buffer_location->ax_high_pos = initial_pos;
+    finger_buffer_location->ax_low_pos = initial_pos + 1;
+    finger_buffer_location->ay_high_pos = initial_pos + 2;
+    finger_buffer_location->ax_low_pos = initial_pos + 3;
+    finger_buffer_location->strength_high_pos = initial_pos + 4;
+    finger_buffer_location->strength_low_pos = initial_pos + 5;
+    finger_buffer_location->area_pos = initial_pos + 6;
+}
+void set_finger_buffer_locations(void){
+    set_finger_buff_pos(&finger_buffer_locations.finger_0, 0);
+    set_finger_buff_pos(&finger_buffer_locations.finger_1, 1);
+    set_finger_buff_pos(&finger_buffer_locations.finger_2, 2);
+    set_finger_buff_pos(&finger_buffer_locations.finger_3, 3);
+    set_finger_buff_pos(&finger_buffer_locations.finger_4, 4);
 }
 
 void init_iqs5xx(void) {
+    set_finger_buffer_locations();
     setPinInput(IQS55XX_RDY_PIN);
     i2c_init();
-    //IQS5xx_AcknowledgeReset();
-//Close_Comms();
     setting_config();
     Close_Comms();
 }
+
 
 
 
@@ -134,7 +175,7 @@ i2c_status_t  read_iqs5xx(azoteq_iqs5xx_base_data_t *base_data) {
          base_data->finger_data.ay.h = buffer[p + 2];
         base_data->finger_data.ay.l = buffer[p + 3];
         base_data->finger_data.strength = buffer[p + 4] << 8 | buffer [p + 5];
-        base_data->finger_data.area = buffer[p + 5];
+        base_data->finger_data.area = buffer[p + 6];
     }
 
     return status;
@@ -231,11 +272,7 @@ report_mouse_t iqs5xx_get_report(report_mouse_t mouse_report){
 
 
 
-/* while(!readPin(IQS55XX_RDY_PIN)){
-  printf("%s", "IQS55XX_RDY_PIN is low \n");
-} */
-  //if(readPin(IQS55XX_RDY_PIN)){
-     //  printf("%s", "IQS55XX_RDY_PIN is high \n");
+
 if(!mouse_held){
  mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, false, POINTING_DEVICE_BUTTON1);
 }
@@ -244,13 +281,8 @@ mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, fals
 }
 
 int pin_val = readPin(IQS55XX_RDY_PIN);
-    //uprintf("rdy is %d",pin_val);
     if(pin_val){
-      //  uprintf("in cond");
-    // if(timer_elapsed(timer) >= timeout) {
-			//RDY_wait();
-	//		timer = timer_read32();
-   
+
     azoteq_iqs5xx_base_data_t base_data = {0};
    read_iqs5xx(&base_data);
     bool has_gesture = false;
