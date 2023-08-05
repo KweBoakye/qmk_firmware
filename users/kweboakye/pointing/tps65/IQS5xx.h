@@ -420,6 +420,26 @@ typedef struct __attribute__((packed)) {
     iqs5xx_finger_data               finger_data; 
 } azoteq_iqs5xx_base_data_t;
 
+typedef struct __attribute__((packed)) {
+    uint8_t                         ax_high_pos;
+    uint8_t                         ax_low_pos;
+    uint8_t                         ay_high_pos;
+    uint8_t                         ay_low_pos;
+    uint8_t                         strength_high_pos;
+    uint8_t                         strength_low_pos;
+    uint8_t                         area_pos;
+} finger_buffer_location_t;
+
+typedef struct __attribute__((packed)) {
+    finger_buffer_location_t         finger_0;
+    finger_buffer_location_t         finger_1;
+    finger_buffer_location_t         finger_2;
+    finger_buffer_location_t         finger_3;
+    finger_buffer_location_t         finger_4;
+} finger_buffer_location_struct_t;
+
+finger_buffer_location_struct_t finger_buffer_locations;
+
 #define AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(h, l) ((h << 8) | l)
 // Byte swap macros
 #define SWPEND16(n) ((n >> 8) | (n << 8))
