@@ -417,7 +417,7 @@ typedef struct __attribute__((packed)) {
     uint8_t                          number_of_fingers;
     azoteq_iqs5xx_relative_xy_t      relative_x;
     azoteq_iqs5xx_relative_xy_t      relative_y;
-    iqs5xx_finger_data               finger_data; 
+    iqs5xx_finger_data               finger_data[5]; 
 } azoteq_iqs5xx_base_data_t;
 
 typedef struct __attribute__((packed)) {
@@ -456,3 +456,5 @@ finger_buffer_location_struct_t finger_buffer_locations;
 void init_iqs5xx(void);
 
 report_mouse_t iqs5xx_get_report(report_mouse_t mouse_report);
+
+
