@@ -15,7 +15,7 @@
     },
     "matrix_pins": {
         "cols": ["GP10", "GP11", "GP12", "GP13", "GP14"],
-        "rows": ["GP15", "GP18", "GP19", "GP20"]
+        "rows": ["GP15", "GP16", "GP19", "GP20"]
     },
     "processor": "RP2040",
     "url": "",
@@ -23,9 +23,6 @@
         "device_version": "1.0.0",
         "pid": "0x0000",
         "vid": "0xFEED"
-    },
-    "eeprom": {
-        "driver": "wear_leveling"
     },
     "bootmagic": {
         "matrix": [0, 0]
@@ -35,7 +32,7 @@
         "matrix_pins": {
             "right":{
                 "cols": ["GP10", "GP11", "GP12", "GP13", "GP14"],
-                "rows": ["GP15", "GP18", "GP19", "GP20"]
+                "rows": ["GP15", "GP16", "GP19", "GP20"]
             }
         },
         "transport": {

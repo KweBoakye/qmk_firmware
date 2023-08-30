@@ -40,12 +40,12 @@ led_config_t g_led_config = { {
   {4, 3, 2, 1, 0},
   {9, 8, 7, 6 ,5},
   {14, 13, 12, 11, 10},
-  {17, 16, 15,},
+  {NO_LED, NO_LED,17, 16, 15,},
   //Right hand
   {18, 19, 20, 21, 22},
   {23, 24, 25, 26, 27},
   {28, 29, 30, 31, 32},
-  {33, 34, 35}
+  {33, 34, 35, NO_LED, NO_LED}
 }, {
   // LED Index to Physical Position
   //Left Hand
