@@ -1,6 +1,5 @@
 #include "IQS5xx.h"
 
-
 //uint8_t 	Data_Buff[44];
 uint16_t	ui16SnapStatus[15], ui16PrevSnap[15];
 uint8_t		stop = 1;
@@ -87,12 +86,19 @@ void set_TapTime(void){
 
 }
 
-void set_distance(void){
+void set_tap_distance(void){
     static uint16_t tap_distance = 50;
     uint8_t wbuff[16];
      *((uint16_t*)wbuff) = SWPEND16(tap_distance);
     i2c_writeReg16(IQS5xx_ADDR<<1 ,TapDistance_adr, wbuff, sizeof(uint16_t), 4);
 
+}
+
+void set_scroll_initial_distance(void){
+    static uint16_t scroll_initial_distance;
+     uint8_t wbuff[16];
+     *((uint16_t*)wbuff) = SWPEND16(scroll_initial_distance);
+    i2c_writeReg16(IQS5xx_ADDR<<1 ,ScrollInitDistance_adr , wbuff, sizeof(uint16_t), 4);
 }
 
 // void enble_noise_detection(void){
@@ -113,7 +119,8 @@ void setting_config(void){
     set_xy_config_0();
     //set_GestureEvents0();
     set_TapTime();
-    set_distance();
+    set_tap_distance();
+    set_scroll_initial_distance();
     Close_Comms();
 }
 
@@ -170,12 +177,12 @@ i2c_status_t  read_iqs5xx(azoteq_iqs5xx_base_data_t *base_data) {
     base_data->relative_y.l = buffer[8];
     for(int i = 0; i < 5;i++) {
         const int p = 9 + (7 * i);
-        base_data->finger_data.ax.h = buffer[p];
-        base_data->finger_data.ax.l = buffer[p + 1];
-         base_data->finger_data.ay.h = buffer[p + 2];
-        base_data->finger_data.ay.l = buffer[p + 3];
-        base_data->finger_data.strength = buffer[p + 4] << 8 | buffer [p + 5];
-        base_data->finger_data.area = buffer[p + 6];
+        base_data->finger_data[i].ax.h = buffer[p];
+        base_data->finger_data[i].ax.l = buffer[p + 1];
+         base_data->finger_data[i].ay.h = buffer[p + 2];
+        base_data->finger_data[i].ay.l = buffer[p + 3];
+        base_data->finger_data[i].strength = buffer[p + 4] << 8 | buffer [p + 5];
+        base_data->finger_data[i].area = buffer[p + 6];
     }
 
     return status;
@@ -264,15 +271,17 @@ bool zooming = false;
 bool ctrl_for_zoom_held = false;
 bool three_fingers_down = false;
 bool middle_held = false;
+bool scrolling = false;
 uint16_t three_finger_click_length = 100;
 uint16_t three_fingers_down_timer = 0;
 
+double scroll_friction = 0.95;
+
 report_mouse_t iqs5xx_get_report(report_mouse_t mouse_report){
 
-
-
-
-
+static mouse_xy_report_t last_scroll_v;
+static mouse_xy_report_t last_scroll_h;
+static uint32_t  scroll_timer;
 if(!mouse_held){
  mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, false, POINTING_DEVICE_BUTTON1);
 }
@@ -317,8 +326,10 @@ int pin_val = readPin(IQS55XX_RDY_PIN);
         switch(base_data.gesture_events_1){
             case TWO_FINGER_TAP:  mouse_report.buttons = pointing_device_handle_buttons(mouse_report.buttons, true, POINTING_DEVICE_BUTTON2);
             has_gesture = true;
+            right_clicked = true;
             break;
             case SCROLL:
+            scrolling = true;
             #if defined(MOUSE_EXTENDED_REPORT)
             mouse_report.h = (int16_t)AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(base_data.relative_x.h, base_data.relative_x.l);
             mouse_report.v = (int16_t)AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(base_data.relative_y.h, base_data.relative_y.l);
@@ -327,6 +338,15 @@ int pin_val = readPin(IQS55XX_RDY_PIN);
             mouse_report.v = (int8_t)base_data.relative_y.l;
             #endif  
             has_gesture = true;
+             #if defined(MOUSE_EXTENDED_REPORT)
+            last_scroll_h = (int16_t)AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(base_data.relative_x.h, base_data.relative_x.l);
+            last_scroll_v = (int16_t)AZOTEQ_IQS5XX_COMBINE_H_L_BYTES(base_data.relative_y.h, base_data.relative_y.l);
+            #else
+            last_scroll_h = (int8_t)base_data.relative_x.l;
+            last_scroll_v = (int8_t)base_data.relative_y.l;
+            #endif  
+             scroll_timer = timer_read32();
+        
            break;
            case ZOOM:
             if(!zooming){
@@ -394,10 +414,43 @@ int pin_val = readPin(IQS55XX_RDY_PIN);
     mouse_report.x = (int8_t)base_data.relative_x.l;
     mouse_report.y = (int8_t)base_data.relative_y.l;
 #endif
+if(scrolling && mouse_report.x != 0 && mouse_report.y != 0){
+    scrolling = true;
+}
    uprintf("mouse_report.x %d  mouse_report.y %d\n", mouse_report.x,  mouse_report.y);
     }
         uprintf("number of fingers %d\n",base_data.number_of_fingers);
 
+    } 
+    else if(scrolling){
+        uprintf("starting inertial \n");
+        
+        uprintf("last_scroll_h %d and last_scroll_v %d\n", last_scroll_h, last_scroll_v);
+        int32_t scroll_timer_elapsed = (int32_t) timer_elapsed32(scroll_timer);
+        uprintf("scroll_timer %"PRIi32" \n", scroll_timer_elapsed);
+        //uint32_t elapsed_seconds = scroll_timer_elapsed / 1000;
+        //uprintf("elapsed_seconds %"PRIu32" \n", elapsed_seconds);
+        int8_t inertial_h, inertial_v;
+        if(scroll_timer_elapsed == 0){
+            inertial_v = last_scroll_v  * scroll_friction;
+            inertial_h = last_scroll_h  * scroll_friction;
+        } else {
+            inertial_v = ((last_scroll_v / scroll_timer_elapsed) * scroll_friction);
+            inertial_h = ((last_scroll_h / scroll_timer_elapsed) * scroll_friction);
+        }
+        
+        uprintf("inertial_v %d inertial_h %d \n ", inertial_v, inertial_h);  
+        mouse_report.h = inertial_h;
+        mouse_report.v = inertial_v;
+        last_scroll_h = inertial_h;
+        last_scroll_v = inertial_v;
+        
+        scroll_timer = timer_read32();
+        if(mouse_report.h == 0 && mouse_report.v == 0){
+            scrolling = false;
+        }
+        uprintf("mouse_report.h %d and mouse_report.v %d", mouse_report.h, mouse_report.v);
+    
     }
     //uprintf("button %d\n", (int)mouse_report.buttons);
    return mouse_report;
