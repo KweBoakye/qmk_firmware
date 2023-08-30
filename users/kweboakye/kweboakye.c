@@ -2,6 +2,10 @@
 #include "haptic.h"
 #include "transactions.h"
 
+//  #ifdef UNICODEMAP_ENABLE
+//  #    include "keyrecords/user_unicode.h"
+//  #endif
+
 userspace_config_t userspace_config;
 extern os_t os;
 

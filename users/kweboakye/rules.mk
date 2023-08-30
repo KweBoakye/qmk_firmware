@@ -9,7 +9,6 @@ SRC += oled/roving_eye.c
 SRC += oled/luna.c
 SRC += oled/oled_utils.c
 SRC += keyrecords/achordion.c
-SRC += keyrecords/combos.c
 SRC += keyrecords/persistent_layers.c
 SRC += keyrecords/taphold.c
 SRC += keyrecords/os_toggle.c
@@ -23,6 +22,11 @@ SRC += keyrecords/tap_dance.c
 #SRC += keyrecords/default_mod_key.c
 SRC += pointing/pointing.c
 SRC += callbacks.c
+
+COMBO_ENABLE = yes
+DEFERRED_EXEC_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+TAP_DANCE_ENABLE = yes
 
 ifeq ($(strip $(HAPTIC_ENABLE)), yes)
 SRC += keyrecords/user_haptic.c
@@ -91,8 +95,12 @@ ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 endif
 
 
+COMBO_ENABLE ?= no
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+    INTROSPECTION_KEYMAP_C = $(USER_PATH)/keyrecords/combos.c
+endif
+ 
 
-COMBO_ENABLE = yes
-DEFERRED_EXEC_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-TAP_DANCE_ENABLE = yes
+
+
+
