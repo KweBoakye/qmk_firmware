@@ -22,6 +22,10 @@
 #include "eeprom.h"
 #include "callbacks.h"
 
+// #if defined UNICODEMAP_ENABLE 
+// #    include "keyrecords/user_unicode.h"
+// #endif
+
 #if defined(OLED_ENABLE)
 #    include "oled/oled.h"
 #endif

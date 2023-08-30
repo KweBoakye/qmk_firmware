@@ -1,5 +1,10 @@
 #pragma once
-#include QMK_KEYBOARD_H
+//#include QMK_KEYBOARD_H
+
+// #if defined(UNICODEMAP_ENABLE) 
+// #    include "keyrecords/user_unicode.h"
+// #endif
+
 
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTY_L2_________________       KC_A,    KC_S,    KC_D,    KC_F,    KC_G
@@ -40,5 +45,8 @@
 #define _________________FUNC_LEFT_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 
-
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
+
+// #if defined(UNICODEMAP_ENABLE)
+// #define ________________UNICODE_R2_________________       _______, _______, OPEN_E, _______, OPEN_O 
+// #endif

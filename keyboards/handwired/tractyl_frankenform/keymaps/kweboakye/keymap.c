@@ -41,6 +41,10 @@
 float my_song[][2] = SONG(QWERTY_SOUND);
 #endif
 
+#if defined(UNICODEMAP_ENABLE) 
+#    include "keyrecords/user_unicode.h"
+#endif
+
 extern keymap_config_t keymap_config;
 
 /* void matrix_scan_user() {
@@ -76,7 +80,7 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
                                   LALT_T(TAB_L),   TAB_R,                                                                    KC_BTN4, KC_BTN5, \
                                                  NAV_SPC,                                            SYM_BSPC,       \
                                                  SH_DEL,                                           NAV_ENT, \
-                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  KC_ENT,  KC_LALT \
+                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  OSL(_UNICODE),  KC_LALT \
     )
 #define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
@@ -192,6 +196,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
+    #if defined(UNICODEMAP_ENABLE)
+[_UNICODE]  = LAYOUT_base_wrapper(
+        ___________________BLANK___________________, ___________________BLANK___________________,
+        ___________________BLANK___________________, BANG, IRONY, OPEN_E, SNEK, OPEN_O ,_______,
+        ___________________BLANK___________________, ___________________BLANK___________________
+    ),
+    #endif
+
 };
 
 
