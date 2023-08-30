@@ -35,7 +35,7 @@
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_WPM_ENABLE
 #define SPLIT_HAPTIC_ENABLE
-#define SPLIT_TRANSPORT_MIRROR
+//#define SPLIT_TRANSPORT_MIRROR
 
 #define SPI_DRIVER                           SPID0
 #define SPI_SCK_PIN                          GP2
@@ -43,20 +43,20 @@
 #define SPI_MISO_PIN                         GP4
 
 #define I2C_DRIVER I2CD0
-#define I2C1_SDA_PIN GP4
-#define I2C1_SCL_PIN GP5
+#define I2C1_SDA_PIN GP6
+#define I2C1_SCL_PIN GP7
 
 #ifdef QUANTUM_PAINTER_ENABLE
 #define QUANTUM_PAINTER_DISPLAY_TIMEOUT 30000
     /* right */
     #define DISPLAY_CS_PIN_RIGHT GP5
-    #define DISPLAY_RST_PIN_RIGHT GP6
-    #define DISPLAY_DC_PIN_RIGHT GP7
+    #define DISPLAY_RST_PIN_RIGHT GP8
+    #define DISPLAY_DC_PIN_RIGHT GP9
 
     /*  left */
-    #define DISPLAY_CS_PIN GP4
-    #define DISPLAY_RST_PIN GP6
-    #define DISPLAY_DC_PIN GP7
+    #define DISPLAY_CS_PIN GP5
+    #define DISPLAY_RST_PIN GP8
+    #define DISPLAY_DC_PIN GP9
 
     
     //#define QUANTUM_PAINTER_LOAD_FONTS_TO_RAM TRUE
