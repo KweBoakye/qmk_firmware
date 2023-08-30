@@ -20,7 +20,7 @@
 #include "drivers/led/issi/is31fl3731.h"
 #endif
 #ifdef HAPTIC_ENABLE
-#include "drivers/haptic/DRV2605L.h"
+#include "drivers/haptic/drv2605l.h"
 #endif
 #include <quantum.h>
 #include "analog.h"

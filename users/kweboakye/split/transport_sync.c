@@ -246,7 +246,7 @@ void user_transport_sync(void) {
             needs_sync = false;
         }
 
-         #if defined(DRV2605L) && defined(SPLIT_HAPTIC_ENABLE)
+         #if defined(drv2605l) && defined(SPLIT_HAPTIC_ENABLE)
          if(should_send_haptic){
             send_haptic(haptic_config.mode);
             should_send_haptic = false;

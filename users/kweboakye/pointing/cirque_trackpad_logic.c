@@ -6,7 +6,7 @@
 //#include <quantum.h>
 
 #ifdef HAPTIC_ENABLE
-#include "drivers/haptic/DRV2605L.h"
+#include "drivers/haptic/drv2605l.h"
 #endif
 #include "drivers/sensors/cirque_pinnacle.h"
 
@@ -330,7 +330,7 @@ report_mouse_t cirque_pinnacle_get_report(report_mouse_t mouse_report) {
                 xprintf("%s", "\n");
 
                 #ifdef HAPTIC_ENABLE
-                    DRV_pulse(sharp_click);
+                    drv2605l_pulse(sharp_click);
                #endif
  #    if TAP_CODE_DELAY > 0
                 wait_ms(TAP_CODE_DELAY);
@@ -373,7 +373,7 @@ report_mouse_t cirque_pinnacle_get_report(report_mouse_t mouse_report) {
                 }
 
                 #ifdef HAPTIC_ENABLE
-                    DRV_pulse(strong_click);
+                    drv2605l_pulse(DRV2605L_EFFECT_STRONG_CLICK_100);
                #endif
                 }
                 }
@@ -391,7 +391,7 @@ report_mouse_t cirque_pinnacle_get_report(report_mouse_t mouse_report) {
 
 
                 #ifdef HAPTIC_ENABLE
-                    DRV_pulse(pulsing_strong);
+                    drv2605l_pulse(pulsing_strong);
                #endif
 
                drag_down = true;

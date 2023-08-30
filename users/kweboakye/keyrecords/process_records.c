@@ -135,7 +135,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
            if (record->event.pressed) {
 
 #ifdef HAPTIC_ENABLE
-               DRV_pulse(strong_click);
+               drv2605l_pulse(DRV2605L_EFFECT_STRONG_CLICK_100);
 #endif
          break;
 }
