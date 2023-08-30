@@ -9,7 +9,7 @@
 userspace_config_t userspace_config;
 extern os_t os;
 
-#ifdef DRV2605L
+#ifdef drv2605l
 extern haptic_config_t haptic_config;
 extern bool should_send_haptic;
 #endif
@@ -64,7 +64,7 @@ float reset_song[][2] = GOODBYE_SONG;
 
 bool  get_haptic_enabled_key(uint16_t keycode, keyrecord_t *record){
 
-//  #if defined(DRV2605L) && defined(SPLIT_HAPTIC_ENABLE)
+//  #if defined(drv2605l) && defined(SPLIT_HAPTIC_ENABLE)
 //   if(get_haptic_enabled_key_custom(keycode, record)){
 //    /*  if(check_is_both_hand_combo(keycode)){
 //         send_haptic(haptic_config.mode);

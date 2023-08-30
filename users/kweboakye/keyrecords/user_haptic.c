@@ -1,6 +1,6 @@
 #include "user_haptic.h"
 #include "definitions/keycodes.h"
-#include "DRV2605L.h"
+#include "drv2605l.h"
 #//include "transport_sync.h"
 #include "transactions.h"
 
@@ -104,13 +104,13 @@ bool check_is_both_hand_combo(uint16_t keycode){
             // keypress
             if (haptic_feedback < 2 ) {
                 //haptic_play();
-                DRV_pulse(soft_bump_60);
+                drv2605l_pulse(soft_bump_60);
             }
         } else {
             // keyrelease
             if (haptic_feedback > 0 ) {
                 //haptic_play();
-                 DRV_pulse(soft_bump_60);
+                 drv2605l_pulse(soft_bump_60);
             }
         }
 
@@ -151,7 +151,7 @@ void user_haptic_send(uint8_t initiator2target_buffer_size, const void* initiato
     if (initiator2target_buffer_size == sizeof(uint8_t)) {
        uint8_t drv_effect =0;
         memcpy(&drv_effect, initiator2target_buffer, sizeof(drv_effect));
-       DRV_pulse(drv_effect);
+       drv2605l_pulse(drv_effect);
     }
 }
 

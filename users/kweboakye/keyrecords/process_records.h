@@ -1,6 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
-#include "drivers/haptic/DRV2605L.h"
+#include "drivers/haptic/drv2605l.h"
 #include "../definitions/keycodes.h"
 #include "../definitions/layers.h"
 #include "persistent_layers.h"

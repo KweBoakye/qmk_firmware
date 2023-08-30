@@ -70,8 +70,8 @@
 
 #undef COMBO_COUNT
 
-#ifdef DRV2605L
-#define DRV_MODE_DEFAULT soft_bump_60
+#ifdef drv2605l
+#define DRV2605L_DEFAULT_MODE DRV2605L_EFFECT_SOFT_BUMP_60
 #endif
 
 #ifdef POINTING_DEVICE_ENABLE
