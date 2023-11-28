@@ -31,12 +31,12 @@
         "enabled": true,
         "matrix_pins": {
             "right":{
-                "cols": ["GP10", "GP11", "GP12", "GP13", "GP14"],
+                "cols": ["GP14","GP13", "GP12", "GP11" ,"GP10" ],
                 "rows": ["GP15", "GP18", "GP19", "GP20"]
             }
         },
         "transport": {
-            "protocol": "serial_usart",
+            "protocol": "serial",
             "sync_matrix_state":true,
             "sync_modifiers":true
         },

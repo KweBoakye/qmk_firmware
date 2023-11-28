@@ -8,4 +8,4 @@
 //extern uint16_t mouse_timer;
 
 int8_t pointing_device_hv_clamp(int16_t value);
-mouse_xy_report_t pointing_device_xy_clamp(clamp_range_t value);
+mouse_xy_report_t pointing_device_xy_clamp(xy_clamp_range_t value);
