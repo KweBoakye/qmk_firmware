@@ -12,7 +12,7 @@ int8_t pointing_device_hv_clamp(int16_t value) {
 }
 
 
-mouse_xy_report_t pointing_device_xy_clamp(clamp_range_t value) {
+mouse_xy_report_t pointing_device_xy_clamp(xy_clamp_range_t value) {
     if (value < XY_REPORT_MIN) {
         return XY_REPORT_MIN;
     } else if (value > XY_REPORT_MAX) {

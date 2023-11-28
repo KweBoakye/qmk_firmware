@@ -2,10 +2,8 @@
 
 #include "layers.h"
 #include "keymap_uk.h"
+#include "../keyrecords/tap_dance.h"
 
-enum {
-    NUMPAD_LAYR, // Our custom tap dance key; add any other tap dance keys to this enum
-};
 
 #define TD_NUM TD(NUMPAD_LAYR)
 

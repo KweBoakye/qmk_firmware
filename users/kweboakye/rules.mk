@@ -10,7 +10,7 @@ SRC += keyrecords/num_word.c
 SRC += keyrecords/nav_mode.c
 SRC += keyrecords/select_word.c
 SRC += keyrecords/casemodes.c
-SRC += keyrecords/tap_dance.c
+
 SRC += definitions/layers.c
 
 #SRC += keyrecords/default_mod_key.c
@@ -20,6 +20,10 @@ COMBO_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 TAP_DANCE_ENABLE = yes
+
+#ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
+SRC += keyrecords/tap_dance.c
+#endif
 
 ifeq ($(strip $(HAPTIC_ENABLE)), yes)
 SRC += keyrecords/user_haptic.c

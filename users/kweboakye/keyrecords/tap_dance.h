@@ -3,6 +3,9 @@
 #include QMK_KEYBOARD_H
 #include "../definitions/keycodes.h"
 
+enum {
+    NUMPAD_LAYR, // Our custom tap dance key; add any other tap dance keys to this enum
+};
 typedef enum {
     TD_NONE,
     TD_UNKNOWN,
@@ -25,4 +28,8 @@ td_state_t cur_dance(tap_dance_state_t *state);
 
 void nl_finished(tap_dance_state_t *state, void *user_data);
 void nl_reset(tap_dance_state_t *state, void *user_data);
+
+tap_dance_action_t tap_dance_actions[] = {
+    [NUMPAD_LAYR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, nl_finished, nl_reset)
+};
 
