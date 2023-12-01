@@ -29,7 +29,7 @@
 
 #define ______________COLEMAK_MOD_DH_R1____________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
 #define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT
-#define _______COLEMAK_MOD_DH_R2_HOME_ROW_MODS_____       KC_M,    CTRL_N,   SFT_E,   ALT_I,   GUI_O,    KC_QUOT
+#define _______COLEMAK_MOD_DH_R2_HOME_ROW_MODS_____       KC_M,    CTRL_N,   SFT_E,   ALT_I,   GUI_O    
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
 #define _________________HALMAK_L1_________________       KC_W,    KC_L,    KC_R,    KC_B,    KC_Z
@@ -46,6 +46,38 @@
 #define _________________FUNC_RIGHT________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
+
+#define ___________________SYM_LEFT_1___________________ KC_QUOT,  UK_AT   , KC_MINS, KC_EQL, KC_DOT
+#define ___________________SYM_LEFT_2___________________ KC_EXLM,  UK_PERC,  KC_LABK, KC_RABK, KC_NUHS
+#define ___________________SYM_LEFT_3___________________ KC_CIRC,  KC_MINS,  KC_ASTR, KC_PLUS, KC_TILD
+
+#define ___________________SYM_RIGHT_1___________________ UK_PND ,KC_LCBR , KC_RCBR, UK_DQUO, KC_GRV
+#define ___________________SYM_RIGHT_2___________________  KC_NUBS, KC_LPRN, KC_RPRN, KC_COLN, KC_QUES
+#define ___________________SYM_RIGHT_3___________________ KC_AMPR,KC_LBRC  , KC_RBRC, KC_DLR, KC_NUBS
+
+#define ___________________NAV_LEFT_1___________________ KC_ESC , KC_TAB, SS_SELW, OS_RALT, _______ 
+#define ___________________NAV_LEFT_2___________________ OS_LGUI, OS_LALT ,KC_LSFT, KC_LCTL, OS_RALT
+#define ___________________NAV_LEFT_3___________________ LCTL(KC_Z) , LCTL(KC_X) ,  LCTL(KC_C), _______ ,  LCTL(KC_V)
+
+#define ___________________NAV_RIGHT_1___________________ _______, KC_APP,  KC_PGUP , KC_PGDN, _______
+#define ___________________NAV_RIGHT_2___________________ _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______
+#define ___________________NAV_RIGHT_3___________________ _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL
+
+#define ________________MAINTANENCE_LEFT_1_______________ QK_BOOT, QK_REBOOT, QK_MAKE ,_______,_______ 
+#define ________________MAINTANENCE_LEFT_2_______________ SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______
+#define ________________MAINTANENCE_LEFT_3_______________ DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP
+
+#define ________________MAINTANENCE_RIGHT_1______________  _______, _______, _______, _______, EE_CLR
+#define ________________MAINTANENCE_RIGHT_2______________  _______, _______, DF_CMG  , DF_CDH, DF_QWE
+#define ________________MAINTANENCE_RIGHT_3______________ HF_TOGG, HF_PREV, HF_NEXT, TG_WIN, TG_MAC
+                                                            
+#define _____________QWERTY_GAMING_LEFT_1__________ KC_Q,    KC_F,    KC_E,    KC_R,    KC_T
+#define _____________QWERTY_GAMING_LEFT_2__________ KC_A   ,  KC_S , KC_W    ,KC_D ,KC_G
+#define _____________QWERTY_GAMING_LEFT_3__________ KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+
+#define _____________QWERTY_GAMING_RIGHT_1_________  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
+#define _____________QWERTY_GAMING_RIGHT_2_________  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT
+#define _____________QWERTY_GAMING_RIGHT_3_________  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 // #if defined(UNICODEMAP_ENABLE)
 // #define ________________UNICODE_R2_________________       _______, _______, OPEN_E, _______, OPEN_O 
