@@ -19,8 +19,7 @@ enum custom_keycodes {
     EQ3X,
     ARROW,
     SS_SELW,
-    DF_CDH,
-    DF_QWE,
+    
     TG_MAC,
     TG_WIN,
     TG_LIN,
@@ -96,6 +95,9 @@ enum  analog_joystick_pointing_keycodes{
 #define NAV TT(_NAV)
 #define SYM MO(_SYM)
 #define DF_CMG DF(_COLEMAK_DH_GAMING)
+#define DF_QMG DF(_QWERTY_GAMING)
+#define DF_CDH DF(_COLEMAK_MOD_DH)
+#define DF_QWE DF(_QWERTY)
 
 #define TAB_R  LCTL(KC_TAB)
 #define TAB_L  LCTL(LSFT(KC_TAB))
