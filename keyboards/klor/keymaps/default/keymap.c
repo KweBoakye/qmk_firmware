@@ -88,6 +88,8 @@ enum custom_keycodes {
   float mac_song[][2] = SONG(MAC_SOUND);
 #endif // AUDIO_ENABLE
 
+
+
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ K E Y M A P S                                                                                                                              │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -319,6 +321,12 @@ void keyboard_post_init_user(void) {
   #if HAPTIC_ENABLE
     haptic_disable(); // disables per key haptic feedback by default
   #endif //HAPTIC ENABLE
+ 
+  #if RGB_MATRIX_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(35, 255, 255); // set default RGB color to yellow
+  #endif //RGB_MATRIX_ENABLE
+
 }
 
 
