@@ -32,7 +32,10 @@ __attribute__((weak))  report_mouse_t pointing_device_task_combined_keymap(repor
 
 
 
-
+void pointing_device_init_user(void){
+    set_auto_mouse_layer(_MOUSE);
+    set_auto_mouse_enable(true);
+}
 
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
@@ -52,17 +55,18 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             }
             mouse_report.x = x;
             mouse_report.y = y;
-            if (!layer_state_is(_MOUSE)) {
-                layer_on(_MOUSE);
-            }
+            // if (!layer_state_is(_MOUSE)) {
+            //     layer_on(_MOUSE);
+            // }
         }
-    } else if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE) && !mouse_keycode_tracker && !tap_toggling) {
-        layer_off(_MOUSE);
-    } else if (tap_toggling) {
-        if (!layer_state_is(_MOUSE)) {
-            layer_on(_MOUSE);
-        }
-    }
+    } 
+    // else if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE) && !mouse_keycode_tracker && !tap_toggling) {
+    //     layer_off(_MOUSE);
+    // } else if (tap_toggling) {
+    //     if (!layer_state_is(_MOUSE)) {
+    //         layer_on(_MOUSE);
+    //     }
+    // }
 
     return pointing_device_task_keymap(mouse_report);
 }
@@ -94,17 +98,18 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             left_report.y = left_y;
             right_report.x = right_x;
             right_report.y = right_y;
-            if (!layer_state_is(_MOUSE)) {
-                layer_on(_MOUSE);
-            }
+            // if (!layer_state_is(_MOUSE)) {
+            //     layer_on(_MOUSE);
+            // }
         }
-    } else if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE) && !mouse_keycode_tracker && !tap_toggling) {
-        layer_off(_MOUSE);
-    } else if (tap_toggling) {
-        if (!layer_state_is(_MOUSE)) {
-            layer_on(_MOUSE);
-        }
-    }
+    } 
+    // else if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE) && !mouse_keycode_tracker && !tap_toggling) {
+    //     layer_off(_MOUSE);
+    // } else if (tap_toggling) {
+    //     if (!layer_state_is(_MOUSE)) {
+    //         layer_on(_MOUSE);
+    //     }
+    //}
 
 
 
@@ -165,9 +170,19 @@ return PROCESS_RECORD_CONTINUE;
 
  }
 
-layer_state_t layer_state_set_pointing(layer_state_t state) {
-    if (layer_state_cmp(state, _GAME)) {
-        state |= ((layer_state_t)1 << _MOUSE);
-    }
-    return state;
-}
+//  bool is_mouse_record_user(uint16_t keycode, keyrecord_t* record){
+//     switch(keycode){
+//         case KC_BTN4:
+//         case KC_BTN5:
+//             return false;
+//         default:
+//          return false;
+//     }
+//  }
+
+// layer_state_t layer_state_set_pointing(layer_state_t state) {
+//     if (layer_state_cmp(state, _GAME)) {
+//         state |= ((layer_state_t)1 << _MOUSE);
+//     }
+//     return state;
+// }
