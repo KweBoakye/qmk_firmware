@@ -8,3 +8,8 @@
 			oled_write_raw_P(render_line[i + frame], px);
 		}
 	}
+
+	 void oled_render_image_partial( int px, const char render_line[px], int X_pos, int Y_pos) {
+		    oled_set_cursor(X_pos, Y_pos);
+			oled_write_raw_P(render_line, px);
+	}
