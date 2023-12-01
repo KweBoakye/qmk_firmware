@@ -25,3 +25,7 @@
 #define SOLENOID_PINS { B12, B13, B14, B15 }
 #define SOLENOID_PINS_ACTIVE_STATE { high, high, low }
 
+#ifdef PS2_DRIVER_INTERRUPT
+#define PS2_CLOCK_PIN B8
+#define PS2_DATA_PIN  B9
+#endif
