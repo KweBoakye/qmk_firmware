@@ -1,5 +1,7 @@
 #include "process_records.h"
+#ifdef POINTING_DEVICE_ENABLE
 #include "pointing/pointing.h"
+#endif
 #include "taphold.h"
 #include QMK_KEYBOARD_H
 
@@ -14,9 +16,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  /*    #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 #endif */
+
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif
+
+   switch (proccess_record_taphold(keycode, record)) {
+        case PROCESS_RECORD_RETURN_TRUE:
+            return true;
+        case PROCESS_RECORD_RETURN_FALSE:
+            return false;
+        default:
+            break;
+    };
+
+
 
 
  // Process case modes
@@ -48,7 +62,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
-
+   #ifdef POINTING_DEVICE_ENABLE
     switch (process_record_pointing(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
             return true;
@@ -57,15 +71,9 @@ const uint8_t oneshot_mods = get_oneshot_mods();
         default:
             break;
     };
+    #endif
 
-    switch (proccess_record_taphold(keycode, record)) {
-        case PROCESS_RECORD_RETURN_TRUE:
-            return true;
-        case PROCESS_RECORD_RETURN_FALSE:
-            return false;
-        default:
-            break;
-    };
+ 
 
      // Process OS toggle
     switch (process_os_toggle(keycode, record)) {
@@ -113,6 +121,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
         default:
             break;
     };
+
 
 
     //return true;
