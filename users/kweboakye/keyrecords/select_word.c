@@ -28,7 +28,7 @@ process_record_result_t process_select_word(uint16_t keycode, keyrecord_t* recor
             }
         } else {
             // Select Word
-            if (os.type == MACOS) {
+            if (os.type == OS_MACOS) {
                 register_code(KC_LALT);
             } else {
                 register_code(KC_LCTL);
@@ -48,7 +48,7 @@ process_record_result_t process_select_word(uint16_t keycode, keyrecord_t* recor
         case STATE_WORD:
             unregister_code(KC_RGHT);
             unregister_mods(MOD_LSFT);
-            if (os.type == MACOS) {
+            if (os.type == OS_MACOS) {
                 unregister_code(KC_LALT);
             } else {
                 unregister_code(KC_LCTL);

@@ -5,6 +5,10 @@ void                       keyboard_pre_init_user(void) {
     userspace_config.raw = eeconfig_read_user();
     keyboard_pre_init_keymap();
 }
+
+#if defined(OS_DETECTION_ENABLE) && defined(DEFERRED_EXEC_ENABLE)
+uint32_t startup_exec(uint32_t trigger_time, void *cb_arg);
+#endif
 // Add reconfigurable functions here, for keymap customization
 // This allows for a global, userspace functions, and continued
 // customization of the keymap.  Use _keymap instead of _user
@@ -40,6 +44,10 @@ void                       keyboard_post_init_user(void) {
     keyboard_post_init_transport_sync();
 #endif
     keyboard_post_init_keymap();
+
+#if defined(OS_DETECTION_ENABLE) && defined(DEFERRED_EXEC_ENABLE)
+    defer_exec(100, startup_exec, NULL);
+#endif
 }
 
 #ifdef RGB_MATRIX_ENABLE
@@ -125,9 +133,21 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
     }
 
     //state = get_highest_layer(state);
-#if defined(CUSTOM_POINTING_DEVICE)
-    state = layer_state_set_pointing(state);
+#if defined(POINTING_DEVICE_ENABLE)
+switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
+        case _COLEMAK_DH_GAMING:
+        case _GAME:
+        case _QWERTY_GAMING:
+            // remove_auto_mouse_target must be called to adjust state *before* setting enable
+            state = remove_auto_mouse_layer(state, false);
+            set_auto_mouse_enable(false);
+            break;
+        default:
+            set_auto_mouse_enable(true);
+            break;
+    }
 #endif
+
 #if defined(CUSTOM_RGBLIGHT)
     state = layer_state_set_rgb_light(state);
 #endif  // CUSTOM_RGBLIGHT
@@ -153,6 +173,19 @@ layer_state_t                       default_layer_state_set_user(layer_state_t s
         return state;
     }
 
+//     #if defined(POINTING_DEVICE_ENABLE)
+//      switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
+//  case _QWERTY_GAMING:
+//     auto_mouse_layer_off();
+//     set_auto_mouse_enable(false);
+//     break;
+//  default:
+//     auto_mouse_layer_off();
+//     set_auto_mouse_enable(true);
+//     break;
+// }
+// #endif  
+
     state = default_layer_state_set_keymap(state);
 /* #if 0
 #    if defined(CUSTOM_RGBLIGHT) || defined(RGB_MATRIX_ENABLE)
@@ -161,6 +194,8 @@ layer_state_t                       default_layer_state_set_user(layer_state_t s
 #endif */
     return state;
 }
+
+
 
 __attribute__((weak)) void led_set_keymap(uint8_t usb_led) {}
 void                       led_set_user(uint8_t usb_led) { led_set_keymap(usb_led); }

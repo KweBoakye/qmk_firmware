@@ -1,13 +1,6 @@
 SRC += kweboakye.c
 SRC += definitions/keycodes.c
-SRC += oled/oled.c
 SRC += keyrecords/process_records.c
-SRC += oled/helix.c
-SRC += oled/smiley.c
-SRC += oled/star.c
-SRC += oled/roving_eye.c
-SRC += oled/luna.c
-SRC += oled/oled_utils.c
 SRC += keyrecords/achordion.c
 SRC += keyrecords/persistent_layers.c
 SRC += keyrecords/taphold.c
@@ -18,9 +11,9 @@ SRC += keyrecords/nav_mode.c
 SRC += keyrecords/select_word.c
 SRC += keyrecords/casemodes.c
 SRC += keyrecords/tap_dance.c
+SRC += definitions/layers.c
 
 #SRC += keyrecords/default_mod_key.c
-SRC += pointing/pointing.c
 SRC += callbacks.c
 
 COMBO_ENABLE = yes
@@ -33,12 +26,18 @@ SRC += keyrecords/user_haptic.c
 endif
 
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
+ SRC += pointing/pointing.c
  SRC += pointing/pointing_utils.c
  SRC += $(QUANTUM_DIR)/pointing_device/pointing_device_gestures.c
 endif
 ifeq ($(strip $(OLED_ENABLE)), yes)
-    #... your code here...
-
+    SRC += oled/oled.c
+    SRC += oled/helix.c
+    SRC += oled/smiley.c
+    SRC += oled/star.c
+    SRC += oled/roving_eye.c
+    SRC += oled/luna.c
+    SRC += oled/oled_utils.c    
     ifdef OCEAN_DREAM_ENABLE
         ifeq ($(strip $(OCEAN_DREAM_ENABLE)), yes)
             SRC += oled/ocean_dream.c
@@ -99,8 +98,12 @@ COMBO_ENABLE ?= no
 ifeq ($(strip $(COMBO_ENABLE)), yes)
     INTROSPECTION_KEYMAP_C = $(USER_PATH)/keyrecords/combos.c
 endif
- 
 
+ifeq ($(strip $(UNICODEMAP_ENABLE)), yes)
+    SRC += keyrecords/user_unicode.c
+endif
+ 
+OS_DETECTION_ENABLE = yes
 
 
 
