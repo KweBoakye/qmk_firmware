@@ -80,7 +80,7 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
                                   LALT_T(TAB_L),   TAB_R,                                                                    KC_BTN4, KC_BTN5, \
                                                  NAV_SPC,                                            SYM_BSPC,       \
                                                  SH_DEL,                                           NAV_ENT, \
-                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  OSL(_UNICODE),  KC_LALT \
+                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  MO(_UNICODE),  KC_LALT \
     )
 #define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
       [_COLEMAK_MOD_DH]  = LAYOUT_base_wrapper(
         ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
-        _______COLEMAK_MOD_DH_L2_HOME_ROW_MODS_____, _______COLEMAK_MOD_DH_R2_HOME_ROW_MODS_____,
+        _______COLEMAK_MOD_DH_L2_HOME_ROW_MODS_____, _______COLEMAK_MOD_DH_R2_HOME_ROW_MODS_____, KC_QUOT,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
      [_COLEMAK_DH_GAMING]  = LAYOUT_base_wrapper(
@@ -113,15 +113,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
+    /*
+ ┌─────────────────────────────────────────────────┐
+ │ q w e r t y   g a m i n g                       │
+ └─────────────────────────────────────────────────┘
+ ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+ │    Q    │    F    │    E    │    R    │    T    │ ╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮ │    Y    │    U    │    I    │    O    │    P    │   
+ ├─────────┼─────────┼─────────┼─────────┼─────────┤ │╰╯╰╯╰╯╰╯╰╯╰╯╰╯╰╯│ ├─────────┼─────────┼─────────┼─────────┼─────────┤
+ │    A    │    W    │    S    │    D    │    G    ├─╯                ╰─┤    H    │    J    │    K    │    L    │    ;    │
+ ├─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┤
+ │    Z    │    X    │    C    │    V    │    B    ││ SHIFT  ││PLY/PSE ││    N    │    M    │    ,    │    .    │    /    │
+ └─────────┴─────────┴─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┘
+                               │  SPACE  │                    │ CMD/WIN │  ENTER  │  RAISE  │ BSPACE  │  
+                               └─────────┴                    └─────────┴─────────┴─────────┴─────────┘
+                                          │  SHIFT   
+                                          └─────────
+                                          │  CTRL  │   
+                                          └─────────┘─────────┘    
+                                */ 
+                              
+
     [_QWERTY_GAMING] = LAYOUT_wrapper(
-        _______, ________________NUMBER_LEFT________________ , _______,             _______,  ________________NUMBER_RIGHT_______________, _______,
-        _______, _________________QWERTY_L1_________________, _______,            _______,   _________________QWERTY_R1_________________,    KC_AMPR,
-        _______, _________________QWERTY_L2_________________,  _______,            _______,  _________________QWERTY_R2_________________,
-        _______, _________________QWERTY_L3_________________,                                 _________________QWERTY_R3_________________  ,  KC_TILD,
-                          _______, _______,                                                                  _______, _______,
+        KC_ESC , ________________NUMBER_LEFT________________ , KC_6 ,             _______,  ________________NUMBER_RIGHT_______________, _______,
+        KC_TAB, _____________QWERTY_GAMING_LEFT_1__________,   KC_Y,            _______,   _________________QWERTY_R1_________________,    KC_AMPR,
+        KC_7  , _____________QWERTY_GAMING_LEFT_2__________,  _______,            _______,  _________________QWERTY_R2_________________,
+        KC_LALT, _____________QWERTY_GAMING_LEFT_3__________,                                 _________________QWERTY_R3_________________  ,  KC_TILD,
+                          KC_M,  KC_I,                                                                  _______, _______,
                                                      KC_SPC,                               _______,
                                                      KC_LSFT,                              _______,
-                                                     KC_LALT, KC_LCTL,            _______, _______
+                                                      KC_LCTL, KC_LALT,           _______, _______
     ),
       [_SYM] = LAYOUT_wrapper(
         _______, _________________FUNC_LEFT_________________ , _______,             _______,  _________________FUNC_RIGHT________________, _______,
@@ -168,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
         DPI_MOD, DPI_RMOD, S_D_MOD, S_D_RMOD, SNP_TOG, DRG_TOG,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
         _______, _______, CARET, DRAG_MOM, DRAG_SCROLL, TRCKPD,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
-        _______, _______, _______, _______, _______, AJS_MODE,                              KC_BTN7, KC_BTN4, KC_BTN5, KC_BTN8, _______, _______,
+        _______, _______, _______, _______, _______, AJS_MODE,                              KC_BTN7, KC_BTN8, KC_WH_U, KC_WH_D, _______, _______,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
                                                      _______,                              _______,
@@ -187,22 +207,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_MAINTENANCE] = LAYOUT(
-        RESET, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, EE_CLR,
-        AU_ON, AU_OFF, CK_TOGG, MU_ON, MU_OFF,  _______, _______,            _______, _______, _______, DF_CMG  , DF_CDH, DF_QWE, _______,
+        QK_RBT, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, EE_CLR,
+        _______, AU_ON, AU_OFF, CK_TOGG, MU_ON, MU_OFF, _______,            _______, _______, DF_QMG, DF_CMG  , DF_CDH, DF_QWE, _______,
         _______, SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______,  _______,            _______, HF_TOGG, HF_PREV, HF_NEXT, TG_WIN, TG_MAC, _______,
-        QK_BOOT, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP,                              _______, _______, _______, _______, _______, _______,
+        QK_BOOT, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP,                              _______, _______, QK_MAKE, _______, _______, _______,
                           _______, _______,                                                                  _______, _______,
                                                      _______,                               _______,
                                                      _______,                              _______,
                                                      _______, _______,            _______, _______
     ),
-    #if defined(UNICODEMAP_ENABLE)
+    //#if defined(UNICODEMAP_ENABLE)
 [_UNICODE]  = LAYOUT_base_wrapper(
         ___________________BLANK___________________, ___________________BLANK___________________,
-        ___________________BLANK___________________, BANG, IRONY, OPEN_E, SNEK, OPEN_O ,_______,
+        ___________________BLANK___________________, UM(BANG), UM(IRONY), OPEN_E, UM(SNEK), OPEN_O ,_______,
         ___________________BLANK___________________, ___________________BLANK___________________
     ),
-    #endif
+    //#endif
 
 };
 

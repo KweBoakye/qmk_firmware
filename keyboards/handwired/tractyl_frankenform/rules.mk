@@ -60,4 +60,5 @@ OPT_DEFS += -DSTM32_I2C -DHAL_USE_I2C=TRUE  -DSTM32_SPI -DHAL_USE_SPI=TRUE -DSTM
 #SRC += analog.c drivers/sensors/pmw3360.c drivers/sensors/cirque_pinnacle.c drivers/sensors/cirque_pinnacle_i2c.c  drivers/sensors/analog_joystick.c   # drivers/sensors/pmw3360.c   $(QUANTUM_DIR)/pointing_device_drivers.c $(QUANTUM_DIR)/pointing_device_drivers.c #pointing_logic.c
 QUANTUM_LIB_SRC += spi_master.c i2c_master.c #pointing_device_drivers.c
 SWAP_HANDS_ENABLE = yes
+
 UNICODEMAP_ENABLE = yes
