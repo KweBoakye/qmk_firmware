@@ -3,8 +3,9 @@
 #include "quantum.h"
 #include "oled_driver.h"
 
-#    define OLED_RENDER_LAYOUT_QWERTY     "Qwerty"
-#    define OLED_RENDER_LAYOUT_COLEMAK_DH "Clmk DH"
+#    define OLED_RENDER_LAYOUT_QWERTY     "Qwerty    "
+#    define OLED_RENDER_LAYOUT_QWERTY_GAMING     "Qwerty GM"
+#    define OLED_RENDER_LAYOUT_COLEMAK_DH "Clmk DH   "
 
 #    define OLED_RENDER_LAYOUT_COLEMAK    "Colemak"
 #    define OLED_RENDER_LAYOUT_COLEMAK_DH_GAMING "CMK DH GM"
