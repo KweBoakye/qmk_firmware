@@ -73,14 +73,14 @@ joystick_config_t joystick_axes[JOYSTICK_AXES_COUNT] = {
     K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
   ) \
   LAYOUT_wrapper ( \
-        KC_ESC,  ________________NUMBER_LEFT________________,  KC_GRV,                                ________________NUMBER_RIGHT_______________,     KC_MINS,  KC_EQL, \
-        KC_TAB,      K01,    K02,      K03,     K04,     K05,   KC_LBRC,                                KC_RBRC,    K06,     K07,     K08,     K09,      K0A,      KC_DELETE,     \
-        TT(_MOUSE),   K11,    K12,      K13,     K14,     K15,   TAB_RO,                                KC_LEFT,     K16,     K17,     K18,     K19,      K1A,      K1B,   \
-        KC_LGUI,     K21,     K22,      K23,     K24,     K25,                                                      K26,     K27,     K28,     K29,      K2A,      KC_NUBS, \
-                                  LALT_T(TAB_L),   TAB_R,                                                                    KC_BTN4, KC_BTN5, \
-                                                 NAV_SPC,                                            SYM_BSPC,       \
-                                                 SH_DEL,                                           NAV_ENT, \
-                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                                  MO(_UNICODE),  KC_LALT \
+        KC_ESC,  ________________NUMBER_LEFT________________,  KC_GRV,                ________________NUMBER_RIGHT_______________,     KC_MINS,  KC_EQL, \
+        KC_TAB,      K01,    K02,      K03,     K04,     K05,   KC_LBRC,                KC_RBRC,    K06,     K07,     K08,     K09,      K0A,      KC_DELETE,     \
+        TT(_MOUSE),   K11,    K12,      K13,     K14,     K15,   TAB_RO,                KC_LEFT,     K16,     K17,     K18,     K19,      K1A,      K1B,   \
+        KC_LGUI,     K21,     K22,      K23,     K24,     K25,                                      K26,     K27,     K28,     K29,      K2A,      KC_NUBS, \
+                                  LALT_T(TAB_L),   TAB_R,                                                    KC_BTN4, KC_BTN5, \
+                                                 NAV_SPC,                            SYM_BSPC,       \
+                                                 SH_DEL,                           NAV_ENT, \
+                                                  OSM(MOD_LCTL) , TD(NUMPAD_LAYR),                  MO(_UNICODE),  KC_LALT \
     )
 #define LAYOUT_base_wrapper(...) LAYOUT_base(__VA_ARGS__)
 
@@ -184,9 +184,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,            _______, _______
     ),
 
- [_MOUSE] = LAYOUT(
+ [_MOUSE] = LAYOUT_wrapper(
         _______, _______, _______, _______, _______, _______,  _______,            _______,   _______, _______, _______, _______, _______, _______,
-        DPI_MOD, DPI_RMOD, S_D_MOD, S_D_RMOD, SNP_TOG, DRG_TOG,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
+        _______, ___________________BLANK___________________,  _______,            _______, KC_WH_U, _______, _______, _______, _______, _______,
         _______, _______, CARET, DRAG_MOM, DRAG_SCROLL, TRCKPD,  _______,            _______, KC_WH_D, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN6, DPI_CONFIG,
         _______, _______, _______, _______, _______, AJS_MODE,                              KC_BTN7, KC_BTN8, KC_WH_U, KC_WH_D, _______, _______,
                           _______, _______,                                                                  _______, _______,
