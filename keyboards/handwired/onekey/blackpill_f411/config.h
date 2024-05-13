@@ -29,3 +29,11 @@
 #define PS2_CLOCK_PIN B8
 #define PS2_DATA_PIN  B9
 #endif
+
+#define SPI_DRIVER                           SPID1
+#define SPI_SCK_PIN                          A5
+#define SPI_SCK_PAL_MODE                     5
+#define SPI_MOSI_PIN                         A7
+#define SPI_MOSI_PAL_MODE                    5
+#define SPI_MISO_PIN                         A6
+#define SPI_MISO_PAL_MODE                    5
