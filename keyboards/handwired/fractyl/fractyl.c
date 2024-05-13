@@ -2,6 +2,7 @@
 #include "fractyl.h"
 
 
+
 #if RGB_MATRIX_ENABLE
 // clang-format off
 const is31_led __flash g_is31_leds[RGB_MATRIX_LED_COUNT] = {
@@ -76,6 +77,3 @@ led_config_t g_led_config = { {
 
 #endif
 
-void keyboard_post_init_user(){
-  rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR );
-}
