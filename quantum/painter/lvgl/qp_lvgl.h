@@ -4,8 +4,8 @@
 
 #pragma once
 
+#include "quantum.h"
 #include "qp.h"
-#include "lvgl.h"
 
 #ifndef QP_LVGL_TASK_PERIOD
 #    define QP_LVGL_TASK_PERIOD 5
