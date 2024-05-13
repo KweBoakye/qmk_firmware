@@ -5,6 +5,9 @@
 #include "transactions.h"
 #include <string.h>
 #include "../keyrecords/user_haptic.h"
+#ifdef QUANTUM_PAINTER_ENABLE 
+    #include "../quantumpainter/qp_display.h"
+#endif
 #ifdef __AVR__
 #    include <avr/wdt.h>
 #endif
@@ -142,6 +145,7 @@ void user_transport_update(void) {
         keymap_config.raw    = transport_keymap_config;
         userspace_config.raw = transport_userspace_config;
         user_state.raw       = transport_user_state;
+        os.type = user_state.os_type;
 /*         #ifdef HAPTIC_ENABLE
         haptic_config.raw    = transport_haptic_config;
         #endif */
@@ -305,7 +309,7 @@ void user_transport_sync(void) {
 void housekeeping_task_user(void) {
     // Update kb_state so we can send to slave
     user_transport_update();
-
+    housekeeping_task_display();
     // Data sync from master to slave
     user_transport_sync();
 }

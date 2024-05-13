@@ -2,12 +2,18 @@
 #include "quantum.h"
 #include "qp.h"
 
-extern painter_device_t display;
+//#ifdef ST7789_240 
 
-void keyboard_post_init_kb_display(void);
+#ifdef ST7789_135
+    #define ST7789_height 135
+    #define ST7789_NO_AUTOMATIC_OFFSETS
+    #define X_VIEWPORT_OFFSET 40
+    #define y_VIEWPORT_OFFSET 53
+#else 
+    #define ST7789_height 240 
+#endif
 
-void suspend_power_down_user_display(void);
+#define ST7789_width 240
 
-void suspend_wakeup_init_user_display(void);
 
-void housekeeping_task_display(void);
+painter_device_t init_display(void);

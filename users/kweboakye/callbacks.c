@@ -1,4 +1,10 @@
 #include "kweboakye.h"
+#ifdef QUANTUM_PAINTER_ENABLE
+    #include "quantumpainter/qp_display.h"
+#endif
+#ifdef QUANTUM_PAINTER_LVGL_INTEGRATION_ENABLE
+    #include "quantumpainter/lvgl/layer_indicators/layer_indicators.h"
+#endif
 
 __attribute__((weak)) void keyboard_pre_init_keymap(void) {}
 void                       keyboard_pre_init_user(void) {
@@ -55,22 +61,44 @@ void rgb_matrix_update_pwm_buffers(void);
 #endif
 
 __attribute__((weak)) void shutdown_keymap(void) {}
-void                       shutdown_user(void) {
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(1);
-    rgblight_setrgb_red();
-#endif  // RGBLIGHT_ENABLE
-#ifdef RGB_MATRIX_ENABLE
-    rgb_matrix_set_color_all(0xFF, 0x00, 0x00);
-    rgb_matrix_update_pwm_buffers();
-#endif  // RGB_MATRIX_ENABLE
+bool                       shutdown_user(bool jump_to_bootloader) {
+if(jump_to_bootloader){
+// #ifdef RGBLIGHT_ENABLE
+//     rgblight_enable_noeeprom();
+//     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+//     rgblight_setrgb_red();
+// #endif // RGBLIGHT_ENABLE
+// #ifdef RGB_MATRIX_ENABLE
+//     rgb_matrix_set_color_all(RGB_RED);
+//     rgb_matrix_update_pwm_buffers();
+// #endif // RGB_MATRIX_ENABLE
+// } else {
+//     #ifdef RGBLIGHT_ENABLE
+//     rgblight_enable_noeeprom();
+//     rgblight_mode_noeeprom(1);
+//     rgblight_setrgb_red();
+// #endif  // RGBLIGHT_ENABLE
+// #ifdef RGB_MATRIX_ENABLE
+//     rgb_matrix_set_color_all(0xFF, 0x00, 0x00);
+//     rgb_matrix_update_pwm_buffers();
+// #endif  // RGB_MATRIX_ENABLE
 #ifdef OLED_ENABLE
     oled_off();
 #endif
-
-    shutdown_keymap();
 }
+ if (layer_state_is(_MOUSE)) {
+        layer_off(_MOUSE);
+    }
+    if (layer_state_is(_GAME)) {
+        layer_off(_GAME);
+    }
+#ifdef QUANTUM_PAINTER_ENABLE
+    suspend_power_down_user_display();
+#endif
+    shutdown_keymap();
+    return false;
+}
+
 
 __attribute__((weak)) void suspend_power_down_keymap(void) {}
 
@@ -87,12 +115,20 @@ void suspend_power_down_user(void) {
 #ifdef OLED_ENABLE
     oled_off();
 #endif
+#ifdef QUANTUM_PAINTER_ENABLE
+    suspend_power_down_user_display();
+#endif
     suspend_power_down_keymap();
 }
 
 __attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
 void                       suspend_wakeup_init_user(void) {
+    #ifdef QUANTUM_PAINTER_ENABLE
+    suspend_wakeup_init_user_display();
+#endif
+
     suspend_wakeup_init_keymap();
+
 }
 
 // No global matrix scan code, so just run keymap's matrix
@@ -103,7 +139,7 @@ void                       matrix_scan_user(void) {
     static bool has_ran_yet;
     if (!has_ran_yet) {
         has_ran_yet = true;
-        startup_user();
+        //startup_user();
     }
 
 /* #ifdef TAP_DANCE_ENABLE  // Run Diablo 3 macro checking code.
@@ -128,9 +164,7 @@ float doom_song[][2] = SONG(E1M1_DOOM);
 // Then runs keymap's layer change check
 __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) { return state; }
 layer_state_t                       layer_state_set_user(layer_state_t state) {
-    if (!is_keyboard_master()) {
-        return state;
-    }
+   
 
     //state = get_highest_layer(state);
 #if defined(POINTING_DEVICE_ENABLE)
@@ -162,6 +196,11 @@ switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
         }
     }
 #endif */
+// #ifdef QUANTUM_PAINTER_LVGL_INTEGRATION_ENABLE
+//     uprintf("before set_screen_layer \n");
+//     set_screen_layer(get_highest_layer(state));
+//     set_screen_layer_name(state);
+// #endif
     state = layer_state_set_keymap(state);
     return state;
 }
@@ -185,8 +224,11 @@ layer_state_t                       default_layer_state_set_user(layer_state_t s
 //     break;
 // }
 // #endif  
-
+#ifdef QUANTUM_PAINTER_LVGL_INTEGRATION_ENABLE
+    set_screen_layer_name(state);
+#endif
     state = default_layer_state_set_keymap(state);
+
 /* #if 0
 #    if defined(CUSTOM_RGBLIGHT) || defined(RGB_MATRIX_ENABLE)
   state = default_layer_state_set_rgb(state);

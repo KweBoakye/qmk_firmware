@@ -18,9 +18,8 @@ typedef enum user_layers {
    _FUNCTIONS,
    _NUMPAD,
   _MOUSE,
-
   _MEDIA,
-  
+  _GAMING_NUM_LAYER
 } layers_t;
 
 layer_state_t get_layer_real_index(layer_state_t state);

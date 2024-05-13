@@ -18,6 +18,7 @@ typedef union {
         uint8_t unicode_mode      :3;
         bool swap_hands           :1;
         bool host_driver_disabled :1;
+        os_variant_t os_type :3;
     };
 } user_runtime_config_t;
 

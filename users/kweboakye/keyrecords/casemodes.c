@@ -52,7 +52,10 @@ static uint16_t xcase_delimiter;
 // the number of keys to the last delimiter
 static int8_t distance_to_last_delim = -1;
 
-
+static bool snake_case_active = false;
+static bool kebab_case_active =  false;
+static bool camel_case_active = false;
+static bool screaming_snake_case_active = false;
 
 // Get xcase state
 enum xcase_state get_xcase_state(void) {
@@ -74,6 +77,10 @@ void enable_xcase_with(uint16_t delimiter) {
 // Disable xcase
 void disable_xcase(void) {
     xcase_state = XCASE_OFF;
+    snake_case_active = false;
+    kebab_case_active =  false;
+    camel_case_active = false;
+    screaming_snake_case_active = false;
 }
 
 // Place the current xcase delimiter
@@ -231,6 +238,25 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
 
 void enable_snake_case(void){
 enable_xcase_with(KC_UNDS);
+ snake_case_active = true;
+}
+
+void enable_camel_case(void){
+    enable_xcase_with(OSM(MOD_LSFT));
+    camel_case_active = true;
+}
+
+void enable_kebab_case(void){
+                 enable_xcase_with(KC_MINS);
+                 kebab_case_active = true;
+}
+
+void enable_screaming_snake_case(void){
+                 if (!is_caps_word_on()){
+                     caps_word_on();
+                 }
+                 enable_xcase_with(KC_UNDS);
+                 screaming_snake_case_active = true;
 }
 
 process_record_result_t process_case_mode_keycodes(uint16_t keycode, const keyrecord_t *record){
@@ -260,4 +286,17 @@ process_record_result_t process_case_mode_keycodes(uint16_t keycode, const keyre
              return PROCESS_RECORD_RETURN_FALSE;
     }
      return PROCESS_RECORD_CONTINUE;
+}
+
+bool is_snake_case_active  (void){
+    return snake_case_active ;
+}
+bool is_kebab_case_active  (void){
+    return kebab_case_active ;
+}
+bool is_camel_case_active  (void){
+    return camel_case_active ;
+}
+bool is_screaming_snake_case_active (void){
+    return screaming_snake_case_active ;
 }

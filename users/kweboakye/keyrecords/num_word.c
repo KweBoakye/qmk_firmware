@@ -111,7 +111,7 @@ process_record_result_t process_record_num_word(uint16_t keycode, const keyrecor
     // Other than the custom keycodes, nothing else in this feature will
     // activate if the behavior is not on, so allow QMK to handle the
     // event as usual
-    if (!num_word_enabled()) return PROCESS_RECORD_RETURN_TRUE;
+    if (!num_word_enabled()) return  PROCESS_RECORD_CONTINUE;
 
     // Nothing else acts on key release, either
     if (!record->event.pressed) {

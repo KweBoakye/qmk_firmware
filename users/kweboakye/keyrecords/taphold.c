@@ -1,5 +1,5 @@
 #include "taphold.h"
-
+#include "../definitions/layers.h"
 
 
 bool get_tapping_force_hold_result(uint16_t keycode) {
@@ -132,4 +132,31 @@ switch (tap_hold_keycode) {
 if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
 
   return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  if(IS_LAYER_ON(_MOUSE)){
+    return 0; // Bypass Achordion
+  }
+  switch (tap_hold_keycode) {
+    case SCRLL_UP:
+    case SCRLL_DN:
+      return 0;  // Bypass Achordion for these keys.
+  }
+  return 1000;
+}
+bool achordion_eager_mod(uint8_t mod) {
+      switch (mod) {
+    case MOD_LSFT:
+    case MOD_RSFT:
+    case MOD_LALT: 
+    case MOD_LCTL:
+    case MOD_RCTL:
+    case MOD_LGUI:
+    case MOD_RGUI:
+      return true;  // Eagerly apply  mods.
+    default:
+      return false;
+      }
+  //return (mod & (MOD_LGUI)) == 0;
 }

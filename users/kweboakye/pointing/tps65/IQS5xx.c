@@ -146,6 +146,7 @@ void init_iqs5xx(void) {
     set_finger_buffer_locations();
     setPinInput(IQS55XX_RDY_PIN);
     i2c_init();
+    printf("init_iqs5xx");
     setting_config();
     Close_Comms();
 }

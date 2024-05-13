@@ -17,6 +17,7 @@
 //Sets up what the OLED screens display.
 
 #include QMK_KEYBOARD_H
+#include "oled.h"
 #include <time.h>
 #include <stdlib.h>
 #include "helix.h"
@@ -29,6 +30,7 @@
 #include "ocean_dream.h"
 #include "oled_utils.h"
 #include "print.h"
+#include "kweboakye.h"
 #include "../keyrecords/os_toggle.h"
 
 #ifdef PMW3360_ENABLE
@@ -201,7 +203,7 @@ static void render_default_layer(void){
     //oled_write_P(PSTR(OLED_RENDER_LAYOUT_NAME), false);
     switch (get_highest_layer(default_layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR(OLED_RENDER_LAYOUT_QWERTY), false);
+            oled_write_P(OLED_RENDER_LAYOUT_QWERTY, false);
             break;
         case _COLEMAK_MOD_DH:
             oled_write_P(PSTR(OLED_RENDER_LAYOUT_COLEMAK_DH), false);
@@ -690,6 +692,7 @@ void render_analog_joystick(analog_joystick_mode_t mode) {
 }
 #endif
 
+#ifdef CIRQUE_ENABLED
 void render_cirque_trackpad_mode(cirque_trackpad_mode_t mode) {
     switch (mode) {
         case CIRQUE_TRACKPAD_TRACKPAD_MODE:
@@ -708,6 +711,7 @@ void render_cirque_trackpad_mode(cirque_trackpad_mode_t mode) {
             oled_write_P(PSTR("???\n"), false);
     }
 }
+#endif 
 
 void render_right_pointing_dpi(void){
 

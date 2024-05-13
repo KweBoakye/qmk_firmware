@@ -46,5 +46,9 @@ void disable_xcase(void);
 
 // Function to be put in process user
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);
+bool is_snake_case_active(void);
+bool is_kebab_case_active(void);
+bool is_camel_case_active(void);
+bool is_screaming_snake_case_active(void);
 
 process_record_result_t process_case_mode_keycodes(uint16_t keycode, const keyrecord_t *record);

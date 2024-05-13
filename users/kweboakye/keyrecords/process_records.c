@@ -1,16 +1,22 @@
 #include "process_records.h"
 #ifdef POINTING_DEVICE_ENABLE
-#include "pointing/pointing.h"
+#include "pointing/custom_pointing.h"
 #endif
 #include "taphold.h"
+#include "os_toggle.h"
 #include QMK_KEYBOARD_H
+
+#ifdef QUANTUM_PAINTER_LVGL_INTEGRATION_ENABLE
+    #include "../quantumpainter/lvgl/state_indicators/state_indicators.h"
+#endif
 
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
 
-
+uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
+//uprintf("in process record user \n");
+mod_state = get_mods(); 
     if (!process_achordion(keycode, record)) { return false; }
 
  /*    #ifdef CONSOLE_ENABLE
@@ -20,6 +26,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef OLED_ENABLE
     process_record_user_oled(keycode, record);
 #endif
+
+//uprintf("before process record taphold \n");
 
    switch (proccess_record_taphold(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
@@ -31,18 +39,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     };
 
 
-
+//uprintf("before process case modes  \n");
 
  // Process case modes
     if (!process_case_modes(keycode, record)) {
         return false;
     }
 
+//uprintf("before process record keymap \n");
 if (!process_record_keymap(keycode, record)) { return false; }
 
 const uint8_t mods = get_mods();
 const uint8_t oneshot_mods = get_oneshot_mods();
 
+//uprintf("before process_persistent_layers \n");
     switch (process_persistent_layers(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
             return true;
@@ -52,7 +62,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
-
+//uprintf("before process_combos  \n");
     switch (process_combos(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
             return true;
@@ -62,6 +72,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
+//uprintf("before process_record_pointing \n");
    #ifdef POINTING_DEVICE_ENABLE
     switch (process_record_pointing(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
@@ -74,7 +85,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
     #endif
 
  
-
+//uprintf("before process_os_toggle\n");
      // Process OS toggle
     switch (process_os_toggle(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
@@ -85,6 +96,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
+//uprintf("before process_select_word \n");
  // Process select word
     switch (process_select_word(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
@@ -95,6 +107,7 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
+//uprintf("before process_case_mode_keycodes  \n");
     switch (process_case_mode_keycodes(keycode, record)) {
         case PROCESS_RECORD_RETURN_TRUE:
             return true;
@@ -104,23 +117,38 @@ const uint8_t oneshot_mods = get_oneshot_mods();
             break;
     };
 
+//uprintf("before process_record_num_word \n");
        switch (process_record_num_word(keycode, record)){
             case PROCESS_RECORD_RETURN_TRUE:
+  //          uprintf("process_record_num_word true \n");
             return true;
         case PROCESS_RECORD_RETURN_FALSE:
+    //    uprintf("process_record_num_word false\n");
             return false;
         default:
+      //  uprintf("process_record_num_word default \n");
             break;
     };
 
+//uprintf("before process_record_nav_mode \n");
           switch (process_record_nav_mode(keycode, record)){
             case PROCESS_RECORD_RETURN_TRUE:
+  //          uprintf("process_record_nav_mode true \n");
             return true;
-        case PROCESS_RECORD_RETURN_FALSE:
+        case PROCESS_RECORD_RETURN_FALSE: 
+    //    uprintf("process_record_nav_mode false\n");
             return false;
         default:
+      //  uprintf("process_record_nav_mode default \n");
             break;
     };
+
+
+//     #ifdef QUANTUM_PAINTER_LVGL_INTEGRATION_ENABLE
+//     if (record->event.pressed) {
+//    process_state_indicators(mod_state);
+//     }
+// #endif
 
 
 
@@ -137,9 +165,9 @@ const uint8_t oneshot_mods = get_oneshot_mods();
   //  };
 
 
-
+//uprintf("before keycode switch \n");
     switch (keycode) {
-
+        
         case KC_BTN1:
            if (record->event.pressed) {
 
@@ -148,7 +176,38 @@ const uint8_t oneshot_mods = get_oneshot_mods();
 #endif
          break;
 }
-
+case SCRLL_UP:
+uprintf("SCRLL_UP \n");
+uint16_t upcode;
+if(os.type == OS_MACOS){
+    uprintf("os.type == OS_MACOS \n");
+    upcode = KC_WH_D;  
+}else {
+    uprintf("os.type != OS_MACOS \n");
+    upcode = KC_WH_U;
+}
+if (record->event.pressed){
+register_code16(upcode);
+} else {
+    unregister_code16(upcode);
+}
+return false;
+case SCRLL_DN:
+uprintf("SCRLL_DN \n");
+uint16_t downcode;
+if(os.type == OS_MACOS){
+  //      uprintf("os.type == OS_MACOS \n");
+        downcode = KC_WH_U;
+    } else {
+    //    uprintf("os.type != OS_MACOS \n");
+        downcode = KC_WH_D;
+    }
+if (record->event.pressed){
+register_code16(downcode);
+    } else {
+        unregister_code16(downcode);
+    }
+    return false;
   case SCOPE:
 
  if(record->event.pressed){

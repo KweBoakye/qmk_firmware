@@ -1,7 +1,11 @@
 #include "cirque_trackpad_logic.h"
 #include "drivers/sensors/cirque_pinnacle_gestures.h"
 #include "pointing_utils.h"
+#if defined(CIRQUE_ENABLED_SPI)
+#include "spi_master.h"
+#elif defined(CIRQUE_ENABLED_I2C)
 #include "i2c_master.h"
+#endif
 #include "pointing_device_gestures.h"
 //#include <quantum.h>
 
@@ -22,7 +26,11 @@ int min(int num1, int num2) { return (num1 > num2 ) ? num2 : num1; }
 int8_t sign(int x) { return (x > 0) - (x < 0); }
 
 void cirque_trackpad_logic_init (void) {
+    #if defined(CIRQUE_ENABLED_SPI)
+     spi_init();
+     #elif defined(CIRQUE_ENABLED_I2C)
      i2c_init();
+     #endif
     cirque_pinnacle_init();
      cirque_trackpad_mode = CIRQUE_TRACKPAD_TRACKPAD_MODE;
 
@@ -530,46 +538,44 @@ report_mouse_t cirque_report;
 
 
 report_mouse_t cirque_trackpad_pointing_device_task(report_mouse_t mouse_report){
-    //if(is_keyboard_master()){}
   report_mouse_t cirque_pinnacle_report = cirque_pinnacle_get_report(mouse_report);
-  //mouse_report = cirque_trackpad_pointing_device_adjust_by_mode(cirque_pinnacle_report);
   return cirque_pinnacle_report;
 };
 
 
 
 process_record_result_t process_record_trackpad(uint16_t keycode, keyrecord_t* record) {
-    switch (keycode) {
+    // switch (keycode) {
 
 
-          /*  case CIRQUE_TRACKPAD_TRACKPAD_MODE:
-           cirque_trackpad_mode = CIRQUE_TRACKPAD_TRACKPAD_MODE */
+    //       /*  case CIRQUE_TRACKPAD_TRACKPAD_MODE:
+    //        cirque_trackpad_mode = CIRQUE_TRACKPAD_TRACKPAD_MODE */
 
-           case DRAG_SCROLL:
-           if (record->event.pressed){
-           //scrolling_mode = record->event.pressed;
-           //record->event.pressed ? mouse_keycode_tracker++ : mouse_keycode_tracker--;
-           cirque_trackpad__mode_set(CIRQUE_TRACKPAD_SCROLLING_MODE);
-            mouse_timer = timer_read();
-           return PROCESS_RECORD_RETURN_FALSE;
-           }
-             case CARET:
-             if (record->event.pressed){ //is_caret ^= 1;
-             cirque_trackpad__mode_set(CIRQUE_TRACKPAD_CARET_MODE);
-             return PROCESS_RECORD_RETURN_FALSE;
-             }
-            case DRAG_MOM:
-           if (record->event.pressed){ //is_drag_mom ^= 1;
-            cirque_trackpad__mode_set(CIRQUE_TRACKPAD_DRAG_MOM_MODE);
-            return PROCESS_RECORD_RETURN_FALSE;
-            }
-            case TRCKPD:
-           if (record->event.pressed){
-            cirque_trackpad__mode_set(CIRQUE_TRACKPAD_TRACKPAD_MODE);
-            return PROCESS_RECORD_RETURN_FALSE;
-            }
+    //        case DRAG_SCROLL:
+    //        if (record->event.pressed){
+    //        //scrolling_mode = record->event.pressed;
+    //        //record->event.pressed ? mouse_keycode_tracker++ : mouse_keycode_tracker--;
+    //        cirque_trackpad__mode_set(CIRQUE_TRACKPAD_SCROLLING_MODE);
+    //         mouse_timer = timer_read();
+    //        return PROCESS_RECORD_RETURN_FALSE;
+    //        }
+    //          case CARET:
+    //          if (record->event.pressed){ //is_caret ^= 1;
+    //          cirque_trackpad__mode_set(CIRQUE_TRACKPAD_CARET_MODE);
+    //          return PROCESS_RECORD_RETURN_FALSE;
+    //          }
+    //         case DRAG_MOM:
+    //        if (record->event.pressed){ //is_drag_mom ^= 1;
+    //         cirque_trackpad__mode_set(CIRQUE_TRACKPAD_DRAG_MOM_MODE);
+    //         return PROCESS_RECORD_RETURN_FALSE;
+    //         }
+    //         case TRCKPD:
+    //        if (record->event.pressed){
+    //         cirque_trackpad__mode_set(CIRQUE_TRACKPAD_TRACKPAD_MODE);
+    //         return PROCESS_RECORD_RETURN_FALSE;
+    //         }
 
 
-    }
+    // }
 return PROCESS_RECORD_CONTINUE;
  }
