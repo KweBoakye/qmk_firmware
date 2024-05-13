@@ -1,0 +1,58 @@
+#pragma once
+
+#define RP2040_FLASH_GD25Q64CS
+#undef MATRIX_ROW_PINS
+#undef MATRIX_COL_PINS
+#define MATRIX_ROW_PINS { GP5, GP6, GP7, GP8 }
+#define MATRIX_COL_PINS { GP27, GP26, GP22, GP20, GP23, GP21 }
+
+#undef SOFT_SERIAL_PIN
+#define SOFT_SERIAL_PIN GP1
+
+#undef WS2812_DI_PIN
+#define WS2812_DI_PIN GP0
+
+#ifdef POINTING_DEVICE_ENABLE
+#    undef PAW3204_SCLK_PIN 
+#    undef PAW3204_SDIO_PIN 
+#endif
+
+#define SPI_DRIVER SPID1
+#define SPI_SCK_PIN GP14
+#define SPI_MISO_PIN NO_PIN //B //GP12
+#define SPI_MOSI_PIN GP15
+
+#define I2C_DRIVER I2CD1
+#define I2C1_SDA_PIN GP2
+#define I2C1_SCL_PIN GP3
+
+#ifdef QUANTUM_PAINTER_ENABLE 
+    
+    #define LCD_CS_PIN GP13
+    #define LCD_DC_PIN  GP28 // ENCB
+    #define LCD_RST_PIN GP29// //ENCA
+    #define LCD_DC_PIN_RIGHT   GP28 // ENCB
+    #define LCD_RST_PIN_RIGHT  GP29 // ENCA
+    #undef ENCODERS_PAD_A     
+    #undef ENCODERS_PAD_B     
+    #undef ENCODERS_PAD_A_RIGHT
+    #undef ENCODERS_PAD_B_RIGHT 
+    #define QP_LVGL_TASK_PERIOD 50
+    #define LCD_DISPLAY_ROTATION QP_ROTATION_90
+    #define ST7789_NUM_DEVICES 2
+    #define QUANTUM_PAINTER_DEBUG true
+    //#define QUANTUM_PAINTER_DEBUG_ENABLE_FLUSH_TASK_OUTPUT true
+    #define ST7789_135
+#endif
+
+#ifdef BACKLIGHT_ENABLE
+    #define BACKLIGHT_PIN GP12 
+    #define BACKLIGHT_PWM_DRIVER PWMD6
+    #define BACKLIGHT_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+    //#define BACKLIGHT_PAL_MODE 4
+    //#define BACKLIGHT_GPT_DRIVER GPTD4
+    #define BACKLIGHT_LEVELS 5
+#endif
+
+#undef AUDIO_PIN
+#define AUDIO_PIN GP9
