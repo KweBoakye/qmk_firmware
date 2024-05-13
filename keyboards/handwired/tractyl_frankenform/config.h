@@ -224,22 +224,8 @@
 //#endif
 
 #ifdef HAPTIC_ENABLE
-#define DRV2605L_FB_ERM_LRA 1
-#define DRV2605L_FB_BRAKEFACTOR 3 /* For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 */
-#define DRV2605L_FB_LOOPGAIN 1 /* For  Low:0, Medium:1, High:2, Very High:3 */
-
-/* Please refer to your datasheet for the optimal setting for your specific motor. */
-#define DRV2605L_RATED_VOLTAGE 2
-#define DRV2605L_V_PEAK 2.8
-#define DRV2605L_V_RMS 2.0
-#define DRV2605L_F_LRA 150 /* resonance freq */
-#define DRV2605L_GREETING DRV2605L_EFFECT_TRANSITION_RAMP_UP_LONG_SMOOTH_1_100
-#define DRV2605L_DEFAULT_MODE 8	//soft_bump_60
-//#define SPLIT_HAPTIC_ENABLE
-//#define NO_HAPTIC_ALPHA
-//#define NO_HAPTIC_PUNCTUATION
-//#define NO_HAPTIC_NAV
-//#define NO_HAPTIC_NUMERIC
+#define SPLIT_HAPTIC_ENABLE
+#define ELV1411A
 #endif
 
 
