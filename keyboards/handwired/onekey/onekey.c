@@ -8,6 +8,7 @@ void keyboard_post_init_kb(void) {
     debug_matrix   = true;
     debug_keyboard = true;
     debug_mouse    = true;
+    printf("keyboard_post_init_kb");
     keyboard_post_init_user();
 }
 
