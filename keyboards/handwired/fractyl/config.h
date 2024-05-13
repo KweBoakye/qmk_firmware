@@ -42,21 +42,21 @@
 #define SPI_MOSI_PIN                         GP3
 #define SPI_MISO_PIN                         GP4
 
-#define I2C_DRIVER I2CD0
+#define I2C_DRIVER I2CD1
 #define I2C1_SDA_PIN GP6
 #define I2C1_SCL_PIN GP7
 
 #ifdef QUANTUM_PAINTER_ENABLE
 #define QUANTUM_PAINTER_DISPLAY_TIMEOUT 30000
     /* right */
-    #define DISPLAY_CS_PIN_RIGHT GP5
-    #define DISPLAY_RST_PIN_RIGHT GP8
-    #define DISPLAY_DC_PIN_RIGHT GP9
+    #define LCD_CS_PIN_RIGHT GP5
+    #define LCD_RST_PIN_RIGHT GP8
+    #define LCD_DC_PIN_RIGHT GP9
 
     /*  left */
-    #define DISPLAY_CS_PIN GP5
-    #define DISPLAY_RST_PIN GP8
-    #define DISPLAY_DC_PIN GP9
+    #define LCD_CS_PIN GP5
+    #define LCD_RST_PIN GP8
+    #define LCD_DC_PIN GP9
 
     
     //#define QUANTUM_PAINTER_LOAD_FONTS_TO_RAM TRUE
@@ -65,6 +65,7 @@
     #define QUANTUM_PAINTER_SUPPORTS_NATIVE_COLORS TRUE
     //#define QUANTUM_PAINTER_LVGL_USE_CUSTOM_CONF
    #define ST7789_NUM_DEVICES 2
+   #define LCD_DISPLAY_ROTATION QP_ROTATION_90
 #endif //QUANTUM_PAINTER_ENABLE
 
 /* Backlight configuration for TFT Screen */
@@ -76,6 +77,12 @@
     #define BACKLIGHT_PWM_CHANNEL 1
 #endif //BACKLIGHT_ENABLE
 
+#ifdef PS2_ENABLE
+    #define PS2_PIO_USE_PIO1 
+    #define PS2_CLOCK_PIN   GP20
+    #define PS2_DATA_PIN    GP19
+#endif
+
 /* Audio configuration */
 #ifdef AUDIO_ENABLE
     #define AUDIO_PIN GP28
@@ -85,15 +92,17 @@
 
 #ifdef RGB_MATRIX_ENABLE
     #define __flash
-    #define DRIVER_ADDR_1  0b0100000
-    #define DRIVER_COUNT 2
+    #define DRIVER_ADDR_2  DRIVER_ADDR_1  
     #define DRIVER_1_LED_TOTAL 18
     #define DRIVER_2_LED_TOTAL 18
     #define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYPRESSES
-    #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
+    //#define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
     #define RGB_MATRIX_SPLIT { 18, 18}
+//    #define RGB_MATRIX_DEFAULT_HUE 132
+  //  #define RGB_MATRIX_DEFAULT_SAT 102
+
     //#define RGB_MATRIX_SOLID_COLOR,     // Static single hue, no speed support
     #define RGB_MATRIX_ALPHAS_MODS         // Static dual hue, speed is hue for secondary hue
     #define RGB_MATRIX_GRADIENT_UP_DOWN    // Static gradient top to bottom, speed controls how much gradient changes
@@ -144,3 +153,16 @@
     #define RGB_MATRIX_SOLID_MULTISPLASH   // Hue & value pulse away from multiple key hits then fades value out
 #endif
 #endif
+
+#define SPLIT_POINTING_ENABLE 
+#define POINTING_DEVICE_COMBINED
+#define MOUSE_EXTENDED_REPORT
+#define AZOTEQ_IQS5XX_TPS65
+#define AZOTEQ_IQS5XX_TAP_ENABLE true
+#define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+#define AZOTEQ_IQS5XX_ZOOM_ENABLE true
+#define AZOTEQ_IQS5XX_SWIPE_X_ENABLE true
+#define AZOTEQ_IQS5XX_TWO_FINGER_TAP_ENABLE true
+#define AZOTEQ_IQS5XX_SCROLL_INITIAL_DISTANCE 25
+#define AZOTEQ_IQS5XX_SCROLL_ENABLE true
+#define AZOTEQ_IQS5XX_ROTATION_270
