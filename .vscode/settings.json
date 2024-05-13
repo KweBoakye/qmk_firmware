@@ -19,7 +19,11 @@
         "type_traits": "c",
         "utility": "c",
         "ranges": "c",
-        "future": "c"
+        "future": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "any": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
