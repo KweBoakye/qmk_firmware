@@ -184,36 +184,36 @@ void pointing_device_init_kb(void) {
  *
  * Implement drag-scroll.
  */
-static void pointing_device_task_dilemma(report_mouse_t* mouse_report) {
-    static int16_t scroll_buffer_x = 0;
-    static int16_t scroll_buffer_y = 0;
-    if (g_dilemma_config.is_dragscroll_enabled) {
-#    ifdef DILEMMA_DRAGSCROLL_REVERSE_X
-        scroll_buffer_x -= mouse_report->x;
-#    else
-        scroll_buffer_x += mouse_report->x;
-#    endif // DILEMMA_DRAGSCROLL_REVERSE_X
-#    ifdef DILEMMA_DRAGSCROLL_REVERSE_Y
-        scroll_buffer_y -= mouse_report->y;
-#    else
-        scroll_buffer_y += mouse_report->y;
-#    endif // DILEMMA_DRAGSCROLL_REVERSE_Y
-        mouse_report->x = 0;
-        mouse_report->y = 0;
-        if (abs(scroll_buffer_x) > DILEMMA_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
-            scroll_buffer_x = 0;
-        }
-        if (abs(scroll_buffer_y) > DILEMMA_DRAGSCROLL_BUFFER_SIZE) {
-            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
-            scroll_buffer_y = 0;
-        }
-    }
-}
+// static void pointing_device_task_dilemma(report_mouse_t* mouse_report) {
+//     static int16_t scroll_buffer_x = 0;
+//     static int16_t scroll_buffer_y = 0;
+//     if (g_dilemma_config.is_dragscroll_enabled) {
+// #    ifdef DILEMMA_DRAGSCROLL_REVERSE_X
+//         scroll_buffer_x -= mouse_report->x;
+// #    else
+//         scroll_buffer_x += mouse_report->x;
+// #    endif // DILEMMA_DRAGSCROLL_REVERSE_X
+// #    ifdef DILEMMA_DRAGSCROLL_REVERSE_Y
+//         scroll_buffer_y -= mouse_report->y;
+// #    else
+//         scroll_buffer_y += mouse_report->y;
+// #    endif // DILEMMA_DRAGSCROLL_REVERSE_Y
+//         mouse_report->x = 0;
+//         mouse_report->y = 0;
+//         if (abs(scroll_buffer_x) > DILEMMA_DRAGSCROLL_BUFFER_SIZE) {
+//             mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+//             scroll_buffer_x = 0;
+//         }
+//         if (abs(scroll_buffer_y) > DILEMMA_DRAGSCROLL_BUFFER_SIZE) {
+//             mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+//             scroll_buffer_y = 0;
+//         }
+//     }
+// }
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     if (is_keyboard_master()) {
-        pointing_device_task_dilemma(&mouse_report);
+       // pointing_device_task_dilemma(&mouse_report);
         mouse_report = pointing_device_task_user(mouse_report);
     }
     return mouse_report;
@@ -242,18 +242,18 @@ static bool has_shift_mod(void) {
  *   - sniping DPI: internal table index/actual DPI
  */
 static void debug_dilemma_config_to_console(dilemma_config_t* config) {
-#    ifdef CONSOLE_ENABLE
-    dprintf("(dilemma) process_record_kb: config = {\n"
-            "\traw = 0x%X,\n"
-            "\t{\n"
-            "\t\tis_dragscroll_enabled=%u\n"
-            "\t\tis_sniping_enabled=%u\n"
-            "\t\tdefault_dpi=0x%X (%u)\n"
-            "\t\tsniping_dpi=0x%X (%u)\n"
-            "\t}\n"
-            "}\n",
-            config->raw, config->is_dragscroll_enabled, config->is_sniping_enabled, config->pointer_default_dpi, get_pointer_default_dpi(config), config->pointer_sniping_dpi, get_pointer_sniping_dpi(config));
-#    endif // CONSOLE_ENABLE
+// #    ifdef CONSOLE_ENABLE
+//     dprintf("(dilemma) process_record_kb: config = {\n"
+//             "\traw = 0x%X,\n"
+//             "\t{\n"
+//             "\t\tis_dragscroll_enabled=%u\n"
+//             "\t\tis_sniping_enabled=%u\n"
+//             "\t\tdefault_dpi=0x%X (%u)\n"
+//             "\t\tsniping_dpi=0x%X (%u)\n"
+//             "\t}\n"
+//             "}\n",
+//             config->raw, config->is_dragscroll_enabled, config->is_sniping_enabled, config->pointer_default_dpi, get_pointer_default_dpi(config), config->pointer_sniping_dpi, get_pointer_sniping_dpi(config));
+// #    endif // CONSOLE_ENABLE
 }
 
 bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
