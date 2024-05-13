@@ -444,12 +444,12 @@ finger_buffer_location_struct_t finger_buffer_locations;
 // Byte swap macros
 #define SWPEND16(n) ((n >> 8) | (n << 8))
 
-#if SPLIT_KEYBOARD
-     if(is_keyboard_left()){
+#ifdef isLeftHand
+     #if split_config.left
         #define RDY_PIN IQS55XX_RDY_PIN_LEFT
-     } else {
+    #else 
         #define RDY_PIN IQS55XX_RDY_PIN_RIGHT
-     }
+    #endif    
 #else
     #define RDY_PIN IQS55XX_RDY_PIN
 #endif         

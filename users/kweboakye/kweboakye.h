@@ -31,7 +31,7 @@
 #endif
 
 #ifdef POINTING_DEVICE_ENABLE
-#    include "pointing/pointing.h"
+#    include "pointing/custom_pointing.h"
 #endif
 
 #ifdef SPLIT_KEYBOARD

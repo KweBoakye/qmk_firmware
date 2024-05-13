@@ -60,15 +60,15 @@
 #define ___________________NAV_LEFT_3___________________ LCTL(KC_Z) , LCTL(KC_X) ,  LCTL(KC_C), _______ ,  LCTL(KC_V)
 
 #define ___________________NAV_RIGHT_1___________________ _______, KC_APP,  KC_PGUP , KC_PGDN, _______
-#define ___________________NAV_RIGHT_2___________________ _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT, _______
-#define ___________________NAV_RIGHT_3___________________ _______, KC_HOME, KC_WH_U ,KC_WH_D, KC_END, KC_DEL
+#define ___________________NAV_RIGHT_2___________________ _______, KC_LEFT, KC_UP,KC_DOWN , KC_RIGHT 
+#define ___________________NAV_RIGHT_3___________________ _______, KC_HOME, SCRLL_UP ,SCRLL_DN, KC_END
 
 #define ________________MAINTANENCE_LEFT_1_______________ QK_BOOT, QK_REBOOT, QK_MAKE ,_______,_______ 
 #define ________________MAINTANENCE_LEFT_2_______________ SC_SNK_CS, SNK_CS, KB_CS, CML_CS, _______
 #define ________________MAINTANENCE_LEFT_3_______________ DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, DM_RSTP
 
-#define ________________MAINTANENCE_RIGHT_1______________  _______, _______, _______, _______, EE_CLR
-#define ________________MAINTANENCE_RIGHT_2______________  _______, _______, DF_CMG  , DF_CDH, DF_QWE
+#define ________________MAINTANENCE_RIGHT_1______________  RGB_TOG, BL_TOGG, _______, _______, EE_CLR
+#define ________________MAINTANENCE_RIGHT_2______________  _______, DF_QMG, DF_CMG  , DF_CDH, DF_QWE
 #define ________________MAINTANENCE_RIGHT_3______________ HF_TOGG, HF_PREV, HF_NEXT, TG_WIN, TG_MAC
                                                             
 #define _____________QWERTY_GAMING_LEFT_1__________ KC_Q,    KC_F,    KC_E,    KC_R,    KC_T
@@ -76,8 +76,12 @@
 #define _____________QWERTY_GAMING_LEFT_3__________ KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
 
 #define _____________QWERTY_GAMING_RIGHT_1_________  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _____________QWERTY_GAMING_RIGHT_2_________  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT
+#define _____________QWERTY_GAMING_RIGHT_2_________  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
 #define _____________QWERTY_GAMING_RIGHT_3_________  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
+
+#define _____NUMPAD_LEFT_1_3_KEY______          KC_7,    KC_8,    KC_9
+#define ___________NUMPAD_LEFT_2_4_KEY_____  KC_0,    KC_1,    KC_2,    KC_3
+#define _____NUMPAD_LEFT_3_3_KEY______          KC_4,    KC_5,    KC_6
 
 // #if defined(UNICODEMAP_ENABLE)
 // #define ________________UNICODE_R2_________________       _______, _______, OPEN_E, _______, OPEN_O 

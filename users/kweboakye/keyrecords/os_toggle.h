@@ -10,6 +10,7 @@ typedef struct {
     os_variant_t type;
 } os_t;
 
+os_t os;
 bool                    is_macos(void);
 
 process_record_result_t process_os_toggle(uint16_t keycode, keyrecord_t *record);

@@ -84,7 +84,7 @@ process_record_result_t process_record_nav_mode(uint16_t keycode, keyrecord_t *r
     // Other than the custom keycodes, nothing else in this feature will
     // activate if the behavior is not on, so allow QMK to handle the
     // event as usual
-    if (!nav_mode_enabled()) return PROCESS_RECORD_RETURN_TRUE;
+    if (!nav_mode_enabled()) return PROCESS_RECORD_CONTINUE;
 
     // Nothing else acts on key release, either
     if (!record->event.pressed) {

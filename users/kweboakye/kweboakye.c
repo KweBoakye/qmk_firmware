@@ -7,7 +7,7 @@
 //  #endif
 
 userspace_config_t userspace_config;
-extern os_t os;
+//extern os_t os;
 
 #ifdef drv2605l
 extern haptic_config_t haptic_config;
@@ -98,11 +98,11 @@ void software_reset(void) {
 #    endif
     uint16_t timer_start = timer_read();
     PLAY_SONG(reset_song);
-    shutdown_user();
+    shutdown_user(false);
     while (timer_elapsed(timer_start) < 250) wait_ms(1);
     stop_all_notes();
 #else
-    shutdown_user();
+    shutdown_user(false);
     wait_ms(250);
 #endif
 #ifdef HAPTIC_ENABLE

@@ -26,7 +26,7 @@ SRC += keyrecords/user_haptic.c
 endif
 
 ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
- SRC += pointing/pointing.c
+ SRC += pointing/custom_pointing.c
  SRC += pointing/pointing_utils.c
  SRC += $(QUANTUM_DIR)/pointing_device/pointing_device_gestures.c
 endif
@@ -54,10 +54,26 @@ ifdef CIRQUE_ENABLED
      ifeq ($(strip $(CIRQUE_ENABLED)), yes)
           SRC += pointing/cirque_trackpad_logic.c
 		  SRC +=  drivers/sensors/cirque_pinnacle.c
-		  SRC +=  drivers/sensors/cirque_pinnacle_i2c.c
+		  
 		   SRC += drivers/sensors/cirque_pinnacle_gestures.c
 
 		  OPT_DEFS += -DCIRQUE_ENABLED
+       endif
+     ifdef CIRQUE_ENABLED_SPI 
+     SRC +=  drivers/sensors/cirque_pinnacle_spi.c
+     SPI_DRIVER_REQUIRED = yes
+     OPT_DEFS += -DCIRQUE_ENABLED_SPI
+     endif
+     ifdef CIRQUE_ENABLED_I2C
+        SRC +=  drivers/sensors/cirque_pinnacle_i2c.c  
+        OPT_DEFS += -DCIRQUE_ENABLED_I2C
+     endif
+endif
+
+ifdef IQS5XX_ENABLED
+     ifeq ($(strip $(IQS5XX_ENABLED)), yes)
+          SRC += pointing/tps65/IQS5xx.c
+		  OPT_DEFS += -DIQS5XX_ENABLED
        endif
 endif
 
@@ -105,5 +121,26 @@ endif
  
 OS_DETECTION_ENABLE = yes
 
+ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
+    SRC += keyrecords/caps_word.c
+    OPT_DEFS += -DCAPS_WORD_ENABLE
+endif
 
-
+ifeq ($(strip $(QUANTUM_PAINTER_ENABLE)), yes)
+SRC += quantumpainter/qp_display.c
+    SRC += quantumpainter/ST7789/ST7789_logic.c
+    ifeq ($(strip $(QUANTUM_PAINTER_LVGL_INTEGRATION)), yes)
+    SRC += keyrecords/user_unicode.c
+    SRC += quantumpainter/lvgl/events/custom_events.c
+    SRC += quantumpainter/lvgl/layer_indicators/layer_indicators.c
+    SRC += quantumpainter/lvgl/lvgl_fonts/BalaCynwydNF_14.c
+    SRC += quantumpainter/lvgl/lvgl_fonts/BalaCynwydNF.c
+    SRC += quantumpainter/lvgl/state_indicators/state_indicators.c
+    SRC += quantumpainter/lvgl/styles/styles.c
+    SRC += quantumpainter/lvgl/lvgl_ui.c
+    SRC += quantumpainter/lvgl/assets/cowboy_bebop.c
+    endif
+    ifeq ($(strip $(CURRENT_PAINTER_DRIVER)),st7789_spi)
+   
+    endif
+endif
