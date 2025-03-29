@@ -94,13 +94,13 @@
 #define DRV2605L_FB_BRAKEFACTOR 3 /* For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7 */
 #define DRV2605L_FB_LOOPGAIN 1 /* For  Low:0, Medium:1, High:2, Very High:3 */
 
-#ifdef ELV1411A
+#if HAPTIC_MOTOR == ELV1411A
 /* Please refer to your datasheet for the optimal setting for your specific motor. */
     #define DRV2605L_RATED_VOLTAGE 2
     #define DRV2605L_V_PEAK 2.8
     #define DRV2605L_V_RMS 2.0
     #define DRV2605L_F_LRA 150 /* resonance freq */
-#elif VL91022
+#elif HAPTIC_MOTOR == VL91022
  #define DRV2605L_RATED_VOLTAGE 3.0
     #define DRV2605L_V_PEAK 3.3
     #define DRV2605L_V_RMS 3.0

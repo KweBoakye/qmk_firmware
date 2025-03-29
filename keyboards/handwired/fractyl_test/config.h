@@ -22,8 +22,8 @@
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 5 
 
-#define SPLIT_HAND_PIN GP21
-//#define SPLIT_HAND_PIN_LOW_IS_LEFT
+//#define SPLIT_HAND_PIN GP21
+
 #define SERIAL_USART_FULL_DUPLEX  // Enable full duplex operation mode.
 #define SERIAL_USART_TX_PIN     GP0
 #define SERIAL_USART_RX_PIN     GP1
@@ -32,9 +32,9 @@
 #define SERIAL_USART_SPEED      806400 //460800
 #define SERIAL_USART_PIN_SWAP
 
-#define SPLIT_LED_STATE_ENABLE
-#define SPLIT_WPM_ENABLE
-#define SPLIT_HAPTIC_ENABLE
+//define SPLIT_LED_STATE_ENABLE
+//define SPLIT_WPM_ENABLE
+//define SPLIT_HAPTIC_ENABLE
 //#define SPLIT_TRANSPORT_MIRROR
 
 #define SPI_DRIVER                           SPID0
@@ -47,28 +47,27 @@
 #define I2C1_SCL_PIN GP7
 #define I2C1_CLOCK_SPEED 400000
 
-#ifdef QUANTUM_PAINTER_ENABLE
-#define QUANTUM_PAINTER_DISPLAY_TIMEOUT 30000
-    /* right */
-    #define LCD_CS_PIN_RIGHT GP5
-    #define LCD_DC_PIN_RIGHT GP8
-    #define LCD_RST_PIN_RIGHT GP9
+// #ifdef QUANTUM_PAINTER_ENABLE
+// #define QUANTUM_PAINTER_DISPLAY_TIMEOUT 30000
+//     /* right */
+//     #define LCD_CS_PIN_RIGHT GP5
+//     #define LCD_RST_PIN_RIGHT GP8
+//     #define LCD_DC_PIN_RIGHT GP9
 
-    /*  left */
-    #define LCD_CS_PIN GP5
-    #define LCD_DC_PIN GP8
-    #define LCD_RST_PIN GP9
+//     /*  left */
+//     #define LCD_CS_PIN GP5
+//     #define LCD_RST_PIN GP8
+//     #define LCD_DC_PIN GP9
 
-    #define QP_LVGL_TASK_PERIOD 50
-    //#define QUANTUM_PAINTER_LOAD_FONTS_TO_RAM TRUE
-    //#define QUANTUM_PAINTER_SUPPORTS_256_PALETTE TRUE
-    //#define QUANTUM_PAINTER_PIXDATA_BUFFER_SIZE (96U * 1024U) //1024
-    //#define QUANTUM_PAINTER_SUPPORTS_NATIVE_COLORS TRUE
-    //#define QUANTUM_PAINTER_LVGL_USE_CUSTOM_CONF
-   #define ST7789_NUM_DEVICES 2
-   #define LCD_DISPLAY_ROTATION QP_ROTATION_90
-   #define QUANTUM_PAINTER_DEBUG
-#endif //QUANTUM_PAINTER_ENABLE
+    
+//     //#define QUANTUM_PAINTER_LOAD_FONTS_TO_RAM TRUE
+//     #define QUANTUM_PAINTER_SUPPORTS_256_PALETTE TRUE
+//     //#define QUANTUM_PAINTER_PIXDATA_BUFFER_SIZE (96U * 1024U) //1024
+//     #define QUANTUM_PAINTER_SUPPORTS_NATIVE_COLORS TRUE
+//     //#define QUANTUM_PAINTER_LVGL_USE_CUSTOM_CONF
+//    #define ST7789_NUM_DEVICES 2
+//    #define LCD_DISPLAY_ROTATION QP_ROTATION_90
+// #endif //QUANTUM_PAINTER_ENABLE
 
 /* Backlight configuration for TFT Screen */
 #ifdef BACKLIGHT_ENABLE
@@ -81,8 +80,8 @@
 
 #ifdef PS2_ENABLE
     #define PS2_PIO_USE_PIO1 
-    #define PS2_CLOCK_PIN   GP17
-    #define PS2_DATA_PIN    GP16
+    #define PS2_CLOCK_PIN   GP20
+    #define PS2_DATA_PIN    GP19
 #endif
 
 /* Audio configuration */
@@ -94,28 +93,29 @@
 
 #ifdef RGB_MATRIX_ENABLE
     #define __flash
+    #define DRIVER_ADDR_1 0x20
    // #define DRIVER_ADDR_2  DRIVER_ADDR_1  
-   #define DRIVER_ADDR_1 0x20
     #define DRIVER_1_LED_TOTAL 18
-    #define DRIVER_2_LED_TOTAL 18
-    #define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
+    //#define DRIVER_2_LED_TOTAL 18
+    #define RGB_MATRIX_LED_COUNT DRIVER_1_LED_TOTAL
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
     #define RGB_MATRIX_KEYPRESSES
     //#define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-    #define RGB_MATRIX_SPLIT { 18, 18}
+    //#define RGB_MATRIX_SPLIT { 18, 18}
 //    #define RGB_MATRIX_DEFAULT_HUE 132
   //  #define RGB_MATRIX_DEFAULT_SAT 102
 
+  #define ISSI_SCAL_RED 190
   // Startup values.
-//#    define RGB_MATRIX_DEFAULT_HUE 0
-//#    define RGB_MATRIX_DEFAULT_SAT 255
-//#    define RGB_MATRIX_DEFAULT_VAL 64
-//#    define RGB_MATRIX_DEFAULT_HSV RGB_MATRIX_DEFAULT_HUE, RGB_MATRIX_DEFAULT_SAT, RGB_MATRIX_DEFAULT_VAL
+#    define RGB_MATRIX_DEFAULT_HUE 0
+#    define RGB_MATRIX_DEFAULT_SAT 255
+#    define RGB_MATRIX_DEFAULT_VAL 64
+#    define RGB_MATRIX_DEFAULT_HSV RGB_MATRIX_DEFAULT_HUE, RGB_MATRIX_DEFAULT_SAT, RGB_MATRIX_DEFAULT_VAL
 
 
 
 // Slow swirl at startup.
-//#    define RGB_MATRIX_DEFAULT_SPD 32
+#    define RGB_MATRIX_DEFAULT_SPD 32
 
    // #define RGB_MATRIX_SOLID_COLOR = 1    // Static single hue, no speed support
     #define ENABLE_RGB_MATRIX_ALPHAS_MODS         // Static dual hue, speed is hue for secondary hue
@@ -148,7 +148,7 @@
     #define ENABLE_RGB_MATRIX_PIXEL_FLOW          // Pulsing RGB flow along LED wiring with random hues
     #define ENABLE_RGB_MATRIX_PIXEL_RAIN          // Randomly light keys with random hues
 
-#if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+#if defined(ENABLE_RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     #define ENABLE_RGB_MATRIX_TYPING_HEATMAP      // How hot is your WPM!
     #define ENABLE_RGB_MATRIX_DIGITAL_RAIN        // That famous computer simulation
 #endif 
@@ -170,12 +170,12 @@
 
 #define RGB_MATRIX_DEFAULT_ON true // Sets the default enabled state, if none has been set
 // Rainbow swirl as startup mode.
-#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_ALL
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT 
 
 #endif
 
-#define SPLIT_POINTING_ENABLE 
-#define POINTING_DEVICE_COMBINED
+//#define SPLIT_POINTING_ENABLE 
+//#define POINTING_DEVICE_COMBINED
 #define MOUSE_EXTENDED_REPORT
 #define AZOTEQ_IQS5XX_TPS65
 #define AZOTEQ_IQS5XX_TAP_ENABLE true
@@ -188,3 +188,20 @@
 #define AZOTEQ_IQS5XX_ROTATION_270
 
 #define HAPTIC_MOTOR VL91022
+
+#ifdef QUANTUM_PAINTER_ENABLE
+#define QUANTUM_PAINTER_DISPLAY_TIMEOUT 30000
+
+    #define LCD_CS_PIN GP5
+    #define LCD_RST_PIN GP8
+    #define LCD_DC_PIN GP9
+
+    
+    //#define QUANTUM_PAINTER_LOAD_FONTS_TO_RAM TRUE
+    #define QUANTUM_PAINTER_SUPPORTS_256_PALETTE TRUE
+    //#define QUANTUM_PAINTER_PIXDATA_BUFFER_SIZE (96U * 1024U) //1024
+    #define QUANTUM_PAINTER_SUPPORTS_NATIVE_COLORS TRUE
+    //#define QUANTUM_PAINTER_LVGL_USE_CUSTOM_CONF
+   #define ST7789_NUM_DEVICES 2
+   #define LCD_DISPLAY_ROTATION QP_ROTATION_90
+#endif //QUANTUM_PAINTER_ENABLE

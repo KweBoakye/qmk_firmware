@@ -2,7 +2,9 @@
 #include "definitions/keycodes.h"
 #include "drv2605l.h"
 #//include "transport_sync.h"
+#if defined(SPLIT_KEYBOARD)
 #include "transactions.h"
+#endif
 
 uint8_t transport_drv_effect_config = 0;
 bool should_send_haptic = false;
@@ -116,6 +118,7 @@ bool check_is_both_hand_combo(uint16_t keycode){
 
 } */
 
+#if defined(SPLIT_KEYBOARD)
 
 
 bool is_keypress_on_secondary(uint16_t keycode, keyrecord_t *record){
@@ -165,3 +168,4 @@ void send_haptic(uint8_t drv_effect){
 transaction_rpc_send(RPC_ID_HAPTIC_SEND, sizeof(drv_effect), &drv_effect);
 
 }
+#endif
