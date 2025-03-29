@@ -1,7 +1,9 @@
 #include QMK_KEYBOARD_H
 
 #include "os_toggle.h"
+#if defined(SPLIT_KEYBOARD)
 #include "../split/transport_sync.h"
+#endif
 
 os_t os = {
     .type = OS_WINDOWS
@@ -24,7 +26,9 @@ void apply_os_settings(os_variant_t  os_to_apply){
         break;
     }
     os.type = os_to_apply;
+    #if defined(SPLIT_KEYBOARD)
     user_state.os_type = os_to_apply;
+    #endif
 }
 
 process_record_result_t process_os_toggle(uint16_t keycode, keyrecord_t *record) {

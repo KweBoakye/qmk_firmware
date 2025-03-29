@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        _____________QWERTY_GAMING_LEFT_3__________,    _____________QWERTY_GAMING_RIGHT_3_________,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                        MO(_GAMING_NUM_LAYER) ,  KC_SPC,  KC_LSFT, _______, _______, _______
+                        MO(_GAMING_NUM_LAYER) ,  KC_SPC,  KC_LSFT, LSA(KC_TAB), LALT(KC_TAB), _______
   //                   ╰───────────────────────────╯ ╰──────────────────────────╯
   ),
 [_SYM] = LAYOUT_split_3x5_3_wrapper(
@@ -148,7 +148,7 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
     {{0,3}, {1,3}, {2,3},{3,3} ,{4,3}},
 };
 #endif
-#ifdef POINTING_DEVICE_COMBINED
+#if defined(POINTING_DEVICE_COMBINED) && defined(POINTING_DEVICE_DRIVER_custom)
 
 #define CONSTRAIN_HID(amt) ((amt) < INT8_MIN ? INT8_MIN : ((amt) > INT8_MAX ? INT8_MAX : (amt)))
 #define CONSTRAIN_HID_XY(amt) ((amt) < XY_REPORT_MIN ? XY_REPORT_MIN : ((amt) > XY_REPORT_MAX ? XY_REPORT_MAX : (amt)))
